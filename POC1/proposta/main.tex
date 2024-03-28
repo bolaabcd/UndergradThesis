@@ -13,7 +13,7 @@
 \usepackage{color}
 \usepackage{hyperref}
 
-\title{Relações entre Causalidade, Justiça, Privacidade e Acurácia (+Explicabilidade?) em Aprendizado de Máquina (talvez mais foco em privacidade vs fairness porque as vezes os erros de privacidade fariam ficar mais justo?)\large\\ Tipo de Pesquisa: Científica\\Orientador: Mário Sérgio Alvim}
+\title{Relations between Causality, Fairness, Privacy, Accuracy and Interpretability in Machine Learning\large\\ Type: Scientific\\Advisor: Mário Sérgio Alvim}
 \author{Artur Gaspar}
 \date{05/04/2024}
 
@@ -21,55 +21,50 @@
 \begin{document}
 \maketitle
 
-\section{Introdução}
+\section{Introduction}
 
-\textit{Qual o problema a ser resolvido ou questão a ser investigada no projeto? Por que ele é importante? Listar os objetivos gerais e específicos do trabalho.}
+Recent resarch\cite{Sok}\cite{Reductions}\cite{Rachel}\cite{Awareness} indicates numerous tensions and synergies between many concepts that surround the Machine Learning literature, including Fairness, Privacy, Accuracy and Interpretability. For instance, there is an inherent tradeoff between Fairness and Accuracy such that, depending on the data distribution, it might be impossible to develop a model that achieves acceptable values for both fairness and accuracy, if we considr some reasonable fairness metrics\cite{Carlos}. Also, there has been some work on introducing Causality concepts into the discussion, for instance, to develop better fairness metrics\cite{CausalFair}. It has also been suggested to use interpretable models (as explanations to more complex models) for auditing systems and checking if they are fair, although this might lead to problems\cite{ExplainAll}. This area of research is especially relevant nowadays, given the importance that Machine Learning and Artificial Intelligence systems have: we now have computational systems that are part of processes of making decisions with big impacts on people's lives, for instance, recidivism prediction\cite{Compass}, loan approvals\cite{Loans}, hiring decisions\cite{Jobs}, and others.
 
-\textit{Na Introdução, ao descrever seus objetivos, o aluno deve informar o objetivo geral a ser atingido no final do POC II / MSI II, e depois listar os objetivos específicos de cada um dos semestres (POC/MSI I e POC/MSI II). Esses objetivos deverão ser revisitados no próximo semestre, quando for elaborada a proposta do POC/MSI II. A mesma coisa é válida para os resultados esperados. Ao fim de um ano, qual é o resultado esperado? Para alcançar esses resultados, o que precisa estar pronto ao final do POC/MSI I?}
+The goal of this Undergraduate Thesis is to review and reproduce results presented in the litearture, verify the viability of the connections between the aforementioned areas and Quantitative Information Flow, and, if possible, develop new theoretical results. This project will be divided into two parts: POC I and POC II. In POC I, the specific goals are to research the literature for these concepts and focus on the connections that have been identified between them, so the expected result is a concise review of the literature on these topics. In POC II, the specific goals are to reproduce the results and verify possible connections with Quantitative Information Flow, with the possibility of developing new theoretical results. The expected result is the reproduction of many results and an in-depth theoretical analysis of the viability of Quantitative Information Flow approaches to these areas. It's thus necessary to have a comprehensible review of the literature by the end of POC I.
 
-No POC1, uma revisão dos conceitos de causalidade, Fairness, Privacidade e Acurácia em aprendizado de máquina (talvez explicabilidade?), e as relações entre essas coisas. No POC2, poderia ser mais sobre as relações entre essas coisas.
+\section{Theoretical Reference}
+
+Causality refers to the study of causal relationships between variables, and how to model and infer causal relationships from the combination of domain knowledge and data\cite{Causality}. This area of research has matured a lot in the last $50$ years, with many different approaches still being developed. Fairness in Machine Learning is concerned with measuring how unfair the results provided by Machine Learning models are to certain groups or individuals\cite{FairMeasures}, and improving how fair the models are\cite{FairSolve}. There are tensions between different fairness measures\cite{Impossibility}\cite{FairTensions}. Privacy is concerned with quantifying how much sensitive information leaks about individuals and methods to avoid this information leakage. In Machine Learning settings, the data collection might be hard for information that is considered very sensitive (for instance, whether or not a person regularly uses illegal drugs) and approaches such as Differential Privacy\cite{DP} might improve trust in the data collection. Also, the model itself might allow the identification of individuals and sensitive features, which is not desirable\cite{PrivacyML}. Accuracy is a metric of how many mistakes the Machine Learning model makes, and there are trade-offs between Accuracy and the other concepts presented\cite{Sok}\cite{Carlos}\cite{Rachel}. The area of Interpretability focus on developing Machine Learning models that have human-comprehensible decisions (either directly or to explain the decisions of more complex models), which might be useful when developing these models\cite{ExplDev} and also to help experts with domain knowledge decide when to trust the results presented by the models\cite{ExplainExperts}. Quantitative Information Flow is a general theoretical framework for measuring amounts of information, with a focus on privacy applications but, in principle, a broader scope\cite{QIF}.
+
+In \cite{Sok}, the relationships between Fairness, Interpretability and Privacy have been extensively explored. The paper \cite{Awareness} focuses on relationships between Privacy and Fairness, \cite{Rachel} on the relationship between Privacy, Fariness and Accuracy, \cite{Carlos} and \cite{Reductions} on the feasibility regions of Accuracy and Fairness metrics, \cite{CausalFair} on Causality-Aware fairness metrics. One of the goals of the first part of this project is to increase this list of references with the added analysis of the possibility of approaches based on Quantitative Information Flow (\cite{Bruno} explored the relations between Quantitative Information Flow and Fairness, but it is still possible to find relationships with the other topics mentioned).
+
+\section{Methodology}
+
+The methodology applied to this project consists, in general, of reading as many papers on the subject as possible, in order to gather what has been produced recently. Also, for developing the necessary theoretical background, part of the methodology is to read books on Causality\cite{Causality}\cite{CausalInf}, Quantitative Information Flow\cite{QIF} and Information Theory\cite{InfoTheory}. Also, rigorous mathematical reasoning will be applied for any possible theoretical result, and computer simulations will be developed for the reproduction of results.
+
+\section{Expected Results}
+
+For the first part of the project (POC I), the expected result is an extensive review of the literature on Causality, Fairness, Privacy, Accuracy and Interpretability in Machine Learning, and the relationships between these concepts. For the second part (POC II), the expected results are the reproduction and verification of the viability of applying the theoretical framework of Quantitative Information Flow to these concepts, with the possibility of developing new theoretical results. 
+
+\section{Steps and Cronogram}
 
 \begin{enumerate}
-    \item Objetivos POC1: Revisar Causalidade, Fairness, Privacidade, Acurárcia (Explicabilidade? Teoria da Informação?)
-    \item Objetivos POC2: Falar das relações entre todos esses conceitos, tudo que se sabe e talvez mais um pouco.
-    \item Resultado esperado daqui a um ano é ter uma apresentação completa do que se tem de mais recente sobre os conflitos e sinergias entre esses fatores todos.
-    \item Pra isso ao final do POC1 tem que ter uma revisão de métodos de fazer classificações mais justas, privadas e acuradas, e o que causalidade tem a ver com isso (talvez explicabilidade)
+\item March 17, 2024 - March 23, 2024: Contacting advisor and preparing themes.
+\item March 24, 2024 - March 30, 2024: Writing this proposal.
+\item March 31, 2024 - April 06, 2024: Reading Causality book\cite{Causality}.
+\item April 07, 2024 - April 13, 2024: Reading Causality book\cite{Causality}.
+\item April 14, 2024 - April 20, 2024: Reading Causality book\cite{Causality}.
+\item April 21, 2024 - April 27, 2024: Reading recent papers.
+\item April 28, 2024 - May   04, 2024: Reading recent papers.
+\item May   05, 2024 - May   11, 2024: Reading Causal Inference book\cite{CausalInf} and preparing partial pitch.
+\item May   12, 2024 - May   18, 2024: Reading Causal Inference book\cite{CausalInf}.
+\item May   19, 2024 - May   25, 2024: Reading Causal Inference book\cite{CausalInf}.
+\item May   26, 2024 - June  01, 2024: Reading Information Theory book\cite{InfoTheory}.
+\item June  02, 2024 - June  08, 2024: Reading Information Theory book\cite{InfoTheory}.
+\item June  09, 2024 - June  15, 2024: Reading Information Theory book\cite{InfoTheory} and preparing final pitch.
+\item June  16, 2024 - June  22, 2024: Reading recent papers and writing final report.
+\item June  23, 2024 - June  29, 2024: Reading recent papers and writing final report.
 \end{enumerate}
 
-\section{Referencial Teórico}
 
-\textit{Apresentar os conceitos pertinentes para que o leitor entenda o problema e sua importância. Nesse momento, o aluno pode não ter domínio completo dos trabalhos relacionados. Fazer um breve resumo das soluções já existentes na literatura/mercado e como elas se comparam ao trabalho proposto. No caso de trabalhos de cunho tecnológico, listar ferramentas que resolvem o mesmo problema sendo tratado.}
+\section{References}
 
-\begin{enumerate}
-\item Citar os artigos de métodos de fairness, Privacidade e Causalidade. 
-\item Os papers discutidos na viagem pra Paris. Difeririam do nosso porque a gente quer colocar causalidade no meio, e talvez até melhorar um pouco os anteriores.
-\end{enumerate}
-
-\section{Metodologia}
-
-\textit{Quais os principais passos previstos (com uma breve descrição) para execução do projeto? Como pretende-se abordar o problema?}
-\begin{enumerate}
-\item Ler artigo
-\item Ler o livro de causalidade
-\item Ler um pouco do resto do livro de Teoria da Informação
-\item Tentar demonstrar alguma coisa, talvez
-\end{enumerate}
-
-\section{Resultados Esperados}
-
-\textit{O que se pretende obter ao final do trabalho?}
-\begin{enumerate}
-\item Uma revisão da literatura
-\item Desenvolver resultados teóricos novos sobre as relações de causalidade com fairness, privacidade com fairness, etc.
-\end{enumerate}
-
-\section{Etapas e Cronograma}
-
-\textit{Descrever o cronograma previsto para a realização dos passos definidos na Metodologia com resolução em nível de semanas.}
-
-
-\section{Referências}
-
+\bibliographystyle{splncs04}
 \bibliography{poc1}
 
 \end{document}
