@@ -13,8 +13,17 @@
 \usepackage{color}
 \usepackage{hyperref}
 
+\usepackage[table]{xcolor}
+\setlength{\arrayrulewidth}{0.1mm}
+%\setlength{\tabcolsep}{18pt}
+\renewcommand{\arraystretch}{2.5}
+\newcolumntype{s}{>{\columncolor[HTML]{AAACED}} p{3cm}}
+\newcolumntype{r}{p{3mm}}
+%\arrayrulecolor[HTML]{DB5800}
+
+
 \title{Relations between Causality, Fairness, Privacy, Accuracy and Interpretability in Machine Learning\large\\ Type: Scientific\\Advisor: Mário Sérgio Alvim}
-\author{Artur Gaspar}
+\author{Artur Gaspar da Silva}
 \date{05/04/2024}
 
 
@@ -43,23 +52,34 @@ For the first part of the project (POC I), the expected result is an extensive r
 
 \section{Steps and Cronogram}
 
-\begin{enumerate}
-\item March 17, 2024 - March 23, 2024: Contacting advisor and preparing themes.
-\item March 24, 2024 - March 30, 2024: Writing this proposal.
-\item March 31, 2024 - April 06, 2024: Reading Causality book\cite{Causality}.
-\item April 07, 2024 - April 13, 2024: Reading Causality book\cite{Causality}.
-\item April 14, 2024 - April 20, 2024: Reading Causality book\cite{Causality}.
-\item April 21, 2024 - April 27, 2024: Reading recent papers.
-\item April 28, 2024 - May   04, 2024: Reading recent papers.
-\item May   05, 2024 - May   11, 2024: Reading Causal Inference book\cite{CausalInf} and preparing partial pitch.
-\item May   12, 2024 - May   18, 2024: Reading Causal Inference book\cite{CausalInf}.
-\item May   19, 2024 - May   25, 2024: Reading Causal Inference book\cite{CausalInf}.
-\item May   26, 2024 - June  01, 2024: Reading Information Theory book\cite{InfoTheory}.
-\item June  02, 2024 - June  08, 2024: Reading Information Theory book\cite{InfoTheory}.
-\item June  09, 2024 - June  15, 2024: Reading Information Theory book\cite{InfoTheory} and preparing final pitch.
-\item June  16, 2024 - June  22, 2024: Reading recent papers and writing final report.
-\item June  23, 2024 - June  29, 2024: Reading recent papers and writing final report.
-\end{enumerate}
+The dates are in month/day format.
+
+\begin{tabular}{ |s|rr|rr|rr|rr|rr|rr|rr|rr| }
+\hline
+\rowcolor{gray} \multicolumn{17}{|c|}{Cronogram} \\
+\hline
+\rowcolor{lightgray}
+&\multicolumn{2}{|c|}{03/17}& \multicolumn{2}{|c|}{03/31}& \multicolumn{2}{|c|}{04/14}& \multicolumn{2}{|c|}{04/28}& \multicolumn{2}{|c|}{05/12}& \multicolumn{2}{|c|}{05/26}& \multicolumn{2}{|c|}{06/09}& \multicolumn{2}{|c|}{06/27} \\
+\hline
+Contacting advisor and preparing themes &\cellcolor[HTML]{00EEEE}&&&&&&&&&&&&&&& \\
+\hline
+Writing this proposal &&\cellcolor[HTML]{00EEEE}&&&&&&&&&&&&&& \\
+\hline
+Reading Causality book\cite{Causality} &&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&&&&&&&&&&& \\
+\hline
+Reading recent papers &&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&&&&&&&& \\
+\hline
+Preparing Partial Pitch &&&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&&&&&&&& \\
+\hline
+Reading Causal Inference book\cite{CausalInf} &&&&&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&&&&& \\
+\hline
+Preparing Final Pitch &&&&&&&&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&&& \\
+\hline
+Reading Information Theory book\cite{InfoTheory} &&&&&&&&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&& \\
+\hline
+Writing final report &&&&&&&&&&&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE} \\
+\hline
+\end{tabular}
 
 
 \section{References}
