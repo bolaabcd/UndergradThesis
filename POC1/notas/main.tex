@@ -1,0 +1,53 @@
+\documentclass[oneside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{amsfonts,amsmath,amsthm,amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{lipsum}
+\usepackage[mathscr]{euscript}
+\usepackage{fancyvrb,fvextra}
+\usepackage{svg}
+\usepackage{soul}
+
+\newcommand{\todo}[1]
+{\marginpar{\baselineskip0ex\rule{2,5cm}{0.5pt}\\[0ex]{\tiny\textsf{#1}}}}
+
+\newcommand{\R}{\mathbb{R}} % Real numbers
+\newcommand{\Z}{\mathbb{Z}} % Integers
+\newcommand{\N}{\mathbb{N}} % Naturals
+\newcommand{\q}[1]{``#1"}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\DX}{\mathbb{D}(\mathcal{X})}
+\newcommand{\DDX}{\mathbb{D}^2(\mathcal{X})}
+
+\newtheorem*{medpondexist}{Existência de medianas ponderadas}
+\newtheorem*{medehmin}{Sse mediana ponderada, então mínimo}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{defin}{Definition}[section]
+
+\newtheorem{remark}{Remark}[section]
+
+\title{Notes POC1}
+\author{Artur Gaspar}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\chapter{Causality Chapter 1}
+
+\section{Section 1.1}
+
+\input{causality1_1}
+
+
+\end{document}
