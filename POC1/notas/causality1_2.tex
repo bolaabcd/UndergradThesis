@@ -1,0 +1,70 @@
+\subsection{1.2.1) Conventions}
+
+\textbf{skeleton} of a graph is the undirected version of it.
+
+In this book, a \textbf{path} might not follow the direction of the edges.
+
+\textbf{Family} of a graph is a node and it's parents.
+
+\textbf{Root} is a node without parents and \textbf{sink} a node without children.
+
+\textbf{Tree} is a connected graph with at most one parent per node (one node can point to many but only one node can point to it), and \textbf{chain} is one with at most one child per node (onde node can point to only another one, but many can point to it).
+
+
+\subsection{1.2.2) Bayesian Networks}
+
+One of the main goals is to represent an joint distribution with less data, which is possible if every variable is independent of almost all others.
+
+The \textbf{Markovian parents} of a node is a minimal set of nodes that, conditioned on them, the value of the node is independent from the value of all other nodes. It's a set of variables that we can condition on to ignore the rest when estimating the initial node, but such that we can't remove any variable from this set.
+
+This set is unique if the joint distribution is strictly positive, and this implies an unique Bayesian Network. 
+
+
+\textit{I believe that if it's not strictly positive, then if we consider that the parents must be minimal, it might be impossible to draw a Bayesian Network, otherwise we accept non-minimal sets of parents and acknoledge taht we might have more than one BN.} See the subsection \q{Instability of parents for non-positive distributions}.
+
+
+We say that $G$ represents $P$, or $G$ is compatible with $P$ if we can decompose $P$ with the information we extract from $G$ (the DAG). For instance, $p(a1,b1,c1,d1,e1) = p(b1|a1)p(c1|a1)p(d1|b1,c1)p(e1|d1)$ is the decomposition for the graph with $A\rightarrow B$, $A\rightarrow C$, $B\rightarrow D$, $C \rightarrow D$ and $D\rightarrow E$.
+
+
+\subsection{Instability of parents for non-positive distributions}
+
+I think that it's possible to have more than one minimal set (of Markovian Parents) if the third graphoid axiom is not satisfied, because then we can have $X$ independent of $Y$ given $Z$ and of $Z$ given $Y$, but not on $YZ$. So we might want to require the distributions to be strictly positive...
+
+Take for instance the following joint for $A,B,C$ binary:
+
+\begin{enumerate}
+    \item $p(a1,b1,c2) = \frac{1}{2}$.
+    \item $p(a2,b2,c1) = \frac{1}{2}$.
+    \item All other probabilities equal $0$.
+\end{enumerate}
+
+Here if we know one value we know the other two, so $\{B\}$ or $\{C\}$ are minimal markovial parents for $A$; $\{A\}$ or $\{B\}$ are minimal for $C$; and $\{A\}$ or $\{C\}$ are minimal for $B$. So, we kind of can't create an undirected graph that represents the dependencies well... One node will connect to other two, but it acually depends on only one (any one)...
+
+
+\subsection{1.2.3) d-separation}
+
+This is a criterion to extract the conditional independences between variables from the graph.
+
+$X$, $Y$ and $Z$ here can be sets of more than one variable.
+
+We say that a \textit{path} is \textbf{$d$-separated} or \textbf{blocked} if either $Z$ has a variable in the middle of the way or as a confounder, or the path has a collider which is not in $Z$ and no descendent of the collider is in $Z$. 
+
+We say that $Z$ $d$-separates $X$ from  $Y$ if it does so for every path from $X$ to $Y$.
+
+\textit{It's really important to consider the descendent part! Conditioning on a variable unblocks every collider that is reachable in reverse order (following the arrows reversed) from this variable.}
+
+
+\textbf{$X$ and $Y$ are $d$-separated by $Z$ if and only if for all distributions compatible with the independencies of $G$, $X$ and $Y$ are conditionally independent given $Z$. Also, if they are not $d$-separated, almost all distributions make they dependent (they don't say \q{how much indepedent}).}
+
+
+\textbf{Selection bias}, \textbf{Berskon's paradorx} or \textbf{explaining away effect} is the situation in which after conditioning on one variable we render two others dependent (knowing that one does not have a specific value lets us increase the chance of another, for instance).
+
+\textbf{Observational Equivalence} is the situation in which we have two graphs such that any distribution compatible with one is also compatible with the other.
+
+It happens iff they have the same undirected structure and the same \q{$v$-structures}, which are converging arrows without a connection between their tails: $X \rightarrow Y \leftarrow Z$ but no arrow between $X$ and $Z$ forms a $v$-structure.
+
+
+\subsection{1.2.4) Inference with BNs}
+
+The book comments a bit on how we could try to estimate conditional probabilities of some variables given the observation of others. I'm not going to focus on this.
+

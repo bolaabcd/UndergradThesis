@@ -1,0 +1,54 @@
+\subsection{Laplacian vs Stochastic model}
+
+The Laplacian one has deterministic functions and unobserverd probablistic variables, he stochastic one is more similar the Bayesian Network approach, if I understood correctly
+
+Pearl says that this is more general than probablistic functions, but to me this just makes sense if by stochastic he doesn't mean something like a Markov Chain instead of the function, as this would certanly be more general... The BNs do not really have Markov Chains, but conditional probabilities, maybe that's what he means?
+
+
+\subsection{1.4.1: Structural Equations}
+
+\textbf{Structured Equation Models} are defined defining each variable as a function of the parents and unobserved variables (erros). If it's linear, then its a \textbf{Linear Structured Equation Model}.
+
+In the linear models, the coefficients are the variation rates per forced variation of a value, in the sense that it's how much the value would change if we changed only that value by one unity.
+
+It's usually assumed that the error terms are independent, if they are dependent we represent a dotted double-headed arrow between the variables involved.
+
+The hyerarchy of Causal problems defined by Pearl are:
+
+\begin{enumerate}
+    \item \textbf{Predictions} are the \q{what if we found out that the value of this other variable was this?}
+    \item \textbf{Interventions} are the \q{what if we set the value of this other variable to this?}
+    \item \textbf{Counterfactuals} are the \q{what would be the value of this variable if the value of this other one was that instead of this?}
+\end{enumerate}
+
+\subsection{Definitions and equivalences between SCMs and BNs}
+
+\textbf{Causal Diagram} is the diagram obtained by connecting the parents to the childs according to the structural equations. If this graph is a DAG, then it's \textbf{semi-Markovian}, and if the erros are independent, then it's \textbf{Markovian}. If it's semi-markovian, the joint is completely determined by the distribution on errors.
+
+\textit{If the model is markovian, then this is a valid Causal Diagram: given the parents, a node is idependent of all other non-descendants.} The proof is just to get the full graph, with the errors, then notice that we can remove the errors without losing independencies.
+
+Pearl says that this is implied if we include every variable that might be a causa of two or more others, and that there is no correlation without causation...
+
+The idea seems to look at the data and determine all probabilities first, even without knowing the deterministic functions (and the errors or distribution on errors) themselves... For any joint distribution compatible with a bayesian network, there is always at least one Functional Model with this same network (and Pearl mentions that usually there are infinitely many) that generates it with some values for the error/unobserved variables.
+
+So, I think this is what he meant before, that the functional models are more general: we can encode in them anything we could encode in a BN.
+
+\subsection{1.4.2: Probabilistic Predictions}
+
+Four advantages mentioned by Pearl of using the graphical representation of Causal Models are:
+
+\begin{enumerate}
+    \item The conditional independencies do not depend on the specific functions themselves, so if we can represent something in the causal model even with limited information, and given the model we don't need to compute anything to know whether some variables are independent given others.
+    \item It's simpler to specify the connections, and the model has few parameters.
+    \item It's simpler to think of whether or not the parent set has all relevant variables that are a direct cause of some variable, instead of checking whether they make this variable independent of the others when we condition on them (and are a maximum set that does that).
+    \item If something changes, the change might be local on some variables only, and with these models we can model this change by changing less the model, instead of recomputing everything from scratch.
+\end{enumerate}
+
+
+\subsection{1.4.3: Interventions}
+
+\subsection{1.4.4: Counterfactuals}
+
+\subsection{Notes}
+
+I still am a bit confused about being able to have more than one set of parents per node if the distribution is not strictly positive... What do we do about that? What if there is a logical limitation, and an example that's better (and harder to find the problem) than just two equal variables causing another? Would everything break or is it stable to lead to an \q{almost zero} probability when it would be zero?

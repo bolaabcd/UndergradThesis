@@ -1,3 +1,5 @@
+\subsection{Odds and likelyhood}
+
 \textbf{Odds} are the fraction of probabilities. \textbf{Prior (predictive/prospective) odds} is $\frac{p(H)}{p(\neg H)}$, and the \textbf{Posterior (diagnostic/retrospective) odds} is $\frac{p(H|e)}{p(\neg H|e)}$. This is how much more likely the hypothesis is to be true than false a priori and after observing the event $e$. 
 
 The \textbf{Likelyhood Ratio (Risk Ratio for epidemology)} is $\frac{p(e|H)}{p(e|\neg H)}$, remembering that Likelyhood is a function of $B$ in $p(A|B)$, while the probability is a function of $A$.
@@ -12,31 +14,55 @@ So how more likely the hypothesis is to be true than false, after we observe the
 
 \textbf{Odds of hypothesis after $e$ = odds before $e$ $\times$ how much more $e$ happens in $H$ than in $\neg H$.}
 
-Covariance is the expected value of $(X-E[X])(Y-E[Y])$, distance to the averages, $cov(X,X) = var(X) = (std(X))^2$, and $corr(X,Y) = \frac{cov(X,Y)}{std(X)std(Y)}$.
+\subsection{Coariance, Correlation, Regression Coefficient}
 
-Regression coefficient when estimating $Y$ using $X$ is $corr(X,Y)\times \frac{std(Y)}{std(X)}$, which is how much $Y$ will change by unity of $X$ we change, if we use the line that minimizes the quadratic error of the $Y$ estimate. I kind of interpret this as $\frac{(\text{X-unities})}{(\text{X-unities per standard devition of X})} \times corr(X,Y) \times std(Y) = (\text{number of standard deviations of X}) \times corr(X,Y) \times std(Y) = (\text{number of standard deviations of Y}) \times (\text{Y-unities per standard deviations of Y}) = (\text{Y-unities})$. The strange thing with this interpreatation is that $corr(X,Y) = (\frac{\text{standard deviations of X}}{\text{standard devations of Y}}) = \frac{\text{standard deviations of Y}}{\text{standard deviations of X}}$, is the function that given one ammount of standard deviations returns the other one... Maybe this is a reflection of the limitations of the linearity assumption?
+\textbf{Covariance} is the expected value of $(X-E[X])(Y-E[Y])$, distance to the averages, $cov(X,X) = var(X) = (std(X))^2$, and \textbf{Correlation} is $corr(X,Y) = \frac{cov(X,Y)}{std(X)std(Y)}$.
+
+\textbf{Regression coefficient} when estimating $Y$ using $X$ is $corr(X,Y)\times \frac{std(Y)}{std(X)}$, which is how much $Y$ will change by unity of $X$ we change, if we use the line that minimizes the quadratic error of the $Y$ estimate. I kind of interpret this as $\frac{(\text{X-unities})}{(\text{X-unities per standard devition of X})} \times corr(X,Y) \times std(Y) = (\text{number of standard deviations of X}) \times corr(X,Y) \times std(Y) = (\text{number of standard deviations of Y}) \times (\text{Y-unities per standard deviations of Y}) = (\text{Y-unities})$. The strange thing with this interpreatation is that $corr(X,Y) = (\frac{\text{standard deviations of X}}{\text{standard devations of Y}}) = \frac{\text{standard deviations of Y}}{\text{standard deviations of X}}$, is the function that given one ammount of standard deviations returns the other one... Maybe this is a reflection of the limitations of the linearity assumption?
+
+\subsection{Axioms}
 
 Finally, the graphoid axioms for independence of random variables (all of them conditioned on $Z$, and I simplified a little bit):
 
 \begin{enumerate}
-	\item Symmetry: $X$ is independent of $Y$ iff $Y$ is independent of $X$
-	\item Decomposition, Weak Union and Contraction: $X$ is independent of $YW$ iff (($X$ is independent of $Y$) and ($X$ is independent of $W$ conditional on $Y$)).
-	\item 
+	\item \textbf{Symmetry}: $X$ is independent of $Y$ iff $Y$ is independent of $X$
+	\item \textbf{Decomposition, Weak Union and Contraction}: $X$ is independent of $YW$ iff (($X$ is independent of $Y$) and ($X$ is independent of $W$ conditional on $Y$)). This is not how it's written in the book, but I think this single affirmation is equivalent to the Decomposition, Weak Union and Contraction axioms.
+	\item \textbf{Intersection} (only for strictly positive distributions): $X$ is independent of $W$ given $Y$ and $X$ independent of $Y$ given $W$ implies $X$ independent of $YW$.
 \end{enumerate}
 
-Os axiomas são (todos condicionado para um Z qualquer, versão simplificada por mim):
+Summary:
 
-1) Simetria: X independente de Y <=> Y independente de X
-
-2) Decomposição, Weak Union, Contraction: X independente de YW se e somente se ((X independente de Y) e (X independente de W condicional a Y))
-
-Isso tudo sse ((X independente de W) e (X independente de Y condicional a W)), só trocar o nome de Y e W, a YW = WY aqui...
-
-Esse acima implica decomposição diretamente, implica Weak Union tbm diretamente, e implica contraction diretamente tbm. Os três juntos levam a esse bem direto tbm, são realmente equivalentes.
-
-3) Intersection (só se não tem nada com chance 0, strictly positive distributions): X independente de W dado Y e X independente de Y dado W implica que X independente de WY. Acho que é um sse tbm pelos outros axiomas, mas ele fala que essa ida só é válida em distribuições estritamente positivas.
-
-Em resumo: 1) independência é simétrica, 2) independente de duas coisas é o mesmo que independente de uma e independente da outra dado a primeira / saber y,w não ajuda na minha estimativa de x <=> y sozinho não ajuda e w não muda se eu já sei y, e 3) independente das duas é o mesmo que ser independente de uma dado a outra e da outra dado a uma (vale só pra distribuições estritamente positivas aparentemente).
+\begin{enumerate}
+    \item Independence is symmetric.
+    \item Being independent from two things is equivalent to being independent to one alone and the other given the first one. In other words, being independent from two things means that looking at the value of one does'nt help and looking at the other after knowing the first doesn't help as well. 
+    \item Being independent from two things (if nothing is impossible (?), maybe so we can condition on anything?) is the same as being independent from the first even if you know the second and being independent from the second even if you know the first.
+\end{enumerate}
 
 
-NOTAS NO PAPEL PASSAR PRO PC
+If $X$ is independent of $Y$, then $p(x|y,z) = p(x|z)$, we can ignore the irrelevant information.
+
+\subsection{Counter example for third axiom}
+
+The third axiom does not hold for instance in the following joint distribution ($A,B,C$ are the random variables with two values each):
+
+\begin{enumerate}
+    \item $p(a1,b1,c2) = \frac{1}{2}$.
+    \item $p(a2,b2,c1) = \frac{1}{2}$.
+    \item All other probabilities equal $0$.
+\end{enumerate}
+
+Then we have $p(a1|b1,c2) = 1 = p(a1|b1) = p(a1|c2) \neq p(a1) = \frac{1}{2}$ and $p(a2|b2,c1) = 1 = p(a2|b2) = p(a2|c1) \neq p(a2) = \frac{1}{2}$.
+
+It doesn't make sense to talk about other conditional probabilities, as they are conditioned on something inexistent. We can say that $A$ is independent of $B$ given $C$, and $A$ is independent of $C$ given $B$, but $A$ is not independent of $BC$. 
+
+This happens here because some values of $BC$ are impossible, so we kind of know the value of $C$ only by knowing $B$ and vice-versa... So we know $C$ iff we know $B$, and then after we learn one we don't need the other, but we can't ignore both.
+
+If anything was possible, we would have $p(a1|c1) = p(a1|b1,c1) = p(a1|b1) = p(a1|b1,c2) = p(a1|c2) = k$, so $p(a1) = p(a1|c1)p(c1)+p(a1|c2)p(c2) = k(p(c1)+p(c2))=k$, so the axiom follows.
+
+\subsection{Why conditionals are enough to specify independence}
+
+Just a disclaimer: $p(b1,c1) = 0 \rightarrow 0 = p(a,b1|c1) = p(a|c1) \times p(b1|c1) = p(a|c1) \times 0$, so to satisfy the independence we really just need to specify it for possible \q{worlds} (the values $k$ that make $|k$ possible)...
+
+If we write the independence with the \q{and} way, we get $p(a1,b1|c2) = 1 = p(a1|c1) \times p(b1|c2) = p(a1,c2|b1) = 1 = p(a1|b1) \times p(c2|b1)$, and the same for the other one, but it seems more complicated to me, the only advantage would be that we could write the zero parts, $0 = p(a1,b2|c2) = p(a1|c2)\times p(b2|c2) = 1 \times 0$. Let's try to use only the conditional version.
+
+
