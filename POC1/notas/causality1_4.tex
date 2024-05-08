@@ -9,6 +9,8 @@ Pearl says that this is more general than probablistic functions, but to me this
 
 \textbf{Structured Equation Models} are defined defining each variable as a function of the parents and unobserved variables (erros). If it's linear, then its a \textbf{Linear Structured Equation Model}.
 
+One important point: Pearl says that it's possible to estimate counterfactuals with data and a causal model, and to test empirically whether they hold or not. I believe he will focus on how to do that in later chapters.
+
 In the linear models, the coefficients are the variation rates per forced variation of a value, in the sense that it's how much the value would change if we changed only that value by one unity.
 
 It's usually assumed that the error terms are independent, if they are dependent we represent a dotted double-headed arrow between the variables involved.
@@ -21,7 +23,7 @@ The hyerarchy of Causal problems defined by Pearl are:
     \item \textbf{Counterfactuals} are the \q{what would be the value of this variable if the value of this other one was that instead of this?}
 \end{enumerate}
 
-\subsection{Definitions and equivalences between SCMs and BNs}
+\subsection{1.4.2: Probabilistc Predictions (and Definitions and equivalences between SCMs and BNs)}
 
 \textbf{Causal Diagram} is the diagram obtained by connecting the parents to the childs according to the structural equations. If this graph is a DAG, then it's \textbf{semi-Markovian}, and if the erros are independent, then it's \textbf{Markovian}. If it's semi-markovian, the joint is completely determined by the distribution on errors.
 
@@ -33,22 +35,42 @@ The idea seems to look at the data and determine all probabilities first, even w
 
 So, I think this is what he meant before, that the functional models are more general: we can encode in them anything we could encode in a BN.
 
-\subsection{1.4.2: Probabilistic Predictions}
+\subsection{1.4.3: Interventions}
+
 
 Four advantages mentioned by Pearl of using the graphical representation of Causal Models are:
 
 \begin{enumerate}
-    \item The conditional independencies do not depend on the specific functions themselves, so if we can represent something in the causal model even with limited information, and given the model we don't need to compute anything to know whether some variables are independent given others.
-    \item It's simpler to specify the connections, and the model has few parameters.
-    \item It's simpler to think of whether or not the parent set has all relevant variables that are a direct cause of some variable, instead of checking whether they make this variable independent of the others when we condition on them (and are a maximum set that does that).
-    \item If something changes, the change might be local on some variables only, and with these models we can model this change by changing less the model, instead of recomputing everything from scratch.
+    \item The conditional independencies do not depend on the specific functions themselves, so if we can represent something in the causal model even with limited information, and given the model we don't need to compute anything to know whether some variables are independent given others (this is also possible with BNs, isn't it? We can also just build the graph without the probabilities and check independencies).
+    \item It's simpler to specify the connections, and the model has few parameters (I would argue that BNs has the same number or less parameters, the advantage to me is actually that the functions are finite, while the probability distributions are not, but then the distributions on unknowns are also infinite).
+    \item It's simpler to think of whether or not the parent set has all relevant variables that are a direct cause of some variable, instead of checking whether they make this variable independent of the others when we condition on them (and are a maximum set that does that). (we kind of could do this for BNs, right? But yeah, we would need to think that the independence is guaranteed, I think I agree with this one)
+    \item If something changes, the change might be local on some variables only, and with these models we can model this change by changing less the model, instead of recomputing everything from scratch. (This really does seem like a big advantage, if we change from one country to another the functions will change, and the conditional probabilities of the BNs change, but the functions might be simpler. Again, the unknowns might change as well but I don't doubt at all that it's simpler to determine the unknowns than to re-estimate the conditional probabilities)
 \end{enumerate}
 
 
-\subsection{1.4.3: Interventions}
-
 \subsection{1.4.4: Counterfactuals}
 
-\subsection{Notes}
+\textbf{The idea is to say which variables were responsible for some result. For instance, if someone takes an experimental treatment to a disease and dies, did they die \textit{because}, \textit{despite} or \textit{regardless} of the treatment?}
+
+Pearl says that we can treat counterfactuals as, instead of what would have happenned with $X_1$ if $X_2 = y$ instead of $X_2 = x$, what will happen if we reverse the outcome and repeat the experiment keeping everything equal except the value of $X_2$. This is called the \textit{persistency} assumption. 
+
+I didn't understand why the assumption is necessary, and how exactly can we reach the conclusion for the assumption, but Pearl says that the proportion of people that died and recovered are equal with or without taking treatment, then (ignoring sampling variances) the proportion of people that died under treatment but woudn't if not treated would be the same than the proportion of people that didn't die without treatment but would under treatment. The idea seams to be that if the treatment is $x\%$ rensposible for the death of someone, then it would be $x\%$ responsible for the death of someone alive and untreated; if $x\%$ of the treated dead died because of the treatment, then $x\%$ of the alive untreated would have died if treated.
+
+Two different situations given as examples that generate the above data but have different counterfactuals are: the treatment has no effect or half of the population has an allergy that protects them from the disease but kills them if they receive treatment. In the first case, treating someone untreated wouldn't change anything (all of the dead untreated would still be dead if treated), in the second group everyone that died under treatment was allergic and would still be alive if untreated.
+
+The basic idea, viewing the SCM as a CBN with the unknowns explicited, is to Bayesanly-update the values of the unobserved variables given the observations, then intervene with the alternative values of whatever we want to know the alternative, then re-compute the distribution after the intervention. Viewing as Structured Equations, I think that we set the values of the observations to estimate the values of $u$, then set the new values of the alternative world and recompute everything. Pearl divides this into the following:
+
+\begin{enumerate}
+\item Abduction: basically estimate $P(u)$ from the observations.
+\item Action: basically do the intervention, \q{bend the course of history minimally to comply with the hypothetical condition}.
+\item Prediction: Compute the desired probability.
+\end{enumerate}
+
+Pearl says it's possible to compute estimatives without the full functinons between nodes and without knowing the distribution of unknowns, with just some assumptions of both.
+
+
+\subsection{Questions and confusions}
 
 I still am a bit confused about being able to have more than one set of parents per node if the distribution is not strictly positive... What do we do about that? What if there is a logical limitation, and an example that's better (and harder to find the problem) than just two equal variables causing another? Would everything break or is it stable to lead to an \q{almost zero} probability when it would be zero?
+
+I didn't get why the assumption of $p(y|x) = \frac{1}{2}$ of $(1.46)$ was necessary for the exercise \q{left for the reader}. I think I will be able to do this later.

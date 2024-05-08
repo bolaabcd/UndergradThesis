@@ -1,0 +1,9 @@
+A Causal Bayesian Network is a Bayesian Network with causal directions.
+
+We say that a distribution after an intervention is compatible with the CBN if it's Markov relative to it (we can decompose the joint with respect to the BN, or the parents make the childs independent of non-descendents), the chance of the interventions happening is one, \textit{and the conditional probabilities remain the same for variables we didin't act on}.
+
+The joint after the intervention can be factorized as $P(v) = \Pi_{i|V_i \notin X} P(v_i|pa_i)$, which is basically the original joint without the $P(v_i|pa_i)$ of the variables we acted on. $v$ is a vector here (the entrances are the values of the random variables that are represented by the nodes of the CBN).
+
+Two properties: $P_{pa_i}(v_i) = P(v_i|pa_i) = $ interventions are according to the conditionals, and $P_{pa_i,s}(v_i) = P_{pa_i}(v_i) = $ no interventions besides the one in the parents can influence a variable
+
+Pearl argues that the advantage of causal models is to transport results to other environments and predict the results of changes that aren't purely observacional.
