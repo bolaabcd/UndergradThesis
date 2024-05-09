@@ -1,0 +1,26 @@
+If $A$ and $B$ are random coin tosses, and $C$ is the $XOR$ between them, then any two variables are marginally independent but dependent conditional on the third. Pearl says that any of the three configurations with a collider would be valid, and are indistinguishable by only looking at the data. 
+
+To avoid this kind of thing (avoid parameters that lead to these problems, in this case the $XOR$ computation), he imposes a restriction on the model (he says it's a restriction on the distribution, but it's on the model), which he called \textbf{stability}: 
+
+A causal model \textit{generates a stable distribution} if and only if we do not lose any independency of this distribution no matter how we set the parameters of the model (we can't get less independencies by changing the parameters).
+
+The $XOR$ example of the coins do not generate a stable distribution, because if we changed the function or the hidden distributions, the independencies might have changed (if the first coin is more likely to be heads, then).
+
+Numerically:
+
+$$p(result = 1 | first = 0) = 1\% (chance of second coin = 1)$$
+$$p(first = 0) = 90\%$$
+$$p(result = 1 | first = 1) = 99\% (chance of second coin = 0)$$
+$$p(first = 1) = 10\%$$
+
+In this case, the result is not independent of the outcome of the first coin, as:
+
+$$p(result = 1) = (1*90+99*10=90+990=1080)/100^2 = 0.1080\% \neq 1\% = p(result=1 | first = 1)$$
+
+In other words, a distribution is stable if the independencies obtained there are the independencies we can identify via the graph of the model! \textit{If the distribution has more independencies than those visible in the model, then it's unstable!} It can not have less because the model implies its independencies (for compatible distributions, obviously).
+
+Perl says like this stability is about small changes, but the definition itself allows any change, no matter how small. Is it possible to have a situation in which a small change of parameters does not delete some of the conditional independencies, but a big change does? It depends on what is called small here obviously, but I'm under the impression that no, this should not happen very often...
+
+He calls the stable independencies \textit{structural independencies}, that do not depend on the specific numeric values. And it seems he just assumes that this really reflects small changes (particularly, I'm under the impression that some specific equalities must hold for instable independencies to hold)...
+
+

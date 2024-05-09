@@ -1,0 +1,17 @@
+In the scenario in which all variables are observed, $X$ has a causal influence on $Y$ if there is always a directed path from $X$ to $Y$ in every minimal structure consistent with the data...
+
+\textbf{Latent Structure} is a causal structure on $V$ with some $O \subseteq V$ observables.
+
+$\Theta_D$ are the \textbf{parameters} of the causal model D! (The parameters are: the distribution on the independent disturbancies $u_i$ and the deterministic functions from parents and disturbancies to the values).
+
+One latent structure $L$ is \textbf{prefered} (smaller in the semi-partial-order relation) to another $L'$ if and only if for any parameters of $L$ we can find parameters on $L'$ that mimic the results of the distribution of observed variables. They are equivalent iff one is prefered to the other and the other to the one.
+
+So, the prefered is the simpler, the semi-order relation is kind of a \q{complexity} notion. This definition is in terms of \textit{expressivity} results, it's not defined in terms of number of parameters or anything \q{synthatic}. So, we would prefer one model to another even if the first one has few free parameters.
+
+If there are no hidden variables, then (as I understood it) two networks are equivalent iff they lead to the same conditional independencies. 
+
+Now we define that $X$ \textbf{has a causal influence on} $Y$ if there is always a directed path from $X$ to $Y$ in every minimal latent structure (from the set of available ones) consistent with the distribution we observed.
+
+My impression is that if we don't have have any unblocked paths between two variables, then they must be independent. If we have unblocked paths, then they might be dependent (but if we have two paths, for instance, they might cancel out each other).
+
+Pearl says that sometimes patterns in the distribution unambiguously implies a causal relation (by assuming minimality only), making no assumption at all about the presence or absense of latent variables.

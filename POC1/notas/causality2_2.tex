@@ -1,0 +1,15 @@
+We're going to assume that the reality is that everything is deterministic but some things are unknown, and that we have a DAG, which represents the structure of what causes what.
+
+He re-defines the causal model here, which is kind of a function BN with uncertainty in the (independent) unknown variables.
+
+Pearl mentions that we could (conceptually) start with an arbitrarily well detailed causal structure to represent the universe, and then generalize it by aggregating variables untill we can't generalize anymore without losing the properties we want to keep. He argues that one such property is the Markov condition: to keep the errors independent. 
+
+He argues that we intuitively think of correlations without a common cause as spurious, and that we consider \q{strange} to have them. So, our models should have this property to better reflect our intuitions.
+
+We can then leave some causes to be summarized as probabilities (in the unknowns), but not if they also affect other variables.
+
+\textbf{Latent Variables} are defined as unknowns that affect more than one variable in the system.
+
+The idea is basically that we ask questions about the probability distribution of some set of observable variables and try to infer the (hidden) causal model of reality from it.
+
+
