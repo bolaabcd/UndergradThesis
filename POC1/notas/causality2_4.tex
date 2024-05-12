@@ -1,6 +1,6 @@
 If $A$ and $B$ are random coin tosses, and $C$ is the $XOR$ between them, then any two variables are marginally independent but dependent conditional on the third. Pearl says that any of the three configurations with a collider would be valid, and are indistinguishable by only looking at the data. 
 
-To avoid this kind of thing (avoid parameters that lead to these problems, in this case the $XOR$ computation), he imposes a restriction on the model (he says it's a restriction on the distribution, but it's on the model), which he called \textbf{stability}: 
+To avoid this kind of thing (avoid parameters that lead to these problems, in this case the $XOR$ computation), he imposes a restriction on the valid distributions compatible with some given model, which he called \textbf{stability}: 
 
 A causal model \textit{generates a stable distribution} if and only if we do not lose any independency of this distribution no matter how we set the parameters of the model (we can't get less independencies by changing the parameters).
 

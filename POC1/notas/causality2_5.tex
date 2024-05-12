@@ -1,0 +1,17 @@
+Assuming that the distribution is stable, then there's an unique minimal causal structure up to d-separation.
+
+\textit{patterns} are the causal structures with undirected edges whenever some minimal causal structure has one direction and other minimal structure has the other direction for that edge.
+
+The algorithm that builds the pattern given a stable distribution consists simply of creating the undirected graph with an edge iff no conditioning makes the variable independent, then add arrows as mediators iff a and b are not adjacent and c is a common neighbour that is not in the set that separates them. After that, orient any edges that if oriented differently would make a cycle or a new  v-structure (remembering, v-structures are mediator structures).
+
+Basically, it seems to me we're finding the undirected graph, directing it whenever we can see a collider, then directing the edges that are always directed that way if we don't have a directed cycle and we don't have unindentified colliders.
+
+In summary, I think we can see the colliders only, we assume there's no cycle, and we can't differentiate between confounders and mediators.
+
+Also, most importantly, this assumes we have the exact distribution, not an empirical observation of it.
+
+Pearl mentions many ways of doing what the algorithm requires (how to do some parts is unespecified). There are fast solutions for linear gaussian simplifications.
+
+I'll not note the details here, but some ideas are given in the book of how to imeplement the unspecified steps of the algorithm.
+
+Pearl says that latent structures require special treatment, which will be covered a bit more in the next chapter. So, I guess all of this was for graphs without latent variables? Maybe he was building just the \q{causal Bayesian Network} model... \textbf{It might be important to understand this better}.
