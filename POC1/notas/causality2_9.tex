@@ -1,0 +1,43 @@
+\subsection{How to infer causation and assumptions}
+
+“No causes in – No causes out; Occam’s razor in – Some causes out.”
+
+We use "virtual interventional experiments" to remove some possibilities of causal directions.
+
+We also a kind of mediator strategy to check for genuine causes (X causes Y if I know of something Z that changes with X and is not caused by it: so I kind of can simulate an intervention on a cause of X, be it Z or the latent cause between X and Z. Such that if I change a cause of X then Y changes, but if I fix X and change the cause of X then Y does not change.
+
+We can use temporal knowledge to simplify the conditions to infer causal relationships.
+
+We are assuming both that the best causal model is the least general one (Occan's Razor), and that the observed distributions do not have accidental independencies (independencies that mathematically satisfy the concept of independency, but in general would be dependent)
+
+\subsection{Markov assumption}
+
+Pearl says that the Markov assumption (independency of distinct latent variables) was challenged, and that by enforcing it (then relaxing it by allowing latent structures), we're losing the ability to represent some models (models that can not be represented as a causal model with stochastic errors and a subset of observables). Pearl says it might not be a very big loss because we would not be able to do much with such types of model (he says \q{it's not clear} how we could do that).
+
+Pearl says that only in the Quantum Mechanics world we have observations that can not be explained by latent variables, and it would be a "scientific miracle" if someone managed to replicate this kind of phenomenon in the macroscopic world.
+
+\subsection{Stability assumption}
+
+He says that equalities on paramters of SCMs (to make unstable independencies) lead to joint distributions with zero lebesgue measure, so they should never happen. Pearl says it's different from equalities on things like correlation coefficients because we want \textit{autonomy} of the mechanisms of the model, we could vary them independently (the model parameters), so equality constraints that restrict them are counter to this idea and will not usually happen in natural conditions. He also argues that usually people will give stable examples when asked.
+
+So, some people argued that the algorithms developed for this type of causal discovery (based only on correlations) are better if we have longitudinal studies conducted under varying conditions, so we can be more sure that the result we got is in fact stable. Pearl argues that even if it's true, being able to use this kind of reasoning is still better than relying only on controlled randomized trials.
+
+
+\subsection{Other things}
+
+Pearl says that causality has a different approach from traditional Machine Learning, as we're not done after fitting perfectly the data, and getting perfectly the joint distribution, we'll still have many possible valid causal structures and might need to do interventional experimentation or observe some virtual intervention.
+
+\subsection{Notes and doubts}
+
+One thing I think I finally understood: the SCM is the model with stochastic error terms and deterministic stuff. The \textbf{latent structures} are \textit{NOT} correspondent to these error terms, they are the subset of the SCM that we can't observe! This is why we might have one latent variable (which might be an error term or not) pointing to two observable variables! Also, I believe that the projection just says that there is a way to represent an entire SCM in a simpler way, at least from the point of view of the observable part of the SCM and assuming consistency regarding the independencies of stable distributions of both models... I still didn't get though why we need exactly two and why nonadjacent variables in the definition of projection...
+
+\textit{What if we don't know anything else besides the joint distribution of XY?}
+
+If X causes Y should knowing the value of X reveal more about Y than if Y causes X? Should I be more certain about the value of Y once I know X than I am of the value of X once I know Y?????
+
+If Y is caused by another things, then I don't think this necessarily follows. If Y is caused only by X, then this seems plausible...
+
+\textit{Doubt:}
+
+In Judea Pearl Causality, why does the definition of a projection need every unobservable to be a common cause of exactly two (instead of at most two) nonadjacent (instead of any two) observable variables????
+

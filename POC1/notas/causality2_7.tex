@@ -1,0 +1,49 @@
+The IC* algorithm, which returns what we can infer about the causal structure from the data (assuming all latent variables are independent, I believe), can be used to define the different types of inferred causations we can get from data. All are based on using a \q{virtual controll} variable.
+
+\textit{I believe we're assuming that the unobserved variables are not caused by the observed ones, that distributions are always stable according to the real model, that the unobserved are independent and finally I think we're rellying that we can represent any SCM with latent variable as a projection of it (each unobserved connects exatly two others and stabile original distributions can lead to observable-independence-equivalent stable distributions on the projection (I don't know why we need \q{exatly two} and not \q{at least two} here, and also why we need non-adjacent, this seems somewhat weird))...}
+
+$X$ is a \textbf{potential cause} of $Y$ if they are dependent in any context, and we have a third variable $Z$ that influences $Y$ without influencing $X$ in some context. 
+
+Here \textbf{context} means some set of variables to condition on, and \q{influences} here means dependency, not being independent. This is the argument \q{the wet grass does not cause the rain because we can easily get the grass wet in a way that does not influence the rain at all}.
+
+What I get from a potential cause is: either $X$ and $Y$ are both caused by an unobserved confounder, or $X$ causes $Y$ (or some kind of combination of both). I think that the reason why other configurations are not allowed is because of that projection assumption, we're getting the projection of what's really happenning...
+
+I believe that under stability and the \q{projection assumption}, $X$ and $Y$ are correlated in any context if and only if they are both caused by an unobserved confounder or one causes the other. The \q{partial cause} simply removes the possibility of $Y$ causing $X$.
+
+$X$ is a \textbf{genuine cause} of $Y$ if they are dependent in any context, and there is a potential cause of $X$ (let's call it $Z$) that influences $Y$ but if we condition on $X$, it doesn't, under some context. If my last paragraph is true, then this is because we either have $X\rightarrow Y$, $X \leftarrow Y$ or $X \leftarrow L \rightarrow Y$ (dependent under any context), but the confounder is not possible because if it was when we condition on $X$ we would connect $Z$ to $L$ using $X$ as a collider, and then to $Y$.
+
+But why can't we have $X \leftarrow Y$? Same thing! If we conditioned on $X$ it would act as a (in this case, direct) collider between $Z$ and $Y$, so $Z$ would affect $Y$.
+
+\textit{This means that genuine causes are potential causes, genuine causation is stronger.}
+
+One quick note: we actually consider the transitive closure of the above to be the \q{genuine cause} relation. Maybe the above could be called a \q{genuine direct cause}???
+
+The condition of always being correlated in any context is callend \textbf{adjacency}.
+
+The way to notice genuine causation is then to find something that is not caused by $X$ but is adjacent, that changes with $Y$ in general, but not if we condition on $X$. So, if $X$ is rain and $Y$ is wet grass, we can say that in any situation they are correlated, and we could use $Z$ as the current season, for instance... This is not so intuitive to me, but mathematically seems sound.
+
+$X$ and $Y$ are \textbf{spuriously associated} if they are dependent \textit{in some context}, and there is a context and another variable that is correlated with $X$ without being correlated to $Y$ undder this context, and another context and variable that is correlated with $Y$ but not $X$ under this context.
+
+Temporal information simplifies things, as we assume we can't cause something in the past:
+
+$X$ is a genuine cause of $Y$ if there is a context and another variable such that both that come before $X$ and the variable is related to $Y$, but if conditioned on $X$ it's not, under this context.
+
+$X$ is spuriously associated with $Y$ if they are dependent on some context, $X$ comes before $Y$, and there is a variable that is independent of $Y$ but dependent of $X$.
+
+An \textbf{intransitive triplet} is a trio of variables $a,b,c$ such that $a$ and $b$ are independent but $a,c$ and $b,c$ are dependent. Then, $c$ can not cause $a$ and can not cause $b$. That's because we can use $b$ as a virtual control to check if $c$ causes $a$, for instance: $c$ and $a$ are dependent, but knowing $b$ affects $c$ without affecting $a$. 
+
+
+\subsection{Information Flow? And quick notes}
+
+In the end, all statistical things here are kind of about the knowledge we have on some variables... The uncertanties of their values, represented by the probability distribution.
+
+It's interesting that knowing the confounder, no information about one variable $X$ helps knowing the other $Y$, so the confounder $Z$ is kind of the \q{maximum} you can learn about $Y$ by looking at $X$.
+
+This seems like there is some interesting relation between this kind of causal model and the quantification of information flow...
+
+Also, it seems like we're assuming here that we have perfect distinction of independence between variables, but I assume that independence is somewhat unstable when sampling...
+
+
+são coisas que por alto são intuitivas mas exigem uma necessidade gigante de formalismo enorme, porque tem vários corner cases, várias coisinhas que podem dar erradas, me lembra mais análise que álgebra essa matemática aqui
+
+One last note is that all this formalism in causality seems somewhat like Analysis: we can have a lot of corner cases, and a lot of strange things hapenning, so all the formalism is necessary so we do everything correctly.
