@@ -10,6 +10,8 @@ We can use temporal knowledge to simplify the conditions to infer causal relatio
 
 We are assuming both that the best causal model is the least general one (Occan's Razor), and that the observed distributions do not have accidental independencies (independencies that mathematically satisfy the concept of independency, but in general would be dependent)
 
+Also, \textbf{we might or might not assuming that the joint distribution is strictly positive}, at least for the bayesian networks we needed this, here I'm not sure. We kind of could get ambiguous Bayesian Networks with non-strictly-positive distributions, and if we get such a causal BN an turn it into a causal model with latent variables, maybe the distribution is not stable anymore? Or the result from the $IC^*$ just encodes the possible models in that \q{not sure if this is the parent, the child or the latent variable} mode...
+
 \subsection{Markov assumption}
 
 Pearl says that the Markov assumption (independency of distinct latent variables) was challenged, and that by enforcing it (then relaxing it by allowing latent structures), we're losing the ability to represent some models (models that can not be represented as a causal model with stochastic errors and a subset of observables). Pearl says it might not be a very big loss because we would not be able to do much with such types of model (he says \q{it's not clear} how we could do that).
