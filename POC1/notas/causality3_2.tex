@@ -1,0 +1,83 @@
+\subsection{3.2.1: Recalling the concept of (Semi-)Markovian models and interventions}
+
+A full specified causal model is represented by the functions $x_i=f_i(pa_i,u_i)$ and a distribution $P(u)$ on the independent random disturbances.
+
+DAGs are \textbf{Semi-Markovian} and independent disturbances makes the model \textbf{Markovian}.
+
+The focus of this chapter is on Markovian and Semi-Markovian models. Non-Markovian models are more the focus of Chapter 7.
+
+Pearl says this is the \q{nonparametric form} of the Structural Equations model, and if I understood correctly this is just because here we won't specify the functions themselves...
+
+Recalling that we can represent an entrance of the joint as a product of each variable conditional to parents (in particular, if they were all independent, it would be the product of all of them):
+
+$$P(x_1,x_2,...x_n)=\prod\limits_i P(x_i | pa_i)$$
+
+Pearl defines the Causal Effect $P(y|do(x))$ as the probability of $y$ obtained by removing the equations that define $x$ from the model and setting $X=x$ in the other equations. In the graphical version, it's obtained by removing edges going to $X$ and setting $X=x$. The joint computation, I believe, is going to simply have $0$ value for when $X != x$ and otherwise $P(x_1,...,x_n|do(X=x)) = \prod\limits_{i:X_i != X} P(x_i|pa_i)$, as the variables in $X$ are set to $x$ with probability one and so their conditionals would also be one (besides, we kind of disconnected their parents from them).
+
+
+\subsection{3.2.2: Interventions as variables}
+
+We can augment the causal model by adding a parent $F_i$ to each node $X_i$ that determines a distribution on functions (now these are Markov Chains, right?) and we can use this to represent different types of changes on functional relations besides just the constant \q{set to $X_i$ value $x_i$}. $x_i = I(pa_i,u_i,f_i) = f_i(pa_i,u_i)$. We can create a value $F_i = \text{idle}$ that represents no intervention, for instance. 
+
+We can use this to somehow view sudden changes in the functional relations as interventions (for instance, a tax reform in some economic setting).
+
+\subsection{3.2.3: Computing the effect of interventions}
+
+As stated before, when we set $do(X_i = x_i')$ we can just rewrite the joint in the conditional on paretnts form just by removing the conditional $P(x_i|pa_i)$. 
+
+He then says to multiply and divide by $P(x_i'|pa_i)$ (THE $pa_i$ VALUES HERE NEED TO BE THE SAME AS THEY APPEAR IN $x_1,x_2,...,x_n$), and we get (if $x_i = x_i'$, otherwise it's zero):
+
+$$P(x_1,...,x_n|do(X_i=x_i')) = \frac{P(x_1,...x_n)}{P(x_i'|pa_i)}$$
+
+Which implies:
+
+$$P(x_1,...,x_n|do(X_i=x_i')) = P(x_1,...x_n|x_i',pa_i)P(pa_i)$$
+
+Writing with $X$ as the set of all variables not in $PA_i \cup Y \cup \{X_i\}$:
+
+\begin{align*}
+P(x_1,x_2,...,x_i',...x_n|do(X_i=x_i'))&=\\
+&=\prod\limits_{j \neq i} P(x_j | pa_j)\\
+&=\frac{P(x_i'|pa_i)}{P(x_i'|pa_i)}\prod\limits_{j \neq i} P(x_j | pa_j)\\
+&=\frac{1}{P(x_i'|pa_i)}\prod\limits_{j} P(x_j | pa_j)\\
+&=\frac{1}{P(x_i'|pa_i)}P(x_1,x_2,...,x_i',...,x_n)\\
+&=\frac{P(pa_i)}{P(x_i',pa_i)}P(x_1,x_2,...,x_i',...,x_n)\\
+&=\frac{P(pa_i)}{P(x_i',pa_i)}P(x,y,pa_i,x_i')\\
+&=P(pa_i)P(x,y|x_i',pa_i)\\
+\end{align*}
+
+So, we can get:
+
+\begin{align*}
+P(y|do(X_i=x_i')) &= \sum\limits_{x_1,x_2,...,x_n : \text{neither vals of}X_i\text{ nor }Y}P(x_1,x_2,...,x_i',...x_n|do(X_i=x_i'))\\
+&=\sum\limits_{x,pa_i:\text{vals of }X\text{ and }PA_i}P(pa_i)P(x,y|x_i',pa_i)\\
+&=\sum\limits_{pa_i:\text{vals of }PA_i}P(pa_i)P(y|x_i',pa_i)\\
+\end{align*}
+
+This is the theorem $3.2.2$ of the book, \textbf{adjustment for Direct Causes}.
+
+Intuitively, we can compute the result of the intervention $do(X_i = x_i')$ on $Y$ by adding for every possible value of the parents of $X_i$ the expression $P(y|x_i',pa_i)p(pa_i)$. Note that if $PA_i$ have no influence over $Y$ that's not through $X_i$, then this is basically $P(y|x_i')$. Anyway, we're averaging the effect of $X_i$ on $Y$ according to our prior knowledge on the possible values of $PA_i$.
+
+If we want to do different types of intervention: if the mechanism that defines $X_i$ changed, and now it uses parents $PA_i^*$, then the resulting joint distribution could be obtained by replacing $P(x_i|pa_i)$ by $P^*(x_i|pa_i^*)$, getting $P^*(x_1,...,x_n) = P(x_1,...,x_n)\frac{P^*(x_i|pa_i^*)}{P(x_i|pa_i)}$ (we just removed $P(x_i|pa_i)$ and added $P^*(x_i|pa_i^*)$).
+
+\textbf{I believe that in this part we're assuming strictly positive distributions}, otherwise we might not want to divide and multiply by $P(x_i'|pa_i)$
+
+Pearl gives an example of a Dynamic Process Control, which I won't get into detail here.
+
+This allows us to determine the effect of interventions when all parents of where we are intervening are observable, now we will see what to do when they are not.
+
+\subsection{3.2.4: Identification of Causal Quantities}
+
+A quantity is defined as \textbf{identifiabile} in a class of models iff the quantity is equal for distinct models only if their generated distributions are also equal. If the observations are limited, then the quantity is \textbf{identifiable} from the observations iff the quantity is equal when the observations are equal. 
+
+In summary: we can't identify a quantity if it can have two different values for the same observation we can make.
+
+Under the class of models that have the same graph (but maybe distinct $f_i$) and generate positive distributions on the observables, we define that the causal effect from $X$ to $Y$ is \textbf{identifiable} from a graph if the quantity $p(y|do(x))$ can be uniquely computed from any positive probability of the observables (the causal effects are equal for models generating positive probabilities and with the same graph).
+
+Pearl says that positive distributions are necessary because we would not be able to infer $P(y|do(x))$ if $X=x$ never happens in the observed data. He says it's possible to extend this, but he won't now.
+
+So, to show that we can't identify the causal effect, we just need to show two sets of values of $f_i$ that induce the same positive distributions but with different causal effects.
+
+\subsection{Summary}
+
+The causal effect of $X$ on $Y$ is identifiable whenever we can observe $X,Y,PA_X$.

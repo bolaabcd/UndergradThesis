@@ -1,0 +1,21 @@
+\textit{From now on, I'll try to go faster, just quickly looking at what's written but not reading everything in detail.}
+
+This is about whether to condition or not on some variables.
+
+The \textbf{back-door criteria} between $X$ and $Y$ is satisfiable by $Z$ if no node in $Z$ is a descendent of a node in $X$ and all paths between $X$ and $Y$ with an arrow pointing to $X$ are blocked. As we have a DAG, this path can't be from $Y$ to $X$ if there is a path from $X$ to $Y$.
+
+I like the intuition for the second condition of not having a way for the information to \q{flow} from $X$ and $Y$ from another source.
+
+The intuition behind the first condition (\textbf{do not condition on descendants of $X$}) is that if we do that, then we're allowing colliders in the chain that goes up to $X$. If the last arrow is $K \rightarrow X$, then information on the error of $K$, $\epsilon_k$, is going to flow to $X$. If $K$ is in the way from $X$ to $Y$, we're also letting information flow from the error to $Y$. So we actually need only to exclude descendents of $X$ that are also descendents of some variable on a path between $X$ and $Y$. \textit{Excluding descendents is stronger than necessary!}
+
+\textit{Back-Door Adjustment} is the theorem that we can compute the result of $do$ if we have a set of variables that satisfy the back-door criteria $p(y|do(x)) = \sum\limits_{z}P(y|x,z)P(z)$.
+
+\textbf{Front-Door Criterion} is when $Z$ blocks all directed paths from $X$ to $Y$, $P(Z|do(X)) = P(Z|X)$ (all paths from $X$ to $Z$ are free of unblocked back-doors) and all $X$ blocks all paths from $Z$ to $Y$. This way, we can write $P(y|do(x)) = \sum\limits_z P(z|do(x)) P(y|do(z)) = \sum\limits_z P(z|do(x)) \sum\limits_{x'} P(y|x',z)P(z)$. We need to get rid of confounders between $X$ and $Z$ and between $Z$ and $Y$.
+
+\textbf{To use the front door criteria}, it's required to have $P(x,z) > 0$ always.
+
+The way I see it, \textit{back-door} requires us to find all counfounding paths and \textit{front-door} requires us to find all mediators between $X$ and $Y$.
+
+We can combine front and back-door, to get alternatives if necessary.
+
+

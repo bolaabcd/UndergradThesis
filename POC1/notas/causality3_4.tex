@@ -1,0 +1,15 @@
+This is about algorithms on how to compute the results of intervention from available data:
+
+\textbf{The do-calculus.}
+
+One quick notation note: $P(x|do(y),z) = \frac{P(x,z|do(y))}{P(z|do(y))}$.
+
+There are some strange rules for deleting observations, $do$s and turning $do$s into observations. I'm not going to extend myself into this as it just seems like the idea of the $do$ formalized in a way that's usefull. Seems too formal, maybe it'll get simpler later.
+
+We can infer the effect of some $do$ if we can apply the rules Pearl specifies to remove all $do$s and end up with things we can observe.
+
+These rules are sufficient for deriving all identifiable causal effects.
+
+Sometimes, it's also possible to identify the causal effects from $X$ to $Y$ by conducting experiments on other variables on $Z$. This is called \textbf{surrogate experiments} and we can represent this by keeping the $do$ operator only on variables of $Z$. For instance, we might want to control the diet to estimate the effect of cholesterol levels on blood pressure.
+
+

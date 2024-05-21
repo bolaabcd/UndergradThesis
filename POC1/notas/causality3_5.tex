@@ -1,0 +1,15 @@
+If we have a unobservable bow between $X$ and $Y$, and no variable mediating, only the direct influence of $X$ on $Y$, then we can't estimate the effect of interventions on $X$, not even if this is in a bigger graph. 
+
+This happens for instance, if the clinical experiment of a drug is randomized but who accepts is not.
+
+Removing edges and adding mediator can never worsen the identifiability of causal effects. 
+
+Pearl shows examples of models in which the effect of $X$ on $Y$ is or is not identifiable and discusses them. I'll not focus much on that, but it seems like it's possible to learn how to compute $P(y|do(x))$ or if it's not possible by using the information here. If I understood correctly, there is currently no mechanical method of computing this automatically.
+
+The idea is to identify interventional distributions.
+
+Seems like this paper of 2013 shows exactly if it's possible to estimate the causal effects of interventions: \q{An Information Theoretic Measure of Judea Pearl's Identifiability and Causal Influence}.
+
+Also, local identifiability is neither necessary nor sufficient for global identifiability.
+
+I passed very quickly through this, but it specifies how to estimate effects of interventions given a graph.

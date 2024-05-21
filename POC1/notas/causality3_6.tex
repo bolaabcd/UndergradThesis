@@ -1,0 +1,11 @@
+Comments on extensions of the causality ideas presented.
+
+The applications of this language of causal graphs is expected to require a lot of domain knowledge.
+
+Pearl mentions about how to translate from the theory of graph notations he presented to the potential outcomes theory, and relations to $G$-estimation.
+
+There is a theorem at the end that says that it's possible to estimate the causal effect $P(y|do(x))$ if there's no bi-directed path (a path of bi-directed unobserved arcs) between $X$ and any of it's children (not successors, \textit{children}), and this is more general than any results of the chapter. (\textit{so why not edit the chapter such that only this is presented?}). So, this is a sufficient condition! Note that the front-door criteria example is not a counter example, in that case only $Z$ is a child of $X$!
+
+This condition is \textit{necessary and sufficient} if $Y$ includes all variables except $X$. There are other sufficient and necessary conditions in another (2006) paper mentioned there, for the general identifiability of $P(a|do(b),c)$.
+
+There's a roadmap of the results of the chapter as well: backdoor criterion, do-calculus, and the formal meaning of counterfactuals (I believe it's simply to apply the observations, estimate the unobservables $u$, then apply the \q{counterfactual intervention} and infer whatever we wanted to infer after that).
