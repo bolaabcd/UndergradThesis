@@ -1,0 +1,20 @@
+\textbf{Conditional Actions} are when we change values of $X$ as a function of $Z$, so we set $X = g(Z)$.
+
+\textbf{Stochastic Policies} are when we define $X$ as a \q{stochastic function} (I'll call it a Markov) of $Z$, so we have $P^*(X=x|Z=z)$.
+
+We have, if $Z$ is not a descendent of $X$ (otherwise setting the value of $X$ would change the value of $Z$ and then should we repeat the proccess?):
+
+$$P(y|do(X=g(Z))) = \sum\limits_z P(y|\hat{x},z) =  \mathbb{E}[P(y|do(X=g(z)),z)]$$
+
+This expectation varies $Z$ and uses the observed distribution of the values of $Z$.
+
+Pearl writes the left side as $P(y|do(X=g(z)))$, but to me it makes more sense to use $g(Z)$.
+
+For stochastic acions, we get:
+
+$$P(y)|_{P^*(x|z)} = \sum\limits_{x}\sum\limits_{z}P(y|\hat{x},z)P^*(x|z)P(z)$$
+
+So, in any case we can say if the effect on $Y$ of acting to make $X$ as a (deterministic or not) function of $Z$ is identifiable by knowing if $P(y|\hat{x},z)$ is identifiable.
+
+A STRIPS-like action is when we set the value of $X$ to something (I believe a pre-defined value) when some function $C(w)$ is evaluated to true.
+

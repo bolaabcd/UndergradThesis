@@ -1,0 +1,22 @@
+The direct effect of, for instance, sex/race on the application result is of way more interest to us than the total effect, as the sex/race of the person might have influenced their opportunities.
+
+To compute the direct effect, we could hold everything else constant (by intervention means) and see the resulting effect of $X$ on $Y$...
+
+
+
+
+
+\subsection{Unrelated (or not) notes}
+
+If the distribution is allowed to be positive, then why not the causal graph? Like, why can't we say that every variable has an effect on every variable, and the \q{independencies} are all actually \q{almost-independencies}, as it might as well be the case from our point of view...
+
+To me, treating the distribution as strictly positive but the causal graph as completely and perfectly determined is very strange.
+
+I think that this is, as Pearl says, an assumption external from data, so we need to first believe in the causal graph then move on to the next steps of our work.
+
+But... If i'm not sure how much one variable impacts the other (for instance, the sensitive attribute impacts the result in fairness scenarios) or if it does at all, then should I consider the edge from this variable to the other? I think so, right? As I'm using data, the value of the direct effect should be really small if in reality it's zero.
+
+But then, imagine a fairness scenario. Someone might use the causal graph without the arrow from the sensitive attribute to the response (I know, this kind of assumes the conclusion, but let's see where this goes), then this person will probably reach some coherent conclusion, like that they consider the relevant stuff that is impacted by the sensitve attribute (for instance, in many places a person with black skin reduces their educational opportunities, so this person says that education is the most important thing to them). The person that uses the edge is going to see the sensitive attribute as very directly impactfull.
+
+\textit{Which one is right?}
+

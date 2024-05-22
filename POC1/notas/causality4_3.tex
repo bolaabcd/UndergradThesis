@@ -1,0 +1,21 @@
+Now we'll see the more general necessary and sufficient conditions for identifiability (more general than just satisfying the back-door criterion, for instance). By that I mean graphical conditions (we already know that it's possible iff it's possible with manipulations using the rules of do-calculus).
+
+Theorem $4.3.1$ specifies the following conditions, such that satisfying at least one is necessary and sufficient for the identification of $P(y|x)$ with $Y,X$ singletons:
+
+\begin{enumerate}
+\item No back-door path from $X$ to $Y$.
+\item No directed path from $X$ to $Y$.
+\item There is a set of nodes that block all back-door paths from $X$ to $Y$, and we can identify the effects of $do(x)$ for each of these nodes. (if a node is not a descendent, then $P(b|\hat{x}) = P(b)$, so it's clearly identifiable).
+\item This is complicated... There are sets $Z_1,Z_2$ such that $Z_1$ blocks all directed paths from $X$ to $Y$, $Z_2$ all backdoors from $X$ to $Z_1$ and from $Z_1$ tp $Y$ (in the graph of interventions on $X$), and does not create any backdoor from $X$ to $Y$...
+\end{enumerate}
+
+I believe condition $3$ is kind of solving the back-door issues than reconstructing the directed effects that were ignored when we conditioned! Kind of taking $P(y|x)$, removing the part related to back-doors and re-adding the parts of $P(y|b)$ related to an action in $x$. It would be interesting if this handwavy idea really is what's happenning here.
+
+The condition $4$ is kind of the front-door criteria, but extended. The proof is long, and I'm not going to read it carefully now, but seems interesting.
+
+\textbf{Remembering the meaning of traced double arcs: } They mean that there's an unobserved (latent) common cause!!!
+
+
+\textbf{There's an algorithm in subsection 4.3.3 that writes $P(y|\hat{x})$ in terms of the observables!!! (or says it's impossible)} It looks polynomial, but has a recursive call so I'm not absolutely sure.
+
+Also, there's an algorithm for all such queries now. I'll not look at these things in detail, but I believe that they are based solely on the do calculus rules.
