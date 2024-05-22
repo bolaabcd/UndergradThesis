@@ -85,3 +85,11 @@ P(y|\hat{x})&=\sum\limits_{z_2,z_3}P(y|z_2,z_3,\hat{x})P(z_2,z_3|\hat{x})&\text{
 \end{align*}
 
 Remembering: $\hat{x} \equiv do(x)$.
+
+\subsection{Important note: Total effect!}
+
+The do canculus considers the \textbf{total effect}, for instance, if $Z$ is a confounder between $X$ and $Y$, then the do calculus tells us to condition on it. If it's a mediator, then it tells us that $P(y|do(x)) = p(y|x)$!!!!!
+
+So, in the example of the last subsection I believe that expression leads us to the direct effect of $X$ on $Y$, the effect of $X \righarrow Z_2 \rightarrow Y$ and also $X\rightarrow Z_2 \rightarrow Z_3 \rightarrow Y$!!!!!! 
+
+I find this really interesting, and also important to know!
