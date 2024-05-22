@@ -13,3 +13,75 @@ These rules are sufficient for deriving all identifiable causal effects.
 Sometimes, it's also possible to identify the causal effects from $X$ to $Y$ by conducting experiments on other variables on $Z$. This is called \textbf{surrogate experiments} and we can represent this by keeping the $do$ operator only on variables of $Z$. For instance, we might want to control the diet to estimate the effect of cholesterol levels on blood pressure.
 
 
+\textit{Returning here the next day:}
+
+The three rules are for when exactly we can remove an observation $|z$, remove a $|do(z)$ or change a $|do(z)$ to an observation $|z$.
+
+First rule is just saying that $Y$ is independent of $Z$ given $do(X)$ and $W$ if it's indendent of $Z$ given $W,X$ in the graph without anything causing $X$. So, if when I act on $X$ and observe $W$ we get independency between $Y$ and $Z$, this is reflected in the notation $P(y|do(x),z,w) = P(y|do(x),w)$.
+
+The second rule is stranger at first glance, but it says that acting and observing on $Z$ are the same thing (regarding the information we have on $Y$) if ignoring arrows going out of $Z$ we get $Y$ independent of $Z$. Because if this is true, the only possible way for information to flow from $Z$ to $Y$ via observations is through back-doors!!! The condition of removing arrrows going to $X$ and the condition on $W$ is just \q{context}.
+
+The third rule is the strangest of all, and it says that acting on $Z$ does not help get information about $Y$ if it's independent from $Z$ given $W,X$ in the graph without arrows going into $X$ or $Z(W)$ (the set of nodes of $Z$ that are not ancestors of $W$). So, we remove arrows going into $X$ and into $Z$, except that we allow arrows going into $Z$ if it's an ancestor of $W$. I believe we do that because if we observe $W$ only, we might get information about $Y$ by a backdoor that goes something like $W \leftarrow Z\leftarrow K\rightarrow Y$, but if we observe on $W$ then act on $Z$, the information obtained by observing $W$ is kind of not relevant anymore...
+
+The three rules without the context of $|do(X)$ and $|Z$:
+
+\begin{enumerate}
+\item The first rule says that observing $Z$ doesn't help to get information on $Y$ if $Y\ind Z$.
+\item The second rule says that acting on $Z$ is the same as observing it if $Y\ind Z$ in the graph without arrows going out of $Z$.
+\item The third rule says that acting on $Z$ doesn't help us to get information on $Y$ if $Y \ind Z$ in the graph without arrows going in $Z$.
+\end{enumerate}
+
+With it, we do the same but the independencies are conditional on $XW$, and we also remove arrows going into $X$. The only extra difference is in the third rule, because we can't remove an action and keep an observation if the observation is a descendant of the action: the action kind of cuts the reverse path from the observation ($W$) to $Z$, so if $Z$ and $Y$ are confounded and we kept the observation and deleted the action, we'd get information from $W$ about $Y$ we didn't have before.
+
+\subsection{A way of viewing the three rules that's simpler for me:}
+
+In the simplest way I can manage for now (assume all are in the context of observing $W$ and acting on $X$, we're inferring information about $Y$):
+
+\begin{enumerate}
+\item Observing $Z$ is the same as nothing if there is no valid information path between $Z$ and $Y$ after ignoring causes of $X$ and conditioning on $W$.
+\item Acting on $Z$ is the same as observing $Z$ if all valid information paths between $Z$ and $Y$ are direct after ignoring causes of $X$ and conditioning on $W$.
+\item Acting on $Z$ is the same as nothing if there is no valid information path between $Z$ and $Y$ after ignoring causes of $X$ and $Z$ and conditioning on $W$, and there is no backdoor path between $W$ and $Y$ that passes through $Z$ in it's reverse path after ignoring causes of $X$. (after ignoring causes of $X$ and conditioning on $W$, there' no direct path from $Z$ to $Y$ and there's no backdoor between $W$ and $Y$ that passes through $Z$ in it's reverse path).
+\end{enumerate}
+
+I'm ignoring a lot of stuff here (for instance, when I say \q{backdoor} I mean a path that first goes in reverse then goes in the right direction), so this is far from perfect.
+
+\subsection{Example using do-calculus rules to remove all $do$s}
+
+I managed to use this to derive equation $(3.1)$ from figure $3.1$, but it was not easy... \textit{It feels a lot like working directly with raw logic, where we sometimes need to add things in order to later reduce and get to the results we want}. Here it is the derivation (the way I did it):
+
+Part 1:
+\begin{align*}
+P(z_2,z_3|\hat{x})&=\sum\limits_{z_1}P(z_1,z_2,z_3|\hat{x})&\text{(Nothing special here)}\\
+&=\sum\limits_{z_1}P(z_3|z_1,z_2,\hat{x})P(z_2|z_1,\hat{x})P(z_1|\hat{x})&\text{(Nothing special here)}\\
+&=\sum\limits_{z_1}P(z_2|z_1,x)P(z_3|z_1,z_2,\hat{x})P(z_1|\hat{x})&\text{(Rule 2)}
+\end{align*}
+
+Part 2:
+\begin{align*}
+P(z_3|z_1,z_2,\hat{x})P(z_1|\hat{x})&=P(z_3|z_1,z_2,\hat{x})P(z_1)&\text{(Rule 3)}\\
+&=P(z_3|z_1,\hat{z_2},\hat{x})P(z_1)&\text{(Rule 2, finding this was hard for me)}\\
+&=P(z_3|z_1,\hat{z_2})P(z_1)&\text{(Rule 3)}\\
+&=P(z_3|z_1,\hat{z_2})P(z_1|\hat{z_2})&\text{(Rule 2)}\\
+&=P(z_3,z_1|\hat{z_2})&\text{(Nothing special here)}
+\end{align*}
+
+Part 3:
+\begin{align*}
+P(z_3,z_1|\hat{z_2})&=\sum\limits_{x'}P(z_3,z_1,x'|\hat{z_2})&\text{(Nothing special here)}\\
+&=\sum\limits_{x'}P(z_3|\hat{z_2},z_1,x')P(z_1|x',\hat{z_2})P(x'|\hat{z_2})&\text{(Nothing special here)}\\
+&=\sum\limits_{x'}P(z_3|\hat{z_2},z_1,x')P(z_1|x',\hat{z_2})P(x')&\text{(Rule 3)}\\
+&=\sum\limits_{x'}P(z_3|\hat{z_2},z_1,x')P(z_1|x')P(x')&\text{(Rule 3)}\\
+&=\sum\limits_{x'}P(z_3|z_2,z_1,x')P(z_1|x')P(x')&\text{(Rule 2)}\\
+&=\sum\limits_{x'}P(z_3|z_2,z_1,x')P(z_1,x')&\text{(Nothing special here)}
+\end{align*}
+
+Part 4:
+\begin{align*}
+P(y|\hat{x})&=\sum\limits_{z_2,z_3}P(y|z_2,z_3,\hat{x})P(z_2,z_3|\hat{x})&\text{(Nothing special here)}\\
+&=\sum\limits_{z_2,z_3}P(y|z_2,z_3,x)P(z_2,z_3|\hat{x})&\text{(Rule 2)}\\
+&=\sum\limits_{z_1,z_2,z_3}P(y|z_2,z_3,x)P(z_2|z_1,x)P(z_3|z_1,z_2,\hat{x})P(z_1|\hat{x})&\text{(Part 1)}\\
+&=\sum\limits_{z_1,z_2,z_3}P(y|z_2,z_3,x)P(z_2|z_1,x)P(z_3,z_1|\hat{z_2})&\text{(Part 2)}\\
+&=\sum\limits_{z_1,z_2,z_3}P(y|z_2,z_3,x)P(z_2|z_1,x)\sum\limits_{x'}P(z_3|z_2,z_1,x')P(z_1,x')&\text{(Part 3)}
+\end{align*}
+
+Remembering: $\hat{x} \equiv do(x)$.
