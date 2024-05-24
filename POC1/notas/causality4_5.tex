@@ -2,6 +2,30 @@ The direct effect of, for instance, sex/race on the application result is of way
 
 To compute the direct effect, we could hold everything else constant (by intervention means) and see the resulting effect of $X$ on $Y$...
 
+Pearl defines the direct effect of $X=x_1$ on $Y$ as $P(y|do(X=x_1),do(S=s))$, in which $S$ is the set of all variables except $X,Y$. Then they simplify by setting it as $P(y|do(X=x_1),do(PA_{Y\backslash X} = pa_{y\backslash x})$.
+
+To me, it's really strange how the direct effect of setting $X=x$ is a function of the values of the parents of $Y$. Shouldn't it be a function only of the values of $X$ and $Y$? (the effect on a given value of $Y$ of setting $X$ to something).
+
+After corollary $4.5.3$, Pearl says that the direct effect of $X_1$ is not necessarily the same as the one of $X_2$, but the formula is exactly the same! I think that what's happening is that one is viewed as a function of $X_1$ and the other one as a function of $X_2$...
+
+Also, Pearl compares equations $(4.9)$ and $(4.10)$, but they are not even compatible! The first one is a function only of $Y$ and $X_1$, the second one os also a function of $X_2$!!!! They don't even measure the same \textit{type} of thing!!!
+
+Maybe we should take the average on all other values? Well, this is still very strange, why didn't Pearl say that then???????
+
+\textbf{I'm utterly confused here.}
+
+The natural direct effect is determined in terms of nested counterfactuals and is usually non-identifiable: Pearl defines the effect of changing x to x' as the expected value of Y given that we change X from x to x' and then set everything else to the values they would have if we setted X to x, minus the expected value of Y given that we set X = x...
+
+I find this kind of complicated... 
+
+Anyway, sometimes it's possible to identify this effect under some assumptions, which I won't enter into detail...
+
+The direct effect is then what happens with Y when we change X from x to x', but then make all variables think that we didn't change X at all. Something like this.
+
+The Indirect Effect is what happens with Y when we don't change X, but we make all other variables think we did. Again, something like this.
+
+The total effect is the difference between the direct one and the reversed indirect one (why????)
+
 
 
 
