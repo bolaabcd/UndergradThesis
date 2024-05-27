@@ -1,0 +1,22 @@
+Simpson's paradox is defined as the situation in which some event is, in general, more likely given a property than if this property was false, but if we condition on other variables this reverses (having the property will actually decrease the probability of such event).
+
+In the Berkley example: the event is \q{to enter the university}, the property is \q{is a man} and the variable we condition on is \q{department}.
+
+In the drugs example: the event is \q{to recover from the disease}, the property is \q{took the drug} and the variable we condition is \q{is a man}.
+
+Pearl says that the confusion arrises if we treat the conditioning as doing instead of just seeing.
+
+We can't use statistical reasoning only, because we can, for instance, have a mediator we don't want to ignore (blood pressure caused by the drug and that causes recovery) or a confounder (sex) that generate the same data.
+
+Pearl talks about exchangeability (another criterion for confounding) and how it was kind of causally introduced (at least the informal arguments that support it are causal according to him).
+
+Pearl concludes by saying that our intuition is causal and not probabilistic, otherwise Simpson's Paradox woudn't be seen as a paradox at all.
+
+
+
+\subsection{Extra Notes: Machine Learning}
+
+I kind of think that machine learning discovers the functions between variables... So, maybe if we want to discover the function that relates, for instance, the drug taken to recovering from the disease, we should train the model separately for each sex? Or will the model itself discover this? 
+
+
+If sometimes we need to condition and sometime we do not, the Machine Learning model should \textbf{NOT}, in fact, be able to discern that. I don't know exactly what problems should arrise here...
