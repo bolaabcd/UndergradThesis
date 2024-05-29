@@ -1,0 +1,17 @@
+First axiom: if we set the value of $W$ to the value it would have without intervention, it's the same as not doing anything.
+
+Second axiom: if we do an intervention $X=x$, then the value of $X$ will be $x$...
+
+The third one says that if setting $Y=y$ results in $W=w$ and setting $W=w$ results in $Y=y$, then $Y=y$ and $W=w$ naturally. This seems like a \q{stability is always reached at exactly one point} axiom... If we don't have loops this is implied by the previous axioms. Pearl says in situations like the prisioner's dilemma there are two possible stable states and for some reason he says we should encode more variables in $U$ and then the system would satisfy this axiom... (?) He says that we should include, for instance, the previous actions of the players of the system, but I don't see why is that, mainly in the prisioner's dilemma example...
+
+I think that Pearl calls \textit{recurrent models} the ones in which the causal diagrams are DAGs.
+
+These rules are sound and complete: if we can derive an equality using this rules, then the equality is correct (that's not exactly it, I think), and if we can't, then it's impossible to do so.
+
+There are also causal relevance axioms, similar to the \textit{graphoid} axioms for \textit{informational relevance}. Causal relevance axioms are about \q{if we fix some variable, would changing one alter the other?}
+
+$X$ is causally irrelevant to $Y$ given $Z$ if the value we set $X$ to doesn't matter.
+
+Causally relevance is not transitive, as a direct effect can cancel an indirect one. Maybe this is related to stability somehow? Although we can define the functions in such a way that they completely and really cancel out, not just because of luck.
+
+
