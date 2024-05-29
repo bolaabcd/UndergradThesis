@@ -1,0 +1,53 @@
+\subsection{7.1.1: Basic definitions}
+
+\textbf{Submodels} are the models after interventions $M_x$ is the model after $do(X=x)$. It's the model with minimal changes that make $X=x$ true under any value $u$ of $U$. $F_x$ is the set of equations with the equations that define the values of $X$ replaced by constants assignments.
+
+\textbf{Notation for counterfactuals (potential response of seting $X=x$):}
+
+$$Y_x(u) = Y_{M_x}(u)$$
+
+Replacing the functions by non-constants is also allowed. So, we can represent conditional actions like $do(X=x)$ if $Z = z$ by seting $X$ as a function of $z$ that represents this.
+
+Probabilities like $P(Y_x = y, Y_{x'} = y')$ are well defined! The chance of that is the sum of the probabilities of each $u$ such that we get $Y_x(u) = y$ AND $Y_{x'} = y'$.
+
+The three steps for computing $P(Y_A|e)$ are called \textbf{abduction} (computing $P(u)$), \textbf{action} (simulating $do(A)$ to obtain $M_A$, just deleting the edges or changing the update functions) and \textbf{prediction} (compute the probability distribution on $B$ on the resulting model).
+
+\textbf{Worlds} are defined as pairs $M,u$ (a causal model and a particular initialization of the variables $U$) and \textbf{theories} as sets of worlds.
+
+A possible theory is, for instance, that all functions $f_i$ are deterministic.
+
+\subsection{7.1.2: Deterministic analysis of counterfactual evaluations}
+
+Example of the firing squad.
+
+We don't need anything beyound boolean algebra for the observational inferences, but for the actions we do! We can \textit{infer} things like \q{if the prisioner is dead, he would be dead if $A$ hadn't shot}.
+
+There's a short discussion about the difference of counterfactual and actions, that in counterfactuals the alternative world potentially changes the fact we observed. So, the conterfactual action \textit{changes} (possibly) the obervation we made...
+
+This is only a naming issue, of course.
+
+\subsection{7.1.3: Probabilistic analysis of counterfactual evaluations}
+
+Now the same example we have a distribution on $U$, and expanding the variables in $U$ and their effects.
+
+\subsection{7.1.4: Twin Network Method}
+
+Even if the unobservables are independent, after observing $e$ they might not be anymore. So we might need to represent the whole joint distribution of $U$, without \q{compressing} it... This can make things prohibitive.
+
+This Twin Network Method is a way to improve things. It consists simply of creating a network that has a copy of the original and the after-the-action model, with shared background variables. And using this network to compute everything.
+
+This can be used to check for independencies and conditional independencies between counterfactual variables.
+
+\section{Extra notes: How could we \textbf{possibly} get such a model? AND possible applications!}
+
+We can't observe the variables $U$ by definition. How could we define the \textit{deterministic} relationship between $U$ and $V$????
+
+If we can't even see $U$?
+
+The causal inference methods work for $V$ only, if I understood correctly.
+
+Maybe this is more useful for \textbf{COMPUTER SYSTEMS}, in which we know exactly the deterministic functions between variables... The firing squad example is an example with deterministic boolean equations determining the results of the variables...
+
+But maybe this'd not be very complicated? Like, we can infer the values according to the observations and force some variables fixed to infer the effect of an action... We're basically doind the action... Except that we don't need to really go there and do it many times to estimate the results, do we? We need only a distribution on the source variables!
+
+\textit{Maybe} we can use causality for something in computer benchmarks, or something like that. Maybe we don't really need to test with a lot of inputs... This would need a lot of study anyway... I don't know much about this field, even being almost a full computer scientist... Also, what kind of counterfactual we'd want to estimate? \q{What would be the effect of doing some action given that we didn't}? If we have all information we want, we could just simulate it. It would make sense only for more complicated queries, which I don't know if we really do need...
