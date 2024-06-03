@@ -1,0 +1,16 @@
+There is a linear programming formulation for estimating bounds of the effects of treatment with instrumental variables (a variable that changes $X$ directly, which we can control well).
+
+It's possible to partition the values of $U$ on the $2^n$ possible values of some other variables if they are binary. The same applies if they are finite, clearly. This simplifies the linear programming formulation and solution.
+
+We can then reach tight bounds on the causal effects here. Pearl also mentions the Natural Bounds as simpler bounds, that are, under some specific assumptions, tight.
+
+Pearl also mentions two causal parameters, Average Causal Effect and Effect of Treatment on Treated, to help decide what happens if we apply the treatment uniformly in the population and what happens to the treated people in relation to what would happen if they were not treated, respectively.
+
+
+
+\subsection{Note on the many causal parameters}
+
+
+\textbf{I'm not really sure I could figure out by myself what is the correct parameter, as we can define a lot of counterfactual parameters here... This seems like the problem of fairness metrics, we can define a lot of ways to measure what we want, and worse, we can want many different things at different times.}
+
+

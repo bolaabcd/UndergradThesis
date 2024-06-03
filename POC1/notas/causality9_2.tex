@@ -1,0 +1,25 @@
+The probability of sufficiency is that chance of $Y$ not happening if $X$ had happenned given that neither really happenned.
+
+The probability of necessity and sufficiency is the chance of $X$ triggering $Y$ and not $X$ turning $Y$ off.
+
+Pearl also defines the Probability of Disablement and Probability of Enablement and explains in which situation they should be used. But to me these many metrics seems rather arbitrary... 
+
+There is a (simple) relation between them and the probability of necessity and sufficiency, which might help understand them.
+
+The probability of necessity doesn't change if we introduce extra inhibitors of the effect, and the probability of sufficiency doesn't change if we introduce extra alternative causes to $Y$.
+
+Pearl defines $X$ as exogenous in relation to $Y$ as independence between the value of $X$ and the values $Y$ would take if $X$ is on or off. I find this strange, but maybe this just means that $X$ need to be a node without any arrow entering it? It's not exactly it...
+
+I think a sufficient condition for $X$ to be exogenous in relation to $Y$ is for no backdoor path to exist between $X$ and $Y$. As if such existed, knowing the actual value of $X$ might help discover the value of a confounder (or error term depending on which part of the backdoor criterion was violated). Then, $do(x)$ is different from $do(x)|x$ because this extra information can help. Pearl mentions something like this, that there's a relation to the backdoor criterion.
+
+Well, why couldn't we do some conditioning to solve the case where there's a backdoor but we can control it somehow?
+
+Anyway, under this exogeneity assumption, we can find bounds on the probability of necessity and sufficiency. And other causal probabilities.
+
+Another usefull condition is monotonicity, $Y$ is monotonic in relation to $X$ if $Y_x(u)$ is monotonic in $x$ for all $u$. In other symbols, if $y_x' \land y_{x'} = false$, if we cant both have $x$ on making $y$ off and $x$ off making $y$ on.
+
+Under monotonicity and exogeneity we can find exactly the $PNS$ (Prob. of Necessity and Sufficiency) and others.
+
+Under monotonicity and non-exogeneity we have other ways of identifying $PNS,PN$ and $PS$.
+
+
