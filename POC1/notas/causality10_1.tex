@@ -1,0 +1,17 @@
+The classical example is the one in which two fires burned a house, then the first fire is considered the \textit{actual cause} of the damage, even though both are sufficient and neither is necessary!
+
+\textbf{token-level} vs \textbf{type-level} events: the first are individual, the second generic.
+
+\textbf{Actual Cause} (for token-level, single-event) and \textbf{General Cause} for the other.
+
+Pearl says we can consider that the more specific the evidence we have, the closer to single-event causation we are. So, for instance, Probability of Sufficiency is closer to type-level, as we actually ignore the real evidence and imagine an alternative evidence, and Probability of Necessity is closer to token-level, as we condition on part of what really happenned.
+
+It's necessary to consider the inner workings of the model, and Pearl has an example that shows this, the circuit example.
+
+A guy named Lewis proposed an approach in which the actual cause has to have a link of counterfactually(necessary cause)-related variables from the actual cause to the consequence. The idea is that we don't consider something as a cause if, keeping everything else fixed as it currently is, changing the value of the \q{something} doesn't change variables in a chain leading to the consequence.
+
+\textbf{Overdetermination} is when more than one thing contributes to causing the consequence.
+
+Pearl also talks about the INUS condition for what is the actual cause: if $X$ is necessary to some set of sufficient conditions ($X$ satisfies the INUS condition), then if it was sufficient in the given context it's perceived as a cause of $Y$. It's logic-based, and thus has symmetry issues ($A$ causes $B$ does not imply not $B$ causes not $A$), we can't make any kind of logical inference.
+
+We will use the intuitions of these two approaches, but in the causal structure setting.
