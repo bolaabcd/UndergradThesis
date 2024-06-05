@@ -1,0 +1,41 @@
+We will kind of reduce the set of parents of each node whenever possible, according to the actual state of the world $u$.
+
+\subsection{Causal Beams and Natural Beams}
+
+A \textbf{Causal Beam} is the causal model $M_u$, which changes the parent-child relationships to have only susteinance-parents: the sustaining set is the set such that for each variable if we change the value of other parents, the result doesn't change (this is the \q{sufficiency} part), and such that there is an intervantion on the value of a subset $W$ of the other parents that makes the current value of the sustaining parents \q{necessary} (there is a value $w$ such that if we set a subset of the other parents to $w$ AND fix the rest of the other parents, then changing the value of the sustaining set could change the result: this is not necessity because there can be other values $w'$ that keep the result the same no matter what we do with the sustaining parents)... So, under $W=w$ the sustaining parents are necessary and sufficient (note that $w$ might be different from the actual value of the non-sustaining parents, if $W = \emptyset$, when $W$ is the subset of parents we want to fix at other values). Also, the functional relationship becomes the \textit{projection} on $u$, we basically ignore parents outside of the sustaining set.
+
+Note that the sustaining set is not required to be minimal...
+
+A \textbf{Natural Beam} is a Causal Beam with $W=\emptyset$ for every variable, which (I believe) means that for each observed variable there is a sustaining set such that it's sufficient (by definition) and not trivial... Pearl says that the natural beam freezes all variables outside the sustaining set at their actual values...
+
+$X=x$ was an \textbf{Actual Cause} of $Y=y$ in $u$ iff there is a natural beam $M_u$ such that $Y_x = y$ and $Y_{x'}\neq y$ for some $X'$...
+
+$X=x$ was an \textbf{Contributory Cause} of $Y=y$ in $u$ iff there is a causal beam, but no natural beam satisfying the above...
+
+
+The intuition is that if we freeze the variables that don't sustain $Y$ with the $do$ operator and $X=x'$ would change $Y$, then $X$ is sufficient and nontrivial... So it's an Actual Cause. If this changes only if we freeze variables \textit{at values different from the ones that actually happenned}, then it's an Contributory Cause!
+
+An Actual Cause is something that is enough to cause the consequence in $u$ and that if we keep everything the same and change it, the result would change.
+
+An Contributory Cause is something that is enough to cause the consequence in $u$ and that if we keep everything at some other valu, the result would change.
+
+There are some refinements necessary when $X$ and $Y$ are sets of variables... Pearl mentions the case in which the event we consider is a boolean function of $Y$. In particular, we need $X$ to be minimal.
+
+\subsubsection{If $u$ is uncertain}
+
+The \textbf{Probability of Actual Causation} given evidence $e$ is the sum of $P(u|e)$ for all $u$ in which $X=x$ actually caused $Y=y$. It's defined as the probability of all states in which $e$ happens and $X=x$ actually caused $Y=y$, divided by the probability of all states in which $e$ happens.
+
+Reminder: $U=u$ is called a \textit{state} of the system.
+
+
+\subsubsection{Examples}
+
+If $x\lor z$ causes $y$, then $x$ and $z$ are both Contributory Causes but not Actual Causes for the scenario in which both are true, as fixing one on the real value makes $y$ trivial in respect to the other, we need to fix one in an alternative value (false) to make $y$ non-trivial on the other. This represent's Lewis quasi-dependence notion.
+
+There's also a nice boolean example, check it there again if you want to remember. $y = xz \lor rh \lor t$ in the state $u$ that sets all to true and $xzrht$ are all causally independent, then $xz$ is a minimal sustaining set for $Y$, as is any disjunction term. There's no natural beam, so $x$ is not an Actual Cause of $y$. But if $r=t=false$ and the rest is true, then $x$ is an actual cause of $y$...
+
+For some reason this represent the intuition behind the INUS framework...
+
+We consider the actual cause if the conditions stated are satisfied \textit{for some natural beam!} Not for all natural beams or for the original model!
+
+There's also an example with a dynamic model, in which time is considered...
