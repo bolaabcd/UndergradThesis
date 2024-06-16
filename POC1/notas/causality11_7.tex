@@ -1,0 +1,17 @@
+Pearl talks a bit a bout linearity assumptions in counterfactual estimations. He points out that it's, in general, not possible to estimate $P(Y_{x}|y',x')$ even with infinite data samples.
+
+In linear models, according to Pearl, it turns out that it's possible to fully estimate many types of counterfactuals... He proves some things related to this, I'm going to skip all.
+
+It seems like counterfactuals are not $P(Y|do(X),Z)$: it seems like pearl considers that for this to be possible we need $Y\cup Z = \emptyset$ and $Y \cup X  \emptyset$, maybe $X\cup Z = \emptyset$... But for counterfactuals we can do this kind of thing... See the subsection here.
+
+There is also a quick question on the generalization of twin networks method for more than two possible worlds.
+
+Reminder: the twin networks method is a way to not store all background variables and simplify computations.
+
+\subsection{\textbf{ANSWER TO ONE OF MY QUESTIONS!}}
+
+$P(Y|do(x),z)$ is the probability of doing $X=x$ \textit{THEN}, \underline{\textit{\textbf{LATER}}}, observing $Z=z$!!!!!
+
+$P(Y_x|z)$ is the probability of first seeing then doing.
+
+Pearl says the two are equal if $Z$ is not a descendent of $X$ in the model. And he reinforces this is for a static model...
