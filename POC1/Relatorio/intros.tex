@@ -23,7 +23,17 @@ The classical goal of Machine Learning is to provide models with good \textit{te
 
 \subsection{Fairness}
 
+In the context of Machine Learning, fairness refers to the reduction, as much as possible, of \textbf{algorithmic bias}. Algorithm Bias is the bias introduced by algorithmic decisions. This bias might have a big social impact, as this can further existing unfair discrimination in society, as machine learning algorithms are being used to make more and more important decisions. One famouse example is the COMPAS recidivism algorithm, that has been used by the United States courts to estimate how likely someone is to reoffend in the future. It was revealed \cite{Compass} that this tool was heavily biased against black people. 
 
+We will say that the result is \textbf{positive} for a data point if it benefits the person represented by that data point, and \textbf{negative} otherwise. We will say that the \textbf{unpriviledged group} is the group of people affected negatively by the bias, and the \textbf{priviledged group} is the other group of people.
+
+Such biases can happen because of many factors. The algorithm itself might be introducing bias, or the data might be biased. The data might have been collected in a biased way (in the compass example, this would be the case if reincidivism data was collected more for black reincidivists than for white), or the data might be simply reinforcing some bias of the society. 
+
+Also, the bias in society might be such that the data is in disagreement with reality (the unpriviledged group true values for the target variable would affect them in the same way as the priviledged group), or it is in agreement with reality because of structural biases in society. For instance, if the prediction of the algorithm is whether or not someone will have good grades if accepted to some university, people in the unpriviledged group might not have had as good oportunities in life as people in the priviledged group, so the data is correct when it says that those people will have worse grades. Even though, the results might still be considered unfair: this depends on the notion of fairness we consider.
+
+Many different notions of algorithmic fairness have been developed, and some are not compatible \cite{uncompatibleFair}.
+
+%Even then, there are many results, some general enough to include the most commonly used fairness notions, indicate that fairness and accuracy can be fundamentally incompatible\cite{omnifair}\cite{Microsoft}\cite{carlos}. 
 
 \subsection{Privacy}
 
