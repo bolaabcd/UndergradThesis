@@ -71,9 +71,25 @@ We call \textbf{adversary} the agent that wants to discover the private informat
 One approach to improving privacy in Machine Learning is by encrypting the data or the model in a way such that the computations can be done with the encrypted data/model, and just the result is decrypted. Secure Multi-Party Computation is also an option if there are multiple parties responsible for this computation. Other option is to obfuscate the data or the model, by introducing pertubation in a way that protects the private information in a way that (hopefully) doesn't worsen much the results. There is also the aggregation approach, that focuses on multy-party computations such that the data of one party remains private to other parties, and is used by aggregation learning, for instance. Finally, it's possible to develop \textit{back-door} attacks: malicious modifications to the model might allow an adversary to infer private information, if she provides the specific inputs that are designed to trigger that. All of these are listed in more detail in \cite{WMLMPASAO}.
 
 
-\subsection{Interpretability}
+\subsection{Explainability}
 
+% https://arxiv.org/pdf/1806.00069 (Explaining Explanations: An Overview of Interpretability of Machine Learning) - More philosofical introduction, explain vs interpret, it might not be good to hear only humans as we might make persuasive instead of good explanations, it might be unethical to oversimplify just to get more acceptance, the tradeoff between interpretability and its completeness can be seen not only as a balance between simplicity and accuracy in a proxy model. The tradeoff can also be made by anchoring explanations to substitute tasks or evaluating explanations in terms of their ability to surface important model biases
 
+% https://www.mdpi.com/1099-4300/23/1/18 (Explainable AI: A Review of Machine Learning Interpretability Methods): Goals, local vs global, model-specific vs model-agnostic.
+
+% https://ieeexplore.ieee.org/abstract/document/9007737 (Explainable Machine Learning for Scientific Insights and Discoveries): 
+
+% https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full (Principles and Practice of Explainable Machine Learning): 
+
+% https://www.jair.org/index.php/jair/article/view/12228 (A Survey on the Explainability of Supervised Machine Learning): 
+
+% https://www.mdpi.com/2079-9292/8/8/832 (Machine Learning Interpretability: A Survey on Methods and Metrics): 
+
+% https://link.springer.com/article/10.1007/s13347-019-00372-9 (Against Interpretability: a Critical Examination of the Interpretability Problem in Machine Learning):
+
+% https://dl.acm.org/doi/pdf/10.1145/3236386.3241340 (The mythos of model interpretability: In machine learning, the concept of interpretability is both important and slippery): 
+
+Explainability, loosely defined, concerns the ability to assign meaning to why some model took one or more decisions, in a way that can be interpreted by humans. 
 
 \subsection{Causality}
 
