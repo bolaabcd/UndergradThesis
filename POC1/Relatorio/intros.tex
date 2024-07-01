@@ -29,13 +29,44 @@ We will say that the result is \textbf{positive} for a data point if it benefits
 
 Such biases can happen because of many factors. The algorithm itself might be introducing bias, or the data might be biased. The data might have been collected in a biased way (in the compass example, this would be the case if reincidivism data was collected more for black reincidivists than for white), or the data might be simply reinforcing some bias of the society. 
 
-Also, the bias in society might be such that the data is in disagreement with reality (the unpriviledged group true values for the target variable would affect them in the same way as the priviledged group), or it is in agreement with reality because of structural biases in society. For instance, if the prediction of the algorithm is whether or not someone will have good grades if accepted to some university, people in the unpriviledged group might not have had as good oportunities in life as people in the priviledged group, so the data is correct when it says that those people will have worse grades. Even though, the results might still be considered unfair: this depends on the notion of fairness we consider.
+Also, the bias in society might be such that the data is in disagreement with reality (the unpriviledged group true values for the target variable would affect them in the same way as the priviledged group), or it is in agreement with reality because of structural biases in society. For instance, if the prediction of the algorithm is whether or not someone will have good grades if accepted to some university, people in the unpriviledged group might not have had as good oportunities in life as people in the priviledged group, so the data is correct when it says that those people will have worse grades. Even though, the results might still be considered unfair: this depends on the notion of fairness we consider. All of these unfairness possibilities can be futther divided into other types of unfairness, as was done in \cite{A Survey on Bias and Fairness in Machine Learning}.
 
-Many different notions of algorithmic fairness have been developed, and some are not compatible \cite{uncompatibleFair}.
+Besides deliberate bias in the algorithm, such that the results of the algorithm do not reflect the data, and biased data, it is also possible to introduce bias because the algorithm might prioritize making correct predictions for the majority of the population, if it can't make correct predictions for both the majority and the minority. Another possibility is that the prediction might depend on past decisions of the algorithm, and we only know the result if the result provided is positive (for instance, we only know if someone will reincide if we release them). In this type of scenario, according to Learning Theory it's important to take suboptimal decisions to \textit{explore} different options and gather more data \cite{The Frontiers of Fairness in Machine Learning}, which might be considered unethical as it might have a big cost to society (releasing someone that's probably going to commit more crimes) or to the individual (not giving a life-saving drug to some patients as an experiment to see the survival rates for that specific group). 
 
-%Even then, there are many results, some general enough to include the most commonly used fairness notions, indicate that fairness and accuracy can be fundamentally incompatible\cite{omnifair}\cite{Microsoft}\cite{carlos}. 
+Many different notions of algorithmic fairness have been developed, and some are not compatible \cite{uncompatibleFair}. Initially, the notions of fairness could be grouped into two main types: statistical and individual definitions of fairness\cite{The Frontiers of Fairness in Machine Learning}. Statistical (group) notions of fairness require some statistical metric to be similar for certain demographic groups, and individual notions enforce constraints on pairs of individuals, for instance requiring similar individuals to be treated similarly. Many problems with statistical notions and why they, in general, don't provide good individual guarantees are presented in \cite{awareness}\cite{Preventing Fairness Gerrymandering:Auditing and Learning for Subgroup Fairness}. Some of these problems include: satisfying the constraints for two protected attributes individually but not to combinations of these attributes, . One problem with both individual and group notions is \textit{composition}: it is not always the case that satisfying fairness constraints in individual, isolated, components of a system imply that fairness constraints will be satisfied for the whole system \cite{Fairness Under Composition}. Finally, there are also causal approaches to fairness notions, which we will discuss more in Section \ref{sec:theoRef}.
+
+The techniques developed to reduce unfairness in algorithmic decision making can be divided into \textit{pre-processing}, \textit{in-processing} and \textit{post-processing}. Pre-processing techniques modify the training data to remove biases present there. In-processing techniques modifies the learning algorithm iteself, for instance by changing the objective learning function to include not only accuracy but also adding to it some statistical fairness metric, or including some constraint that it has to satisfy. Post-processing techniques act after the model is trained to reduce the unfairness in the decisions made by such a model.
+
+We summarize below the ways in which unfairness might be introduced:
+
+\begin{enumerate}
+\item Algorithm does not reflect the data.
+    \begin{enumerate}
+    \item Prefers the majority (Aggregation Bias)
+    \item Systematic errors in the algorithm
+    \item 
+    \end{enumerate}
+\item Data is biased, doesn't reflect reality
+    \begin{enumerate}
+    \item Society is biased, people didn't have a chance through life 
+    \item Society is biased, people are good but didn't get the job
+    \item Data collection doesn't reflect the reality: Measurement bias (for instance, COMPASS used friend/family arrests as a proxy for a risk score), Ommited Variable bias (this violates assumptions of some learning models, for instance linear regression models usually assumes error terms uncorrelated with the parameters considered in the regression), Representation/Sampling Bias (biased sampling lacking the diversity of the population), Simpson's Paradox (if we don't have data on a confounder, correlations might be spurious \cite{Causality}). 
+    \item Population Bias (data was collected on another group)
+    \item Temporal Bias (data collected on another time)
+    \item Data that relies on people's opinion is prone to many biases (social bias people do what others are doing, self-selection bias people think that everyone agrees with them, and many many many others)
+    \end{enumerate}
+\item No exploration and data depends on the algorithm's output: Presentation Bias (the user only sees some cases), Ranking Bias (search engines presenting some results in a biased way), Popularity Bias (more popular are shown more)
+\item Emergent Bias (things change, the algorithm not, and things might )
+\end{enumerate}
+
 
 \subsection{Privacy}
+
+% Privacy references: https://dl.acm.org/doi/abs/10.1145/3436755 and https://ieeexplore.ieee.org/document/9433648
+
+Privacy is the quality of maintaining secret specific information to unauthorized parties. In the context of Machine Learning, a privacy-preserving algorithm is one that doesn't allow information considered private/sensitive to be obtained by unauthorized parties. This has been named \textit{private ML}\ref{WMLMPASAO}, and the private data to be protected can be the data using to train the model or the model parameters and structure itself. It is also possible to use Machine Learning to enhance privacy, or to serve as an attack tool. We focus on \textit{private ML}. 
+
+
 
 
 
