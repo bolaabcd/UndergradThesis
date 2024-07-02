@@ -73,23 +73,17 @@ One approach to improving privacy in Machine Learning is by encrypting the data 
 
 \subsection{Explainability}
 
-% https://arxiv.org/pdf/1806.00069 (Explaining Explanations: An Overview of Interpretability of Machine Learning) - More philosofical introduction, explain vs interpret, it might not be good to hear only humans as we might make persuasive instead of good explanations, it might be unethical to oversimplify just to get more acceptance, the tradeoff between interpretability and its completeness can be seen not only as a balance between simplicity and accuracy in a proxy model. The tradeoff can also be made by anchoring explanations to substitute tasks or evaluating explanations in terms of their ability to surface important model biases
+Explainability, loosely defined, concerns the ability to assign meaning to why some model took one or more decisions, in a way that can be interpreted by humans. There is currently no consensus for a precise definition of the term, and many papers argue about distinctions between interpretability and explainability. For instance, \cite{Explaining Explanations: An Overview of Interpretability of Machine Learning} defines interpretability as the property of being able to describe the internal working of systems to humans and \textit{completeness} as the property of being able to accurately describe the operation of the system, and an explainable system has both properties at an acceptable level. The paper \cite{Explainable Machine Learning for Scientific Insights and Discoveries} draws this distinction in a different way: they define transparency as the higher-level explanation given by the designers of the system of their choices of architecture, algorithm and hyperparameters, while interpretations are defined as answers to the question \qm{what does the model bases its decision on?}, and explanations as the combination of interpretations and contextual information from domain knowledge. In general, it is considered necessary that an explanation both explains the inner workings of a system accurately and is comprehensible enough for humans with the relevant domain knowledge. There is a trade-off between these two goals, as we want not only to reach a balance between simplicity and accuracy, but we also want important biases in the model to be evident in the explanation, as mentioned in \cite{Explaining Explanations: An Overview of Interpretability of Machine Learning}.
 
-% https://www.mdpi.com/1099-4300/23/1/18 (Explainable AI: A Review of Machine Learning Interpretability Methods): Goals, local vs global, model-specific vs model-agnostic.
+There are some classifications of the existing approaches to explainability, but we focus on the classification defined in \cite{Explainable AI: A Review of Machine Learning Interpretability Methods}. We can divide the approaches based on whether they are \textbf{local} or \textbf{global}: local explanations focus on explaining individual decisions, and global explanations focus on explaining the overall workings of the model. LIME \cite{lime} and SHAP \cite{shap} are examples of methods that provide local explanations and can be used to derive global explanations. We can also divide the approaches into \textbf{Model Agnostic} and \textbf{Model Specific}: the former refers to methods that don't depend on the inner workings of the model (for instance, SHAP \cite{shap} and LIME \cite{lime}), the latter refer to methods developed to work only for a specific group of models (for instance, Grad-CAM and Shap-CAM are specific for Convolutional Neural Networks). Finally, we can divide explainability approaches on the data types these methods deal with and the purpose of the explanations.
 
-% https://ieeexplore.ieee.org/abstract/document/9007737 (Explainable Machine Learning for Scientific Insights and Discoveries): Transparency (the designer can explain why such a model, distance metrics, etc. were selected, between the model and the developer) vs Interpretability (what exaclty does the model bases its decision on??? Uses proxy simpler models such as linear models, decision trees, etc. or visual approachs such as heatmaps, dimensionality reduction, etc., between the model and the data). This paper discusses how explainability can be used to enhance scientific research in natural sciences and provides some examples in the literature.
+As discussed at \cite{Principles and Practice of Explainable Machine Learning}, explanations may be usefull to data scientists, business owners, model risk analysts, regulators and consummers, each with different goals in mind. The concerns that might be reduced by the use of explainable models include: correctness (only variables relevant should be used in the final decisions and we should not use spurious correlations incorrectly), robustness (the model should not be susceptible to small pertubations), bias (the model should not be biased against specific subgroups), improvement (we might want to improve the model, and explanations can aid in this goal), transferability (the model should be useful in populations other than the one used to train and test the data) and human comprehensibility (this can aid an expert or even a non-expert in using and even trusting the results provided by the model). The paper also mentions some criterias for evaluating explanations, that include how comprehensible the explanation is, how they accurately capture the models they aim to explain, how accurately they can be used to predict other outcomes of the model, how they scale to larger and more complex models, and how restrictive they are on the type of accepted model, some of these notions are further explored in \cite{Machine Learning Interpretability: A Survey on Methods and Metrics}. They also evaluate explanations by example (for instance, counterfactuals \cite{CounterExplain} that provide examples with small changes to an input that can modify the output), and explanations by simplification (approximating a complex model by a simpler one). These approaches are different from SHAP, for instance, as it is based on game-theoretic based feature importance concepts. LIME can be considered to provide explanations by simplification, by locally approximating the model to a linear model. As mentioned in \cite{Explainable Machine Learning for Scientific Insights and Discoveries}, explanations can also be used to enhance scientific research in natural sciences.
 
-% https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2021.688969/full (Principles and Practice of Explainable Machine Learning): This one provides important and clear distincts between different approaches, who cares and what exactly they care about. It provides a very good division of approaches, I prefer this one to the previous one, although the previous one is more focused on natural science applications. I THINK I PREFER THIS ONE!
+Some models are inheretely interpretable, as their inner working is easier to understand for humans. Some examples mentioned in \cite{Principles and Practice of Explainable Machine Learning} are: Linear\\Logistic Regression, Decision Trees, K-Nearest Neighbors (KNN), Rule-based learning, Generalized Additive Models (GAMs) and Bayesian networks. Some researchers criticise this claim for some of these models, for instance, \cite{The mythos of model interpretability: In machine learning, the concept of interpretability is both important and slippery} points out that linear models are not necessarily easily interpretable, as they sometimes rely on un-interpretable and heavily-engineered features.
 
-% https://www.jair.org/index.php/jair/article/view/12228 (A Survey on the Explainability of Supervised Machine Learning): This ones lists some nice reasons to develop explainability, and domains where this can be applied. It also lists extra types of interpretable ML models. It also provides alternative divisions of the user of the explanation. It also talks about ontology and ontologies as if it was a concrete thing... Might be interesting, seems to be a way to formalize knowledge sharing...
+Other criticisms to the current development of explainability approaches were made: for instance, \cite{Against Interpretability: a Critical Examination of the Interpretability Problem in Machine Learning} argues that explainability is always a means to an end, and by requiring explanations to our models we may be significaltly restricting the space of possibilities of dealing with the problems we need to face. For instance, there are approaches to verify if a model is fair that do not rely on explanations of the inner workings of the model (and in this case, relying on explanations might lead to other problems, as mentioned in \cite{How to explain and justify almost any decision}). Another possible problem with explainability is that if we rely on humans opinions we might end up with methods that are \textit{persuasive}, instead of \textit{accurate}, as these two properties might not be fully aligned. 
 
-% https://www.mdpi.com/2079-9292/8/8/832 (Machine Learning Interpretability: A Survey on Methods and Metrics): this one lists interesting properties of individual explanations such as fidelity and others. It is very big, so I think we can use just this part. Maybe the part where it mentions fairness, privacy, and other possible uses of explainability...
-
-% https://link.springer.com/article/10.1007/s13347-019-00372-9 (Against Interpretability: a Critical Examination of the Interpretability Problem in Machine Learning): They say interpretability doesn't make sense in the context of ML algorithms, and we can solve our problems without it, as it is always a means to an end we are restricting ourselves if we enforce that this should be an mean, we could solve directly the end.
-
-% https://dl.acm.org/doi/pdf/10.1145/3236386.3241340 (The mythos of model interpretability: In machine learning, the concept of interpretability is both important and slippery): this one also points out that linear models for instance are not necessarily better, as they might rely on un-interpretable and heavily-engineered features. They also point out other things to look out for when working with explainability.
-
-Explainability, loosely defined, concerns the ability to assign meaning to why some model took one or more decisions, in a way that can be interpreted by humans. 
+An in-depth survey on machine learning explainability can be found at \cite{A Survey on the Explainability of Supervised Machine Learning}, with some definitions regarding ontology and the philosophical meaning of explanations and knowledge sharing. 
 
 \subsection{Causality}
 
@@ -101,34 +95,34 @@ The second level of causation concerns questions of the type: \qm{what's the con
 
 The third level of causality regards questions of the type: \qm{what would have happened had something been different?}. For instance, \qm{what would be the average temperature of Earth had the Industrial Revolution never happened?}. Note that we make an observation about something that happened, then we think what would have happened if we changed something that already happened. This is what Pearl calls a counterfactual question: it requires imagining alternative worlds. To deal with this kind of question, Pearl proposes Structured Causal Models (SCMs). Also, in the way the Pearl defines counterfactuals, there is a fundamental distinction between counterfactuals and actions with observations: in his notation, when we write the probability of some variable reaching some value given that there was an action and an observation, we interpret this as if the observation came \textit{after} the action. This is different from the counterfactual notation, in which the observation comes before the action. The notation used by Pearl for the counterfactual notion is $P(Y_{x'} = y| X=x)$, which can be interpreted as how likely it is for $Y$ to have value $y$ in the world that we manually set $X$ to $x'$, given that we observed that the value of $X$ is $x$. This is different from $P(Y=y|do(X=x'),X=x)$, as this should be interpreted as the probability that $Y$ has a value $y$ when we manually set $X$ to $x'$ and then observe that $X$ has value $x$, which doesn't make sense if $x \neq x'$ (we shouldn't be able to condition on impossible scenarios). This difference of interpretation can lead to confusion, and was mentioned in the second part of the \qm{question to author} at subsection $11.7.2$ of \cite{Causality}.
 
-% The assumption of DAGs, with asterisk that pearl can deal with some non-DAG situations
+{\color{red} The assumption of DAGs, with asterisk that pearl can deal with some non-DAG situations}
 
-% Causal Discovery: mention that we can recover the general class of possible models, mention in general how even this is possible.
+{\color{red} Causal Discovery: mention that we can recover the general class of possible models, mention in general how even this is possible.}
 
-% Causal Inference: do calculus, actions, dynamic plans, etc.
+{\color{red} Causal Inference: do calculus, actions, dynamic plans, etc.}
 
-% Direct and Indirect Effects, Natural direct effects
+{\color{red} Direct and Indirect Effects, Natural direct effects}
 
-% Confounding as a causal concept
+{\color{red} Confounding as a causal concept}
 
-% Mention that pearl writes axioms for counterfactuals, and all the logic behind them
+{\color{red} Mention that pearl writes axioms for counterfactuals, and all the logic behind them}
 
-% Counterfactuals are usually impossible to compute, but we can estimate them
+{\color{red} Counterfactuals are usually impossible to compute, but we can estimate them}
 
-% Some subtleties of causation: Probability of necessity, sufficiency and both, the actual cause.
+{\color{red} Some subtleties of causation: Probability of necessity, sufficiency and both, the actual cause.}
 
 \subsection{Quantitative Information Flow}
 
-% Measurement of information flow, example that always leaks, why is this important
+{\color{red} Measurement of information flow, example that always leaks, why is this important}
 
-% Representing knowledge as a distribution on secrets, leakage from systems as channels, composition of channels
+{\color{red} Representing knowledge as a distribution on secrets, leakage from systems as channels, composition of channels}
 
-% g-vulnerability, prior, posterior, leakage
+{\color{red} g-vulnerability, prior, posterior, leakage}
 
-% Some overview of the theorems: capacity, refinement, dalenius leakage, 
+{\color{red} Some overview of the theorems: capacity, refinement, dalenius leakage, }
 
-% Maybe mention that we have axioms, and we can derive the alternative version of the results that uses maximum adversarial gain instead of average.
+{\color{red} Maybe mention that we have axioms, and we can derive the alternative version of the results that uses maximum adversarial gain instead of average.}
 
-% Maybe mention the distinction between prior and posterior knowledge, the use of hyper distributions, abstract channels and maybe even Markovs and HMMs.
+{\color{red} Maybe mention the distinction between prior and posterior knowledge, the use of hyper distributions, abstract channels and maybe even Markovs and HMMs.}
 
-% Maybe mention that one problem is that we assume a zero-sum game.
+{\color{red} Maybe mention that one problem is that we assume a zero-sum game.}
