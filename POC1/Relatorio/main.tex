@@ -43,15 +43,18 @@
 
 Recent resarch\cite{Sok}\cite{Reductions}\cite{Rachel}\cite{Awareness} indicates numerous tensions and synergies between many concepts that surround the Machine Learning literature, including Fairness, Privacy, Accuracy and Explainability. For instance, there is an inherent tradeoff between Fairness and Accuracy such that, depending on the data distribution, it might be impossible to develop a model that achieves acceptable values for both fairness and accuracy, if we consider some reasonable fairness metrics\cite{Carlos}. Also, there has been some work on introducing Causality concepts into the discussion, for instance, to develop better fairness metrics\cite{CausalFair}. It has also been suggested to use naturally-interpretable models (as explanations to more complex models) for auditing systems and checking if they are fair, although this might lead to problems\cite{ExplainAll}. This area of research is especially relevant nowadays, given the importance that Machine Learning and Artificial Intelligence systems have: we now have computational systems that are part of processes of making decisions with big impacts on people's lives, for instance, recidivism prediction\cite{Compass}, loan approvals\cite{Loans}, hiring decisions\cite{Jobs}, and others.
 
-In this first part of the Undergraduate Thesis, we provide a concise review of the literature on the topics presented. The main goal is to provide a solid basis for future work on these topics and identify the known connections among them. Section \ref{sec:theoRef} discusses the already developed theoretical work on these areas, section \ref{sec:contribs} provides the contributions of this analysis in the form of a higher-level discussion of what we can gather from the literature and the meaning of these results, and section \ref{sec:concsFuture} provides conclusions and possible future lines of work. Section \ref{sec:theoRef} also provide an introduction to the concepts of Causality, Fairness, Privacy, Explainability in Machine Learning, and also Quantitative Information Flow (QIF).
+In this first part of the Undergraduate Thesis, we provide a concise review of the literature on the topics presented. The main goal is to provide a solid basis for future work on these topics and identify the known connections among them. Section \ref{sec:theoRef1} discusses the already developed theoretical work on these areas, section \ref{sec:theoRef2} discusses connections between them found in the literature, section \ref{sec:contribs} provides the contributions of this analysis in the form of a higher-level discussion of what we can gather from the literature and the meaning of these results, and section \ref{sec:concsFuture} provides conclusions and possible future lines of work. 
 
-
-\section{Theoretical Reference}\label{sec:theoRef}
+\section{Theoretical Reference: individual concepts}\label{sec:theoRef1}
 %Capítulo referencial: identificação de trabalhos correlatos, referencial teórico.
 
-First, we provide a general background on some introductory concepts in the areas of Machine Learning, Causality, Fairness, Privacy, Explainability in Machine Learning, and also Quantitative Information Flow (QIF). Then we mention comparisons found in the literature between these areas of research.
+First, we provide a general background on some introductory concepts in the areas of Machine Learning, Causality, Fairness, Privacy, Explainability in Machine Learning, and also Quantitative Information Flow (QIF).
 
 \input{intros}
+
+\section{Theoretical Reference: relations between the concepts}\label{sec:theoRef2}
+
+In this section we mention comparisons found in the literature between these areas of research.
 
 \input{pairs}
 
