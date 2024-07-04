@@ -118,16 +118,15 @@ Finally, we say that $X=x$ is an \textbf{Actual Cause} of $Y=y$ in the state $U=
 
 \subsection{Quantitative Information Flow}
 
-{\color{red} Measurement of information flow, example that always leaks, why is this important}
+The area of Quantitative Information Flow deals with methods of measuring information leak from systems. This estimation is important to consider when developing real systems, as some information leaks are acceptable. For instance, whenever someone tries to authenticate with an username and password, but incorrectly guesses the password, some information leaked about the real value of the password: we now at least know that it's not the one that was tried. But intuitively, this is acceptable, while revealing the real password whenever someone makes an incorrect guess is unacceptable. How to adequately quantify the ammount of information leak from a system might depend on the goals of the people involved and on the information they have before the system executes.
 
-{\color{red} Representing knowledge as a distribution on secrets, leakage from systems as channels, composition of channels}
+We define an \textbf{adversary} as an agent that tries to gain something with the information that leaks from the system, the \textbf{secret} as the data that the system processes, the \textbf{prior} as the distribution on secrets that represents the knowledge of the adversary before the system is run, and the \textbf{posterior} as the hyper-distribution (a distribution on distributions) on secrets that represents the knowledge of the adversary after the system is run. We use an information-theoretic \textbf{channel} to represent the distributions of observable values outputed from the system, which might depend on the secret value. The set $\mathcal{X}$ represents the set of possible values of the secrets, the set $\mathcal{Y}$ represents the possible values of observable outputs of the system, and the set $\mathcal{W}$ represents the possible values of actions the adversary might take.
 
-{\color{red} g-vulnerability, prior, posterior, leakage}
+We consider the $g$-vulnerability framweork, introduced in \cite{QIF}. We define a gain function $g : \mathcal{W} \times \mathcal{X} \rightarrow \mathbb{R}$, such that $g(w,x)$ defines the gain of the adversary if she takes the action $w$ when the actual secret value is $x$. We consider a zero-sum game: the gain of the adversary is exactly the loss of the people responsible for the system. The \textbf{prior vulnerability} of the system is defined as the average gain of the adversary if she takes the action that maximizes her gain, according to the prior distribution on secrets that represents her knowledge of the secret. The \textbf{posterior vulnerability} of the system is defined in the same way, but considering the hyper-distribution that represents the posterior knowledge. Notice that each distribution in the posterior hyper-distribution represents the knowledge of the adversary after some of the possible observations after the system is run, so it represents what we, before the system runs, estimate will be the future values of the adversarial knowledge after the system runs. The \textbf{additive leakage} can be defined as the difference between posterior and prior vulnerability, and the \textbf{multiplicative leakage} as the result of dividing of the posterior vulnerability by the prior vulnerability values. As teorema leak >= 1 >= 0
+
 
 {\color{red} Some overview of the theorems: capacity, refinement, dalenius leakage, }
 
 {\color{red} Maybe mention that we have axioms, and we can derive the alternative version of the results that uses maximum adversarial gain instead of average.}
 
 {\color{red} Maybe mention the distinction between prior and posterior knowledge, the use of hyper distributions, abstract channels and maybe even Markovs and HMMs.}
-
-{\color{red} Maybe mention that one problem is that we assume a zero-sum game.}
