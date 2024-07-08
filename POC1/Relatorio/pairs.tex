@@ -1,6 +1,13 @@
 \subsection{Accuracy $\times$ Fairness}
 
-{\color{red}Carlos' paper, Rachel's paper, Microsoft's paper, and maybe others.}
+There are results that indicate an inherent trade-off between fairness and accuracy in machine learning:
+
+\begin{enumerate}
+\item \cite{Carlos} shows that there are trade-offs between Equal Oportunity Difference and accuracy such that, depending on the data distribution, it might impossible to achieve both perfect Equal Oportunity Difference and non-trivial accuracy. It also shows some other theoretical results that associate EOD and accuracy, such as sufficient conditions for the existance of non-trivially accurate predictors that lead to zero Equal Opportunity Difference and non-trivial accuracy and algebraic and geometric properties of the feasible values of Equal Opportunity Difference and accuracy.
+\item \cite{Reductions} provides methods for computing the best possible accuracy given some level of fairness, for a general notion of fairness that encompasses many common metrics. They devise an algorithm for solving a constrained linear optimization problem that minimizes the error subject to fairness constraints, and provide experimental results for some datasets, including the COMPAS \cite{Compass} dataset. One interesting results is that for some datasets (such as the Compas dataset), it is possible to reduce Equal Opportunity Difference without changing much the accuracy, but for some datasets (such as the Dutch Census Dataset\cite{Dutch} with gender as the protected attribute and the goal is if someone has a prestigious occupation) {\color{red} Dutch Census deve ser esse: \url{https://www.researchgate.net/profile/Eric-Schulte-Nordholt/publication/286099390_The_Dutch_Census_2011/links/58a3228b458515d15fd942d2/The-Dutch-Census-2011.pdf}}
+\item \cite{How fair can we go in machine learning? Assessing the boundaries of accuracy and fairness} Provides a method of finding the full Paretto front of accuracy versus fairness. Their approach is based on a genetic algorithm, and the notion of fairness that they consider is False-Positive Rate for avoiding disparate mistreatment, but it is possible to use most metrics available in the literature.
+\item \cite{A comparative study of fairness-enhancing interventions in machine learning} provides empirical analysis of some of the existing fairness-enhancing methods for machine learning, showing that the results are influenced a lot by the fairness notion used and also by the dataset.
+\end{enumerate}
 
 \subsection{Accuracy $\times$ Privacy}
 
