@@ -11,9 +11,14 @@ There are results that indicate an inherent trade-off between fairness and accur
 
 \subsection{Accuracy $\times$ Privacy}
 
-{\color{red} Differential privacy literature should have something}
+If we consider obfuscation methods for privacy (such as Differential-Privacy and Local Differential Privacy mechanisms), in general bigger privacy constraints imply in a smaller accuracy when training Machine Learning Models. There are also homomorphic encryption and secure multi-party computation approaches, which have computational complexity as a major challenge instead of the accuracy. In fact, some predictions can be made without any loss of accuracy at all, as shown in \cite{Privacy-preserving classification of customer data without loss of accuracy} for the naive Bayes classifier. Notice that in the Local Differential Privacy context, we know exactly how the noise is applied an thus might be able to reverse some the effect of the noise when training the model, and in general the effectiveness of this reversion determines how much the accuracy of the model will be affected.
 
-{\color{red} Mencionar que acurácia é uma forma de utilidade, e que existem estudos disso. Citar Local Differential Privacy for Deep Learning e outros que falem de LDP com ML. No frigir dos ovos, acurácia é uma coisa computada a partir dos dados e portanto depende do quão eficientemente nós conseguimos recuperar a informação real/original dado a ruidosa.}
+\begin{enumerate}
+\item \cite{Local differential privacy and its applications: A comprehensive survey} provides an overview of the use of Local Differential Privacy in general, but also further discusses machine learning in the local different privacy scenario, both for unsupervised and supervised learning.
+\item \cite{Preserving User Privacy for Machine Learning: Local Differential Privacy or Federated Machine Learning?} compares Local Differential Privacy and Federated Learning approaches empirically, concluding that LDP approaches consume less computational resources on the client-side, benefits from a large user population and can be reused for other tasks, while the data transfered to the server for the Federated Learning approach is specific for one inference task.
+\item \cite{LoPub : High-Dimensional Crowdsourced Data Publication With Local Differential Privacy} proposes a method for applying Local Differential Privacy to high-dimensional data, and evaluates it empirically, showing that in general stronger privacy also implies smaller accuracy.
+\item \cite{About dependence between individuals: Dependence Makes You Vulnerable: Differential Privacy Under Dependent Tuples} explores differential privacy in the setting in which the individual data points are correlated in a way that can be explored by the adversary, and investigates how to provide better privacy guarantees in this scenarios. This might be important to consider in the machine learning scenario as well in the future, as the advesary might take advantage of such correlations in this type of situation as well.
+\end{enumerate}
 
 \subsection{Accuracy $\times$ Explainability}
 
@@ -30,6 +35,13 @@ There are results that indicate an inherent trade-off between fairness and accur
 \subsection{Fairness $\times$ Privacy}
 
 {\color{red} Rachel's paper, fairness through awareness maybe, and others. Awareness is about being fair by a generalization of differential privacy if I recall correctly, at least in individual fairness, the relations with group fairness and other stuff.}
+
+\begin{enumerate}
+\item (Local) Differential Privacy has NO Disparate Impact on Fairness
+\item On the impact of multi-dimensional local differential privacy on fairness
+\item A Systematic and Formal Study of the Impact of Local Differential Privacy on Fairness: Preliminary Results
+\item 
+\end{enumerate}
 
 \subsection{Fairness $\times$ Explainability}
 
