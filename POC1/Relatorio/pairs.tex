@@ -22,10 +22,14 @@ If we consider obfuscation methods for privacy (such as Differential-Privacy and
 
 \subsection{Accuracy $\times$ Explainability}
 
-If the Machine Learning model is inherentely interpretable by humans, then usually it is less accurate than more complex models\cite{?}. Also, explainability methods might help the model developer in identifying problems and improving the model quality, which might include improving the accuracy \cite{A Survey on the Explainability of Supervised Machine Learning}. Also, for simpler models it is possible to keep good accuracy and explainability levels \cite{Artigos mencionados em It is Not Accuracy vs. Explainability We Need Both for Trustworthy AI Systems}.
+If the Machine Learning model is inherentely interpretable by humans, then usually it is less accurate than more complex models (the most common example are the deep convolutional neural networks). Also, explainability methods might help the model developer in identifying problems and improving the model quality, which might include improving the accuracy \cite{A Survey on the Explainability of Supervised Machine Learning}. Also, for simpler models it might be possible to keep good accuracy and explainability levels.
 
 \begin{enumerate}
-\item \cite{It is Not Accuracy vs. Explainability We Need Both for Trustworthy AI Systems} sobre os argumentos contra e a favor de perder acurácia por explicabilidade e se issoacontece mesmo.
+\item \cite{It is Not Accuracy vs. Explainability We Need Both for Trustworthy AI Systems} discusses some arguments for and against this dilemma, and points out some options of where the focus should be when developing and implementing Machine Learning systems.
+\item \cite{Artificial Intelligence and Black-Box Medical Decisions: Accuracy versus Explainability} argues that in some situations it might be better to accept results without an explanation when these results can be empirically verified to lead to better results than well-explained results. Two important points raised by the paper are: \qm{The opacity, independence from an explicit domain model, and lack of causal insight associated with some powerful machine learning approaches are not radically different from routine aspects of medical decision-making} and \qm{In medicine, the ability to intervene effectively in the world by exploiting causal relationships often derives from experience and precedes clinicians' ability to understand why interventions work.}
+\item \cite{Explainable artificial intelligence: an analytical review} discusses the known trade-offs between accuracy and explainability for some distinct scenarios and models, the areas that can benefit the most from explainable ML and a general review of explainability.
+\item \cite{Does Explainable Artificial Intelligence Improve Human Decision-Making?} provides an empirical study on whether explanations for AI predictions do or do not improve the accuracy of human decision-making, and the results indicate that this might not be the case.
+\item \cite{Trading off accuracy and explainability in AI decision-making: findings from 2 citizens' juries} provides an empirical study to evaluate the opinion of the general public on whether it is worth trading explainability for accuracy in healthcare and non-healthcare scenarios. The conclusion is that in healthcare accuracy is favored, and in other scenarios explainability is valued equally to or more than accuracy.
 \end{enumerate}
 
 \subsection{Accuracy $\times$ Causality}
@@ -50,6 +54,9 @@ If the Machine Learning model is inherentely interpretable by humans, then usual
 \subsection{Fairness $\times$ Explainability}
 
 {\color{red} Some people try to judge fairness based on the explanation, we can mention the How to Justify Almost Anything aqui, que pra auditar pode não ser uma boa ideia, só isso mesmo talvez.}
+\begin{enumerate}
+\item \cite{"Just" accuracy? Procedural fairness demands explainability in AI-based medical resource allocations} discusses how not providing explanations for decision can threaten accountability, bias avoidance and transparency when evaluating and mitigating unfairness in ML-based decisions.
+\end{enumerate}
 
 \subsection{Fairness $\times$ Causality}
 
