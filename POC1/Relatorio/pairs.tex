@@ -55,9 +55,11 @@ There are some impossibility results in the literature that argue why it is impo
 
 \subsection{Fairness $\times$ Explainability}
 
-{\color{red} Some people try to judge fairness based on the explanation, we can mention the How to Justify Almost Anything aqui, que pra auditar pode não ser uma boa ideia, só isso mesmo talvez.}
+Fairness evaluation is a goal usually mentioned when the utility of explainability studies is discussed in the literature\cite{"Just" accuracy? Procedural fairness demands explainability in AI-based medical resource allocations}. There are also some negative results in this respect, that indicate that in some situations, it is possible to provide convincingly fair explanations for decisions that were actually made in an unfair way\cite{How to explain and justify almost any decision: Potential pitfalls for accountability in ai decision-making}.
+
 \begin{enumerate}
 \item \cite{"Just" accuracy? Procedural fairness demands explainability in AI-based medical resource allocations} discusses how not providing explanations for decision can threaten accountability, bias avoidance and transparency when evaluating and mitigating unfairness in ML-based decisions.
+\item \cite{How to explain and justify almost any decision: Potential pitfalls for accountability in ai decision-making} shows empirical results of training a baseline, a fair, an unfair and a random model on the COMPAS\cite{Compass} dataset and then finding possible explanations for the results provided by the model. The paper explores a space of explanations that are simple, verifiable and relevant according to definitions they provide for these terms, and show that it's possible to provide valid justifications for the decisions for the majority of the models. They also explore the situation in which explanations are provided for many data points and then analysed to verify for consistency, sufficiency and uniqueness (which they define formally in the paper), and achieve similar results: it can be possible to provide justifications for almost any decision that seem valid, even if the justification does not reflect how the model really decides.
 \end{enumerate}
 
 \subsection{Fairness $\times$ Causality}
