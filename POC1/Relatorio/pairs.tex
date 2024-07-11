@@ -28,17 +28,17 @@ If the Machine Learning model is inherentely interpretable by humans, then usual
 \item \cite{It is Not Accuracy vs. Explainability We Need Both for Trustworthy AI Systems} discusses some arguments for and against this dilemma, and points out some options of where the focus should be when developing and implementing Machine Learning systems.
 \item \cite{Artificial Intelligence and Black-Box Medical Decisions: Accuracy versus Explainability} argues that in some situations it might be better to accept results without an explanation when these results can be empirically verified to lead to better results than well-explained results. Two important points raised by the paper are: \qm{The opacity, independence from an explicit domain model, and lack of causal insight associated with some powerful machine learning approaches are not radically different from routine aspects of medical decision-making} and \qm{In medicine, the ability to intervene effectively in the world by exploiting causal relationships often derives from experience and precedes clinicians' ability to understand why interventions work.}
 \item \cite{Explainable artificial intelligence: an analytical review} discusses the known trade-offs between accuracy and explainability for some distinct scenarios and models, the areas that can benefit the most from explainable ML and a general review of explainability.
-\item \cite{Does Explainable Artificial Intelligence Improve Human Decision-Making?} provides an empirical study on whether explanations for AI predictions do or do not improve the accuracy of human decision-making, and the results indicate that this might not be the case.
+\item \cite{It's Just Not That Simple: An Empirical Study of the Accuracy-Explainability Trade-off in Machine Learning for Public Policy} and \cite{Does Explainable Artificial Intelligence Improve Human Decision-Making?} provide an empirical study on whether explanations for AI predictions do or do not improve the accuracy of human decision-making, and the results indicate that this might not be the case.
 \item \cite{Trading off accuracy and explainability in AI decision-making: findings from 2 citizens' juries} provides an empirical study to evaluate the opinion of the general public on whether it is worth trading explainability for accuracy in healthcare and non-healthcare scenarios. The conclusion is that in healthcare accuracy is favored, and in other scenarios explainability is valued equally to or more than accuracy.
 \end{enumerate}
 
 \subsection{Accuracy $\times$ Causality}
 
-{\color{red} Maybe we can say that accuracy lies in the first ladder of causation, and usually we want to answer questions on other levels?}
+Accuracy is about how much a machine learning model makes correct guesses, Causality is about studying the causal relationships between variables. We can say that the problem of getting good accuracy lies on the first level of causation, as we are concerned about the data, although causality concepts could be used to transfer what was learned with the data of one population to another, for instance. Another possible relation is evaluating how accurate are causal discovery and causal inference algorithms. In general, these two concepts are unrelated.
 
 \subsection{Accuracy $\times$ QIF}
 
-{\color{red} Accuracy can be seen as a form of utility, maybe this is usefull for statistical disclosure control.}
+Acuracy can be viewed as a form of utility, which represents how useful a system is, which might be affected by how vulnerable it is. It is trivial to develop a system without any vulnerability, for instance, a system that always outputs $0$ no matter what is the input. But it's not useful, so we can consider that QIF is related to accuracy when we consider the former as the study of information leakage from a system and the latter as a form of measuring utility.
 
 \subsection{Fairness $\times$ Privacy}
 
