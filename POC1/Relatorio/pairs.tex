@@ -5,6 +5,7 @@ There are results that indicate an inherent trade-off between fairness and accur
 \begin{enumerate}
 \item \cite{Carlos} shows that there are trade-offs between Equal Oportunity Difference and accuracy such that, depending on the data distribution, it might impossible to achieve both perfect Equal Oportunity Difference and non-trivial accuracy. It also shows some other theoretical results that associate EOD and accuracy, such as sufficient conditions for the existance of non-trivially accurate predictors that lead to zero Equal Opportunity Difference and non-trivial accuracy and algebraic and geometric properties of the feasible values of Equal Opportunity Difference and accuracy.
 \item \cite{Reductions} provides methods for computing the best possible accuracy given some level of fairness, for a general notion of fairness that encompasses many common metrics. They devise an algorithm for solving a constrained linear optimization problem that minimizes the error subject to fairness constraints, and provide experimental results for some datasets, including the COMPAS \cite{Compass} dataset. One interesting results is that for some datasets (such as the Compas dataset), it is possible to reduce Equal Opportunity Difference without changing much the accuracy, but for some datasets (such as the Dutch Census Dataset\cite{Dutch} with gender as the protected attribute and the goal is if someone has a prestigious occupation) {\color{red} Dutch Census deve ser esse: \url{https://www.researchgate.net/profile/Eric-Schulte-Nordholt/publication/286099390_The_Dutch_Census_2011/links/58a3228b458515d15fd942d2/The-Dutch-Census-2011.pdf}}
+\item \cite{On the Impossibility of Fairness-Aware Learning from Corrupted Data} shows that it is always possible for an adversary to corrupt the data available for a learning algorithm in a way that the algorithm is unfair, and sometimes it is possible to do so without changing the accuracy.
 \item \cite{How fair can we go in machine learning? Assessing the boundaries of accuracy and fairness} Provides a method of finding the full Paretto front of accuracy versus fairness. Their approach is based on a genetic algorithm, and the notion of fairness that they consider is False-Positive Rate for avoiding disparate mistreatment, but it is possible to use most metrics available in the literature.
 \item \cite{A comparative study of fairness-enhancing interventions in machine learning} provides empirical analysis of some of the existing fairness-enhancing methods for machine learning, showing that the results are influenced a lot by the fairness notion used and also by the dataset.
 \end{enumerate}
@@ -42,13 +43,14 @@ Acuracy can be viewed as a form of utility, which represents how useful a system
 
 \subsection{Fairness $\times$ Privacy}
 
-{\color{red} Rachel's paper, fairness through awareness maybe, and others. Awareness is about being fair by a generalization of differential privacy if I recall correctly, at least in individual fairness, the relations with group fairness and other stuff.}
+There are some impossibility results in the literature that argue why it is impossible to achieve both pricacy and group fairness constraints under non-trivial accuracy\cite{On the Compatibility of Privacy and Fairness}. We also have positive results that show how stasifying privacy constraints can help mitigating group fairness\cite{A Systematic and Formal Study of the Impact of Local Differential Privacy on Fairness: Preliminary Results}\cite{On the impact of multi-dimensional local differential privacy on fairness}\cite{(Local) Differential Privacy has NO Disparate Impact on Fairness}, and we also have similar positive results results for individual fairness notions\cite{Awareness}.
 
 \begin{enumerate}
-\item (Local) Differential Privacy has NO Disparate Impact on Fairness
-\item On the impact of multi-dimensional local differential privacy on fairness
-\item A Systematic and Formal Study of the Impact of Local Differential Privacy on Fairness: Preliminary Results
-\item 
+\item \cite{A Systematic and Formal Study of the Impact of Local Differential Privacy on Fairness: Preliminary Results} aims to provide theoretical results that relate how training a machine learning model on a dataset in which local differential privacy mechanisms were applied can impact the fairness of this model, if the data-gatherer does not try to reverse the applied noise. The results are provided for a simplified machine learning model, from a theoretical persepctive.
+\item \cite{On the impact of multi-dimensional local differential privacy on fairness} aims to evaluate experimentally how training a machine learning model on a multi-dimensional data set in which local differential privacy mechanisms were applied can impact the fairness of the model, again if the data-gatherer does not try to reverse the noise.
+\item \cite{(Local) Differential Privacy has NO Disparate Impact on Fairness} executes an empirical evaluation of the impact of many Local Differential Privacy mechanisms on fairness when we do not try to reverse the applied noise, including a new privacy budget allocation scheme based on the domain size of sensitive attributes.
+\item \cite{Awareness} introduces a notion of individual fairness that is a generalization of differential privacy, and explores the relationship between this notion of fairness, differential privacy and statistical disparity.
+\item \cite{On the Compatibility of Privacy and Fairness} present theoretical results that show the impossibility of having a classifier that is not trivially accurate and at the same time satisfies $(\epsilon,0)$-differential privacy and equality of opportunity constraints. The paper also shows a PAC learner for an approximate fairness definition they provide.
 \end{enumerate}
 
 \subsection{Fairness $\times$ Explainability}
@@ -60,7 +62,7 @@ Acuracy can be viewed as a form of utility, which represents how useful a system
 
 \subsection{Fairness $\times$ Causality}
 
-{\color{red} Citar paper Karima sobre noções causais de fairness.}
+{\color{red} Citar paper Karima sobre noções causais de fairness. Citar tmb THE IMPOSSIBILITY THEOREM OF MACHINE FAIRNESS A CAUSAL PERSPECTIVE, esse segundo tem um problema de considerar equalized odds ao contrário.}
 
 \subsection{Fairness $\times$ QIF}
 
