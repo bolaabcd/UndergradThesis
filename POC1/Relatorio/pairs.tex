@@ -52,6 +52,7 @@ There are some impossibility results in the literature that argue why it is impo
 \item \cite{Awareness} introduces a notion of individual fairness that is a generalization of differential privacy, and explores the relationship between this notion of fairness, differential privacy and statistical disparity.
 \item \cite{On the Compatibility of Privacy and Fairness} present theoretical results that show the impossibility of having a classifier that is not trivially accurate and at the same time satisfies $(\epsilon,0)$-differential privacy and equality of opportunity constraints. The paper also shows a PAC learner for an approximate fairness definition they provide.
 \item \cite{Exploring fairness and privacy in machine learning} compiles results that relate the concetps of privacy and fairness, and also causal discovery.
+\item \cite{Toward Learning Trustworthily from Data Combining Privacy, Fairness, and Explainability: An Application to Face Recognition} discusses the use of Homeomorphic Encryption in combination with fair representation learning \cite{Learning fair representations} to provide both privacy and fairness guarantees, respectively, when training machine learning models. Then the paper discusses how to provide local and global explanations for the model.
 \end{enumerate}
 
 \subsection{Fairness $\times$ Explainability}
@@ -61,6 +62,7 @@ Fairness evaluation is a goal usually mentioned when the utility of explainabili
 \begin{enumerate}
 \item \cite{"Just" accuracy? Procedural fairness demands explainability in AI-based medical resource allocations} discusses how not providing explanations for decision can threaten accountability, bias avoidance and transparency when evaluating and mitigating unfairness in ML-based decisions.
 \item \cite{How to explain and justify almost any decision: Potential pitfalls for accountability in ai decision-making} shows empirical results of training a baseline, a fair, an unfair and a random model on the COMPAS\cite{Compass} dataset and then finding possible explanations for the results provided by the model. The paper explores a space of explanations that are simple, verifiable and relevant according to definitions they provide for these terms, and show that it's possible to provide valid justifications for the decisions for the majority of the models. They also explore the situation in which explanations are provided for many data points and then analysed to verify for consistency, sufficiency and uniqueness (which they define formally in the paper), and achieve similar results: it can be possible to provide justifications for almost any decision that seem valid, even if the justification does not reflect how the model really decides.
+\item \cite{Toward Learning Trustworthily from Data Combining Privacy, Fairness, and Explainability: An Application to Face Recognition} discusses the use of Homeomorphic Encryption in combination with fair representation learning \cite{Learning fair representations} to provide both privacy and fairness guarantees, respectively, when training machine learning models. Then the paper discusses how to provide local and global explanations for the model.
 \end{enumerate}
 
 \subsection{Fairness $\times$ Causality}
@@ -80,7 +82,16 @@ One possibility of measuring fairness with Quantitative Information Flow notions
 
 \subsection{Privacy $\times$ Explainability}
 
-{\color{red} Show us the data: Privacy, explainability, and why the law can't have both   ...    AI Explainability, Interpretability, Fairness, and Privacy: An Integrative Review of Reviews     ...  SoK    ...     Privacy and Explainability: The Effects of Data Protection on Shapley Values     ...   SoK: Taming the Triangle--On the Interplays between Fairness, Interpretability and Privacy in Machine Learning}
+One of the main questions of the relation between Privacy and Explainability is whether explainability is affected when privacy-preserving mechanisms are applied. Some results indicate that this is not always the case, but the conceptual differences are discussed times in more detail througout the literature. 
+
+\begin{enumerate}
+\item \cite{Privacy and Explainability: The Effects of Data Protection on Shapley Values} evaluates the effect of applying privacy protection mechanisms on Shapley values, which can be used for explanation purposes, both local and global. The conclusion is that applying privacy-protection mechanisms does not affect much explanations based on Shapley values.
+\item \cite{Show us the data: Privacy, explainability, and why the law can't have both} discusses the legislation of privacy and explainability, arguing that we should not have both in the law, as they claim that demanding explanations can inevitably lead to demands on the visualization of the training data itself.
+%\item \cite{AI Explainability, Interpretability, Fairness, and Privacy: An Integrative Review of Reviews} seems to provide a systematic review between these areas, {\color{red}but I do not have access to it.}
+\item \cite{SoK: Taming the Triangle--On the Interplays between Fairness, Interpretability and Privacy in Machine Learning} points some conflicts and synergies that involve the two concepts: the conflicts include the conceptual difference between demanding more transparency in respect to the proccess and demanding secrecy in respect to the training data, which is part of the training proccess of the model, the possibility of using data obtained from explainability methods to infer sensitive inforamtion. The synnergies involve the possibility of using inforamtion obtained from explainability methods to improve the privacy of the model, and the fact that some results in the literature claim to have achieved good explainability for some models while keeping acceptable privacy constraints.
+\item \cite{Toward Learning Trustworthily from Data Combining Privacy, Fairness, and Explainability: An Application to Face Recognition} discusses the use of Homeomorphic Encryption in combination with fair representation learning \cite{Learning fair representations} to provide both privacy and fairness guarantees, respectively, when training machine learning models. Then the paper discusses how to provide local and global explanations for the model.
+\end{enumerate}
+
 
 \subsection{Privacy $\times$ Causality}
 
