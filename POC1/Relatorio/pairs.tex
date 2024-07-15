@@ -51,6 +51,7 @@ There are some impossibility results in the literature that argue why it is impo
 \item \cite{(Local) Differential Privacy has NO Disparate Impact on Fairness} executes an empirical evaluation of the impact of many Local Differential Privacy mechanisms on fairness when we do not try to reverse the applied noise, including a new privacy budget allocation scheme based on the domain size of sensitive attributes.
 \item \cite{Awareness} introduces a notion of individual fairness that is a generalization of differential privacy, and explores the relationship between this notion of fairness, differential privacy and statistical disparity.
 \item \cite{On the Compatibility of Privacy and Fairness} present theoretical results that show the impossibility of having a classifier that is not trivially accurate and at the same time satisfies $(\epsilon,0)$-differential privacy and equality of opportunity constraints. The paper also shows a PAC learner for an approximate fairness definition they provide.
+\item \cite{Exploring fairness and privacy in machine learning} compiles results that relate the concetps of privacy and fairness, and also causal discovery.
 \end{enumerate}
 
 \subsection{Fairness $\times$ Explainability}
@@ -68,7 +69,7 @@ Fairness might be considered a causal concept: we want to know whether the outco
 
 \begin{enumerate}
 \item \cite{Causality} mentions notions of sex discrimination in college admissions and discrimination in hiring. Pearl also argues why the causal interpretation should be used instead of purely statistical notions.
-\item \cite{When causality meets fairness: A survey} surveys many of the causal definitions of fairness present in the literature, classifying them according to Pearl's levels of causation and guidelines for which situations best suit each notion.
+\item \cite{when causality meets fairness: a survey} and \cite{A review of causality-based fairness machine learning} survey many of the causal definitions of fairness present in the literature, \cite{when causality meets fairness: a survey} also classifies them according to Pearl's levels of causation and guidelines for which situations best suit each notion.
 \item \cite{The Impossibility Theorem of Machine Fairness: a Causal Perspective} shows a causal interpretation of notions of fairness and approaches the conflict between different fairness notions from this perpective. One important note is that this paper does not use the correct notion of equalized odds, it reverses $Y$ and $\hat{Y}$: the correct notion is that the prediction is independent of the sensitive attriute given the ground-truth, but they consider the definition of the output being independent of the sensitive attribute given the prediction. The correct notion of equalized odds is what they call predictive parity. \emph{This paper was found in \url{arxiv.org}}.
 \item \cite{Identifiability of Causal-based ML Fairness Notions} compiles major identifiability results from the causality literature and also discusses how they can be used in practice to obtain causal knowledge from data.
 \end{enumerate}
