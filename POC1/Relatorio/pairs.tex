@@ -95,13 +95,22 @@ One of the main questions of the relation between Privacy and Explainability is 
 
 \subsection{Privacy $\times$ Causality}
 
-In regard to the relationship between privacy and causality, one approach in the literature is to try to provide privacy for sensitive data by the addition of noise and at the same time allow causal discovery and inference based on the noisy data. Another relation noted in the literature is that models based on causal relationships between variables are more resilient to privacy attacks, such that privacy-protection mechanisms are more effective for this type of model. Another possibility is modeling differential privacy as a causal, instead of purely statistical, property. 
+In regard to the relationship between privacy and causality, one approach in the literature is to try to provide privacy for sensitive data by the addition of noise, and at the same time allow causal discovery and causal inference based on the noisy data. Another relation noted in the literature is that models based on causal relationships between variables are more resilient to privacy attacks, such that privacy-protection mechanisms are more effective for this type of model. Another possibility is modeling differential privacy as a causal, instead of purely statistical, property. 
 
 \begin{enumerate}
-\item \cite{Causal Discovery Under Local Privacy} 
-\item \cite{Alleviating Privacy Attacks via Causal Learning} 
-\item \cite{SoK: Differential Privacy as a Causal Property} 
-\item \cite{Differential Privacy Preserving Causal Graph Discovery} 
+\item \cite{Causal Discovery Under Local Privacy} discusses local differential privacy in the context of causal discovery: how local differential privacy mechanisms affect the task of causal discovery. The conclusion is that the geometric mechanism has a smaller effect than the methods based on generalizations of the Randomized Response mechanism, as they tend to degrade less the original correlations present in the data. It seems that this paper also doesn't try to recover the original distribution from the noisy one before trying causal discovery...
+\item \cite{Alleviating Privacy Attacks via Causal Learning} shows that models that use only the parents of the target variable, which they call causal models, provide stronger $\epsilon$-differential privacy guarantees, are provably more robust to Membership Inference Attacks, generalize better to other distributions based on the same causal structure.
+\item \cite{SoK: Differential Privacy as a Causal Property} discusses how differential privacy can be interpreted as a causal notion and what are the benefits of this interpretation. They analyse some possible causal and associational interpretations of the intuitive idea of Differential Privacy. The causal interpretations consist of interventions on all data points or one data point, and they distinguish between an individual's data point and the real value of the individual. They show the equivalence between many of the definitions they present and the unidirectional implications of two of them. In summary:
+\item \begin{enumerate}
+    \item Differential privacy constraints on an algorithm that takes many data points as input can be interpreted as requiring that the output value of this algorithm does not change if we change only one data point. This will be considered the definition of Differential Privacy.
+    \item This is equivalent to requiring that for any input distributions the probability of any outcome of the algorithm is the similar if one data point was observed to be different and the rest equal.
+    \item This is equivalent to requiring that for any distribution with independent data points such that any individual data point value is possible, the probability of any outcome of the algorithm is the same if one data point was observed to be different.
+    \item Requiring the same as above without the assumption of independent data points is a stronger requirement than differential privacy (it implies DP, but not the opposite).
+    \item This is also equivalent to causal notions that require that intervening to change one value and \emph{intervening} to keep the others constant do not change much the probability of any outcome. This holds regardless of whether we consider that for an algorithm to satisfy differential privacy this must hold for all distributions or for only one (as the interventions are done on \emph{all} variables).
+    \item This is also equivalent to the causal notion that interevening on one variable should not change much the probability of each output, if we consider this must hold for all probability distributions.
+    \item If we consider the previous definition but without requiring to hold for all distributions, then for technical reasons of specific zero probability distributions, this is weaker than differential privacy (DP implies this definition, but not the opposite).
+    \end{enumerate}
+\item \cite{Differential Privacy Preserving Causal Graph Discovery} discusses {\color{red} AQUI CONFERIR PARECE QUE EH MAIS SOBRE COMO GARANTIR QUE A DIVULGACAO DOS RESULTADOS DA CAUSAL GRAPH DISCOVEY NAO VAI VIOLAR A PRIVACIDADE DOS USUARIOS}
 \item \cite{Private Causal Inference} 
 \end{enumerate}
 
