@@ -38,6 +38,8 @@
 
 {\color{orange} OK citar coisas do Arxiv?}
 
+{\color{orange} Repetição de artigos que cobrem mais de duas áreas? Talvez só mencionar que foi usado na subseção anterior?}
+
 \begin{abstract}
     Do que podemos falar aqui?
 \end{abstract}
@@ -68,6 +70,11 @@ In this section we mention comparisons found in the literature between these are
 %Capítulo de fechamento: conclusões e relação de trabalhos futuros.
 
 {\color{red} Aqui dá pra falar sobre quais dos caminhos parecem mais promissores pra fazer uma pesquisa futura...}
+
+{\color{red} +Acc <=> -Fair; +Acc <=> -Priv se obfusca, independente por homeohorphic encryption; +Acc <=> -Exp em geral, se usar como debugger pode até melhorar Acc depois; +Acc <=> Nao mt related com Caus; +Acc <=> Nao mt related com QIF; +Fair <= +Priv dependendo de como privatiza e se tenta recuperar a distrib original antes de treinar; +Fair pode ser via explicações mas as explicações podem ser enganosas; Causal Fair notions; Reverse Flow pra fairness com QIF; Concentualmente +Priv é -formas de explicar (por não poder usar os dados privados pra explicar) apesar de na prática não ter muitos estudos focando nisso e pelo menos pro SHAP parece não atrapalhar muito; Causal interpret podem desmistificar questões de suposições de DP, bases causais podem melhorar o uso do privacy budget, e Priv. pode atrapalhar causal discovery e inference, tem artigos sobre isso; QIF pode ser usado pra medir privacidade quanto de informação vaza da pessoa; Causal Explanations podem ser melhores e o que a pessoa realmente tá atrás, métodos de XAI talvez reflitam só correlações, e dá pra usar noções de causalidade pra ajudar com XAI e usar XAI pra achar o que investigar empiricamente depois; Exp QIF não foi explorado; Caus QIF tem só o esboço de paper.}
+
+
+{\color{red} Pra future work, talvez QIF pra explicar coisas ou pra fazer ataques contra modelos afinal eu ganho algo e perco algo dependendo do que acontece; Priv vs Fair vs Acc tentando recuperar a distribuição original ao invés de só treinar na obfuscada mesmo sem ligar. Não confio em QIF pra causalidade não, no máximo pega correlações ao ver qual variável é melhor observar pra aumentar o ganho esperado ou algo assim.}
 
 \bibliographystyle{splncs04}
 \bibliography{poc1}
