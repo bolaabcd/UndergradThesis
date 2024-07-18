@@ -122,7 +122,13 @@ In regard to the relationship between privacy and causality, one approach in the
 
 \subsection{Privacy $\times$ QIF}
 
-As QIF aims to quantify the flow of information, we can naturally consider applying it to the privacy scenario, by measuring how much information leaks about an arbitrary individual. \cite{On the information leakage of Differentially Private Mechanisms} discusses the relations between differential privacy and $g$-vulnerability, and many other results can be found at \cite{QIF}. One general idea is that differential privacy is a worst-case notion and $g$-vulnerability is an average-case notion, and there are results showing that differential privacy imply bounds on leakage under arbitrary gain functions and prior distributions.
+As QIF aims to quantify the flow of information, we can naturally consider applying it to the privacy scenario, by measuring how much information leaks about an arbitrary individual. One general idea is that differential privacy is a worst-case notion and $g$-vulnerability is an average-case notion, and there are results\cite{QIF} showing that differential privacy implies bounds on leakage under arbitrary gain functions and prior distributions, but not the opposite.
+
+\begin{enumerate}
+\item \cite{On the information leakage of Differentially Private Mechanisms} discusses the relations between differential privacy and $g$-vulnerability. 
+
+\item \cite{Explaining epsilon in local differential privacy through the lens of quantitative information flow} discusses how the $\epsilon$ parater of Differential Privacy is related to max-case $g$-vulnerability: $e^\epsilon$ is exactly the multiplicative max-case channel capacity under a fixed prior. This work also discusses many other theoretical results relating $g$-vulnerability notions with differential privacy. \emph{Found in \url{arxiv.org}}.
+\end{enumerate}
 
 \subsection{Explainability $\times$ Causality}
 

@@ -76,21 +76,18 @@ We can summarize our findings in the following way:
     \item \textbf{Accuracy $\times$ Privacy:} Privacy by addition of noise usually reduces accuracy. Privacy by homomorphic encryption does \emph{not} affect accuracy at the cost of greater computational complexity.
     \item \textbf{Accuracy $\times$ Explainability:} In many situations, more interpretability implies less accuracy (as more compex models are harder to explain/interpret).
     \item \textbf{Accuracy $\times$ Causality:} Causality might help in the transference of machine learning model results between distinct populations, and the development with causal basis can reduce how sensible it is to small changes in the data used to train the model.
-    \item \textbf{Accuracy $\times$ QIF:} 
-    \item \textbf{Fairness $\times$ Privacy:} 
-    \item \textbf{Fairness $\times$ Explainability:} 
-    \item \textbf{Fairness $\times$ Causality:} 
-    \item \textbf{Fairness $\times$ QIF:} 
-    \item \textbf{Privacy $\times$ Explainability:} 
-    \item \textbf{Privacy $\times$ Causality:} 
-    \item \textbf{Privacy $\times$ QIF:} 
-    \item \textbf{Explainability $\times$ Causality:} 
-    \item \textbf{Explainability $\times$ QIF:} 
-    \item \textbf{Causality $\times$ QIF:} 
+    \item \textbf{Accuracy $\times$ QIF:} accuracy can be seem as a form of utility, which usually has a trade-off with information leakage, measured by QIF.
+    \item \textbf{Fairness $\times$ Privacy:} If the privacy-preserving mechanism is based on noise, then it might help in reducing unfairness according to some measures. Most results use the noisy distribution directly, without first trying to recover the original distribution.
+    \item \textbf{Fairness $\times$ Explainability:} One possibility for checking wheter a system is fair is to demand explanations for the system's working, but sometimes it is possible to deceive this verification.
+    \item \textbf{Fairness $\times$ Causality:} there are are many distinct causal fairness notions, each with their own meaning and class of applicable situations.
+    \item \textbf{Fairness $\times$ QIF:} Fairness might be measured by \emph{reverse} information flow, how much one can infer from the output by observing the sensitive values of the input instead of how much can be inferred from the input from observing the output.
+    \item \textbf{Privacy $\times$ Explainability:} Conceptually, more privacy implies less explaination power as the data points can not be used in explanations. In practice, however, privacy constraints do not seem to have an impact on some of the classical XAI methods.
+    \item \textbf{Privacy $\times$ Causality:} Causal interpretations were used to disentangle confusions about Differential Privacy assumptions, we can use causal notions to improve the use of differential privacy budget and some methods make causal discovery/inference harder.
+    \item \textbf{Privacy $\times$ QIF:} It is possible to use the Quantitative Information Flow $g$-vulnerability framework to model private information leakage, and there are theoretical results that show relations with differential privacy, with equality for max-vulnerability.
+    \item \textbf{Explainability $\times$ Causality:} In many situations, causal explanations the final goal and although classical explainability methods are based only on the data, it might be possible to use them as basis for further empirical explanation.
+    \item \textbf{Explainability $\times$ QIF:} The relationship between these two is largely unexplored. Maybe it's possible to provide explanations based on how much information flows from each feature to the output?
+    \item \textbf{Causality $\times$ QIF:} The releationship between these two ins largely unexplored too. There is some preliminary unpublished work relating QIF and causal discovery, though. {\color{orange} Faz sentido falar isso?}
 \end{enumerate}
-
-{\color{red}  +Acc <=> Nao mt related com QIF; +Fair <= +Priv dependendo de como privatiza e se tenta recuperar a distrib original antes de treinar; +Fair pode ser via explicações mas as explicações podem ser enganosas; Causal Fair notions; Reverse Flow pra fairness com QIF; Concentualmente +Priv é -formas de explicar (por não poder usar os dados privados pra explicar) apesar de na prática não ter muitos estudos focando nisso e pelo menos pro SHAP parece não atrapalhar muito; Causal interpret podem desmistificar questões de suposições de DP, bases causais podem melhorar o uso do privacy budget, e Priv. pode atrapalhar causal discovery e inference, tem artigos sobre isso; QIF pode ser usado pra medir privacidade quanto de informação vaza da pessoa; Causal Explanations podem ser melhores e o que a pessoa realmente tá atrás, métodos de XAI talvez reflitam só correlações, e dá pra usar noções de causalidade pra ajudar com XAI e usar XAI pra achar o que investigar empiricamente depois; Exp QIF não foi explorado; Caus QIF tem só o esboço de paper.}
-
 
 {\color{red} Pra future work, talvez QIF pra explicar coisas ou pra fazer ataques contra modelos afinal eu ganho algo e perco algo dependendo do que acontece; Priv vs Fair vs Acc tentando recuperar a distribuição original ao invés de só treinar na obfuscada mesmo sem ligar. Não confio em QIF pra causalidade não, no máximo pega correlações ao ver qual variável é melhor observar pra aumentar o ganho esperado ou algo assim.}
 
