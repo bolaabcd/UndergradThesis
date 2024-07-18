@@ -69,7 +69,16 @@ In this section we mention comparisons found in the literature between these are
 \section{Conclusions and future work}\label{sec:concsFuture}
 %Capítulo de fechamento: conclusões e relação de trabalhos futuros.
 
-{\color{red} Aqui dá pra falar sobre quais dos caminhos parecem mais promissores pra fazer uma pesquisa futura...}
+We can summarize our findings in the following way:
+
+\begin{enumerate}
+    \item There is an inherent trade-off between accuracy and some notions of fairness such as Equal Opportunity Difference and Statistical Parity.
+    \item Privacy by addition of noise usually reduces accuracy.
+    \item Privacy by homomorphic encryption does not affect accuracy at the cost of greater computational complexity.
+    \item In many situations, more interpretability implies less accuracy (as more compex models are harder to explain/interpret).
+    \item Causality might help in the transference of machine learning model results between distinct populations, and basing decisions on causal basis can improve robustness of models. {\color{red} CONFERIR SE É VDD ISSO}
+    \item 
+\end{enumerate}
 
 {\color{red} +Acc <=> -Fair; +Acc <=> -Priv se obfusca, independente por homeohorphic encryption; +Acc <=> -Exp em geral, se usar como debugger pode até melhorar Acc depois; +Acc <=> Nao mt related com Caus; +Acc <=> Nao mt related com QIF; +Fair <= +Priv dependendo de como privatiza e se tenta recuperar a distrib original antes de treinar; +Fair pode ser via explicações mas as explicações podem ser enganosas; Causal Fair notions; Reverse Flow pra fairness com QIF; Concentualmente +Priv é -formas de explicar (por não poder usar os dados privados pra explicar) apesar de na prática não ter muitos estudos focando nisso e pelo menos pro SHAP parece não atrapalhar muito; Causal interpret podem desmistificar questões de suposições de DP, bases causais podem melhorar o uso do privacy budget, e Priv. pode atrapalhar causal discovery e inference, tem artigos sobre isso; QIF pode ser usado pra medir privacidade quanto de informação vaza da pessoa; Causal Explanations podem ser melhores e o que a pessoa realmente tá atrás, métodos de XAI talvez reflitam só correlações, e dá pra usar noções de causalidade pra ajudar com XAI e usar XAI pra achar o que investigar empiricamente depois; Exp QIF não foi explorado; Caus QIF tem só o esboço de paper.}
 

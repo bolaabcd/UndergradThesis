@@ -36,7 +36,13 @@ If the Machine Learning model is inherentely interpretable by humans, then usual
 
 \subsection{Accuracy $\times$ Causality}
 
-Accuracy is about how much a machine learning model makes correct guesses, Causality is about studying the causal relationships between variables. We can say that the problem of getting good accuracy lies on the first level of causation, as we are concerned about the data, although causality concepts could be used to transfer what was learned with the data of one population to another, for instance. Another possible relation is evaluating how accurate are causal discovery and causal inference algorithms. In general, these two concepts are unrelated.
+Accuracy is about how much a machine learning model makes correct guesses, Causality is about studying the causal relationships between variables. We can say that the problem of getting good accuracy lies on the first level of causation, as we are concerned about the data, although we could, for instance, use causality concepts to transfer what was learned with the data of one population to another. In some situations, algorithms based on causal notions can be even more accurate than purely associative algorithm.
+
+\begin{enumerate}
+    \item \cite{Improving the accuracy of medical diagnosis with causal machine learning} presents a counterfactual-based algorithm for medical diagnosis when there are many possible causes for a patient's symptoms. Their algorithm results in better accuracy than some classical Machine Learning algorithms not based on causal notions.
+    \item \cite{Causality for Machine Learning} discusses many relations between causal learning and machine learning, including references to works that discuss the idea of transfering results to different populations without losing too much accuracy.
+    \item \cite{Improving the Accuracy of Network Intrusion Detection with Causal Machine Learning} present a method of selecting features with causal analysis before training a machine learning model based on causal concepts, and show that this approach can improve accuracy of network intrusion detection when compared to classical machine learning methods.
+\end{enumerate}
 
 \subsection{Accuracy $\times$ QIF}
 
