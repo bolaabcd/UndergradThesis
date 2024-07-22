@@ -1,5 +1,6 @@
 \subsection{Machine Learning and scenario considered}
 
+
 Machine Learning is the field of study that focuses on developing methods of learning general patterns from limited data. In recent years, important advances have been observed in Machine Learning research, and also the popularity and applications of some methods increased significantly. One example is the improvement of Convolutional Neural Network architectures, and the popularity of Generative Models. Also, some recent research is focused on the theory behind such machine learning methods\cite{SAAMAP}\cite{grohs2022mathematical}, and statistical learning in general \cite{Vapnik}. Part of the goal of this formalization is to provide more qualitative guarantees in regard not only to accuracy, but also fairness, privacy, interpretability, and other important qualities. We discuss these different goals in the next four subsections.
 
 {\color{orange} Compensa mesmo criar ambiente de definição pra noções gerais tipo supervised nearling, algoritmo de ML, etc.? Eu não defini formalmente o que seria cada uma dessas coisas, deveria?}
@@ -11,7 +12,7 @@ Figure \ref{fig:EEAAO} shows how the other concepts are related to machine learn
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth]{EverythingEAAO}
-\caption{Figure representing the supervised learning scenario we consider throughout this work.}\label{fig:EEAAO}
+\caption{Figure representing the supervised learning scenario we consider throughout this work.{\color{orange} Aqui não deve fazer diferença, mas num artigo de verdade pode copiar e colar várias imagens do Google Imagens assim pra passar a ideia???}}\label{fig:EEAAO}
 \end{figure}
 
 \subsection{Accuracy}
@@ -25,35 +26,74 @@ Figure \ref{fig:EEAAO} shows how the other concepts are related to machine learn
 \item $FN$ is the number of True Positives: how many predictions were labeled as False but were actually True.
 \end{enumerate}
 
-So, the usual notion of accuracy is the proportion of the predictions from the model that were correct for the available data. This generalizes to multiclass classification problems (in which the target variable has a finite number of possible values) by considering the proportion of times that the model's prediction was the correct class. \emph{Regression} problems are the ones in which the target variable has an infinite number of possible values but can be codified as a vector of numbers: for instance, the value of some building at two different times. We can access how accurate a regression model is in many ways, for instance the square difference between the prediction value and the real value, added through all training data points.
+So, the usual notion of accuracy is the proportion of the predictions from the model that were correct for the available data. This generalizes to multiclass classification problems (in which the target variable has a finite number of possible values) by considering the proportion of times that the model's prediction was the correct class. \emph{Regression} problems are the ones in which the target variable has an infinite number of possible values but can be codified as a vector of numbers: for instance, the value of some building at two different times. We can access how accurate a regression model is in many ways, for instance the square difference between the prediction value and the real value, summed for all training data points.
 
-{\color{red} imagem train vs test accuracy}
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[b]{0.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{polymOverfitEmpty}
+\caption{Figure representing data points.}\label{fig:polymOverfitEmpty}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{polymOverfit}
+\caption{Figure representing overfitted data.}\label{fig:polymOverfit}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{polymNotOverfit}
+\caption{Figure representing non overfitted data.}\label{fig:polymNotOverfit}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{GeneralizationTreesWikipedia}
+\caption{Figure representing the concept of generalization using trees. Obtained from Wikipedia.}\label{fig:GeneralizationTreesWikipedia}
+\end{subfigure}
+\caption{Figures representing the goal of generalization and the problem of overfitting.}
+\end{figure}
 
-One important point to consider is that it is better to evaluate how accurate the system is with data different from the data used for training. This is because during the training phase the Machine Learning algorithm usually has the goal of providing the model that provides the best possible accuracy in the training data, among the possible models supported. If there is enough freedom among the possible models, then it might be possible to obtain a model that has a very good accuracy, but if we try to use this same model on other data, this same model performs very badly. For instance, if all functions from the training data to the output are allowed, then a model that simply memorizes the training data and outputs the correct result by looking at the memorized data and outputs a random answer if the input is not in the training data will have one hundred percent accuracy in the training data, but we can obviously provide no guarantee for data points not present. This problem is called \textbf{overfitting}, and is usually avoided by limiting how powerfull the model can be, in conjuction with verifying real accuracy values with data other than the training data, and we call this the \textbf{testing data}. Also, notice that to evaluate the model, the test data should also have the target value of each data point.
+Note that during the training phase the Machine Learning algorithm usually has the goal of providing the model that provides the best possible accuracy in the training data, among the possible models supported. If there is enough freedom among the possible models outputed from such algorithm, then it might be possible to obtain a model that has a very good accuracy, but if we try to use this same model on data other than the training data, this same model performs very badly. For instance, if we try to fit the data presented in \ref{fig:polymOverfitEmpty} with an arbitrary degree polynom, then it's possible to fit the data perfectly, as shown in \ref{fig:polymOverfit}. In this situation, the model obtained by the second-degree polynomial presented in \ref{fig:polymNotOverfit} would, in general, be more useful, even though it's accuracy on the training data is not $100\%$ as in \ref{fig:polymOverfit}. This problem is called \emph{overfitting}, and is usually avoided by limiting how powerful the model can be, in conjuction with verifying accuracy values with data points not present in training dataset, which we call the \emph{testing data}. Also, notice that to evaluate the model, the test data should also have the target value of each data point.
 
-The classical goal of Machine Learning is to provide models with good \emph{test accuracy}, and an Machine Learning algorithm that produces models such that good results on the training data reflet on good results on testing data are said to \textbf{generalize} well. However, with the groth of Machine Learning applications in real-life scenarios and the impact on society as a whole, there has been a crescent focus on aspects other than simply maximizing the accuracy, in a similar way that we usually are worried only about how fast a cryptographic algorithm is but also about how safe it is.
 
-{\color{red} Falar aqui pra notar que acurácia nem sempre é o quão acuradamente o modelo cumpre nossos objetivos, uma vez que temos objetivos além de só que o modelo acerte ao máximo, falar de sensitividade e outros concentos, que nem sempre estamos preocupados somente com acurácia, e o impacto da função que estamos otimizando, mencionar regularização}
+The classical goal of Machine Learning is to provide models with good \emph{test accuracy}, the accuracy evaluated for the test data, and an Machine Learning algorithm that produces models such that good results on the training data reflet on good results on testing data are said to \emph{generalize} well. The idea is that the model captures a more general abstract concept than the simple memorization of the training data, as illustrated by figure \ref{fig:GeneralizationTreesWikipedia}. 
+
+However, note that accuracy does not always represent how accurately the model fulfills all of the goals of the relevant stakeholders. This is because, with the growth of Machine Learning applications in real-life scenarios and the impact on society as a whole, there has been a crescent focus on aspects other than simply maximizing the accuracy. This is similar to way that we sometimes are worried not only about how safe a cryptographic algorithm is but also about how computationally efficient it is. 
+
+One classical binary classification example presented in figure \ref{fig:TruePosWikipedia} is the concern with \emph{sensitivity} and \emph{specificity}: how much of the data points with target value equal to $1$ are predicted by the model to have target value $1$ and how much of the poins with target value $0$ are predicted to have value $1$ instead, respectively. One example in which this distinction is very important is in medical diagnosis: imagine that the model is predicting if someone has a deadly disease and a simple and low-risk treatment, a fase negative is worse for the patient than a false positive diagnosis of having the disease. We can then create machine learning models that optimize for something other than the accuracy, for instance a combination of sensitivity and specificity that better suits our needs. The function that we aim to optimize with our model is sometimes called the \emph{objective function}, and we can encode many different goals in these functions, with one classical example is adding a \emph{regularization term} that penalises more complex models, which sometimes helps in avoiding overfit.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.3\textwidth]{TruePosWikipedia}
+\caption{Figure representing the concepts of sensitivity and specificity. Obtained from Wikipedia. {\color{orange} Precisa falar que foi obtido da wikipedia?}}\label{fig:TruePosWikipedia}
+\end{figure}
+
+Usually, there are also other important goals to keep in mind when developing a machine learning algorithm: the fairness goal aims to reduce unfair disparities in treatment of different individuals by machine learning models, the privacy goal aims to reduce the chance of someone discovering confidential or private data without authorization, and the explainability goal aims to improve the comprehension of how complex models work. Causality and Quantitative Information Flows are not goals by themselves, but methods for the representation and pursuit of other goals.
 
 \subsection{Fairness}
 
-{\color{red} Dava pra citar Hellman D. Measuring algorithmic fairness pra falar que "Indeed, the general consensus is that the meaning and implication of each approach highly depends on the context and consequential decisions associated with an intelligent system"}
+{\color{red} Dava pra citar hellman2020measuring pra falar que "Indeed, the general consensus is that the meaning and implication of each approach highly depends on the context and consequential decisions associated with an intelligent system"}
 
-{\color{red} Citar Pushing the limits of fairness impossibility: Who’s the fairest of them all? De que em geral não dá pra satisfazer as noções principais de fairness ao mesmo tempo, mas dá pra tentar encontrar meio termos e otimizar uma em função da outra. The Possibility of Fairness: Revisiting the Impossibility Theorem in Practice parece melhor porque é mais empírico. The impossibility of “fairness”: a generalized impossibility result for decisions fortalece isso um pouco e foi escrito por um cara de harward mas ficou só no arxiv.}
+{\color{red} Citar hsu2022pushing De que em geral não dá pra satisfazer as noções principais de fairness ao mesmo tempo, mas dá pra tentar encontrar meio termos e otimizar uma em função da outra. bell2023possibility parece melhor porque é mais empírico. }
 
 {\color{red} Citar Learning Fair Representations como uma forma de balancear group e individual fairness com acurácia boa...}
 
-In the context of Machine Learning, fairness refers to the reduction, as much as possible, of \textbf{algorithmic bias}. Algorithm Bias is the bias introduced by algorithmic decisions. This bias might have a big social impact, as this can further existing unfair discrimination in society, as machine learning algorithms are being used to make more and more important decisions. One famouse example is the COMPAS recidivism algorithm, that has been used by the United States courts to estimate how likely someone is to reoffend in the future. It was revealed \cite{Compass} that this tool was heavily biased against black people. 
+In the context of Machine Learning, fairness refers to the reduction, as much as possible, of \emph{algorithmic bias}, the bias introduced by algorithmic decisions. This bias might have a big social impact because this can further existing unfair discrimination in society, as machine learning algorithms are being used to make more and more important decisions. One famous example is the COMPAS recidivism algorithm, that has been used by the United States courts to estimate how likely someone is to reoffend in the future. It was revealed \cite{Compass} that this tool was heavily biased against black people. 
 
-We will say that the result is \textbf{positive} for a data point if it benefits the person represented by that data point, and \textbf{negative} otherwise. We will say that the \textbf{unpriviledged group} is the group of people affected negatively by the bias, and the \textbf{priviledged group} is the other group of people.
+For binary classification will say that the result is \emph{positive} for a data point if it benefits the person represented by that data point, and \emph{negative} otherwise. We will say that the \emph{unpriviledged group} is the group of people affected negatively by the bias, and the \emph{priviledged group} is the other group of people.
 
-Such biases can happen because of many factors. The algorithm itself might be introducing bias, or the data might be biased. The data might have been collected in a biased way (in the compass example, this would be the case if reincidivism data was collected more for black reincidivists than for white), or the data might be simply reinforcing some bias of the society. 
+Such biases can happen because of many factors. The algorithm itself might be introducing bias, or the data might be biased. The data may have been collected in a biased way (in the compass example, this would be the case if reincidivism data was collected more for black reincidivists than for white), or the data might be simply reinforcing some bias in the society. 
 
 Also, the bias in society might be such that the data is in disagreement with reality (the unpriviledged group true values for the target variable would affect them in the same way as the priviledged group), or it is in agreement with reality because of structural biases in society. For instance, if the prediction of the algorithm is whether or not someone will have good grades if accepted to some university, people in the unpriviledged group might not have had as good oportunities in life as people in the priviledged group, so the data is correct when it says that those people will have worse grades. Even though, the results might still be considered unfair: this depends on the notion of fairness we consider. All of these unfairness possibilities can be futther divided into other types of unfairness, as was done in \cite{mehrabi2021survey}.
 
+{\color{red} Imagem com os tipos de fairness}
+
 Besides deliberate bias in the algorithm, such that the results of the algorithm do not reflect the data, and biased data, it is also possible to introduce bias because the algorithm might prioritize making correct predictions for the majority of the population, if it can't make correct predictions for both the majority and the minority. Another possibility is that the prediction might depend on past decisions of the algorithm, and we only know the result if the result provided is positive (for instance, we only know if someone will reincide if we release them). In this type of scenario, according to Learning Theory it's important to take suboptimal decisions to \emph{explore} different options and gather more data \cite{chouldechova2018frontiers} (found in \url{arxiv.org}), which might be considered unethical as it might have a big cost to society (releasing someone that's probably going to commit more crimes) or to the individual (not giving a life-saving drug to some patients as an experiment to see the survival rates for that specific group). 
 
-Many different notions of algorithmic fairness have been developed, and some are not compatible \cite{alves2023survey}. Initially, the notions of fairness could be grouped into two main types: statistical and individual definitions of fairness\cite{chouldechova2018frontiers}. Statistical (group) notions of fairness require some statistical metric to be similar for certain demographic groups, and individual notions enforce constraints on pairs of individuals, for instance requiring similar individuals to be treated similarly. Many problems with statistical notions and why they, in general, don't provide good individual guarantees are presented in \cite{Awareness}\cite{kearns2018preventing}. Some of these problems include: satisfying the constraints for two protected attributes individually but not to combinations of these attributes, . One problem with both individual and group notions is \emph{composition}: it is not always the case that satisfying fairness constraints in individual, isolated, components of a system imply that fairness constraints will be satisfied for the whole system \cite{dwork2018fairness}. Finally, there are also causal approaches to fairness notions, which we will discuss more in Section \ref{sec:theoRef2}.
+Many different notions of algorithmic fairness have been developed, and some are not compatible \cite{alves2023survey}. Initially, the notions of fairness could be grouped into two main types: statistical and individual definitions of fairness\cite{chouldechova2018frontiers}. Statistical (group) notions of fairness require some statistical metric to be similar for certain demographic groups, and individual notions enforce constraints on pairs of individuals, for instance requiring similar individuals to be treated similarly. Many problems with statistical notions and why they, in general, don't provide good individual guarantees are presented in \cite{Awareness}\cite{kearns2018preventing}, for instance one such problem is satisfying the constraints for two protected attributes individually but not to combinations of these attributes. One problem with both individual and group notions is \emph{composition}: it is not always the case that satisfying fairness constraints in individual, isolated, components of a system imply that fairness constraints will be satisfied for the whole system \cite{dwork2018fairness}. Finally, there are also causal approaches to fairness notions, which we will discuss more in Section \ref{sec:theoRef2}.
 
 The techniques developed to reduce unfairness in algorithmic decision making can be divided into \emph{pre-processing}, \emph{in-processing} and \emph{post-processing}. Pre-processing techniques modify the training data to remove biases present there. In-processing techniques modifies the learning algorithm iteself, for instance by changing the objective learning function to include not only accuracy but also adding to it some statistical fairness metric, or including some constraint that it has to satisfy. Post-processing techniques act after the model is trained to reduce the unfairness in the decisions made by such a model.
 
