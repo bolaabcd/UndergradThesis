@@ -1,9 +1,18 @@
-\documentclass{article}
-\usepackage{amsmath}
-\usepackage{amssymb}
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+%Template version as of 6/27/2024
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage[table]{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \usepackage{amsthm}
 \usepackage{amscd}
-\usepackage{amsfonts}
 \usepackage{dsfont}
 \usepackage{fancyhdr}
 \usepackage{enumerate}
@@ -13,7 +22,6 @@
 \usepackage{color}
 \usepackage{hyperref}
 
-\usepackage[table]{xcolor}
 \setlength{\arrayrulewidth}{0.1mm}
 %\setlength{\tabcolsep}{18pt}
 \renewcommand{\arraystretch}{2.5}
@@ -23,6 +31,8 @@
 %\arrayrulecolor[HTML]{DB5800}
 \newcommand{\qm}[1]{``#1"}
 
+
+\onecolumn
 
 \title{Relations between Causality, Fairness, Privacy, Accuracy, Information Flow and Explainability in Machine Learning\large\\ Type: Scientific\\Advisor: Mário Sérgio Alvim}
 \author{Artur Gaspar da Silva}
@@ -41,6 +51,8 @@
 {\color{orange} Repetição de artigos que cobrem mais de duas áreas? Talvez só mencionar que foi usado na subseção anterior?}
 
 {\color{orange} Coloca \qm{Chapter x of \textbackslash cite\{...\}} ou \qm{\textbackslash cite[Chapter~x]\{...\}}?}
+
+{\color{orange} O modelo padrão é coluna dupla, mas aparentemente várias pessoas fizeram sem ser coluna dupla sem problemas, e as imagens ficam melhores em coluna simples. Compensa trocar pra coluna dupla???}
 
 \begin{abstract}
     Do que podemos falar aqui?
