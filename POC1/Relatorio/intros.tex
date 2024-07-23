@@ -75,29 +75,13 @@ Usually, there are also other important goals to keep in mind when developing a 
 
 \subsection{Fairness}
 
-{\color{red} Dava pra citar hellman2020measuring pra falar que "Indeed, the general consensus is that the meaning and implication of each approach highly depends on the context and consequential decisions associated with an intelligent system"}
-
-{\color{red} Citar hsu2022pushing De que em geral não dá pra satisfazer as noções principais de fairness ao mesmo tempo, mas dá pra tentar encontrar meio termos e otimizar uma em função da outra. bell2023possibility parece melhor porque é mais empírico. }
-
-{\color{red} Citar Learning Fair Representations como uma forma de balancear group e individual fairness com acurácia boa...}
-
 In the context of Machine Learning, fairness refers to the reduction, as much as possible, of \emph{algorithmic bias}, the bias introduced by algorithmic decisions. This bias might have a big social impact because this can further existing unfair discrimination in society, as machine learning algorithms are being used to make more and more important decisions. One famous example is the COMPAS recidivism algorithm, that has been used by the United States courts to estimate how likely someone is to reoffend in the future. It was revealed \cite{Compass} that this tool was heavily biased against black people. 
 
 For binary classification will say that the result is \emph{positive} for a data point if it benefits the person represented by that data point, and \emph{negative} otherwise. We will say that the \emph{unpriviledged group} is the group of people affected negatively by the bias, and the \emph{priviledged group} is the other group of people.
 
 Such biases can happen because of many factors. The algorithm itself might be introducing bias, or the data might be biased. The data may have been collected in a biased way (in the compass example, this would be the case if reincidivism data was collected more for black reincidivists than for white), or the data might be simply reinforcing some bias in the society. 
 
-Also, the bias in society might be such that the data is in disagreement with reality (the unpriviledged group true values for the target variable would affect them in the same way as the priviledged group), or it is in agreement with reality because of structural biases in society. For instance, if the prediction of the algorithm is whether or not someone will have good grades if accepted to some university, people in the unpriviledged group might not have had as good oportunities in life as people in the priviledged group, so the data is correct when it says that those people will have worse grades. Even though, the results might still be considered unfair: this depends on the notion of fairness we consider. All of these unfairness possibilities can be futther divided into other types of unfairness, as was done in \cite{mehrabi2021survey}.
-
-{\color{red} Imagem com os tipos de fairness}
-
-Besides deliberate bias in the algorithm, such that the results of the algorithm do not reflect the data, and biased data, it is also possible to introduce bias because the algorithm might prioritize making correct predictions for the majority of the population, if it can't make correct predictions for both the majority and the minority. Another possibility is that the prediction might depend on past decisions of the algorithm, and we only know the result if the result provided is positive (for instance, we only know if someone will reincide if we release them). In this type of scenario, according to Learning Theory it's important to take suboptimal decisions to \emph{explore} different options and gather more data \cite{chouldechova2018frontiers} (found in \url{arxiv.org}), which might be considered unethical as it might have a big cost to society (releasing someone that's probably going to commit more crimes) or to the individual (not giving a life-saving drug to some patients as an experiment to see the survival rates for that specific group). 
-
-Many different notions of algorithmic fairness have been developed, and some are not compatible \cite{alves2023survey}. Initially, the notions of fairness could be grouped into two main types: statistical and individual definitions of fairness\cite{chouldechova2018frontiers}. Statistical (group) notions of fairness require some statistical metric to be similar for certain demographic groups, and individual notions enforce constraints on pairs of individuals, for instance requiring similar individuals to be treated similarly. Many problems with statistical notions and why they, in general, don't provide good individual guarantees are presented in \cite{Awareness}\cite{kearns2018preventing}, for instance one such problem is satisfying the constraints for two protected attributes individually but not to combinations of these attributes. One problem with both individual and group notions is \emph{composition}: it is not always the case that satisfying fairness constraints in individual, isolated, components of a system imply that fairness constraints will be satisfied for the whole system \cite{dwork2018fairness}. Finally, there are also causal approaches to fairness notions, which we will discuss more in Section \ref{sec:theoRef2}.
-
-The techniques developed to reduce unfairness in algorithmic decision making can be divided into \emph{pre-processing}, \emph{in-processing} and \emph{post-processing}. Pre-processing techniques modify the training data to remove biases present there. In-processing techniques modifies the learning algorithm iteself, for instance by changing the objective learning function to include not only accuracy but also adding to it some statistical fairness metric, or including some constraint that it has to satisfy. Post-processing techniques act after the model is trained to reduce the unfairness in the decisions made by such a model.
-
-We summarize below the ways in which unfairness might be introduced:
+Also, the bias in society might be such that the data is in disagreement with reality (the unpriviledged group true values for the target variable would affect them in the same way as the priviledged group), or it is in agreement with reality because of structural biases in society. For instance, if the prediction of the algorithm is whether or not someone will have good grades if accepted to some university, people in the unpriviledged group might not have had as good oportunities in life as people in the priviledged group, so the data is correct when it says that those people will have worse grades. Even though, the results might still be considered unfair: this depends on the notion of fairness we consider. All of these unfairness possibilities can be futther divided into other types of unfairness, as was done in \cite{mehrabi2021survey}. Image \ref{fig:whereUnfair} illustrates where unfairness might come from, and we summarize below the ways in which unfairness might be introduced:
 
 \begin{enumerate}
 \item Algorithm results does not reflect the data.
@@ -117,6 +101,38 @@ We summarize below the ways in which unfairness might be introduced:
 \item Finally, the circunstances can change through time, either by influence of the algorithmt itself or other factors, which can worsen the quality of algorithms previously considered to provide good results (Emergent Bias).
 \end{enumerate}
 
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{whereUnfair}
+\caption{Figure representing some of the main possible sources of unfairness.}\label{fig:whereUnfair}
+\end{figure}
+
+Besides deliberate bias in the algorithm, such that the results of the algorithm do not reflect the data, and biased data, it is also possible to introduce bias because the algorithm might prioritize making correct predictions for the majority of the population, if it can't make correct predictions for both the majority and the minority. Another possibility is that the prediction might depend on past decisions of the algorithm, and we only know the result if the result provided is positive (for instance, we only know if someone will reincide if we release them). In this type of scenario, according to Learning Theory it's important to take suboptimal decisions to \emph{explore} different options and gather more data \cite{chouldechova2018frontiers} (found in \url{arxiv.org}), which might be considered unethical as it might have a big cost to society (releasing someone that's probably going to commit more crimes) or to the individual (not giving a life-saving drug to some patients as an experiment to see the survival rates for that specific group). 
+
+Many different notions of algorithmic fairness have been developed, and some are not compatible \cite{alves2023survey}. Initially, the notions of fairness could be grouped into two main types: statistical and individual definitions of fairness\cite{chouldechova2018frontiers}. Statistical (group) notions of fairness require some statistical metric to be similar for certain demographic groups, and individual notions enforce constraints on pairs of individuals, for instance requiring similar individuals to be treated similarly. Many problems with statistical notions and why they, in general, don't provide good individual guarantees are presented in \cite{Awareness}\cite{kearns2018preventing}, for instance one such problem is satisfying the constraints for two protected attributes individually but not to combinations of these attributes. One problem with both individual and group notions is \emph{composition}: it is not always the case that satisfying fairness constraints in individual, isolated, components of a system imply that fairness constraints will be satisfied for the whole system \cite{dwork2018fairness}. Finally, there are also causal approaches to fairness notions, which we will discuss more in Section \ref{sec:theoRef2}. In general, it is not possible to satisfy some of the main notions of fairness at the same time\cite{hellman2020measuring}\cite{bell2023possibility}\cite{zemel2013learning}, and which fairness notion to use depends a lot on the specific goals of each different system. We will now define some of the main notions of fairness. We consider that $Y$ is the binary target variable, with $Y=1$ as the positive result and $Y=0$ as the negative one; $A$ is the binary sensitive attribute, with $A=1$ for the priviledged group and $A=0$ for the unpriviledged group; $\hat Y$ is the model prediction of the target variable value; $X$ is a set of legitimate factors that can be used for classification.
+
+\begin{definition}[Equal Opportunity Difference] We define \emph{Equal Opportunity Difference} as $P(\hat Y = 1| A = 1, Y =1) - P(\hat Y = 1| A = 0, Y = 1)$. Equal Opportunity is \emph{satisfied} if the Equal Opportunity Difference is equal to zero.
+\end{definition}
+
+\begin{definition}[Statistical Disparity] We define \emph{Statistical Disparity}, also known as \emph{Demographic Disparity}, as $P(\hat Y = 1| A = 1) - P(\hat Y = 1| A = 0)$. Statistical (Demographical) \emph{Parity} is \emph{satisfied} if the Statistical Disparity is equal to zero.
+\end{definition}
+
+\begin{definition}[Conditional Statistical Disparity] We define \emph{Conditional Statistical Disparity}, conditioned on $x$, as $P(\hat Y = 1| A = 1, X = x) - P(\hat Y = 1| A = 0, X = x)$. Conditional Statistical \emph{Parity} is \emph{satisfied} if the Conditional Statistical Disparity is equal to zero.
+\end{definition}
+
+A possible general definition for \emph{individual fairness} notions is that an algorithm is considered fair if it gives similar outcomes to similar individuals, according to similarity notions relevant for the specitic scenario considered.
+
+The techniques developed to reduce unfairness in algorithmic decision making can be divided into \emph{pre-processing}, \emph{in-processing} and \emph{post-processing}. Pre-processing techniques modify the training data to remove biases present there. In-processing techniques modifies the learning algorithm iteself, for instance by changing the objective learning function to include not only accuracy but also adding to it some statistical fairness metric, or including some constraint that it has to satisfy. Post-processing techniques act after the model is trained to reduce the unfairness in the decisions made by such a model.
+
+In general, just removing the variables that would be considered unfair to use directly to classify an individual is not enough to guarantee fairness. As illustrated in image \ref{fig:correlated}, the variables we would remove might be highly correlated to other variables, which could be used by the model to discriminate almost as if we hadn't removed any variable. Also, even if the machine learning model itself didn't use any sensitive variables or correlated attributes for the predictions, we still need to collect this sensitive data to be able to measure how unfair the model is.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{correlated}
+\caption{Figure representing potential correlations between sensitive variables and other factors: if the disease status is a sensible information that could be used for unfair discrimination, then removing this information might not be enough to avoid unfair discrimination, as smoking, age and other factors combined might lead to unfair discrimination almost as if the model had direct access to the sensitive values.}\label{fig:correlated}
+\end{figure}
 
 \subsection{Privacy}
 
