@@ -279,7 +279,11 @@ The area of Quantitative Information Flow deals with methods of measuring inform
 \item The set $\mathcal{W}$ represents the possible values of actions the adversary might take.
 \end{enumerate}
 
-{\color{red} Botar imagem channelAndFriends representando os conceitos acima, com um canal, um segredo, uma informação prior na cabeça do adversário, etc.. E referenciar essa imagem no texto}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{channelAndFriends}
+\caption{Figure representing the scenario we consider in Quantitative Information Flow.}\label{fig:channelAndFriends}
+\end{figure}
 
 We consider the $g$-vulnerability framweork, introduced in \cite{QIF}. This framework introduces new definitions, which we present more formally:
 
@@ -290,29 +294,27 @@ A \emph{Gain Function} is a function $g : \mathcal{W} \times \mathcal{X} \righta
 We do not have a loss for the system owner because we consider a zero-sum game: the gain of the adversary is exactly the loss of the people responsible for the system. 
 
 \begin{definition}[Prior g-Vulnerability]
-The \emph{Prior Vulnerability} of the system is defined as the average gain of the adversary if she takes the action that maximizes her expected gain, according to the distribution on secrets that represents her prior knowledge:
+The \emph{Prior Vulnerability} of the system is defined as the average gain of the adversary if she takes the action that maximizes her expected gain, according to the distribution on secrets that represents her prior knowledge. Given a prior distribution on secrets $\pi$ and a gain function $g$, this is defined as:
 
-{\color{red} Formalizar}
+$$V_g(\pi) = \max\limits_{w\in \mathcal{W}}\sum\limits_{x\in\mathcal{X}} \pi_x g(w,x)$$
 \end{definition}
 
 \begin{definition}[Posterior g-Vulnerability]
-The \emph{Posterior Vulnerability} of the system is defined in the same way as the prior vulnerability, but considering the hyper-distribution that represents the posterior knowledge:
+The \emph{Posterior Vulnerability} of the system is defined in the same way as the prior vulnerability, but considering the hyper-distribution that represents the posterior knowledge. Given a prior distribution on secrets $\pi$ and a channel $C$ and a gain function $g$, this is defined as:
 
-{\color{red} Formalizar}
+$$V_g[\pi\triangleright C] = \sum\limits_{y \in \mathcal{Y}}\max\limits_{w\in \mathcal{W}}\sum\limits_{x\in\mathcal{X}} \pi_xC_{x,y} g(w,x)$$
 \end{definition}
 
 The posterior g-vulnerability represents what will be the expceted gain of the adversary after the system runs, but the estimative is made according to the knowledge the adversary has before the system runs
 
 \begin{definition}[Additive Leakage]
 The \emph{Additive Leakage} can be defined as the difference between posterior and prior vulnerability:
-
-{\color{red} Formalizar}
+$$\mathcal{L}_g^+(\pi,C) = V_g[\pi\triangleright C]-V_g(\pi)$$
 \end{definition}
 
 \begin{definition}[Multiplicative Leakage]
 The \emph{Multiplicative Leakage} is the result of dividing of the posterior vulnerability by the prior vulnerability values:
-
-{\color{red} Formalizar}
+$$\mathcal{L}_g^\times(\pi,C) = \frac{V_g[\pi\triangleright C]}{V_g(\pi)}$$
 \end{definition}
 
 There are many valuable theoretical results about channels regarding the relationships between prior and posterior $g$-vulnerabilities. We mention some of these results:
