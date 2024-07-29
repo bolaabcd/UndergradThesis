@@ -45,15 +45,74 @@
 
 
 \begin{document}
-\maketitle
 
-{\color{red} Fazer abstract}
+
+\begin{titlepage}
+    \begin{center}
+
+        \Huge
+        \textbf{Universidade Federal de Minas Gerais}
+
+        \vspace{0.5cm}
+        \LARGE
+            Department of Computer Science
+
+        \vspace{0.5cm}
+        \large
+           Undergraduate Thesis, Part I 
+
+        \vspace{0.7cm}
+
+        \includegraphics[width=0.4\textwidth]{logoUFMG.jpg}
+
+
+
+        \vspace{0.5cm}
+
+        \Huge
+            Relations between Causality, Fairness, Privacy, Accuracy, Information Flow and Explainability in Machine Learning
+            \\\large Type: Scientific
+
+        \vspace{0.5cm}
+        \begin{abstract}
+            Recent years have witnessed an enormous advance in the area of Machine Learning, reflected by the popularity of Artificial Inteligence systems. For most of the history of machine learning research, the main goal was the development of machine learning algorithms that led to more accurate models, but it is now very clear that there are many other important areas to develop. We want models to be fair to unprivileged groups in society, to not reveal private information used in the model training, to provide comprehensible explanations to humans in order to help identifying causal relationships, among many relevant goals other than simply improving model accuracy. This work reviews the literature for the identified relationships among these concepts in Machine Learning.
+        \end{abstract}
+
+        \vspace{0.5cm}
+
+
+     \end{center}
+
+\raggedright
+
+\Large
+    Supervisor:
+    \vspace{0.2cm}\\
+\Large
+    Prof. Mário Sérgio Alvim
+    \vspace{0.125cm}\\
+
+\raggedleft
+
+\Large
+    Thesis written by:
+    \vspace{0.125cm}\\
+\Large
+    Artur Gaspar da Silva
+
+
+
+\begin{center}
+    \vspace{1cm}
+        Academic Semester 2024/01
+\end{center}
+
+\end{titlepage}
+%\maketitle
+
 {\color{red} Fazer revisão geral gramatical de tudo a partir do background teórico pra conceitos individuais.}
 {\color{red} Ajustar o tamanho das imagens}
 
-\begin{abstract}
-    Do que podemos falar aqui?
-\end{abstract}
 
 \newpage
 \tableofcontents
@@ -85,7 +144,7 @@ First, we provide a general background on some introductory concepts in the area
 
 \section{Contributions: A Review of the Relations Between the Concepts}\label{sec:theoRef2}
 
-In this section we mention comparisons found in the literature between these areas of research, and comment some ideas for unexplored relations in the literature.
+In this section we mention comparisons found in the literature between these areas of research, and discuss some ideas for unexplored relations in the literature.
 
 \input{pairs}
 
@@ -99,29 +158,29 @@ We can summarize our findings in the following way:
     \item \textbf{Accuracy $\times$ Privacy:} Privacy by addition of noise usually reduces accuracy. Privacy by homomorphic encryption does \emph{not} affect accuracy at the cost of greater computational complexity.
     \item \textbf{Accuracy $\times$ Explainability:} In many situations, more interpretability implies less accuracy (as more compex models are harder to explain/interpret).
     \item \textbf{Accuracy $\times$ Causality:} Causality might help in the transference of machine learning model results between distinct populations, and the development with causal basis can reduce how sensible it is to small changes in the data used to train the model.
-    \item \textbf{Accuracy $\times$ QIF:} accuracy can be seem as a form of utility, which usually has a trade-off with information leakage, measured by QIF.
+    \item \textbf{Accuracy $\times$ QIF:} accuracy can be seen as a form of utility, which usually has a trade-off with information leakage, measured by QIF.
     \item \textbf{Fairness $\times$ Privacy:} If the privacy-preserving mechanism is based on noise, then it might help in reducing unfairness according to some measures. Most results use the noisy distribution directly, without first trying to recover the original distribution.
-    \item \textbf{Fairness $\times$ Explainability:} One possibility for checking wheter a system is fair is to demand explanations for the system's working, but sometimes it is possible to deceive this verification.
-    \item \textbf{Fairness $\times$ Causality:} there are are many distinct causal fairness notions, each with their own meaning and class of applicable situations.
+    \item \textbf{Fairness $\times$ Explainability:} One possibility for checking whether a system is fair is to demand explanations for the system's working, but sometimes it is possible to deceive this verification.
+    \item \textbf{Fairness $\times$ Causality:} there are many distinct causal fairness notions, each with its own meaning and class of applicable situations.
     \item \textbf{Fairness $\times$ QIF:} Fairness might be measured by \emph{reverse} information flow, how much one can infer from the output by observing the sensitive values of the input instead of how much can be inferred from the input from observing the output.
     \item \textbf{Privacy $\times$ Explainability:} Conceptually, more privacy implies less explaination power as the data points can not be used in explanations. In practice, however, privacy constraints do not seem to have an impact on some of the classical XAI methods.
-    \item \textbf{Privacy $\times$ Causality:} Causal interpretations were used to disentangle confusions about Differential Privacy assumptions, we can use causal notions to improve the use of differential privacy budget and some methods make causal discovery/inference harder.
+    \item \textbf{Privacy $\times$ Causality:} Causal interpretations were used to disentangle confusions about Differential Privacy assumptions. We can use causal notions to improve the use of differential privacy budget and some methods make causal discovery/inference harder.
     \item \textbf{Privacy $\times$ QIF:} It is possible to use the Quantitative Information Flow $g$-vulnerability framework to model private information leakage, and there are theoretical results that show relations with differential privacy, with equality for max-vulnerability.
-    \item \textbf{Explainability $\times$ Causality:} In many situations, causal explanations the final goal and although classical explainability methods are based only on the data, it might be possible to use them as basis for further empirical explanation.
+    \item \textbf{Explainability $\times$ Causality:} In many situations, causal explanations the final goal and although classical explainability methods are based only on the data, it might be possible to use them, as basis for further empirical explanation.
     \item \textbf{Explainability $\times$ QIF:} The relationship between these two is largely unexplored. Maybe it's possible to provide explanations based on how much information flows from each feature to the output?
-    \item \textbf{Causality $\times$ QIF:} The releationship between these two ins largely unexplored too.
+    \item \textbf{Causality $\times$ QIF:} The releationship between these two is largely unexplored too.
 \end{enumerate}
 
-There are some possibles avenues for future works:
+There are some possible avenues for future works:
 
 \begin{enumerate}
     \item Using Quantitative Information Flow notions to develop explainability methods.
     \item Using Quantitative Information Flow notions to quantify the flow of information for all types of machine learning attacks.
     \item Explore what happens with the Privacy $\times$ Fairness and Privacy $\times$ Accuracy trade-offs under noisy distributions if we first try to recover the original distribution.
     \item Exploring the relationship between Quantitative Information and causality, maybe by measuring the information flow between variables to see which variable should be observed to increase the expected information gain on other variables, or other relations.
-    \item Discover to which variables to add noise in order to hinder individual sensitive attribute inference under the least possible privacy budget expense.
+    \item Discover which variables to add noise in order to hinder individual sensitive attribute inference under the least possible privacy budget expense.
     \item Using Quantitative Information Flow to develop privacy results similar to the ones obtained with Differential Privacy, maybe by developing new and useful gain functions.
-    \item Combining existing results to modern Learning Theory, especially by using theoretical results related to Deep Learning.
+    \item Combining existing results with modern Learning Theory, especially by using theoretical results related to Deep Learning.
 \end{enumerate}
 
 \bibliographystyle{splncs04}
