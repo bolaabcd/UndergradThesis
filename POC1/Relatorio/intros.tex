@@ -112,11 +112,11 @@ Also, the bias in society might be such that the data is in disagreement with re
 
 
 
-\begin{figure*}[ht]
+\begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{whereUnfair}
+\includegraphics[width=\columnwidth]{whereUnfair}
 \caption{Figure representing some of the main possible sources of unfairness.}\label{fig:whereUnfair}
-\end{figure*}
+\end{figure}
 
 Besides biased data and deliberate bias in the algorithm, such that the results of the algorithm do not reflect the data, it is also possible to introduce bias because the algorithm might prioritize making correct predictions for the majority of the population, if it can't make correct predictions for both the majority and the minority. Another possibility is that the prediction might depend on past decisions of the algorithm, and we only know the result if the result provided is positive (for instance, we only know if someone will reincide if we release them). In this type of scenario, according to Learning Theory, it's important to take suboptimal decisions to \emph{explore} different options and gather more data \cite{chouldechova2018frontiers} (found in \url{arxiv.org}), which might be considered unethical as it might have a big cost to society (releasing someone that's probably going to commit more crimes) or to the individual (not giving a life-saving drug to some patients as an experiment to see the survival rates for that specific group). 
 
@@ -137,11 +137,11 @@ The techniques developed to reduce unfairness in algorithmic decision-making can
 
 In general, just removing the variables that would be considered unfair to use directly to classify an individual is not enough to guarantee fairness. As illustrated in image \ref{fig:correlated}, the variables we would remove might be highly correlated to other variables, which could be used by the model to discriminate almost as if we hadn't removed any variable. Also, even if the machine learning model itself didn't use any sensitive variables or correlated attributes for the predictions, we still need to collect this sensitive data to be able to measure how unfair the model is.
 
-\begin{figure*}[ht]
+\begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{correlated}
+\includegraphics[width=\columnwidth]{correlated}
 \caption{Figure representing potential correlations between sensitive variables and other factors: if the disease status is a sensible information that could be used for unfair discrimination, then removing this information might not be enough to avoid unfair discrimination, as smoking, age and other factors combined might lead to unfair discrimination almost as if the model had direct access to the sensitive values.}\label{fig:correlated}
-\end{figure*}
+\end{figure}
 
 \subsection{Privacy}
 
@@ -185,11 +185,11 @@ Finally, \emph{Homomorphic Encryption} is a form of encryption that allows compu
 
 Explainability, loosely defined, concerns the ability to assign meaning to why some model took one or more decisions, in a way that can be interpreted by humans. There is currently no consensus for a precise definition of the term, and many papers argue about distinctions between interpretability and explainability. For instance, \cite{gilpin2018explaining} defines interpretability as the property of being able to describe the internal working of systems to humans and \emph{completeness} as the property of being able to accurately describe the operation of the system, and an explainable system has both properties at an acceptable level. \cite{roscher2020explainable} draws this distinction differently: they define transparency as the higher-level explanation given by the designers of the system of their choices of architecture, algorithm, and hyperparameters, while interpretations are defined as answers to the question \qm{what does the model bases its decision on?}, and explanations as the combination of interpretations and contextual information from domain knowledge. In general, it is considered necessary that an explanation both explains the inner workings of a system accurately and is comprehensible enough for humans with the relevant domain knowledge. There is a trade-off between these two goals, as we want not only to reach a balance between simplicity and accuracy, but also want important biases in the model to be evident in the explanation, as mentioned in \cite{gilpin2018explaining}. This is represented by Figure \ref{fig:blackBox}.
 
-\begin{figure*}[ht]
+\begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{blackBox}
+\includegraphics[width=\columnwidth]{blackBox}
 \caption{Figure representing two important aspects to consider when developing explanations for black-box models: how clear the explanation is for humans and how representative it is of the real model behavior.}\label{fig:blackBox}
-\end{figure*}
+\end{figure}
 
 Being able to provide good explanations for the behavior of a system has many applications, ranging from helping developers debug existing models to aiding in solving legal issues regarding whether the system is treating some minority group unfairly. There are some laws being developed to require explanations to be given when necessary, following the idea of the \qm{Right to Explanation}, under which people would be able to require exaplanations for decisions influenced by automated systems that affect their life. The European Union \qm{General Data Protection Regulation} and the French \qm{Loi pour une République numérique} are examples of laws that partially include the desired \qm{Right to Explanation}. Although the movement for requiring explanations has gained strength in the last few years, there are also arguments against requiring a comprehensible explanation to always be provided, as this might lead to a smaller accuracy than if no explanation is required, which can be harmful, for instance, for medical decisions \cite{london2019artificial}.
 
@@ -248,11 +248,11 @@ Pearl claims that any method of solving questions at the second level of causati
 
 Also, in the way that Pearl defines counterfactuals, there is a fundamental distinction between counterfactuals and actions with observations: in his notation, when we write the probability of some variable reaching some value given that there was an action and an observation, we interpret this as if the observation came after the action. This is different from the counterfactual notation, in which the observation comes before the action. This means that $P(Y_{x'} = y| X=x)$ is different from $P(Y=y|do(X=x'),X=x)$, as the latter should be interpreted as the probability that $Y$ has a value $y$ when we manually set $X$ to $x'$ and then observe that $X$ has value $x$, which doesn't make sense if $x \neq x'$ (we shouldn't be able to condition on impossible scenarios). This difference of interpretation can lead to confusion and was mentioned in the second part of the \qm{question to author} at \cite[Subsection~11.7.2]{Causality}.
 
-\begin{figure*}[ht]
+\begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{levsCaus}
+\includegraphics[width=\columnwidth]{levsCaus}
 \caption{Figure representing the three levels of causation.}\label{fig:levsCaus}
-\end{figure*}
+\end{figure}
 
 In general, Judea Pearl's approach to causality assumes a Directed Acyclic Graph (DAG) for the relations between variables. This leads to what is called \emph{Recursive Models} in \cite{Causality}. Many results apply only to this type of model, but some generalizations are available and mentioned in \cite{Causality}. Non-recursive models can be used for representing feedback loops: for instance, price and demand in economic models. This type of model has been widely used in economics in the form of Structural Equations, as presented in \cite[Subsection~1.4.1]{Causality}. Pearl also argues extensively about the possible causal interpretation of such equations and defines Structural Causal Models as models in which each variable has an equation that determines its value. This type of model can be used for answering questions at the third level of causation.
 
@@ -266,11 +266,11 @@ With the assumption that the observed distribution is stable in respect to the u
 
 In \cite[Section~4.5]{Causality}, Pearl dives into two other causal concepts: \emph{Direct and Indirect Effects}, which regard the effects that some variable $X$ have on another variable $Y$ that do or do not depend on other variables. For instance, smoking causes tar deposits in the lungs and also cancer, but we can think of how much of the effect of smoking on the probability of cancer is due to tar deposits, and how much is due to other factors. \emph{Natural Direct Effects} are \qm{average} estimations of direct effects for the different values the variables can assume, as the way that Pearl defines Direct and Indirect Effects is dependent on the exact values of the variables in question.
 
-\begin{figure*}[ht]
+\begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{discInf}
+\includegraphics[width=\columnwidth]{discInf}
 \caption{Figure representing the difference between causal Discovery and Causal Inference.}\label{fig:discInf}
-\end{figure*}
+\end{figure}
 
 Another contribution of the causality framework presented in \cite{Causality} is the causal approach to \emph{confounding}. In some situations, it is necessary to condition on some variables to account for possible spurious correlations that might arise due to confounding, but in other situations controlling for some variables would actually create new spurious correlations. This also depends on what we want to compute, but if the goal is computing the effect of some intervention, then the $do$-calculus can be used. Pearl argues in \cite[Chapter~6]{Causality} in favor of the causal approaches to confounding.
 
@@ -314,11 +314,11 @@ The area of Quantitative Information Flow deals with methods of measuring inform
 \item The set $\mathcal{W}$ represents the possible values of actions the adversary might take.
 \end{enumerate}
 
-\begin{figure*}[ht]
+\begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{channelAndFriends}
+\includegraphics[width=\columnwidth]{channelAndFriends}
 \caption{Figure representing the scenario we consider in Quantitative Information Flow.}\label{fig:channelAndFriends}
-\end{figure*}
+\end{figure}
 
 We consider the $g$-vulnerability framework, introduced in \cite{QIF}. This framework introduces new definitions, which we present more formally:
 
