@@ -1,0 +1,287 @@
+@article{Sok,
+  title={SoK: Taming the Triangle - On the Interplays between Fairness, Interpretability and Privacy in Machine Learning},
+  author={Julien Ferry and Ulrich A{\"i}vodji and S{\'e}bastien Gambs and Marie-Jos{\'e} Huguet and Mohamed Siala},
+  journal={ArXiv},
+  year={2023},
+  volume={abs/2312.16191},
+  url={https://api.semanticscholar.org/CorpusID:266573131}
+}
+
+@inproceedings{Awareness,
+  author = {Dwork, Cynthia and Hardt, Moritz and Pitassi, Toniann and Reingold, Omer and Zemel, Richard},
+  title = {Fairness through awareness},
+  year = {2012},
+  isbn = {9781450311151},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  url = {https://doi.org/10.1145/2090236.2090255},
+  doi = {10.1145/2090236.2090255},
+  abstract = {We study fairness in classification, where individuals are classified, e.g., admitted to a university, and the goal is to prevent discrimination against individuals based on their membership in some group, while maintaining utility for the classifier (the university). The main conceptual contribution of this paper is a framework for fair classification comprising (1) a (hypothetical) task-specific metric for determining the degree to which individuals are similar with respect to the classification task at hand; (2) an algorithm for maximizing utility subject to the fairness constraint, that similar individuals are treated similarly. We also present an adaptation of our approach to achieve the complementary goal of "fair affirmative action," which guarantees statistical parity (i.e., the demographics of the set of individuals receiving any classification are the same as the demographics of the underlying population), while treating similar individuals as similarly as possible. Finally, we discuss the relationship of fairness to privacy: when fairness implies privacy, and how tools developed in the context of differential privacy may be applied to fairness.},
+  booktitle = {Proceedings of the 3rd Innovations in Theoretical Computer Science Conference},
+  pages = {214–226},
+  numpages = {13},
+  location = {Cambridge, Massachusetts},
+  series = {ITCS '12}
+}
+
+@article{Impossibility,
+  author = {Friedler, Sorelle A. and Scheidegger, Carlos and Venkatasubramanian, Suresh},
+  title = {The (Im)possibility of fairness: different value systems require different mechanisms for fair decision making},
+  year = {2021},
+  issue_date = {April 2021},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  volume = {64},
+  number = {4},
+  issn = {0001-0782},
+  url = {https://doi.org/10.1145/3433949},
+  doi = {10.1145/3433949},
+  abstract = {What does it mean to be fair?},
+  journal = {Commun. ACM},
+  month = {mar},
+  pages = {136–143},
+  numpages = {8}
+}
+
+
+@article{FairTensions,
+title = {Survey on fairness notions and related tensions},
+journal = {EURO Journal on Decision Processes},
+volume = {11},
+pages = {100033},
+year = {2023},
+issn = {2193-9438},
+doi = {https://doi.org/10.1016/j.ejdp.2023.100033},
+url = {https://www.sciencedirect.com/science/article/pii/S2193943823000067},
+author = {Guilherme Alves and Fabien Bernier and Miguel Couceiro and Karima Makhlouf and Catuscia Palamidessi and Sami Zhioua},
+keywords = {Fairness notion, Tension within fairness, Unfairness mitigation},
+abstract = {Automated decision systems are increasingly used to take consequential decisions in problems such as job hiring and loan granting with the hope of replacing subjective human decisions with objective machine learning (ML) algorithms. However, ML-based decision systems are prone to bias, which results in yet unfair decisions. Several notions of fairness have been defined in the literature to capture the different subtleties of this ethical and social concept (e.g., statistical parity, equal opportunity, etc.). Fairness requirements to be satisfied while learning models created several types of tensions among the different notions of fairness and other desirable properties such as privacy and classification accuracy. This paper surveys the commonly used fairness notions and discusses the tensions among them with privacy and accuracy. Different methods to address the fairness-accuracy trade-off (classified into four approaches, namely, pre-processing, in-processing, post-processing, and hybrid) are reviewed. The survey is consolidated with experimental analysis carried out on fairness benchmark datasets to illustrate the relationship between fairness measures and accuracy in real-world scenarios.}
+}
+
+@inproceedings{Rachel,
+author = {Cummings, Rachel and Gupta, Varun and Kimpara, Dhamma and Morgenstern, Jamie},
+title = {On the Compatibility of Privacy and Fairness},
+year = {2019},
+isbn = {9781450367110},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3314183.3323847},
+doi = {10.1145/3314183.3323847},
+abstract = {In this work, we investigate whether privacy and fairness can be simultaneously achieved by a single classifier in several different models. Some of the earliest work on fairness in algorithm design defined fairness as a guarantee of similar outputs for "similar'' input data, a notion with tight technical connections to differential privacy. We study whether tensions exist between differential privacy and statistical notions of fairness, namely Equality of False Positives and Equality of False Negatives (EFP/EFN). We show that even under full distributional access, there are cases where the constraint of differential privacy precludes exact EFP/EFN. We then turn to ask whether one can learn a differentially private classifier which approximately satisfies EFP/EFN, and show the existence of a PAC learner which is private and approximately fair with high probability. We conclude by giving an efficient algorithm for classification that maintains utility and satisfies both privacy and approximate fairness with high probability.},
+booktitle = {Adjunct Publication of the 27th Conference on User Modeling, Adaptation and Personalization},
+pages = {309–315},
+numpages = {7},
+keywords = {differential privacy, fairness, learning theory},
+location = {Larnaca, Cyprus},
+series = {UMAP'19 Adjunct}
+}
+
+@Article{Carlos,
+author={Pinz{\'o}n, Carlos
+and Palamidessi, Catuscia
+and Piantanida, Pablo
+and Valencia, Frank},
+title={On the incompatibility of accuracy and equal opportunity},
+journal={Machine Learning},
+year={2023},
+month={May},
+day={02},
+abstract={One of the main concerns about fairness in machine learning (ML) is that, in order to achieve it, one may have to trade off some accuracy. To overcome this issue, Hardt et al. (Adv Neural Inf Process Syst 29, 2016) proposed the notion of equality of opportunity (EO), which is compatible with maximal accuracy when the target label is deterministic with respect to the input features. In the probabilistic case, however, the issue is more complicated: It has been shown that under differential privacy constraints, there are data sources for which EO can only be achieved at the total detriment of accuracy, in the sense that a classifier that satisfies EO cannot be more accurate than a trivial (i.e., constant) classifier. In this paper, we strengthen this result by removing the privacy constraint. Namely, we show that for certain data sources, the most accurate classifier that satisfies EO is a trivial classifier. Furthermore, we study the admissible trade-offs between accuracy and EO loss (opportunity difference) and characterize the conditions on the data source under which EO and non-trivial accuracy are compatible.},
+issn={1573-0565},
+doi={10.1007/s10994-023-06331-y},
+url={https://doi.org/10.1007/s10994-023-06331-y}
+}
+
+
+@InProceedings{Reductions,
+  title = 	 {A Reductions Approach to Fair Classification},
+  author =       {Agarwal, Alekh and Beygelzimer, Alina and Dudik, Miroslav and Langford, John and Wallach, Hanna},
+  booktitle = 	 {Proceedings of the 35th International Conference on Machine Learning},
+  pages = 	 {60--69},
+  year = 	 {2018},
+  editor = 	 {Dy, Jennifer and Krause, Andreas},
+  volume = 	 {80},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {10--15 Jul},
+  publisher =    {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v80/agarwal18a/agarwal18a.pdf},
+  url = 	 {https://proceedings.mlr.press/v80/agarwal18a.html},
+  abstract = 	 {We present a systematic approach for achieving fairness in a binary classification setting. While we focus on two well-known quantitative definitions of fairness, our approach encompasses many other previously studied definitions as special cases. The key idea is to reduce fair classification to a sequence of cost-sensitive classification problems, whose solutions yield a randomized classifier with the lowest (empirical) error subject to the desired constraints. We introduce two reductions that work for any representation of the cost-sensitive classifier and compare favorably to prior baselines on a variety of data sets, while overcoming several of their disadvantages.}
+}
+
+
+@article{CausalFair,
+  title={Survey on Causal-based Machine Learning Fairness Notions}, 
+  author={Karima Makhlouf and Sami Zhioua and Catuscia Palamidessi},
+  year={2022},
+  eprint={2010.09553},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG}
+}
+
+
+@inproceedings{Bruno,
+title = "On the duality of privacy and fairness (extended abstract)",
+abstract = "When a machine learning model operates over data about individuals, there are two common concerns. On one hand, if the model{\textquoteright}s output (i.e., its prediction) allows for information inferences about an individual{\textquoteright}s sensitive attributes, we have a privacy issue. On the other hand, if the individual{\textquoteright}s sensitive attributes can unduly influence the model{\textquoteright}s output, we have a fairness issue. Recently, the interplay between these two concerns has gathered growing attention both in the scientific community and in society as a whole. In this work, we extend the framework of quantitative information flow to formally capture fairness and privacy as duals of each other, and give first steps toward a novel characterization of their relationship.",
+author = "Alvim, {M{\'a}rio S.} and Natasha Fernandes and Nogueira, {Bruno D.} and Catuscia Palamidessi and Silva, {Thiago V. A.}",
+year = "2023",
+doi = "10.1049/icp.2023.2563",
+language = "English",
+booktitle = "International Conference on AI and the Digital Economy (CADE 2023)",
+publisher = "Institution of Engineering and Technology",
+address = "United Kingdom",
+note = "9th International Conference on AI and the Digital Economy, CADE 2023 ; Conference date: 26-06-2023 Through 28-06-2023",
+
+}
+
+@book{Causality,
+author = {Pearl, Judea},
+title = {Causality: Models, Reasoning and Inference},
+year = {2009},
+isbn = {052189560X},
+publisher = {Cambridge University Press},
+address = {USA},
+edition = {2nd},
+abstract = {Written by one of the preeminent researchers in the field, this book provides a comprehensive exposition of modern analysis of causation. It shows how causality has grown from a nebulous concept into a mathematical theory with significant applications in the fields of statistics, artificial intelligence, economics, philosophy, cognitive science, and the health and social sciences. Judea Pearl presents and unifies the probabilistic, manipulative, counterfactual, and structural approaches to causation and devises simple mathematical tools for studying the relationships between causal connections and statistical associations. The book will open the way for including causal analysis in the standard curricula of statistics, artificial intelligence, business, epidemiology, social sciences, and economics. Students in these fields will find natural models, simple inferential procedures, and precise mathematical definitions of causal concepts that traditional texts have evaded or made unduly complicated. The first edition of Causality has led to a paradigmatic change in the way that causality is treated in statistics, philosophy, computer science, social science, and economics. Cited in more than 3,000 scientific publications, it continues to liberate scientists from the traditional molds of statistical thinking. In this revised edition, Judea Pearl elucidates thorny issues, answers readers' questions, and offers a panoramic view of recent advances in this field of research. Causality will be of interests to students and professionals in a wide variety of fields. Anyone who wishes to elucidate meaningful relationships from data, predict effects of actions and policies, assess explanations of reported events, or form theories of causal understanding and causal speech will find this book stimulating and invaluable.}
+}
+
+
+@book{CausalInf,
+  title={Causal Inference in Statistics: A Primer},
+  author={Pearl, J. and Glymour, M. and Jewell, N.P.},
+  isbn={9781119186847},
+  lccn={2015037219},
+  url={https://books.google.com.br/books?id=L3G-CgAAQBAJ},
+  year={2016},
+  publisher={Wiley}
+}
+
+
+@book{QIF,
+  title={The Science of Quantitative Information Flow},
+  author={Alvim, M.S. and Chatzikokolakis, K. and McIver, A. and Morgan, C. and Palamidessi, C. and Smith, G.},
+  isbn={9783319961316},
+  series={Information Security and Cryptography},
+  url={https://books.google.com.br/books?id=jJH-DwAAQBAJ},
+  year={2020},
+  publisher={Springer International Publishing}
+}
+
+@book{InfoTheory,
+  title={Information Theory , Inference And Learning Algorithms},
+  author={MacKay, David JC},
+  isbn={9780521670517},
+  url={https://books.google.com.br/books?id=4WhiPgAACAAJ},
+  year={2005},
+  publisher={Cambridge University Press}
+}
+
+@inproceedings{ExplainAll,
+author = {Zhou, Joyce and Joachims, Thorsten},
+title = {How to Explain and Justify Almost Any Decision: Potential Pitfalls for Accountability in AI Decision-Making},
+year = {2023},
+isbn = {9798400701924},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3593013.3593972},
+doi = {10.1145/3593013.3593972},
+abstract = {Discussion of the “right to an explanation” has been increasingly relevant because of its potential utility for auditing automated decision systems, as well as for making objections to such decisions. However, most existing work on explanations focuses on collaborative environments, where designers are motivated to implement good-faith explanations that reveal potential weaknesses of a decision system. This motivation may not hold in an auditing environment. Thus, we ask: how much could explanations be used maliciously to defend a decision system? In this paper, we demonstrate how a black-box explanation system developed to defend a black-box decision system could manipulate decision recipients or auditors into accepting an intentionally discriminatory decision model. In a case-by-case scenario where decision recipients are unable to share their cases and explanations, we find that most individual decision recipients could receive a verifiable justification, even if the decision system is intentionally discriminatory. In a system-wide scenario where every decision is shared, we find that while justifications frequently contradict each other, there is no intuitive threshold to determine if these contradictions are because of malicious justifications or because of simplicity requirements of these justifications conflicting with model behavior. We end with discussion of how system-wide metrics may be more useful than explanation systems for evaluating overall decision fairness, while explanations could be useful outside of fairness auditing.},
+booktitle = {Proceedings of the 2023 ACM Conference on Fairness, Accountability, and Transparency},
+pages = {12–21},
+numpages = {10},
+keywords = {adversarial explanations, explainable AI, right to an explanation},
+location = {, Chicago, IL, USA, },
+series = {FAccT '23}
+}
+
+@article{Compass,
+  title={Machine bias: There’s software used across the country to predict future criminals. and it’s biased against blacks.},
+  author={Angwin, Julia and Larson, Jeff and Mattu, Surya and Kirchner, Lauren},
+  journal={URL https://www. propublica. org/article/machine-bias-risk-assessments-in-criminal-sentencing},
+  year={2019}
+}
+
+@inproceedings{Loans,
+  title={An approach for prediction of loan approval using machine learning algorithm},
+  author={Sheikh, Mohammad Ahmad and Goel, Amit Kumar and Kumar, Tapas},
+  booktitle={2020 international conference on electronics and sustainable communication systems (ICESC)},
+  pages={490--494},
+  year={2020},
+  organization={IEEE}
+}
+
+@inproceedings{Jobs,
+  title={Algorithmic hiring in practice: Recruiter and HR Professional's perspectives on AI use in hiring},
+  author={Li, Lan and Lassiter, Tina and Oh, Joohee and Lee, Min Kyung},
+  booktitle={Proceedings of the 2021 AAAI/ACM Conference on AI, Ethics, and Society},
+  pages={166--176},
+  year={2021}
+}
+
+@article{FairMeasures,
+author = {Makhlouf, Karima and Zhioua, Sami and Palamidessi, Catuscia},
+title = {On the Applicability of Machine Learning Fairness Notions},
+year = {2021},
+issue_date = {June 2021},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {23},
+number = {1},
+issn = {1931-0145},
+url = {https://doi.org/10.1145/3468507.3468511},
+doi = {10.1145/3468507.3468511},
+abstract = {Machine Learning (ML) based predictive systems are increasingly used to support decisions with a critical impact on individuals' lives such as college admission, job hiring, child custody, criminal risk assessment, etc. As a result, fairness emerged as an important requirement to guarantee that ML predictive systems do not discriminate against specific individuals or entire sub-populations, in particular, minorities. Given the inherent subjectivity of viewing the concept of fairness, several notions of fairness have been introduced in the literature. This paper is a survey of fairness notions that, unlike other surveys in the literature, addresses the question of "which notion of fairness is most suited to a given real-world scenario and why?". Our attempt to answer this question consists in (1) identifying the set of fairness-related characteristics of the real-world scenario at hand, (2) analyzing the behavior of each fairness notion, and then (3) fitting these two elements to recommend the most suitable fairness notion in every specific setup. The results are summarized in a decision diagram that can be used by practitioners and policy makers to navigate the relatively large catalogue of ML fairness notions.},
+journal = {SIGKDD Explor. Newsl.},
+month = {may},
+pages = {14–23},
+numpages = {10}
+}
+
+@inproceedings{FairSolve,
+  title={Improving fairness in machine learning systems: What do industry practitioners need?},
+  author={Holstein, Kenneth and Wortman Vaughan, Jennifer and Daum{\'e} III, Hal and Dudik, Miro and Wallach, Hanna},
+  booktitle={Proceedings of the 2019 CHI conference on human factors in computing systems},
+  pages={1--16},
+  year={2019}
+}
+
+
+@inproceedings{DP,
+  title={Differential privacy},
+  author={Dwork, Cynthia},
+  booktitle={International colloquium on automata, languages, and programming},
+  pages={1--12},
+  year={2006},
+  organization={Springer}
+}
+
+@article{PrivacyML,
+  title={When machine learning meets privacy: A survey and outlook},
+  author={Liu, Bo and Ding, Ming and Shaham, Sina and Rahayu, Wenny and Farokhi, Farhad and Lin, Zihuai},
+  journal={ACM Computing Surveys (CSUR)},
+  volume={54},
+  number={2},
+  pages={1--36},
+  year={2021},
+  publisher={ACM New York, NY, USA}
+}
+
+@inproceedings{ExplDev,
+  title={Predicting software defects with explainable machine learning},
+  author={Santos, Geanderson and Figueiredo, Eduardo and Veloso, Adriano and Viggiato, Markos and Ziviani, Nivio},
+  booktitle={Proceedings of the XIX Brazilian Symposium on Software Quality},
+  pages={1--10},
+  year={2020}
+}
+
+
+@article{ExplainExperts,
+  title={Explainable machine learning for scientific insights and discoveries},
+  author={Roscher, Ribana and Bohn, Bastian and Duarte, Marco F and Garcke, Jochen},
+  journal={Ieee Access},
+  volume={8},
+  pages={42200--42216},
+  year={2020},
+  publisher={IEEE}
+}
+

@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amscd}
+\usepackage{amsfonts}
+\usepackage{dsfont}
+\usepackage{fancyhdr}
+\usepackage{enumerate}
+\usepackage{steinmetz}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{hyperref}
+
+\usepackage[table]{xcolor}
+\setlength{\arrayrulewidth}{0.1mm}
+%\setlength{\tabcolsep}{18pt}
+\renewcommand{\arraystretch}{2.5}
+\newcolumntype{s}{>{\columncolor[HTML]{AAACED}} p{3cm}}
+\newcolumntype{r}{p{3mm}}
+\newcolumntype{a}{p{10mm}}
+%\arrayrulecolor[HTML]{DB5800}
+
+
+\title{{\color{red} Botar data de entreg da proposta dps}Relations between Fairness, Privacy and Quantitative Information Flow in Machine Learning\large\\ Type: Scientific\\Advisor: Mário Sérgio Alvim}
+\author{Artur Gaspar da Silva}
+\date{23/09/2024}
+
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+Recent resarch\cite{Sok}\cite{Reductions}\cite{Rachel}\cite{Awareness} indicates numerous tensions and synergies between many concepts that surround the Machine Learning literature, including Fairness, Privacy, Accuracy and Interpretability. For instance, there is an inherent tradeoff between Fairness and Accuracy such that, depending on the data distribution, it might be impossible to develop a model that achieves acceptable values for both fairness and accuracy, if we considr some reasonable fairness metrics\cite{Carlos}. Also, there has been some work on introducing Causality concepts into the discussion, for instance, to develop better fairness metrics\cite{CausalFair}. It has also been suggested to use interpretable models (as explanations to more complex models) for auditing systems and checking if they are fair, although this might lead to problems\cite{ExplainAll}. This area of research is especially relevant nowadays, given the importance that Machine Learning and Artificial Intelligence systems have: we now have computational systems that are part of processes of making decisions with big impacts on people's lives, for instance, recidivism prediction\cite{Compass}, loan approvals\cite{Loans}, hiring decisions\cite{Jobs}, and others.
+
+The goal of this Undergraduate Thesis is to review and reproduce results presented in the litearture, verify the viability of the connections between the aforementioned areas and Quantitative Information Flow, and, if possible, develop new theoretical results. This project is divided into two parts: POC I and POC II. In POC I, the specific goals were to research the literature for these concepts and focus on the connections that have been identified between them, so the expected result is a concise review of the literature on these topics. In POC II, the specific goals are to reproduce the results and verify possible connections between Privacy, Fairness and Quantitative Information Flow, with the possibility of developing new theoretical results. The expected result is an in-depth theoretical analysis of the viability of Quantitative Information Flow approaches to these areas and the connections between privacy and fairness. It's thus necessary to have a comprehensible review of the literature by the end of POC I. By the end of POC2, the expected result is to have a formal exploration of the impact of privacy-enhancing obfuscation methods in fairness, to explore how the privacy budget can be divided between many variables in the context of Local Differential Privacy, and explore how viable is the application of Quantitative Information Flow tools for the development of privacy and fairness research.
+
+\section{Theoretical Reference}
+
+Causality refers to the study of causal relationships between variables, and how to model and infer causal relationships from the combination of domain knowledge and data\cite{Causality}. This area of research has matured a lot in the last $50$ years, with many different approaches still being developed. Fairness in Machine Learning is concerned with measuring how unfair the results provided by Machine Learning models are to certain groups or individuals\cite{FairMeasures}, and improving how fair the models are\cite{FairSolve}. There are tensions between different fairness measures\cite{Impossibility}\cite{FairTensions}. Privacy is concerned with quantifying how much sensitive information leaks about individuals and methods to avoid this information leakage. In Machine Learning settings, the data collection might be hard for information that is considered very sensitive (for instance, whether or not a person regularly uses illegal drugs) and approaches such as Differential Privacy\cite{DP} might improve trust in the data collection. Also, the model itself might allow the identification of individuals and sensitive features, which is not desirable\cite{PrivacyML}. Accuracy is a metric of how many mistakes the Machine Learning model makes, and there are trade-offs between Accuracy and the other concepts presented\cite{Sok}\cite{Carlos}\cite{Rachel}. The area of Interpretability focus on developing Machine Learning models that have human-comprehensible decisions (either directly or to explain the decisions of more complex models), which might be useful when developing these models\cite{ExplDev} and also to help experts with domain knowledge decide when to trust the results presented by the models\cite{ExplainExperts}. Quantitative Information Flow is a general theoretical framework for measuring amounts of information, with a focus on privacy applications but, in principle, a broader scope\cite{QIF}.
+
+In \cite{Sok}, the relationships between Fairness, Interpretability and Privacy have been extensively explored. The paper \cite{Awareness} focuses on relationships between Privacy and Fairness, \cite{Rachel} on the relationship between Privacy, Fariness and Accuracy, \cite{Carlos} and \cite{Reductions} on the feasibility regions of Accuracy and Fairness metrics, \cite{CausalFair} on Causality-Aware fairness metrics. One of the goals of the first part of this project is to increase this list of references with the added analysis of the possibility of approaches based on Quantitative Information Flow (\cite{Bruno} explored the relations between Quantitative Information Flow and Fairness, but it is still possible to find relationships with the other topics mentioned).
+
+{\color{red} mencionar os artigos g-vuln versus dp}
+
+\section{Methodology}
+
+The methodology applied to this project consists, in general, of reading many papers on the relevant subjects, in order to gather what has been produced recently. Also, for developing the necessary theoretical background, part of the methodology is to read the main book on Causality\cite{Causality}, by Judea Pearl. Also, rigorous mathematical reasoning will be applied for any possible theoretical result, and computer simulations will be developed for the reproduction of relevant results.
+
+\section{Expected Results}
+
+For the first part of the project (POC I), the expected result was an extensive review of the literature on Causality, Fairness, Privacy, Accuracy and Interpretability in Machine Learning, and the relationships between these concepts. For the second part (POC II), the expected results is to have a formal exploration of the impact of privacy-enhancing obfuscation methods in fairness, to explore how the privacy budget can be divided between many variables in the context of Local Differential Privacy, and explore how viable is the application of Quantitative Information Flow tools for the development of privacy and fairness research.
+
+\section{Steps and Cronogram}
+{\color{red}
+\begin{enumerate}
+    \item Why should we try to reverse the noise after LDP. We can show that we lose info (utility, accuracy, etc.), or that we worsen the Paretto Front of the fairness-accuracy trade-off.
+    \item How to better distribute the privacy budget if we have only a few sensitive attributes.
+    \item How to model $(\epsilon,\delta)-DP$ with $QIF$. Maybe $\delta$-max case, the best that has at least $\delta$ probability of hapennning.
+\end{enumerate}
+}
+The dates are in month/day format. {\color{red} Obviamente, refazer isso né}
+
+\begin{tabular}{ |s|rr|rr|rr|rr|rr|rr|aa| }
+\hline
+\rowcolor{gray} \multicolumn{15}{|c|}{Cronogram} \\
+\hline
+\rowcolor{lightgray}
+&\multicolumn{2}{|c|}{03/17}& \multicolumn{2}{|c|}{03/31}& \multicolumn{2}{|c|}{04/14}& \multicolumn{2}{|c|}{04/28}& \multicolumn{2}{|c|}{05/12}& \multicolumn{2}{|c|}{05/26}& \multicolumn{2}{|c|}{06/09 - 06/27} \\
+\hline
+Contacting advisor and preparing themes &\cellcolor[HTML]{00EEEE}&&&&&&&&&&&&& \\
+\hline
+Writing this proposal &&\cellcolor[HTML]{00EEEE}&&&&&&&&&&&& \\
+\hline
+Reading recent papers &&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&&&&&&&&& \\
+\hline
+Exploring LDP noise reversal &&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&&&&&& \\
+\hline
+Preparing Partial Pitch &&&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&&&&&& \\
+\hline
+Exploring privacy bidget distribution &&&&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&&&& \\
+\hline
+Exploring $(\epsilon,\delta)-DP$ modeling with $QIF$ &&&&&&&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}& \\
+\hline
+Preparing Final Pitch &&&&&&&&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}& \\
+\hline
+Writing final report &&&&&&&&&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE} \\
+\hline
+\end{tabular}
+
+
+\section{References}
+
+\bibliographystyle{splncs04}
+\bibliography{poc2}
+
+\end{document}
