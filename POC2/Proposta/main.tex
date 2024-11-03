@@ -21,11 +21,12 @@
 \newcolumntype{r}{p{3mm}}
 \newcolumntype{a}{p{10mm}}
 %\arrayrulecolor[HTML]{DB5800}
+\newcommand{\qm}[1]{``#1"}
 
 
-\title{{\color{red} Botar data de entreg da proposta dps}Relations between Fairness, Privacy and Quantitative Information Flow in Machine Learning\large\\ Type: Scientific\\Advisor: Mário Sérgio Alvim}
+\title{Relations between Fairness, Privacy and Quantitative Information Flow in Machine Learning\large\\ Type: Scientific\\Advisor: Mário Sérgio Alvim}
 \author{Artur Gaspar da Silva}
-\date{23/09/2024}
+\date{10/11/2024}
 
 
 \begin{document}
@@ -45,48 +46,51 @@ In \cite{Sok}, the relationships between Fairness, Interpretability and Privacy 
 
 More specifically to the relation between Differential Privacy and Quantitative Inforamtion Flow, there are important results in the literature. There are works discussing the relations between differential privacy and $g$-vulnerability, including bounds on $g$-leakage as a function of the $\epsilon$ parameter of differential privacy, and the fact that there is no bound on differential privacy as a function of the $g$-vulnerability \cite{alvim2015information}. Also, we have recent work \cite{fernandes2022explaining} discussing how the $\epsilon$ parameter of Differential Privacy is related to max-case $g$-vulnerability: $e^\epsilon$ is exactly the multiplicative max-case channel capacity under a fixed prior. This work also discusses many other theoretical results relating $g$-vulnerability notions with differential privacy. 
 
+Finally, an import and recent contribution to the topics we are concerned with in the second part of this undergraduate thesis (and that wasn't published until the first part was ready) is \qm{Explaining $\epsilon$ in local differential privacy through the lens of quantitative information flow} \cite{fernandes2024explaining}.
+
 \section{Methodology}
 
-The methodology applied to this project consists, in general, of reading many papers on the relevant subjects, in order to gather what has been produced recently. Also, for developing the necessary theoretical background, part of the methodology is to read the main book on Causality\cite{Causality}, by Judea Pearl. Also, rigorous mathematical reasoning will be applied for any possible theoretical result, and computer simulations will be developed for the reproduction of relevant results.
+The methodology applied to this project consists, in general, of reading many papers on the relevant subjects, in order to gather what has been produced recently. Also, rigorous mathematical reasoning will be applied for any possible theoretical result, and computer simulations will be developed for the reproduction of relevant results.
 
 \section{Expected Results}
 
-For the first part of the project (POC I), the expected result was an extensive review of the literature on Causality, Fairness, Privacy, Accuracy and Interpretability in Machine Learning, and the relationships between these concepts. For the second part (POC II), the expected results is to have a formal exploration of the impact of privacy-enhancing obfuscation methods in fairness, to explore how the privacy budget can be divided between many variables in the context of Local Differential Privacy, and explore how viable is the application of Quantitative Information Flow tools for the development of privacy and fairness research.
+For the first part of the project (POC I), the expected result was an extensive review of the literature on Causality, Fairness, Privacy, Accuracy and Interpretability in Machine Learning, and the relationships between these concepts. For the second part (POC II), the expected results is to have a formal exploration of the impact of privacy-enhancing obfuscation methods in fairness, to explore how the privacy budget can be divided between many variables in the context of Local Differential Privacy, and explore how viable is the application of Quantitative Information Flow tools for the development of privacy and fairness research, with a special focus on a modification of $\max$-QIF, which we will call $\delta-\max$-QIF to model $(\epsilon,\delta)$-LDP.
 
 \section{Steps and Cronogram}
-{\color{red}
-\begin{enumerate}
-    \item Why should we try to reverse the noise after LDP. We can show that we lose info (utility, accuracy, etc.), or that we worsen the Paretto Front of the fairness-accuracy trade-off.
-    \item How to better distribute the privacy budget if we have only a few sensitive attributes.
-    \item How to model $(\epsilon,\delta)-DP$ with $QIF$. Maybe $\delta$-max case, the best that has at least $\delta$ probability of hapennning.
-\end{enumerate}
-}
-The dates are in month/day format. {\color{red} Obviamente, refazer as datas né}
+%{\color{red}
+%\begin{enumerate}
+%    \item Why should we try to reverse the noise after LDP. We can show that we lose info (utility, accuracy, etc.), or that we worsen the Paretto Front of the fairness-accuracy trade-off.
+%    \item How to better distribute the privacy budget if we have only a few sensitive attributes.
+%    \item How to model $(\epsilon,\delta)-DP$ with $QIF$. Maybe $\delta$-max case, the best that has at least $\delta$ probability of hapennning.
+%\end{enumerate}
+%}
+The dates are in month/day format.
 
-\begin{tabular}{ |s|rr|rr|rr|rr|rr|rr|aa| }
+\begin{tabular}{ |s|rr|rr|rr|rr|rr|rr|rr|rr|}
 \hline
-\rowcolor{gray} \multicolumn{15}{|c|}{Cronogram} \\
+\rowcolor{gray} \multicolumn{17}{|c|}{Cronogram} \\
 \hline
 \rowcolor{lightgray}
-&\multicolumn{2}{|c|}{03/17}& \multicolumn{2}{|c|}{03/31}& \multicolumn{2}{|c|}{04/14}& \multicolumn{2}{|c|}{04/28}& \multicolumn{2}{|c|}{05/12}& \multicolumn{2}{|c|}{05/26}& \multicolumn{2}{|c|}{06/09 - 06/27} \\
+&\multicolumn{2}{|c|}{10/14}& \multicolumn{2}{|c|}{10/28}& \multicolumn{2}{|c|}{11/04}& \multicolumn{2}{|c|}{11/18}& \multicolumn{2}{|c|}{12/02}& \multicolumn{2}{|c|}{12/16}& \multicolumn{2}{|c|}{12/30}& \multicolumn{2}{|c|}{01/13} \\
+
 \hline
-Contacting advisor and preparing themes &\cellcolor[HTML]{00EEEE}&&&&&&&&&&&&& \\
+Preparing themes and contacting advisor&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&&&&&&&&&&&&&& \\
 \hline
-Writing this proposal &&\cellcolor[HTML]{00EEEE}&&&&&&&&&&&& \\
+Writing this proposal &&&\cellcolor[HTML]{00EEEE}&&&&&&&&&&&&& \\
 \hline
-Reading recent papers &&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&&&&&&&&& \\
+Reading recent LDP vs Fairness papers and preparing arguments &&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&&&&&&&&&& \\
 \hline
-Exploring LDP noise reversal &&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&&&&&& \\
+Present reasons to apply noise reversal in LDP vs Fairness studies and ask researchers about it &&&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&&&&&&&& \\
 \hline
-Preparing Partial Pitch &&&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&&&&&& \\
+Preparing Partial Pitch &&&&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&&&&&&& \\
 \hline
-Exploring privacy bidget distribution &&&&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&&&& \\
+Exploring $(\epsilon,\delta)-DP$ modeling with $\delta-\max-QIF$ &&&&&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&&&&& \\
 \hline
-Exploring $(\epsilon,\delta)-DP$ modeling with $QIF$ &&&&&&&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}& \\
+Explore privacy budget distribution on LDP mechanisms with only a few sensitive attributes and correlation information between attributes &&&&&&&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&&& \\
 \hline
-Preparing Final Pitch &&&&&&&&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}& \\
+Preparing Final Pitch &&&&&&&&&&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}& \\
 \hline
-Writing final report &&&&&&&&&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE} \\
+Writing final report &&&&&&&&&&&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE} \\
 \hline
 \end{tabular}
 
