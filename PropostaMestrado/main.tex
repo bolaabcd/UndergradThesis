@@ -1,0 +1,78 @@
+\documentclass[titlepage]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amscd}
+\usepackage{amsfonts}
+\usepackage{dsfont}
+\usepackage{fancyhdr}
+\usepackage{enumerate}
+\usepackage{steinmetz}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{hyperref}
+
+\usepackage[table]{xcolor}
+\setlength{\arrayrulewidth}{0.1mm}
+%\setlength{\tabcolsep}{18pt}
+\renewcommand{\arraystretch}{2.5}
+\newcolumntype{s}{>{\columncolor[HTML]{AAACED}} p{3cm}}
+\newcolumntype{r}{p{3mm}}
+\newcolumntype{a}{p{10mm}}
+%\arrayrulecolor[HTML]{DB5800}
+\newcommand{\qm}[1]{``#1"}
+
+
+\renewcommand\refname{Bibliography}
+
+
+\title{\Huge Relations between Fairness, Privacy and Quantitative Information Flow in Machine Learning\large\\ Advisor: Mário Sérgio Alvim}
+\author{\Large Artur Gaspar da Silva}
+\date{Nov. 2024}
+
+\begin{document}
+\maketitle
+\pagebreak
+
+\section{Introduction}
+
+Recent resarch\cite{Sok}\cite{Reductions}\cite{Rachel}\cite{Awareness} indicates numerous tensions and synergies between many concepts that surround the Machine Learning literature, including Fairness, Privacy, Accuracy and Interpretability. For instance, there is an inherent tradeoff between Fairness and Accuracy such that, depending on the data distribution, it might be impossible to develop a model that achieves acceptable values for both fairness and accuracy, if we considr some reasonable fairness metrics\cite{Carlos}. Also, there has been some work on introducing Causality concepts into the discussion, for instance, to develop better fairness metrics\cite{CausalFair}. It has also been suggested to use interpretable models (as explanations to more complex models) for auditing systems and checking if they are fair, although this might lead to problems\cite{ExplainAll}. This area of research is especially relevant nowadays, given the importance that Machine Learning and Artificial Intelligence systems have: we now have computational systems that are part of processes of making decisions with big impacts on people's lives, for instance, recidivism prediction\cite{Compass}, loan approvals\cite{Loans}, hiring decisions\cite{Jobs}, and others.
+
+The main goal is to identify the theoretical relations between fairness, privacy and Quantitative Information Flow, which is aligned with research areas at the T-Rex (Theory Expertise) laboratory. More specifically, the aim is to model Differential Privacy and Local Differential Privacy with the Quantitative Information Flow framework, and prove new theoretical results that establish this relation. Afterwards, we aim to explore the relationships between privacy and fairness metrics, with focus on Equal Opportunity Difference, Statistical Disparity and Conditional Statistical Disparity. Finally, causalily concepts (based on Judea Pearl's work\cite{Causality}) will be explored to provide better mathematical understanding of fairness and privacy in machine learning systems.
+
+\section{Theoretical Reference}
+
+Causality refers to the study of causal relationships between variables, and how to model and infer causal relationships from the combination of domain knowledge and data\cite{Causality}. This area of research has matured a lot in the last $50$ years, with many different approaches still being developed. Fairness in Machine Learning is concerned with measuring how unfair the results provided by Machine Learning models are to certain groups or individuals\cite{FairMeasures}, and improving how fair the models are\cite{FairSolve}. There are tensions between different fairness measures\cite{Impossibility}\cite{FairTensions}. Privacy is concerned with quantifying how much sensitive information leaks about individuals and methods to avoid this information leakage. In Machine Learning settings, the data collection might be hard for information that is considered very sensitive (for instance, whether or not a person regularly uses illegal drugs) and approaches such as Differential Privacy\cite{DP} might improve trust in the data collection. Also, the model itself might allow the identification of individuals and sensitive features, which is not desirable\cite{liu2021machine}. Accuracy is a metric of how many mistakes the Machine Learning model makes, and there are trade-offs between Accuracy and the other concepts presented\cite{Sok}\cite{Carlos}\cite{Rachel}. The area of Interpretability focus on developing Machine Learning models that have human-comprehensible decisions (either directly or to explain the decisions of more complex models), which might be useful when developing these models\cite{ExplDev} and also to help experts with domain knowledge decide when to trust the results presented by the models\cite{ExplainExperts}. Quantitative Information Flow is a general theoretical framework for measuring amounts of information, with a focus on privacy applications but, in principle, a broader scope\cite{QIF}.
+
+In \cite{Sok}, the relationships between Fairness, Interpretability and Privacy have been extensively explored. The paper \cite{Awareness} focuses on relationships between Privacy and Fairness, \cite{Rachel} on the relationship between Privacy, Fariness and Accuracy, \cite{Carlos} and \cite{Reductions} on the feasibility regions of Accuracy and Fairness metrics, \cite{CausalFair} on Causality-Aware fairness metrics. One of the goals of the first part of this project is to increase this list of references with the added analysis of the possibility of approaches based on Quantitative Information Flow (\cite{Bruno} explored the relations between Quantitative Information Flow and Fairness, but it is still possible to find relationships with the other topics mentioned).
+
+More specifically to the relation between Differential Privacy and Quantitative Inforamtion Flow, there are important results in the literature. There are works discussing the relations between differential privacy and $g$-vulnerability, including bounds on $g$-leakage as a function of the $\epsilon$ parameter of differential privacy, and the fact that there is no bound on differential privacy as a function of the $g$-vulnerability \cite{alvim2015information}. Also, we have recent work \cite{fernandes2022explaining} discussing how the $\epsilon$ parameter of Differential Privacy is related to max-case $g$-vulnerability: $e^\epsilon$ is exactly the multiplicative max-case channel capacity under a fixed prior. This work also discusses many other theoretical results relating $g$-vulnerability notions with differential privacy. Finally, recent contributions show that it is possible to model the $\epsilon$ parameter of local differential privacy with the Quantitative Information Flow framework \cite{fernandes2024explaining}, and thus show the viability of our pursuit of modeling $(\epsilon,\delta)$-LDP and Differential Privacy.
+
+\section{Methodology}
+
+The methodology we will apply consists, in general, of reading many papers on the relevant subjects, in order to gather what has been produced recently. Also, rigorous mathematical reasoning will be applied for any theoretical result, and computer simulations will be developed for the reproduction of relevant results.
+
+\section{Cronogram}
+
+\begin{tabular}{ |s|rr|rr|rr|rr|}
+\hline
+\rowcolor{gray} \multicolumn{9}{|c|}{Cronogram} \\
+\hline
+\rowcolor{lightgray}
+&\multicolumn{2}{|c|}{2025/1}& \multicolumn{2}{|c|}{2025/2}& \multicolumn{2}{|c|}{2026/1}& \multicolumn{2}{|c|}{2026/2} \\
+\hline
+Finish review of previous works&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&&&&&& \\
+\hline
+Model $(\epsilon,\delta)-LDP$ and $DP$ with the QIF framework&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&& \\
+\hline
+Explore theoretical relations between privacy and fairness metrics&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&& \\
+\hline
+Explore causality modeling for fairness and privacy&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE} \\
+\hline
+\end{tabular}
+
+\bibliographystyle{splncs04}
+\bibliography{poc2}
+
+\end{document}
