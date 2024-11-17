@@ -1,4 +1,4 @@
-\documentclass[titlepage]{article}
+\documentclass[12pt]{article}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
@@ -27,13 +27,14 @@
 \renewcommand\refname{Bibliography}
 
 
-\title{\Huge Relations between Fairness, Privacy and Quantitative Information Flow in Machine Learning\large\\ Advisor: Mário Sérgio Alvim}
-\author{\Large Artur Gaspar da Silva}
-\date{Nov. 2024}
+\title{\Huge Research Project - Masters - PPGCC - DCC - UFMG\large\\Artur Gaspar da Silva}
+\date{}
 
 \begin{document}
 \maketitle
-\pagebreak
+\vspace{-8em}
+
+This document presents the research project for the candidate Artur Gaspar da Silva, for PPGCC - UFMG. The research area of the project is included in Computer Science Theory, more specifically in Quantitative Information Flow and Privacy. The student aims to be advised by professor Mário Sérgio Alvim, researcher at the T-Rex (Theory Expertise) laboratory.
 
 \section{Introduction}
 
@@ -45,32 +46,48 @@ The main goal is to identify the theoretical relations between fairness, privacy
 
 Causality refers to the study of causal relationships between variables, and how to model and infer causal relationships from the combination of domain knowledge and data\cite{Causality}. This area of research has matured a lot in the last $50$ years, with many different approaches still being developed. Fairness in Machine Learning is concerned with measuring how unfair the results provided by Machine Learning models are to certain groups or individuals\cite{FairMeasures}, and improving how fair the models are\cite{FairSolve}. There are tensions between different fairness measures\cite{Impossibility}\cite{FairTensions}. Privacy is concerned with quantifying how much sensitive information leaks about individuals and methods to avoid this information leakage. In Machine Learning settings, the data collection might be hard for information that is considered very sensitive (for instance, whether or not a person regularly uses illegal drugs) and approaches such as Differential Privacy\cite{DP} might improve trust in the data collection. Also, the model itself might allow the identification of individuals and sensitive features, which is not desirable\cite{liu2021machine}. Accuracy is a metric of how many mistakes the Machine Learning model makes, and there are trade-offs between Accuracy and the other concepts presented\cite{Sok}\cite{Carlos}\cite{Rachel}. The area of Interpretability focus on developing Machine Learning models that have human-comprehensible decisions (either directly or to explain the decisions of more complex models), which might be useful when developing these models\cite{ExplDev} and also to help experts with domain knowledge decide when to trust the results presented by the models\cite{ExplainExperts}. Quantitative Information Flow is a general theoretical framework for measuring amounts of information, with a focus on privacy applications but, in principle, a broader scope\cite{QIF}.
 
-In \cite{Sok}, the relationships between Fairness, Interpretability and Privacy have been extensively explored. The paper \cite{Awareness} focuses on relationships between Privacy and Fairness, \cite{Rachel} on the relationship between Privacy, Fariness and Accuracy, \cite{Carlos} and \cite{Reductions} on the feasibility regions of Accuracy and Fairness metrics, \cite{CausalFair} on Causality-Aware fairness metrics. One of the goals of the first part of this project is to increase this list of references with the added analysis of the possibility of approaches based on Quantitative Information Flow (\cite{Bruno} explored the relations between Quantitative Information Flow and Fairness, but it is still possible to find relationships with the other topics mentioned).
+previous work extensively explored the relationships between Fairness, Interpretability and Privacy\cite{Sok}. Other works focus on: relationships between Privacy and Fairness\cite{Awareness}, the relationship between Privacy, Fariness and Accuracy\cite{Rachel}, the feasibility regions of Accuracy and Fairness metrics\cite{Carlos}\cite{Reductions}, and Causality-Aware fairness metrics\cite{CausalFair}. There are also explorations of the relations between Quantitative Information Flow and Fairness\cite{Bruno}.
 
 More specifically to the relation between Differential Privacy and Quantitative Inforamtion Flow, there are important results in the literature. There are works discussing the relations between differential privacy and $g$-vulnerability, including bounds on $g$-leakage as a function of the $\epsilon$ parameter of differential privacy, and the fact that there is no bound on differential privacy as a function of the $g$-vulnerability \cite{alvim2015information}. Also, we have recent work \cite{fernandes2022explaining} discussing how the $\epsilon$ parameter of Differential Privacy is related to max-case $g$-vulnerability: $e^\epsilon$ is exactly the multiplicative max-case channel capacity under a fixed prior. This work also discusses many other theoretical results relating $g$-vulnerability notions with differential privacy. Finally, recent contributions show that it is possible to model the $\epsilon$ parameter of local differential privacy with the Quantitative Information Flow framework \cite{fernandes2024explaining}, and thus show the viability of our pursuit of modeling $(\epsilon,\delta)$-LDP and Differential Privacy.
 
+\vspace{-1em}
 \section{Methodology}
 
-The methodology we will apply consists, in general, of reading many papers on the relevant subjects, in order to gather what has been produced recently. Also, rigorous mathematical reasoning will be applied for any theoretical result, and computer simulations will be developed for the reproduction of relevant results.
+This work aims to explore the intersection of Information Theory (by the lens of Quantitative Information Flow), Privacy, and Fairness in Machine Learning. The primary goal is to investigate how these concepts can be effectively integrated and applied to ensure that machine learning models are transparent, robust, and fair, while maintaining the privacy of sensitive data.
+
+First, we will conduct a comprehensive literature review to identify what is currently known and unkown about the relationship between the concepts of privacy, fairness and information flow in machine learning systems. The review will aim to highlight gaps in existing theoretical frameworks, particularly in terms of guarantees provided by common fairness and privacy metrics and notions.
+
+Next, we will explore novel theoretical relationships among these areas. We are particularly interested in modeling the concept of $(\epsilon,\delta)-$Local Differential Privacy from the perspective of Quantitative Information Flow, as both the Differential Privacy and the Quantitative Information Flow frameworks propose methods of quantifying privacy, and there are already methods of modeling $\epsilon-LDP$ in the literature\cite{fernandes2022explaining}. 
+
+Additionally, we will explore the fundamental theoretical relationships between fairness and privacy, obtaining, for instance, the exact trade-offs between privacy and fairness constraints. The focus will be theoretical: by rigorous mathematical reasoning we aim to prove theorems that establish these relationships. We will also experiment with machine learning models trained on real-world datasets, testing empirically various privacy and fairness trade-offs, and identifying patterns that could lead to more robust theoretical results.
+
+Finally, through the exploration of causality notions\cite{Causality}, we aim to provide new insights into the meaning of different quantitative notions of information flow, privacy, fairness, and of their relations, ultimately contributing to the creation of more transparent, accountable, and ethical AI systems.
 
 \section{Cronogram}
 
-\begin{tabular}{ |s|rr|rr|rr|rr|}
-\hline
-\rowcolor{gray} \multicolumn{9}{|c|}{Cronogram} \\
-\hline
-\rowcolor{lightgray}
-&\multicolumn{2}{|c|}{2025/1}& \multicolumn{2}{|c|}{2025/2}& \multicolumn{2}{|c|}{2026/1}& \multicolumn{2}{|c|}{2026/2} \\
-\hline
-Finish review of previous works&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&&&&&& \\
-\hline
-Model $(\epsilon,\delta)-LDP$ and $DP$ with the QIF framework&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&& \\
-\hline
-Explore theoretical relations between privacy and fairness metrics&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&& \\
-\hline
-Explore causality modeling for fairness and privacy&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE} \\
-\hline
-\end{tabular}
+\begin{enumerate}
+\item 2025/1: Finish review of previous works. Coursework: Information Theory, Project and Analysis of Algorithms.
+\item 2025/2: Model $(\epsilon,\delta)-LDP$ and $DP$ with the QIF framework. Coursework: Deep Learning, Statistical Foundations of Data Science.
+\item 2026/1: Explore theoretical relations between privacy and fairness metrics. Coursework: Measure Theory, Combinatorics.
+\item 2026/2: Explore causality modeling for fairness and privacy.
+\end{enumerate}
+
+%\begin{tabular}{ |s|rr|rr|rr|rr|}
+%\hline
+%\rowcolor{gray} \multicolumn{9}{|c|}{Cronogram} \\
+%\hline
+%\rowcolor{lightgray}
+%&\multicolumn{2}{|c|}{2025/1}& \multicolumn{2}{|c|}{2025/2}& \multicolumn{2}{|c|}{2026/1}& \multicolumn{2}{|c|}{2026/2} \\
+%\hline
+%Finish review of previous works&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&&&&&& \\
+%\hline
+%Model $(\epsilon,\delta)-LDP$ and $DP$ with the QIF framework&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&& \\
+%\hline
+%Explore theoretical relations between privacy and fairness metrics&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&& \\
+%\hline
+%Explore causality modeling for fairness and privacy&&&&&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE}&\cellcolor[HTML]{00EEEE} \\
+%\hline
+%\end{tabular}
 
 \bibliographystyle{splncs04}
 \bibliography{poc2}
