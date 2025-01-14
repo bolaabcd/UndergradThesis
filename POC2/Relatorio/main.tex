@@ -1,0 +1,125 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+%Template version as of 6/27/2024
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+
+
+\onecolumn
+
+\title{Relations between Causality, Fairness, Privacy, Accuracy, Information Flow and Explainability in Machine Learning\large\\ Type: Scientific\\Advisor: Mário Sérgio Alvim}
+\author{Artur Gaspar da Silva}
+\date{16/01/2025}
+
+
+\begin{document}
+
+
+\begin{titlepage}
+    \begin{center}
+
+        \Huge
+        \textbf{Universidade Federal de Minas Gerais}
+
+        \vspace{0.5cm}
+        \LARGE
+            Department of Computer Science
+
+        \vspace{0.5cm}
+        \large
+           Undergraduate Thesis, Part II 
+
+        \vspace{0.7cm}
+
+        \includegraphics[width=0.4\textwidth]{logoUFMG.jpg}
+
+
+
+        \vspace{0.5cm}
+
+        \Huge
+            Relations between Fairness, Privacy and Quantitative Information Flow in Machine Learning
+            \\\large Type: Scientific
+
+        \vspace{0.5cm}
+        \begin{abstract}
+            Recent years have witnessed an enormous advance in the area of Machine Learning, reflected by the popularity of Artificial Inteligence systems. For most of the history of machine learning research, the main goal was the development of machine learning algorithms that led to more accurate models, but it is now very clear that there are many other important areas to develop. We want models to be fair to unprivileged groups in society, to not reveal private information used in the model training, to provide comprehensible explanations to humans in order to help identifying causal relationships, among many relevant goals other than simply improving model accuracy. In this work, we explore possible new relationships between fairness, privacy and Quantitative Inforamtion Flow. The first exploration is an analysis of papers that explore the impact of privacy-enhancing mechanisms on Machine Learning fairness notions. Our second exploration is the possibility of dividing a fixed local differencial privacy budget between variables with varying degrees of sensitivity. Finally, we explore modeling both local differential privacy parameters within the Quantitative Information Flow framework.
+        \end{abstract}
+
+        \vspace{0.5cm}
+
+
+     \end{center}
+
+\raggedright
+
+\Large
+    Supervisor:
+    \vspace{0.2cm}\\
+\Large
+    Prof. Mário Sérgio Alvim
+    \vspace{0.125cm}\\
+
+\raggedleft
+
+\Large
+    Thesis written by:
+    \vspace{0.125cm}\\
+\Large
+    Artur Gaspar da Silva
+
+
+
+\begin{center}
+    \vspace{1cm}
+        Academic Semester 2024/2
+\end{center}
+
+\end{titlepage}
+%\maketitle
+
+
+\newpage
+\tableofcontents
+\begin{IEEEkeywords}
+    Quantitative Information Flow, Differential Privacy, Fairness, Machine Learning.
+\end{IEEEkeywords}
+\newpage
+\twocolumn
+
+
+\section{Introduction}
+Recent resarch\cite{Sok}\cite{Reductions}\cite{Rachel}\cite{Awareness} indicates numerous tensions and synergies between many concepts that surround the Machine Learning literature, including Fairness, Privacy, Accuracy and Interpretability. For instance, there is an inherent tradeoff between Fairness and Accuracy such that, depending on the data distribution, it might be impossible to develop a model that achieves acceptable values for both fairness and accuracy, if we considr some reasonable fairness metrics\cite{Carlos}. Also, there has been some work on introducing Causality concepts into the discussion, for instance, to develop better fairness metrics\cite{CausalFair}. It has also been suggested to use interpretable models (as explanations to more complex models) for auditing systems and checking if they are fair, although this might lead to problems\cite{ExplainAll}. This area of research is especially relevant nowadays, given the importance that Machine Learning and Artificial Intelligence systems have: we now have computational systems that are part of processes of making decisions with big impacts on people's lives, for instance, recidivism prediction\cite{Compass}, loan approvals\cite{Loans}, hiring decisions\cite{Jobs}, and others.
+
+The goal of this Undergraduate Thesis is to review and reproduce results presented in the litearture, verify the viability of the connections between the aforementioned areas and Quantitative Information Flow, and, if possible, develop new theoretical results. This project is divided into two parts: POC I and POC II. In POC I, the specific goals were to research the literature for these concepts and focus on the connections that have been identified between them, so the expected result is a concise review of the literature on these topics. In this work (POC II), we verify possible connections between Privacy, Fairness and Quantitative Information Flow, and outline possible new theoretical results. We provide an in-depth theoretical analysis of the viability of Quantitative Information Flow approaches to these areas and the connections between privacy and fairness. We provide a formal exploration of the impact of privacy-enhancing obfuscation methods in fairness, based on important results in the literature reviewed in POC I, we explore how the privacy budget can be divided between many variables in the context of Local Differential Privacy, and, finally, we explore how viable is the application of the Quantitative Information Flow framework in Local Differential Privacy.
+
+\section{Theoretical Reference}
+
+Fairness in Machine Learning is concerned with measuring how unfair the results provided by Machine Learning models are to certain groups or individuals\cite{FairMeasures}, and improving how fair the models are\cite{FairSolve}. There are tensions between different fairness measures\cite{Impossibility}\cite{FairTensions}. Privacy is concerned with quantifying how much sensitive information leaks about individuals and methods to avoid this information leakage. In Machine Learning settings, the data collection might be hard for information that is considered very sensitive (for instance, whether or not a person regularly uses illegal drugs) and approaches such as Differential Privacy\cite{DP} might improve trust in the data collection. Also, the model itself might allow the identification of individuals and sensitive features, which is not desirable\cite{liu2021machine}. Quantitative Information Flow is a general theoretical framework for measuring amounts of information, with a focus on privacy applications but, in principle, a broader scope\cite{QIF}. In recent research\cite{Sok}, the relationships between Fairness, Interpretability and Privacy have been extensively explored. Recent papers focuses on relationships between Privacy and Fairness\cite{Awareness}, on the relationship between Privacy\cite{Rachel}, and on the feasibility regions of Accuracy and Fairness metrics\cite{Carlos}\cite{Reductions}. 
+
+More specifically to the relation between Differential Privacy and Quantitative Inforamtion Flow, there are important results in the literature. There are works discussing the relations between differential privacy and $g$-vulnerability, including bounds on $g$-leakage as a function of the $\epsilon$ parameter of differential privacy, and the fact that there is no bound on differential privacy as a function of the $g$-vulnerability \cite{alvim2015information}. Also, we have recent work \cite{fernandes2022explaining} discussing how the $\epsilon$ parameter of Differential Privacy is related to max-case $g$-vulnerability: $e^\epsilon$ is exactly the multiplicative max-case channel capacity under a fixed prior. This work also discusses many other theoretical results relating $g$-vulnerability notions with differential privacy. 
+
+\section{Contributions}
+
+\subsection{The impact of Local Differential Privacy mechanisms on fairness metrics}
+
+\subsection{How to distribute the Local Differential Privacy budget between variables with varying levels of importance}
+
+\subsection{Modeling the $\delta$ parameter of $(\epsilon,\delta)$-LDP within the Quantitative Information Flow framework}
+
+\section{Conclusions}
+
+
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEexample}
+
+\end{document}

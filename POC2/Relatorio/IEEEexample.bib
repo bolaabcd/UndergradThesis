@@ -1,0 +1,2218 @@
+
+IEEEexample.bib 
+V1.12 (2007/01/11)
+Copyright (c) 2002-2007 by Michael Shell
+See: http://www.michaelshell.org/
+for current contact information.
+
+This is an example BibTeX database for the official IEEEtran.bst
+BibTeX style file.
+
+Some entries call strings that are defined in the IEEEabrv.bib file.
+Therefore, IEEEabrv.bib should be loaded prior to this file. 
+Usage: 
+
+\bibliographystyle{./IEEEtran}
+\bibliography{./IEEEabrv,./IEEEexample}
+
+
+Support sites:
+http://www.michaelshell.org/tex/ieeetran/
+http://www.ctan.org/tex-archive/macros/latex/contrib/IEEEtran/
+and/or
+http://www.ieee.org/
+
+*************************************************************************
+Legal Notice:
+This code is offered as-is without any warranty either expressed or
+implied; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE! 
+User assumes all risk.
+In no event shall IEEE or any contributor to this code be liable for
+any damages or losses, including, but not limited to, incidental,
+consequential, or any other damages, resulting from the use or misuse
+of any information contained here.
+
+All comments are the opinions of their respective authors and are not
+necessarily endorsed by the IEEE.
+
+This work is distributed under the LaTeX Project Public License (LPPL)
+( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+distributed and modified. A copy of the LPPL, version 1.3, is included
+in the base LaTeX documentation of all distributions of LaTeX released
+2003/12/01 or later.
+Retain all contribution notices and credits.
+** Modified files should be clearly indicated as such, including  **
+** renaming them and changing author support contact information. **
+
+File list of work: IEEEabrv.bib, IEEEfull.bib, IEEEexample.bib,
+                   IEEEtran.bst, IEEEtranS.bst, IEEEtranSA.bst,
+                   IEEEtranN.bst, IEEEtranSN.bst, IEEEtran_bst_HOWTO.pdf
+*************************************************************************
+
+
+Note that, because the example references were taken from actual IEEE
+publications, these examples do not always contain the full amount
+of information that may be desirable (for use with other BibTeX styles).
+In particular, full names (not abbreviated with initials) should be
+entered whenever possible as some (non-IEEE) bibliography styles use
+full names. IEEEtran.bst will automatically abbreviate when it encounters
+full names.
+ 
+ 
+ 
+ 
+references for the IEEEtran.bst documentation
+IEEEtran homepage
+@electronic{IEEEhowto:IEEEtranpage,
+  author        = "Michael Shell",
+  title         = "{IEEE}tran Homepage",
+  url           = "http://www.michaelshell.org/tex/ieeetran/",
+  year          = "2007"
+}
+
+
+the distribution site for IEEEtran.bst
+@electronic{IEEEexample:shellCTANpage,
+  author        = "Michael Shell",
+  title         = "{IEEE}tran Webpage on {CTAN}",
+  url           = "http://www.ctan.org/tex-archive/macros/latex/contrib/IEEEtran/",
+  year          = "2007"
+}
+
+
+the IEEE website
+sort key is needed for sorting styles
+@electronic{IEEEexample:IEEEwebsite,
+  title         = "The {IEEE} Website",
+  url           = "http://www.ieee.org/",
+  year          = "2007",
+  key           = "IEEE"
+}
+
+
+The BibTeX user's guide.
+The filename could have been put in the URL instead. But, there might
+be other interesting things for the user in the same directory - and
+the filename might change before the directory that contains it.
+@electronic{IEEEexample:bibtexuser,
+  author        = "Oren Patashnik",
+  title         = "{{\BibTeX}}ing",
+  howpublished  = "{btxdoc.pdf}",
+  url           = "http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/",
+  month         = feb,
+  year          = "1988"
+}
+
+
+The BibTeX style designer's guide.
+@electronic{IEEEexample:bibtexdesign,
+  author        = "Oren Patashnik",
+  title         = "Designing {{\BibTeX}} Styles",
+  howpublished  = "{btxhak.pdf}",
+  url           = "http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/",
+  month         = feb,
+  year          = "1988"
+}
+
+
+A comprehensive BibTeX tutorial.
+@electronic{IEEEexample:tamethebeast,
+  author        = "Nicolas Markey",
+  title         = "Tame the BeaST  ---  The B to X of {{\BibTeX}}",
+  url           = "http://tug.ctan.org/tex-archive/info/bibtex/tamethebeast/",
+  month         = oct,
+  year          = "2005"
+}
+
+
+The BibTeX Tips and FAQ guide.
+@electronic{IEEEexample:bibtexFAQ,
+  author        = "David Hoadley and Michael Shell",
+  title         = "{{\BibTeX}} Tips and {FAQ}",
+  howpublished  = "{btxFAQ.pdf}",
+  url           = "http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/",
+  month         = jan,
+  year          = "2007"
+}
+
+
+The TeX FAQ
+@electronic{IEEEexample:texfaq,
+  author        = "Robin Fairbairns",
+  title         = "The {{\TeX}} {FAQ}",
+  url           = "http://www.tex.ac.uk/cgi-bin/texfaq2html/",
+  month         = jan,
+  year          = "2007"
+}
+
+
+A BibTeX Guide via Examples.
+@electronic{IEEEexample:bibtexguide,
+  author        = "Ki-Joo Kim",
+  title         = "A {{\BibTeX}} Guide via Examples",
+  howpublished  = "{bibtex\_guide.pdf}",
+  url           = "http://www.geocities.com/kijoo2000/",
+  month         = apr,
+  year          = "2004"
+}
+
+
+TeX User Group Bibliography Archive
+@electronic{IEEEexample:beebe_archive,
+  author        = "Nelson H. F. Beebe",
+  title         = "{{\TeX}} User Group Bibliography Archive",
+  url           = "http://www.math.utah.edu:8080/pub/tex/bib/index-table.html",
+  month         = aug,
+  year          = "2006"
+}
+
+The natbib.sty package.
+@electronic{ctan:natbib,
+  author        = "Patrick W. Daly",
+  title         = "The natbib.sty package",
+  url           = "http://www.ctan.org/tex-archive/macros/latex/contrib/natbib/",
+  month         = sep,
+  year          = "2006"
+}
+
+The url.sty package.
+@electronic{IEEEexample:urlsty,
+  author        = "Donald Arseneau",
+  title         = "The url.sty Package",
+  url           = "http://www.ctan.org/tex-archive/macros/latex/contrib/misc/",
+  month         = jun,
+  year          = "2005",
+}
+
+
+The hyperref.sty package.
+@electronic{IEEEexample:hyperrefsty,
+  author        = "Sebastian Rahtz and Heiko Oberdiek",
+  title         = "The hyperref.sty Package",
+  url           = "http://www.ctan.org/tex-archive/macros/latex/contrib/hyperref/",
+  month         = nov,
+  year          = "2006",
+}
+
+
+The breakurl.sty package.
+@electronic{IEEEexample:breakurl,
+  author        = "Vilar Camara Neto",
+  title         = "The breakurl.sty Package",
+  url           = "http://www.ctan.org/tex-archive/macros/latex/contrib/breakurl/",
+  month         = aug,
+  year          = "2006",
+}
+
+
+The Babel package.
+@electronic{IEEEexample:babel,
+  author        = "Johannes Braams",
+  title         = "The Babel Package",
+  url           = "http://www.ctan.org/tex-archive/macros/latex/required/babel/",
+  month         = nov,
+  year          = "2005",
+}
+
+
+The multibib package.
+@electronic{IEEEexample:multibibsty,
+  author        = "Thorsten Hansen",
+  title         = "The multibib.sty package",
+  url           = "http://www.ctan.org/tex-archive/macros/latex/contrib/multibib/",
+  month         = jan,
+  year          = "2004"
+}
+
+
+The biblatex package.
+@electronic{IEEEexample:biblatex,
+  author        = "Philipp Lehman",
+  title         = "The biblatex package",
+  url           = "http://www.ctan.org/tex-archive/macros/latex/exptl/biblatex/",
+  month         = jan,
+  year          = "2007"
+}
+
+
+
+The three most common and typical types of references used in
+IEEE publications:
+
+an article in a journal
+Note the use of the IEEE_J_EDL string, defined in the IEEEabrv.bib file,
+for the journal name. IEEEtran.bst defines the BibTeX standard three
+letter month codes per IEEE style.
+From the June 2002 issue of "IEEE Transactions on Electron Devices",
+page 996, reference #16.
+@article{IEEEexample:article_typical,
+  author        = "S. Zhang and C. Zhu and J. K. O. Sin and P. K. T. Mok",
+  title         = "A Novel Ultrathin Elevated Channel Low-temperature 
+                   Poly-{Si} {TFT}",
+  journal       = IEEE_J_EDL,
+  volume        = "20",
+  month         = nov,
+  year          = "1999",
+  pages         = "569-571"
+}
+
+
+journal article using et al.
+The (five) authors are actually: F. Delorme, S. Slempkes, G. Alibert, 
+B. Rose, J. Brandon
+The month (July) was not given here.
+From the September 1998 issue of "IEEE Journal on Selected Areas in
+Communications", page 1257, reference #28.
+@article{IEEEexample:articleetal,
+  author        = "F. Delorme and others",
+  title         = "Butt-jointed {DBR} Laser With 15 {nm} Tunability Grown
+                   in Three {MOVPE} Steps",
+  journal       = "Electron. Lett.",
+  volume        = "31",
+  number        = "15",
+  year          = "1995",
+  pages         = "1244-1245"
+}
+
+
+a paper in a conference proceedings
+"conference" can be used as an alias for "inproceedings"
+From the June 2002 issue of "Journal of Microelectromechanical Systems",
+page 205, reference #16.
+@inproceedings{IEEEexample:conf_typical,
+  author        = "R. K. Gupta and S. D. Senturia",
+  title         = "Pull-in Time Dynamics as a Measure of Absolute Pressure",
+  booktitle     = "Proc. {IEEE} International Workshop on
+                   Microelectromechanical Systems ({MEMS}'97)",
+  address       = "Nagoya, Japan",
+  month         = jan,
+  year          = "1997",
+  pages         = "290-294"
+}
+
+
+a book
+From the May 2002 issue of "IEEE Transactions on Magnetics",
+page 1466, reference #4.
+@book{IEEEexample:book_typical,
+  author        = "B. D. Cullity",
+  title         = "Introduction to Magnetic Materials",
+  publisher     = "Addison-Wesley",
+  address       = "Reading, MA",
+  year          = "1972"
+}
+
+
+
+
+Other examples
+
+journal article with large page numbers, IEEE will divide numbers 5 digits
+or longer into groups of three with small spaces between them. Page ranges
+can be separated via either "-" or "--", IEEEtran.bst will automatically
+convert the separator dash(es) to "--".
+Authors and/or IEEE do not always provide/use the journal number, but it
+was used in this case. IEEEtran.bst can be configured to ignore journal
+numbers if desired.
+From the August 2000 issue of "IEEE Photonics Technology Letters",
+page 1039, reference #11.
+@article{IEEEexample:articlelargepages,
+  author        = "A. Castaldini and A. Cavallini and B. Fraboni
+                   and P. Fernandez and J. Piqueras",
+  title         = "Midgap Traps Related to Compensation Processes in
+                   {CdTe} Alloys",
+  journal       = "Phys. Rev. B.",
+  volume        = "56",
+  number        = "23",
+  year          = "1997",
+  pages         = "14897-14900"
+}
+
+
+journal article with dual months 
+use the BibTeX "#" concatenation operator
+From the March 2002 issue of "IEEE Transactions on Mechatronics",
+page 21, reference #8.
+@article{IEEEexample:articledualmonths,
+  author        = "Y. Okada and K. Dejima and T. Ohishi",
+  title         = "Analysis and Comparison of {PM} Synchronous Motor and
+                   Induction Motor Type Magnetic Bearings",
+  journal       = IEEE_J_IA,
+  volume        = "31",
+  month         = sep # "/" # oct,
+  year          = "1995",
+  pages         = "1047-1053"
+}
+
+
+journal article to be published as a misc entry type
+date information like month and year is optional 
+However, the article form like that below may be a better approach.
+From the May 2002 issue of "IEEE Journal of Selected Areas in 
+Communication", page 725, reference #3.
+@misc{IEEEexample:TBPmisc,
+  author        = "M. Coates and A. Hero and R. Nowak and B. Yu",
+  title         = "Internet Tomography",
+  howpublished  = IEEE_M_SP,
+  month         = may,
+  year          = "2002",
+  note          = "to be published"
+}
+
+
+journal article to be published as an article entry type
+year is required, so if absent, use the year field to hold
+the "submitted for publication" in order to avoid a warning for
+the missing year field.
+From the June 2002 issue of "IEEE Transactions on Information Theory",
+page 1461, reference #21.
+@article{IEEEexample:TBParticle,
+  author        = "N. Kahale and R. Urbanke",
+  title         = "On the Minimum Distance of Parallel and Serially
+                   Concatenated Codes",
+  journal       = IEEE_J_IT,
+  year          = "submitted for publication"
+}
+
+
+
+
+
+book with editor and no author
+From the June 2002 issue of "IEEE Transactions on Information Theory",
+page 1725, reference #1.
+@book{IEEEexample:bookwitheditor,
+  editor        = "J. C. Candy and G. C. Temes",
+  title         = "Oversampling Delta-Sigma Data Converters Theory,
+                   Design and Simulation",
+  publisher     = "{IEEE} Press.",
+  address       = "New York",
+  year          = "1992"
+}
+
+
+book with edition, author and editor
+Note that the standard BibTeX styles do not support book entries with both
+author and editor fields, but IEEEtran.bst does.
+The standard BibTeX way of specifying the edition is to use capitalized
+ordinal words such as "First", "Second", etc. Most .bst files can convert
+up to about "Fifth" into the format needed. IEEEtran.bst can convert up
+to "Tenth" to the "Arabic ordinal" form IEEE uses (e.g., "10th"). For
+editions over the tenth, it is best to use the "Arabic ordinal" form for
+IEEE related work (e.g., "101st")
+Note how "Jr." has to be entered.
+From the May 2002 issue of "Journal of Lightwave Technology", page 856,
+reference #17.
+@book{IEEEexample:book,
+  author        = "S. M. Metev and V. P. Veiko",
+  editor        = "Osgood, Jr., R. M.",
+  title         = "Laser Assisted Microtechnology",
+  edition       = "Second",
+  publisher     = "Springer-Verlag",
+  address       = "Berlin, Germany",
+  year          = "1998"
+}
+
+
+book with series and volume
+From the January 2000 issue of "IEEE Transactions on Communications",
+page 11, reference #31.
+@book{IEEEexample:bookwithseriesvolume,
+  editor        = "J. Breckling",
+  title         = "The Analysis of Directional Time Series: Applications to
+                   Wind Speed and Direction",
+  series        = "Lecture Notes in Statistics",
+  publisher     = "Springer",
+  address       = "Berlin, Germany",
+  year          = "1989",
+  volume        = "61"
+}
+
+
+inbook with chapter number. The pages field could also have been given.
+The chapter number could be changed to something else such as a section
+number via the type field: type = "sec.".
+From the May 2002 issue of "IEEE Transactions on Circuits and Systems---I: 
+Fundamental Applications and Theory", page 638, reference #22.
+@inbook{IEEEexample:inbook,
+  author        = "H. E. Rose",
+  title         = "A Course in Number Theory",
+  publisher     = "Oxford Univ. Press",
+  address       = "New York, NY",
+  year          = "1988",
+  chapter       = "3"
+}
+
+
+inbook with pages and note. The language field is not set to Russian
+because the title is presented here in its translated, English, form.
+From the May 2002 issue of "IEEE Transactions on Magnetics", page 1533,
+reference #5.
+@inbook{IEEEexample:inbookpagesnote,
+  author        = "B. K. Bul",
+  title         = "Theory Principles and Design of Magnetic Circuits",
+  publisher     = "Energia Press",
+  address       = "Moscow",
+  year          = "1964",
+  pages         = "464",
+  note          = "(in Russian)"
+}
+
+
+
+
+
+incollection with author and editor
+From the May 2002 issue of "Journal of Lightwave Technology",
+page 807, reference #7.
+@incollection{IEEEexample:incollection,
+  author        = "W. V. Sorin",
+  editor        = "D. Derickson",
+  title         = "Optical Reflectometry for Component Characterization",
+  booktitle     = "Fiber Optic Test and Measurement",
+  publisher     = "Prentice-Hall",
+  address       = "Englewood Cliffs, NJ",
+  year          = "1998"
+}
+
+
+incollection with series
+From the April 2000 issue of "IEEE Transactions on Communication",
+page 609, reference #3.
+@incollection{IEEEexample:incollectionwithseries,
+  author        = "J. B. Anderson and K. Tepe",
+  title         = "Properties of the Tailbiting {BCJR} Decoder",
+  booktitle     = "Codes, Systems and Graphical Models",
+  series        = "{IMA} Volumes in Mathematics and Its Applications",
+  publisher     = "Springer-Verlag",
+  address       = "New York",
+  year          = "2000"
+  
+}
+
+
+incollection with author, editor, chapter and pages
+From the January 2000 issue of "IEEE Transactions on Communications",
+page 16, reference #9.
+@incollection{IEEEexample:incollection_chpp,
+  author        = "P. Hedelin and P. Knagenhjelm and M. Skoglund",
+  editor        = "W. B. Kleijn and K. K. Paliwal",
+  title         = "Theory for Transmission of Vector Quantization Data",
+  booktitle     = "Speech Coding and Synthesis",
+  publisher     = "Elsevier Science",
+  address       = "Amsterdam, The Netherlands",
+  year          = "1995",
+  chapter       = "10",
+  pages         = "347-396"
+}
+
+
+incollection with a large number of authors, some authors/journals will
+use et al. for so many names. IEEEtran.bst can be configured to do this
+if desired, or "R. M. A. Dawson and others" can be used instead.
+Note that IEEE may not include the publisher for incollection entries -
+IEEEtran.bst will not issue a warning if the publisher is missing for
+incollections - but other .bst files often will.
+From the June 2002 issue of "IEEE Transactions on Electron Devices",
+page 996, reference #12.
+@incollection{IEEEexample:incollectionmanyauthors,
+  author        = "R. M. A. Dawson and Z. Shen and D. A. Furst and
+                   S. Connor and J. Hsu and M. G. Kane and R. G. Stewart and
+                   A. Ipri and C. N. King and P. J. Green and R. T. Flegal
+                   and S. Pearson and W. A. Barrow and E. Dickey and K. Ping
+                   and C. W. Tang and S. Van. Slyke and
+                   F. Chen and J. Shi and J. C. Sturm and M. H. Lu",
+  title         = "Design of an Improved Pixel for a Polysilicon 
+                   Active-Matrix Organic {LED} Display",
+  booktitle     = "{SID} Tech. Dig.",
+  volume        = "29",
+  year          = "1998",
+  pages         = "11-14"
+}
+
+
+
+
+
+A Motorola data book as a manual
+It is somewhat unusual to include the data book part number.
+in the title. It might be more correct to put this information
+in the howpublished field instead.
+From the December 2000 issue of "IEEE Transactions on Communications",
+page 1986, reference #10.
+@manual{IEEEexample:motmanual,
+  title         = "{FLEXChip} Signal Processor ({MC68175/D})",
+  organization  = "Motorola",
+  year          = "1996"
+}
+
+
+same reference, but using IEEEtran's howpublished extension
+@manual{IEEEexample:motmanualhowpub,
+  title         = "{FLEXChip} Signal Processor",
+  howpublished  = "{MC68175/D}",
+  organization  = "Motorola",
+  year          = "1996"
+}
+
+
+
+
+conference paper with an address and days. Some journals capitalize the
+letters in "Globecom", this one did not.
+From the May 2002 issue of "IEEE Transactions on Communications",
+page 697, reference #12.
+@inproceedings{IEEEexample:confwithadddays,
+  author        = "M. S. Yee and L. Hanzo",
+  title         = "Radial Basis Function Decision Feedback Equaliser
+                   Assisted Burst-by-burst Adaptive Modulation",
+  booktitle     = "Proc. {IEEE} Globecom '99",
+  address       = "Rio de Janeiro, Brazil",
+  month         = dec # " 5--9,",
+  year          = "1999",
+  pages         = "2183-2187"
+}
+
+
+conference paper with volume number. A conference proceedings with a vol
+number is a little uncommon, note that the vol number is placed
+before the address in the formatted bibliography entry
+From the April 2002 issue of "IEEE/ACM Transactions on Networking",
+page 181, reference #26.
+@inproceedings{IEEEexample:confwithvolume,
+  author        = "M. Yajnik and S. B. Moon and J. Kurose and D. Towsley",
+  title         = "Measurement and Modeling of the Temporal Dependence in
+                   Packet Loss",
+  booktitle     = "Proc. {IEEE} {INFOCOM}'99",
+  volume        = "1",
+  address       = "New York, NY",
+  month         = mar,
+  year          = "1999",
+  pages         = "345-352"
+}
+
+
+conference paper with a paper number, the type field can be used to
+override the word "paper", e.g., type = "postdeadline paper". A type
+can be given even without a paper  field.
+Also, IEEEtran.bst can be configured to ignore paper numbers and types.
+From the May 2002 issue of "Journal of Lightwave Technology",
+page 807, reference #4.
+@inproceedings{IEEEexample:confwithpaper,
+  author        = "M. Wegmuller and J. P. von der Weid and P. Oberson
+                   and N. Gisin",
+  title         = "High Resolution Fiber Distributed Measurements With
+                   Coherent {OFDR}",
+  booktitle     = "Proc. {ECOC}'00",
+  year          = "2000",
+  paper         = "11.3.4",
+  pages         = "109"
+}
+
+
+conference paper with a postdeadline type paper, the paper field is
+optional.
+From the August 2000 issue of "IEEE Photonics Technology Letters",
+page 1087, reference #12.
+@inproceedings{IEEEexample:confwithpapertype,
+  author        = "B. Mikkelsen and G. Raybon and R.-J. Essiambre and
+                   K. Dreyer and Y. Su. and L. E. Nelson and J. E. Johnson
+                   and G. Shtengel and A. Bond and D. G. Moodie and
+                   A. D. Ellis",
+  title         = "160 {Gbit/s} Single-channel Transmission Over 300 km 
+                   Nonzero-dispersion Fiber With Semiconductor Based
+                   Transmitter and Demultiplexer",
+  booktitle     = "Proc. {ECOC}'99",
+  year          = "1999",
+  paper         = "2-3",
+  type          = "postdeadline paper",
+  pages         = "28-29"
+}
+
+
+presented at a conference
+intype overrides the default "in" and causes the booktitle not to be
+emphasized (rendered in italics).
+From the February 2002 issue of "IEEE/ACM Transactions on Networking",
+page 163, reference #6.
+@inproceedings{IEEEexample:presentedatconf,
+  author        = "S. G. Finn and M. M{\'e}dard and R. A. Barry",
+  title         = "A Novel Approach to Automatic Protection Switching
+                   Using Trees",
+  intype        = "presented at the",
+  booktitle     = "Proc. Int. Conf. Commun.",
+  year          = "1997"
+}
+
+
+
+
+
+master's thesis, often the University name will be abbreviated and the
+state or country will be included in the address. The type field can
+used to override the default type "Master's thesis"
+From the June 2002 issue of "IEEE Transactions on Microelectromechanical
+Systems", page 186, reference #11.
+@mastersthesis{IEEEexample:masters,
+  author        = "Nin C. Loh",
+  title         = "High-Resolution Micromachined Interferometric
+                   Accelerometer",
+  school        = "Massachusetts Institute of Technology",
+  address       = "Cambridge",
+  year          = "1992"
+}
+
+
+master's thesis with a type field
+From the August 2001 issue of "IEEE/ACM Transactions on Networking",
+page 391, reference #12.
+@mastersthesis{IEEEexample:masterstype,
+  author        = "A. Karnik",
+  title         = "Performance of {TCP} Congestion Control with Rate
+                   Feedback: {TCP/ABR} and Rate Adaptive {TCP/IP}",
+  school        = "Indian Institute of Science",
+  type          = "M. Eng. thesis",
+  address       = "Bangalore, India",
+  month         = jan,
+  year          = "1999"
+}
+
+
+
+
+
+Ph.D. dissertation with a URL field, the university is abbreviated
+From the October 2001 issue of "IEEE/ACM Transactions on Networking",
+page 590, reference #11.
+@phdthesis{IEEEexample:phdurl,
+  author        = "Q. Li",
+  title         = "Delay Characterization and Performance Control of
+                   Wide-area Networks",
+  school        = "Univ. of Delaware",
+  address       = "Newark",
+  month         = may,
+  year          = "2000",
+  url           = "http://www.ece.udel.edu/~qli"
+}
+
+
+
+
+
+technical report
+From the August 2001 issue of "IEEE/ACM Transactions on Networking",
+page 490, reference #15.
+@techreport{IEEEexample:techrep,
+  author        = "R. Jain and K. K. Ramakrishnan and D. M. Chiu",
+  title         = "Congestion Avoidance in Computer Networks with a 
+                   Connectionless Network Layer",
+  institution   = "Digital Equipment Corporation",
+  address       = "MA",
+  number        = "DEC-TR-506",
+  month         = aug,
+  year          = "1987"
+}
+
+
+technical report with type
+for those times when "Tech. Rep." needs to be modified
+From the February 2001 issue of "IEEE/ACM Transactions on Networking",
+page 46, reference #8.
+@techreport{IEEEexample:techreptype,
+  author        = "J. Padhye and V. Firoiu and D. Towsley",
+  title         = "A Stochastic Model of {TCP} {R}eno Congestion Avoidance
+                   and Control",
+  institution   = "Univ. of Massachusetts",
+  address       = "Amherst, MA",
+  type          = "CMPSCI Tech. Rep.",
+  number        = "99-02",
+  year          = "1999"
+}
+
+
+technical report with type
+for those times when "Tech. Rep." needs to be modified
+This reference did not have an address.
+From the January 2000 issue of "IEEE Transactions on Communications",
+page 117, reference #6.
+@techreport{IEEEexample:techreptypeii,
+  author        = "D. Middleton and A. D. Spaulding",
+  title         = "A Tutorial Review of Elements of Weak Signal Detection
+                   in Non-{G}aussian {EMI} Environments",
+  institution   = "National Telecommunications and Information
+                   Administration ({NTIA}), U.S. Dept. of Commerce",
+  type          = "NTIA Report",
+  number        = "86-194",
+  month         = may,
+  year          = "1986"
+}
+
+
+
+
+
+an unpublished work
+for unpublished types, the note field is required. IEEE usually
+just uses the word "unpublished" for the note.
+From the August 2001 issue of "IEEE/ACM Transactions on Networking",
+page 391, reference #16.
+@unpublished{IEEEexample:unpublished,
+  author        = "T. J. Ott and N. Aggarwal",
+  title         = "{TCP} over {ATM}: {ABR} or {UBR}",
+  note          = "Unpublished"
+}
+
+
+
+
+
+electronic with a howpublished information field 
+From the August 2001 issue of "IEEE/ACM Transactions on Networking",
+page 391, reference #7.
+@electronic{IEEEexample:electronhowinfo,
+  author        = "V. Jacobson",
+  title         = "Modified {TCP} Congestion Avoidance Algorithm",
+  howpublished  = "end2end-interest mailing list",
+  url           = "ftp://ftp.isi.edu/end2end/end2end-interest-1990.mail",
+  month         = apr,
+  year          = "1990"
+}
+
+
+electronic with a howpublished information field 
+From the August 2001 issue of "IEEE/ACM Transactions on Networking",
+page 418, reference #31.
+@electronic{IEEEexample:electronhowinfo2,
+  author        = "V. Valloppillil and K. W. Ross",
+  title         = "Cache Array Routing Protocol v1.1",
+  howpublished  = "Internet draft",
+  url           = "http://ds1.internic.net/internet-drafts/draft-vinod-carp-v1-03.txt",
+  year          = "1998"
+}
+
+
+electronic with an organization and address
+From the February 2002 issue of "IEEE/ACM Transactions on Networking",
+page 114, reference #15.
+@electronic{IEEEexample:electronorgadd,
+  author        = "D. H. Lorenz and A. Orda",
+  title         = "Optimal Partition of {QoS} Requirements on Unicast
+                   Paths and Multicast Trees",
+  organization  = "Dept. Elect. Eng., Technion",
+  address       = "Haifa, Israel",
+  url           = "ftp://ftp.technion.ac.il/pub/supported/ee/Network/lor.mopq98.ps",
+  month         = jul,
+  year          = "1998"
+}
+
+
+
+
+
+U.S. patent
+Use the type field to override the patent type. e.g.,
+type = "Patent Application"
+The address is that of the assignee. Note that IEEE does not
+display the assignee, the address, and only displays one date.
+(if year is not present, the filed dates are used.) However, this
+information should be entered as other BibTeX styles may use it.
+alternatively, nationality could be entered as "U.S." 
+From the April 2000 issue of "IEEE Transactions on Communications",
+page 542, reference #6.
+@patent{IEEEexample:uspat,
+  author        = "Ronald E. Sorace and Victor S. Reinhardt and
+                   Steven A. Vaughn",
+  assignee      = "Hughes Aircraft Company",
+  address       = "Los Angeles, CA",
+  title         = "High-Speed Digital-to-{RF} Converter",
+  nationality   = "United States",
+  number        = "5668842",
+  dayfiled      = "28",
+  monthfiled    = feb,
+  yearfiled     = "1995",
+  day           = "16",
+  month         = sep,
+  year          = "1997"
+}
+
+
+Japanese Patent
+From the April 2000 issue of "IEEE Transactions on Communications",
+page 556, reference #6.
+@patent{IEEEexample:jppat,
+  author        = "U. Hideki",
+  title         = "Quadrature Modulation Circuit",
+  nationality   = "Japanese",
+  number        = "152932/92",
+  day           = "20",
+  month         = may,
+  year          = "1992"
+}
+
+
+French Patent request, the language field must be entered in lower case
+as this is the option name Babel uses. The nationality field needs to be
+capitalized. Because this is a patent request, the date filed fields are
+used while the date fields are left empty/missing. In other countries,
+the words "Patent Application", etc. are used instead.
+From the April 2000 issue of "IEEE Transactions on Communications",
+page 556, reference #9.
+@patent{IEEEexample:frenchpatreq,
+  author        = "F. Kowalik and M. Isard",
+  title         = "Estimateur d'un D{\'e}faut de Fonctionnement 
+                   d'un Modulateur en Quadrature et {\'E}tage de Modulation
+                   l'Utilisant",
+  language      = "french",
+  nationality   = "French",
+  type          = "Patent Request",
+  number        = "9500261",
+  dayfiled      = "11",
+  monthfiled    = jan,
+  yearfiled     = "1995"
+}
+
+
+
+
+
+a periodical
+From the April 2001 issue of "IEEE/ACM Transactions on Networking",
+page 160, reference #1.
+sort key is needed for sorting styles
+@periodical{IEEEexample:periodical,
+  title         = IEEE_M_PCOM # ", Special Issue on Wireless {ATM}",
+  volume        = "3",
+  month         = aug,
+  year          = "1996",
+  key           = "IEEE"
+}
+
+
+
+
+
+standard, IEEE does not use the address for standards, but it is good
+to provide one for BibTeX styles that use it.
+From the August 2001 issue of "IEEE/ACM Transactions on Networking",
+page 451, reference #2.
+@standard{IEEEexample:standard,
+  title         = "Wireless {LAN} Medium Access Control {(MAC)} and 
+                   Physical Layer {(PHY)} Specification",
+  organization  = "IEEE",
+  address       = "Piscataway, NJ",
+  number        = "802.11",
+  year          = "1997"
+}
+
+
+standard with type and revision, the type overrides the word standard
+(or std.). Here a standard number is not available and a revision number
+is used.
+From the August 2000 issue of "IEEE Photonics Technology Letters",
+page 1048, reference #13.
+@standard{IEEEexample:standardproposed,
+  title         = "Fiber Channel Physical Interface ({FC-PI})",
+  institution   = "NCITS",
+  address       = "Washington, DC",
+  type          = "Working Draft Proposed Standard",
+  revision      = "5.2",
+  year          = "1999"
+}
+
+
+standard draft as a misc with author
+From the May 2002 issue of "IEEE Journal of Selected Areas in
+Communication", page 725, reference #16.
+@misc{IEEEexample:draftasmisc,
+  author        = "I. Widjaja and A. Elwalid",
+  title         = "{MATE}: {MPLS} Adaptive Traffic Engineering",
+  howpublished  = "IETF Draft",
+  year          = "1999"
+}
+
+
+
+
+
+misc for a techreport like reference
+techreport is not perfectly suitable because this entry lacks
+an institution field
+From the August 2001 issue of "IEEE/ACM Transactions on Networking",
+page 490, reference #22.
+@misc{IEEEexample:miscforum,
+  author        = "L. Roberts",
+  title         = "Enhanced Proportional Rate Control Algorithm {PRCA}",
+  howpublished  = "{ATM} Forum Contribution 94-0735R1",
+  month         = aug,
+  year          = "1994"
+}
+
+
+misc for a white paper
+From the August 2001 issue of "IEEE/ACM Transactions on Networking",
+page 478, reference #4 - Note that the reference there (improperly?)
+used the author field for "Cisco".
+@misc{IEEEexample:whitepaper,
+  title         = "Advanced {QoS} Services for the Intelligent Internet",
+  howpublished  = "White Paper",
+  organization  = "Cisco",
+  month         = may,
+  year          = "1997"
+}
+
+
+misc for a data sheet
+From the November 2000 issue of "IEEE Photonics Technology Letters",
+page 1551, reference #6.
+@misc{IEEEexample:datasheet,
+  title         = "{PDCA12-70} Data Sheet",
+  organization  = "Opto Speed SA",
+  address       = "Mezzovico, Switzerland"
+}
+
+
+
+
+
+Other unusual references
+
+a private communication as a misc entry type
+sometimes the designation "personal communication" is used instead
+From the June 2002 issue of "IEEE Transactions on Information Theory",
+page 1725, reference #16.
+@misc{IEEEexample:private,
+  author        = "S. Konyagin",
+  howpublished  = "private communication",
+  year          = "1998"
+}
+
+
+an internet request for comments (RFC) as a misc entry type
+It would also be nice to add a URL to these types of things.
+RFCs can also be handled as electronic references.
+From the April 2002 issue of "IEEE/ACM Transactions on Networking",
+page 181, reference #14.
+@misc{IEEEexample:miscrfc,
+  author        = "K. K. Ramakrishnan and S. Floyd",
+  title         = "A Proposal to Add Explicit Congestion
+                   Notification ({ECN}) to {IP}",
+  howpublished  = "RFC 2481",
+  month         = jan,
+  year          = "1999"
+}
+
+
+a software package as a manual
+From the June 2002 issue of "IEEE/ASME Journal of Microelectromechanical
+Systems", page 205, reference #20.
+Sometimes they put the version/release information in the title.
+@manual{IEEEexample:softmanual,
+  title         = "SaberDesigner Reference Manual",
+  organization  = "Analogy, Inc.",
+  address       = "Beaverton, OR",
+  year          = "1998",
+  note          = "Release 4.3"
+}
+
+
+a software package as an electronic reference
+From the February 2003 issue of  "IEEE/ACM Transactions on Networking",
+page 46, reference #24. If there is no author or organization, a sorting
+key is required for sorting styles. It might be a good idea to include
+month and year fields as well.
+@electronic{IEEEexample:softonline,
+  title         = "Ucb/lbnl/vint Network Simulator---ns (Version 2)",
+  url           = "http://www-mash.cs.berkeley.edu/ns/",
+  key           = "ns"
+}
+
+
+misc for a German regulation
+In German, the first letters of nouns are capitalized, so we do so here.
+From the June 2002 issue of "IEEE Journal in Selected Areas in
+Communication", page 892, reference #9.
+@misc{IEEEexample:miscgermanreg,
+  title         = "{M}essung von {S}t{\"o}rfeldern an {A}nlagen 
+                   und {L}eitungen der {T}elekommunikation im
+                   {F}requenzbereich 9 {kHz} bis 3 {GHz}",
+  language      = "german",
+  howpublished  = "{M}e{\ss}vorschrift {R}eg {TP} {MV} 05",
+  organization  = "Regulierungsbeh{\"o}rde f{\"u}r {T}elekommunikation und
+                   {P}ost ({R}eg {TP})"
+}
+
+
+
+Ways to handle things like CCSDS's Blue Books
+journal article with a URL. However, this is not a very good approach
+because the Blue Books are not really journals and the author field has
+to be abused.
+From the June 2002 issue of "IEEE Transactions on Information Theory",
+page 1461, reference #7.
+@article{IEEEexample:bluebookarticle,
+  author        = "{Consulative Committee for Space Data Systems (CCSDS)}",
+  title         = "Telemetry Channel Coding",
+  journal       = "Blue Book",
+  number        = "4",
+  year          = "1999",
+  url           = "http://www.ccsds.org/documents/pdf/CCSDS-101.0-B-4.pdf"
+}
+
+
+CCSDS's Blue Book handled as a book
+However, it is not a good idea to have to use the author field for
+an organization (done here because the book entry type requires an
+author field).
+@book{IEEEexample:bluebookbook,
+  author        = "{Consulative Committee for Space Data Systems (CCSDS)}",
+  title         = "Telemetry Channel Coding",
+  series        = "Blue Book",
+  number        = "4",
+  publisher     = "{CCSDS}",
+  address       = "Newport Beach, {CA}",
+  year          = "1999",
+  url           = "http://www.ccsds.org/documents/pdf/CCSDS-101.0-B-4.pdf"
+}
+
+
+CCSDS's Blue Book handled as a manual
+This is a much better approach, but uses the howpublished field.
+@manual{IEEEexample:bluebookmanual,
+  title         = "Telemetry Channel Coding",
+  howpublished  = "ser. Blue Book, No. 4",
+  organization  = "Consulative Committee for Space Data Systems (CCSDS)",
+  address       = "Newport Beach, CA",
+  year          = "1999",
+  url           = "http://www.ccsds.org/documents/pdf/CCSDS-101.0-B-4.pdf"
+}
+
+
+
+CCSDS's Blue Book handled as a standard
+Probably the best approach for this particular case because the work
+is standard related. Note that IEEE does not display the address for
+standards.
+@standard{IEEEexample:bluebookstandard,
+  title         = "Telemetry Channel Coding",
+  howpublished  = "ser. Blue Book, No. 4",
+  organization  = "Consulative Committee for Space Data Systems (CCSDS)",
+  address       = "Newport Beach, CA",
+  type          = "Recommendation for Space Data System Standard",
+  number        = "101.0-B-4",
+  month         = May,
+  year          = "1999",
+  url           = "http://www.ccsds.org/documents/pdf/CCSDS-101.0-B-4.pdf"
+}
+
+@inproceedings{fernandes2024explaining,
+  title={Explaining epsilon in Local Differential Privacy Through the Lens of Quantitative Information Flow},
+  author={Fernandes, Natasha and McIver, Annabelle and Sadeghi, Parastoo},
+  booktitle={2024 IEEE 37th Computer Security Foundations Symposium (CSF)},
+  pages={419--432},
+  year={2024},
+  organization={IEEE}
+}
+
+
+@article{goswami2024privacy,
+  title={Privacy-Preserving Deep Learning Using Secure Multi-Party Computation},
+  author={Goswami, Maloy Jyoti},
+  journal={International IT Journal of Research, ISSN: 3007-6706},
+  volume={2},
+  number={2},
+  pages={50--55},
+  year={2024}
+}
+
+@article{hesamifard2017cryptodl,
+  title={Cryptodl: Deep neural networks over encrypted data},
+  author={Hesamifard, Ehsan and Takabi, Hassan and Ghasemi, Mehdi},
+  journal={arXiv preprint arXiv:1711.05189},
+  year={2017}
+}
+
+@inproceedings{wang2019beyond,
+  title={Beyond inferring class representatives: User-level privacy leakage from federated learning},
+  author={Wang, Zhibo and Song, Mengkai and Zhang, Zhifei and Song, Yang and Wang, Qian and Qi, Hairong},
+  booktitle={IEEE INFOCOM 2019-IEEE conference on computer communications},
+  pages={2512--2520},
+  year={2019},
+  organization={IEEE}
+}
+
+@inproceedings{liu2016dependence,
+  title={Dependence makes you vulnberable: Differential privacy under dependent tuples.},
+  author={Liu, Changchang and Chakraborty, Supriyo and Mittal, Prateek},
+  booktitle={NDSS},
+  volume={16},
+  pages={21--24},
+  year={2016}
+}
+
+@article{xiong2020comprehensive,
+  title={A comprehensive survey on local differential privacy},
+  author={Xiong, Xingxing and Liu, Shubo and Li, Dan and Cai, Zhaohui and Niu, Xiaoguang},
+  journal={Security and Communication Networks},
+  volume={2020},
+  number={1},
+  pages={8829523},
+  year={2020},
+  publisher={Wiley Online Library}
+}
+
+@inproceedings{carlini2022membership,
+  title={Membership inference attacks from first principles},
+  author={Carlini, Nicholas and Chien, Steve and Nasr, Milad and Song, Shuang and Terzis, Andreas and Tramer, Florian},
+  booktitle={2022 IEEE Symposium on Security and Privacy (SP)},
+  pages={1897--1914},
+  year={2022},
+  organization={IEEE}
+}
+
+@article{hu2022membership,
+  title={Membership inference attacks on machine learning: A survey},
+  author={Hu, Hongsheng and Salcic, Zoran and Sun, Lichao and Dobbie, Gillian and Yu, Philip S and Zhang, Xuyun},
+  journal={ACM Computing Surveys (CSUR)},
+  volume={54},
+  number={11s},
+  pages={1--37},
+  year={2022},
+  publisher={ACM New York, NY}
+}
+
+@article{ateniese2015hacking,
+  title={Hacking smart machines with smarter ones: How to extract meaningful data from machine learning classifiers},
+  author={Ateniese, Giuseppe and Mancini, Luigi V and Spognardi, Angelo and Villani, Antonio and Vitali, Domenico and Felici, Giovanni},
+  journal={International Journal of Security and Networks},
+  volume={10},
+  number={3},
+  pages={137--150},
+  year={2015},
+  publisher={Inderscience Publishers (IEL)}
+}
+
+@inproceedings{fredrikson2015model,
+  title={Model inversion attacks that exploit confidence information and basic countermeasures},
+  author={Fredrikson, Matt and Jha, Somesh and Ristenpart, Thomas},
+  booktitle={Proceedings of the 22nd ACM SIGSAC conference on computer and communications security},
+  pages={1322--1333},
+  year={2015}
+}
+
+@inproceedings{wang2018stealing,
+  title={Stealing hyperparameters in machine learning},
+  author={Wang, Binghui and Gong, Neil Zhenqiang},
+  booktitle={2018 IEEE symposium on security and privacy (SP)},
+  pages={36--52},
+  year={2018},
+  organization={IEEE}
+}
+
+@inproceedings{tramer2016stealing,
+  title={Stealing machine learning models via prediction $\{$APIs$\}$},
+  author={Tram{\`e}r, Florian and Zhang, Fan and Juels, Ari and Reiter, Michael K and Ristenpart, Thomas},
+  booktitle={25th USENIX security symposium (USENIX Security 16)},
+  pages={601--618},
+  year={2016}
+}
+
+@inproceedings{bell2023possibility,
+  title={The possibility of fairness: Revisiting the impossibility theorem in practice},
+  author={Bell, Andrew and Bynum, Lucius and Drushchak, Nazarii and Zakharchenko, Tetiana and Rosenblatt, Lucas and Stoyanovich, Julia},
+  booktitle={Proceedings of the 2023 ACM Conference on Fairness, Accountability, and Transparency},
+  pages={400--422},
+  year={2023}
+}
+
+@article{hsu2022pushing,
+  title={Pushing the limits of fairness impossibility: Who's the fairest of them all?},
+  author={Hsu, Brian and Mazumder, Rahul and Nandy, Preetam and Basu, Kinjal},
+  journal={Advances in Neural Information Processing Systems},
+  volume={35},
+  pages={32749--32761},
+  year={2022}
+}
+
+@article{hellman2020measuring,
+  title={Measuring algorithmic fairness},
+  author={Hellman, Deborah},
+  journal={Virginia Law Review},
+  volume={106},
+  number={4},
+  pages={811--866},
+  year={2020},
+  publisher={JSTOR}
+}
+
+@book{grohs2022mathematical,
+  title={Mathematical aspects of deep learning},
+  author={Grohs, Philipp and Kutyniok, Gitta},
+  year={2022},
+  publisher={Cambridge University Press}
+}
+
+@book{calin2020deep,
+  title={Deep learning architectures},
+  author={Calin, Ovidiu},
+  year={2020},
+  publisher={Springer}
+}
+
+@article{carloni2023role,
+  title={The role of causality in explainable artificial intelligence},
+  author={Carloni, Gianluca and Berti, Andrea and Colantonio, Sara},
+  journal={arXiv preprint arXiv:2309.09901},
+  year={2023}
+}
+
+@article{ma2023xinsight,
+  title={Xinsight: explainable data analysis through the lens of causality},
+  author={Ma, Pingchuan and Ding, Rui and Wang, Shuai and Han, Shi and Zhang, Dongmei},
+  journal={Proceedings of the ACM on Management of Data},
+  volume={1},
+  number={2},
+  pages={1--27},
+  year={2023},
+  publisher={ACM New York, NY, USA}
+}
+
+@article{vowels2022trying,
+  title={Trying to outrun causality with machine learning: Limitations of model explainability techniques for identifying predictive variables},
+  author={Vowels, Matthew J},
+  journal={stat},
+  volume={1050},
+  pages={22},
+  year={2022}
+}
+
+@article{fernandes2022explaining,
+  title={Explaining epsilon in local differential privacy through the lens of quantitative information flow},
+  author={Fernandes, Natasha and McIver, Annabelle and Sadeghi, Parastoo},
+  journal={arXiv preprint arXiv:2210.12916},
+  year={2022}
+}
+
+@article{alvim2015information,
+  title={On the information leakage of differentially-private mechanisms},
+  author={Alvim, M{\'a}rio S and Andr{\'e}s, Miguel E and Chatzikokolakis, Konstantinos and Degano, Pierpaolo and Palamidessi, Catuscia},
+  journal={Journal of Computer Security},
+  volume={23},
+  number={4},
+  pages={427--469},
+  year={2015},
+  publisher={IOS Press}
+}
+
+@inproceedings{kusner2016private,
+  title={Private causal inference},
+  author={Kusner, Matt J and Sun, Yu and Sridharan, Karthik and Weinberger, Kilian Q},
+  booktitle={Artificial Intelligence and Statistics},
+  pages={1308--1317},
+  year={2016},
+  organization={PMLR}
+}
+
+@inproceedings{xu2017differential,
+  title={Differential privacy preserving causal graph discovery},
+  author={Xu, Depeng and Yuan, Shuhan and Wu, Xintao},
+  booktitle={2017 IEEE Symposium on Privacy-Aware Computing (PAC)},
+  pages={60--71},
+  year={2017},
+  organization={IEEE}
+}
+
+@inproceedings{tschantz2020sok,
+  title={SoK: Differential privacy as a causal property},
+  author={Tschantz, Michael Carl and Sen, Shayak and Datta, Anupam},
+  booktitle={2020 IEEE Symposium on Security and Privacy (SP)},
+  pages={354--371},
+  year={2020},
+  organization={IEEE}
+}
+
+@inproceedings{tople2020alleviating,
+  title={Alleviating privacy attacks via causal learning},
+  author={Tople, Shruti and Sharma, Amit and Nori, Aditya},
+  booktitle={International Conference on Machine Learning},
+  pages={9537--9547},
+  year={2020},
+  organization={PMLR}
+}
+
+@article{franco2021toward,
+  title={Toward learning trustworthily from data combining privacy, fairness, and explainability: an application to face recognition},
+  author={Franco, Danilo and Oneto, Luca and Navarin, Nicol{\`o} and Anguita, Davide},
+  journal={Entropy},
+  volume={23},
+  number={8},
+  pages={1047},
+  year={2021},
+  publisher={MDPI}
+}
+
+@inproceedings{binkyte2024causal,
+  title={Causal Discovery Under Local Privacy},
+  author={Binkyte, Ruta and Pinz{\'o}n, Carlos Antonio and Lesty{\'a}n, Szilvia and Jung, Kangsoo and Arcolezi, H{\'e}ber Hwang and Palamidessi, Catuscia},
+  booktitle={Causal Learning and Reasoning},
+  pages={325--383},
+  year={2024},
+  organization={PMLR}
+}
+
+@article{grant2020show,
+  title={Show us the data: Privacy, explainability, and why the law can't have both},
+  author={Grant, Thomas D and Wischik, Damon J},
+  journal={Geo. Wash. L. Rev.},
+  volume={88},
+  pages={1350},
+  year={2020},
+  publisher={HeinOnline}
+}
+
+@article{bozorgpanah2022privacy,
+  title={Privacy and explainability: The effects of data protection on Shapley values},
+  author={Bozorgpanah, Aso and Torra, Vicen{\c{c}} and Aliahmadipour, Laya},
+  journal={Technologies},
+  volume={10},
+  number={6},
+  pages={125},
+  year={2022},
+  publisher={MDPI}
+}
+
+@article{nogueira2023relation,
+  title={On the relation of privacy and fairness through the lenses of quantitative information flow},
+  author={Nogueira, Bruno Demattos and others},
+  year={2023},
+  publisher={Universidade Federal de Minas Gerais}
+}
+
+@inproceedings{makhlouf2022identifiability,
+  title={Identifiability of causal-based ml fairness notions},
+  author={Makhlouf, Karima and Zhioua, Sami and Palamidessi, Catuscia},
+  booktitle={2022 14th international conference on computational intelligence and communication networks (CICN)},
+  pages={1--8},
+  year={2022},
+  organization={IEEE}
+}
+
+@article{saravanakumar2020impossibility,
+  title={The Impossibility Theorem of Machine Fairness--A Causal Perspective},
+  author={Saravanakumar, Kailash Karthik},
+  journal={arXiv preprint arXiv:2007.06024},
+  year={2020}
+}
+
+@article{su2022review,
+  title={A review of causality-based fairness machine learning},
+  author={Su, Cong and Yu, Guoxian and Wang, Jun and Yan, Zhongmin and Cui, Lizhen},
+  journal={Intelligence \& Robotics},
+  volume={2},
+  number={3},
+  pages={244--274},
+  year={2022}
+}
+
+@article{makhlouf2024causality,
+  title={When Causality Meets Fairness: A Survey},
+  author={Makhlouf, Karima and Zhioua, Sami and Palamidessi, Catuscia},
+  journal={Journal of Logical and Algebraic Methods in Programming},
+  pages={101000},
+  year={2024},
+  publisher={Elsevier}
+}
+
+@article{rueda2022just,
+  title={“Just” accuracy? Procedural fairness demands explainability in AI-based medical resource allocations},
+  author={Rueda, Jon and Rodr{\'\i}guez, Janet Delgado and Jounou, Iris Parra and Hortal-Carmona, Joaqu{\'\i}n and Aus{\'\i}n, Txetxu and Rodr{\'\i}guez-Arias, David},
+  journal={AI \& society},
+  pages={1--12},
+  year={2022},
+  publisher={Springer}
+}
+
+@inproceedings{zemel2013learning,
+  title={Learning fair representations},
+  author={Zemel, Rich and Wu, Yu and Swersky, Kevin and Pitassi, Toni and Dwork, Cynthia},
+  booktitle={International conference on machine learning},
+  pages={325--333},
+  year={2013},
+  organization={PMLR}
+}
+
+@phdthesis{henao2023exploring,
+  title={Exploring fairness and privacy in machine learning},
+  author={Henao, Carlos Pinz{\'o}n},
+  year={2023},
+  school={Institut Polytechnique de Paris}
+}
+
+@inproceedings{arcolezi2023local,
+  title={(Local) Differential Privacy has NO Disparate Impact on Fairness},
+  author={Arcolezi, H{\'e}ber H and Makhlouf, Karima and Palamidessi, Catuscia},
+  booktitle={IFIP Annual Conference on Data and Applications Security and Privacy},
+  pages={3--21},
+  year={2023},
+  organization={Springer}
+}
+
+@article{makhlouf2024impact,
+  title={On the impact of multi-dimensional local differential privacy on fairness},
+  author={Makhlouf, Karima and Arcolezi, H{\'e}ber H and Zhioua, Sami and Brahim, Ghassen Ben and Palamidessi, Catuscia},
+  journal={Data Mining and Knowledge Discovery},
+  pages={1--24},
+  year={2024},
+  publisher={Springer}
+}
+
+@article{zeng2021improving,
+  title={Improving the accuracy of network intrusion detection with causal machine learning},
+  author={Zeng, Zengri and Peng, Wei and Zhao, Baokang},
+  journal={Security and Communication Networks},
+  volume={2021},
+  number={1},
+  pages={8986243},
+  year={2021},
+  publisher={Wiley Online Library}
+}
+
+@incollection{scholkopf2022causality,
+  title={Causality for machine learning},
+  author={Sch{\"o}lkopf, Bernhard},
+  booktitle={Probabilistic and causal inference: The works of Judea Pearl},
+  pages={765--804},
+  year={2022}
+}
+
+@article{richens2020improving,
+  title={Improving the accuracy of medical diagnosis with causal machine learning},
+  author={Richens, Jonathan G and Lee, Ciar{\'a}n M and Johri, Saurabh},
+  journal={Nature communications},
+  volume={11},
+  number={1},
+  pages={3923},
+  year={2020},
+  publisher={Nature Publishing Group UK London}
+}
+
+@article{burkart2021survey,
+  title={A survey on the explainability of supervised machine learning},
+  author={Burkart, Nadia and Huber, Marco F},
+  journal={Journal of Artificial Intelligence Research},
+  volume={70},
+  pages={245--317},
+  year={2021}
+}
+
+@article{van2021trading,
+  title={Trading off accuracy and explainability in AI decision-making: findings from 2 citizens’ juries},
+  author={van der Veer, Sabine N and Riste, Lisa and Cheraghi-Sohi, Sudeh and Phipps, Denham L and Tully, Mary P and Bozentko, Kyle and Atwood, Sarah and Hubbard, Alex and Wiper, Carl and Oswald, Malcolm and others},
+  journal={Journal of the American Medical Informatics Association},
+  volume={28},
+  number={10},
+  pages={2128--2138},
+  year={2021},
+  publisher={Oxford University Press}
+}
+
+@inproceedings{alufaisan2021does,
+  title={Does explainable artificial intelligence improve human decision-making?},
+  author={Alufaisan, Yasmeen and Marusich, Laura R and Bakdash, Jonathan Z and Zhou, Yan and Kantarcioglu, Murat},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={35},
+  number={8},
+  pages={6618--6626},
+  year={2021}
+}
+
+@inproceedings{bell2022s,
+  title={It’s just not that simple: an empirical study of the accuracy-explainability trade-off in machine learning for public policy},
+  author={Bell, Andrew and Solano-Kamaiko, Ian and Nov, Oded and Stoyanovich, Julia},
+  booktitle={Proceedings of the 2022 ACM conference on fairness, accountability, and transparency},
+  pages={248--266},
+  year={2022}
+}
+
+@article{angelov2021explainable,
+  title={Explainable artificial intelligence: an analytical review},
+  author={Angelov, Plamen P and Soares, Eduardo A and Jiang, Richard and Arnold, Nicholas I and Atkinson, Peter M},
+  journal={Wiley Interdisciplinary Reviews: Data Mining and Knowledge Discovery},
+  volume={11},
+  number={5},
+  pages={e1424},
+  year={2021},
+  publisher={Wiley Online Library}
+}
+
+@article{london2019artificial,
+  title={Artificial intelligence and black-box medical decisions: accuracy versus explainability},
+  author={London, Alex John},
+  journal={Hastings Center Report},
+  volume={49},
+  number={1},
+  pages={15--21},
+  year={2019},
+  publisher={Wiley Online Library}
+}
+
+@article{petkovic2023not,
+  title={It is not “Accuracy vs. Explainability”—we need both for trustworthy AI systems},
+  author={Petkovic, Dragutin},
+  journal={IEEE Transactions on Technology and Society},
+  volume={4},
+  number={1},
+  pages={46--53},
+  year={2023},
+  publisher={IEEE}
+}
+
+@inproceedings{liu2016dependence,
+  title={Dependence makes you vulnberable: Differential privacy under dependent tuples.},
+  author={Liu, Changchang and Chakraborty, Supriyo and Mittal, Prateek},
+  booktitle={NDSS},
+  volume={16},
+  pages={21--24},
+  year={2016}
+}
+
+@article{ren2018textsf,
+  title={LoPub: high-dimensional crowdsourced data publication with local differential privacy},
+  author={Ren, Xuebin and Yu, Chia-Mu and Yu, Weiren and Yang, Shusen and Yang, Xinyu and McCann, Julie A and Philip, S Yu},
+  journal={IEEE Transactions on Information Forensics and Security},
+  volume={13},
+  number={9},
+  pages={2151--2166},
+  year={2018},
+  publisher={IEEE}
+}
+
+@article{zheng2020preserving,
+  title={Preserving user privacy for machine learning: Local differential privacy or federated machine learning?},
+  author={Zheng, Huadi and Hu, Haibo and Han, Ziyang},
+  journal={IEEE Intelligent Systems},
+  volume={35},
+  number={4},
+  pages={5--14},
+  year={2020},
+  publisher={IEEE}
+}
+
+@article{yang2023local,
+  title={Local differential privacy and its applications: A comprehensive survey},
+  author={Yang, Mengmeng and Guo, Taolin and Zhu, Tianqing and Tjuawinata, Ivan and Zhao, Jun and Lam, Kwok-Yan},
+  journal={Computer Standards \& Interfaces},
+  pages={103827},
+  year={2023},
+  publisher={Elsevier}
+}
+
+@inproceedings{yang2005privacy,
+  title={Privacy-preserving classification of customer data without loss of accuracy},
+  author={Yang, Zhiqiang and Zhong, Sheng and Wright, Rebecca N},
+  booktitle={Proceedings of the 2005 SIAM International Conference on Data Mining},
+  pages={92--102},
+  year={2005},
+  organization={SIAM}
+}
+
+@inproceedings{friedler2019comparative,
+  title={A comparative study of fairness-enhancing interventions in machine learning},
+  author={Friedler, Sorelle A and Scheidegger, Carlos and Venkatasubramanian, Suresh and Choudhary, Sonam and Hamilton, Evan P and Roth, Derek},
+  booktitle={Proceedings of the conference on fairness, accountability, and transparency},
+  pages={329--338},
+  year={2019}
+}
+
+@article{valdivia2021fair,
+  title={How fair can we go in machine learning? Assessing the boundaries of accuracy and fairness},
+  author={Valdivia, Ana and S{\'a}nchez-Monedero, Javier and Casillas, Jorge},
+  journal={International Journal of Intelligent Systems},
+  volume={36},
+  number={4},
+  pages={1619--1643},
+  year={2021},
+  publisher={Wiley Online Library}
+}
+
+@inproceedings{konstantinov2022impossibility,
+  title={On the impossibility of fairness-aware learning from corrupted data},
+  author={Konstantinov, Nikola and Lampert, Christoph H},
+  booktitle={Algorithmic Fairness through the Lens of Causality and Robustness workshop},
+  pages={59--83},
+  year={2022},
+  organization={PMLR}
+}
+
+@article{merono2017cedar,
+  title={CEDAR: the Dutch historical censuses as linked open data},
+  author={Mero{\~n}o-Pe{\~n}uela, Albert and Ashkpour, Ashkan and Gu{\'e}ret, Christophe and Schlobach, Stefan},
+  journal={Semantic Web},
+  volume={8},
+  number={2},
+  pages={297--310},
+  year={2017},
+  publisher={IOS Press}
+}
+
+@article{burkart2021survey,
+  title={A survey on the explainability of supervised machine learning},
+  author={Burkart, Nadia and Huber, Marco F},
+  journal={Journal of Artificial Intelligence Research},
+  volume={70},
+  pages={245--317},
+  year={2021}
+}
+
+@article{krishnan2020against,
+  title={Against interpretability: a critical examination of the interpretability problem in machine learning},
+  author={Krishnan, Maya},
+  journal={Philosophy \& Technology},
+  volume={33},
+  number={3},
+  pages={487--502},
+  year={2020},
+  publisher={Springer}
+}
+
+@article{lipton2018mythos,
+  title={The mythos of model interpretability: In machine learning, the concept of interpretability is both important and slippery.},
+  author={Lipton, Zachary C},
+  journal={Queue},
+  volume={16},
+  number={3},
+  pages={31--57},
+  year={2018},
+  publisher={ACM New York, NY, USA}
+}
+
+@misc{makhlouf2024systematicformalstudyimpact,
+      title={A Systematic and Formal Study of the Impact of Local Differential Privacy on Fairness: Preliminary Results}, 
+      author={Karima Makhlouf and Tamara Stefanovic and Heber H. Arcolezi and Catuscia Palamidessi},
+      year={2024},
+      eprint={2405.14725},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2405.14725}, 
+}
+
+@article{verma2020counterfactual,
+  title={Counterfactual explanations for machine learning: A review},
+  author={Verma, Sahil and Dickerson, John and Hines, Keegan},
+  journal={arXiv preprint arXiv:2010.10596},
+  volume={2},
+  pages={1},
+  year={2020}
+}
+
+@article{carvalho2019machine,
+  title={Machine learning interpretability: A survey on methods and metrics},
+  author={Carvalho, Diogo V and Pereira, Eduardo M and Cardoso, Jaime S},
+  journal={Electronics},
+  volume={8},
+  number={8},
+  pages={832},
+  year={2019},
+  publisher={MDPI}
+}
+
+@article{belle2021principles,
+  title={Principles and practice of explainable machine learning},
+  author={Belle, Vaishak and Papantonis, Ioannis},
+  journal={Frontiers in big Data},
+  volume={4},
+  pages={688969},
+  year={2021},
+  publisher={Frontiers Media SA}
+}
+
+@article{roscher2020explainable,
+  title={Explainable machine learning for scientific insights and discoveries},
+  author={Roscher, Ribana and Bohn, Bastian and Duarte, Marco F and Garcke, Jochen},
+  journal={Ieee Access},
+  volume={8},
+  pages={42200--42216},
+  year={2020},
+  publisher={IEEE}
+}
+
+@article{chouldechova2018frontiers,
+  title={The frontiers of fairness in machine learning},
+  author={Chouldechova, Alexandra and Roth, Aaron},
+  journal={arXiv preprint arXiv:1810.08810},
+  year={2018}
+}
+
+@book{SAAMAP,
+  title={Deep learning architectures},
+  author={Calin, Ovidiu},
+  year={2020},
+  publisher={Springer}
+}
+
+@article{Vapnik,
+  title={An overview of statistical learning theory},
+  author={Vapnik, Vladimir N},
+  journal={IEEE transactions on neural networks},
+  volume={10},
+  number={5},
+  pages={988--999},
+  year={1999},
+  publisher={IEEE}
+}
+
+
+
+@article{Sok,
+  title={SoK: Taming the Triangle - On the Interplays between Fairness, Interpretability and Privacy in Machine Learning},
+  author={Julien Ferry and Ulrich A{\"i}vodji and S{\'e}bastien Gambs and Marie-Jos{\'e} Huguet and Mohamed Siala},
+  journal={ArXiv},
+  year={2023},
+  volume={abs/2312.16191},
+  url={https://api.semanticscholar.org/CorpusID:266573131}
+}
+
+@inproceedings{Awareness,
+  author = {Dwork, Cynthia and Hardt, Moritz and Pitassi, Toniann and Reingold, Omer and Zemel, Richard},
+  title = {Fairness through awareness},
+  year = {2012},
+  isbn = {9781450311151},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  url = {https://doi.org/10.1145/2090236.2090255},
+  doi = {10.1145/2090236.2090255},
+  abstract = {We study fairness in classification, where individuals are classified, e.g., admitted to a university, and the goal is to prevent discrimination against individuals based on their membership in some group, while maintaining utility for the classifier (the university). The main conceptual contribution of this paper is a framework for fair classification comprising (1) a (hypothetical) task-specific metric for determining the degree to which individuals are similar with respect to the classification task at hand; (2) an algorithm for maximizing utility subject to the fairness constraint, that similar individuals are treated similarly. We also present an adaptation of our approach to achieve the complementary goal of "fair affirmative action," which guarantees statistical parity (i.e., the demographics of the set of individuals receiving any classification are the same as the demographics of the underlying population), while treating similar individuals as similarly as possible. Finally, we discuss the relationship of fairness to privacy: when fairness implies privacy, and how tools developed in the context of differential privacy may be applied to fairness.},
+  booktitle = {Proceedings of the 3rd Innovations in Theoretical Computer Science Conference},
+  pages = {214–226},
+  numpages = {13},
+  location = {Cambridge, Massachusetts},
+  series = {ITCS '12}
+}
+
+@article{Impossibility,
+  author = {Friedler, Sorelle A. and Scheidegger, Carlos and Venkatasubramanian, Suresh},
+  title = {The (Im)possibility of fairness: different value systems require different mechanisms for fair decision making},
+  year = {2021},
+  issue_date = {April 2021},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  volume = {64},
+  number = {4},
+  issn = {0001-0782},
+  url = {https://doi.org/10.1145/3433949},
+  doi = {10.1145/3433949},
+  abstract = {What does it mean to be fair?},
+  journal = {Commun. ACM},
+  month = {mar},
+  pages = {136–143},
+  numpages = {8}
+}
+
+
+@article{FairTensions,
+title = {Survey on fairness notions and related tensions},
+journal = {EURO Journal on Decision Processes},
+volume = {11},
+pages = {100033},
+year = {2023},
+issn = {2193-9438},
+doi = {https://doi.org/10.1016/j.ejdp.2023.100033},
+url = {https://www.sciencedirect.com/science/article/pii/S2193943823000067},
+author = {Guilherme Alves and Fabien Bernier and Miguel Couceiro and Karima Makhlouf and Catuscia Palamidessi and Sami Zhioua},
+keywords = {Fairness notion, Tension within fairness, Unfairness mitigation},
+abstract = {Automated decision systems are increasingly used to take consequential decisions in problems such as job hiring and loan granting with the hope of replacing subjective human decisions with objective machine learning (ML) algorithms. However, ML-based decision systems are prone to bias, which results in yet unfair decisions. Several notions of fairness have been defined in the literature to capture the different subtleties of this ethical and social concept (e.g., statistical parity, equal opportunity, etc.). Fairness requirements to be satisfied while learning models created several types of tensions among the different notions of fairness and other desirable properties such as privacy and classification accuracy. This paper surveys the commonly used fairness notions and discusses the tensions among them with privacy and accuracy. Different methods to address the fairness-accuracy trade-off (classified into four approaches, namely, pre-processing, in-processing, post-processing, and hybrid) are reviewed. The survey is consolidated with experimental analysis carried out on fairness benchmark datasets to illustrate the relationship between fairness measures and accuracy in real-world scenarios.}
+}
+
+@inproceedings{Rachel,
+author = {Cummings, Rachel and Gupta, Varun and Kimpara, Dhamma and Morgenstern, Jamie},
+title = {On the Compatibility of Privacy and Fairness},
+year = {2019},
+isbn = {9781450367110},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3314183.3323847},
+doi = {10.1145/3314183.3323847},
+abstract = {In this work, we investigate whether privacy and fairness can be simultaneously achieved by a single classifier in several different models. Some of the earliest work on fairness in algorithm design defined fairness as a guarantee of similar outputs for "similar'' input data, a notion with tight technical connections to differential privacy. We study whether tensions exist between differential privacy and statistical notions of fairness, namely Equality of False Positives and Equality of False Negatives (EFP/EFN). We show that even under full distributional access, there are cases where the constraint of differential privacy precludes exact EFP/EFN. We then turn to ask whether one can learn a differentially private classifier which approximately satisfies EFP/EFN, and show the existence of a PAC learner which is private and approximately fair with high probability. We conclude by giving an efficient algorithm for classification that maintains utility and satisfies both privacy and approximate fairness with high probability.},
+booktitle = {Adjunct Publication of the 27th Conference on User Modeling, Adaptation and Personalization},
+pages = {309–315},
+numpages = {7},
+keywords = {differential privacy, fairness, learning theory},
+location = {Larnaca, Cyprus},
+series = {UMAP'19 Adjunct}
+}
+
+@Article{Carlos,
+author={Pinz{\'o}n, Carlos
+and Palamidessi, Catuscia
+and Piantanida, Pablo
+and Valencia, Frank},
+title={On the incompatibility of accuracy and equal opportunity},
+journal={Machine Learning},
+year={2023},
+month={May},
+day={02},
+abstract={One of the main concerns about fairness in machine learning (ML) is that, in order to achieve it, one may have to trade off some accuracy. To overcome this issue, Hardt et al. (Adv Neural Inf Process Syst 29, 2016) proposed the notion of equality of opportunity (EO), which is compatible with maximal accuracy when the target label is deterministic with respect to the input features. In the probabilistic case, however, the issue is more complicated: It has been shown that under differential privacy constraints, there are data sources for which EO can only be achieved at the total detriment of accuracy, in the sense that a classifier that satisfies EO cannot be more accurate than a trivial (i.e., constant) classifier. In this paper, we strengthen this result by removing the privacy constraint. Namely, we show that for certain data sources, the most accurate classifier that satisfies EO is a trivial classifier. Furthermore, we study the admissible trade-offs between accuracy and EO loss (opportunity difference) and characterize the conditions on the data source under which EO and non-trivial accuracy are compatible.},
+issn={1573-0565},
+doi={10.1007/s10994-023-06331-y},
+url={https://doi.org/10.1007/s10994-023-06331-y}
+}
+
+
+@InProceedings{Reductions,
+  title = 	 {A Reductions Approach to Fair Classification},
+  author =       {Agarwal, Alekh and Beygelzimer, Alina and Dudik, Miroslav and Langford, John and Wallach, Hanna},
+  booktitle = 	 {Proceedings of the 35th International Conference on Machine Learning},
+  pages = 	 {60--69},
+  year = 	 {2018},
+  editor = 	 {Dy, Jennifer and Krause, Andreas},
+  volume = 	 {80},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {10--15 Jul},
+  publisher =    {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v80/agarwal18a/agarwal18a.pdf},
+  url = 	 {https://proceedings.mlr.press/v80/agarwal18a.html},
+  abstract = 	 {We present a systematic approach for achieving fairness in a binary classification setting. While we focus on two well-known quantitative definitions of fairness, our approach encompasses many other previously studied definitions as special cases. The key idea is to reduce fair classification to a sequence of cost-sensitive classification problems, whose solutions yield a randomized classifier with the lowest (empirical) error subject to the desired constraints. We introduce two reductions that work for any representation of the cost-sensitive classifier and compare favorably to prior baselines on a variety of data sets, while overcoming several of their disadvantages.}
+}
+
+
+@article{CausalFair,
+  title={Survey on Causal-based Machine Learning Fairness Notions}, 
+  author={Karima Makhlouf and Sami Zhioua and Catuscia Palamidessi},
+  year={2022},
+  eprint={2010.09553},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG}
+}
+
+
+@inproceedings{Bruno,
+title = "On the duality of privacy and fairness (extended abstract)",
+abstract = "When a machine learning model operates over data about individuals, there are two common concerns. On one hand, if the model{\textquoteright}s output (i.e., its prediction) allows for information inferences about an individual{\textquoteright}s sensitive attributes, we have a privacy issue. On the other hand, if the individual{\textquoteright}s sensitive attributes can unduly influence the model{\textquoteright}s output, we have a fairness issue. Recently, the interplay between these two concerns has gathered growing attention both in the scientific community and in society as a whole. In this work, we extend the framework of quantitative information flow to formally capture fairness and privacy as duals of each other, and give first steps toward a novel characterization of their relationship.",
+author = "Alvim, {M{\'a}rio S.} and Natasha Fernandes and Nogueira, {Bruno D.} and Catuscia Palamidessi and Silva, {Thiago V. A.}",
+year = "2023",
+doi = "10.1049/icp.2023.2563",
+language = "English",
+booktitle = "International Conference on AI and the Digital Economy (CADE 2023)",
+publisher = "Institution of Engineering and Technology",
+address = "United Kingdom",
+note = "9th International Conference on AI and the Digital Economy, CADE 2023 ; Conference date: 26-06-2023 Through 28-06-2023",
+
+}
+
+@book{Causality,
+author = {Pearl, Judea},
+title = {Causality: Models, Reasoning and Inference},
+year = {2009},
+isbn = {052189560X},
+publisher = {Cambridge University Press},
+address = {USA},
+edition = {2nd},
+abstract = {Written by one of the preeminent researchers in the field, this book provides a comprehensive exposition of modern analysis of causation. It shows how causality has grown from a nebulous concept into a mathematical theory with significant applications in the fields of statistics, artificial intelligence, economics, philosophy, cognitive science, and the health and social sciences. Judea Pearl presents and unifies the probabilistic, manipulative, counterfactual, and structural approaches to causation and devises simple mathematical tools for studying the relationships between causal connections and statistical associations. The book will open the way for including causal analysis in the standard curricula of statistics, artificial intelligence, business, epidemiology, social sciences, and economics. Students in these fields will find natural models, simple inferential procedures, and precise mathematical definitions of causal concepts that traditional texts have evaded or made unduly complicated. The first edition of Causality has led to a paradigmatic change in the way that causality is treated in statistics, philosophy, computer science, social science, and economics. Cited in more than 3,000 scientific publications, it continues to liberate scientists from the traditional molds of statistical thinking. In this revised edition, Judea Pearl elucidates thorny issues, answers readers' questions, and offers a panoramic view of recent advances in this field of research. Causality will be of interests to students and professionals in a wide variety of fields. Anyone who wishes to elucidate meaningful relationships from data, predict effects of actions and policies, assess explanations of reported events, or form theories of causal understanding and causal speech will find this book stimulating and invaluable.}
+}
+
+
+@book{CausalInf,
+  title={Causal Inference in Statistics: A Primer},
+  author={Pearl, J. and Glymour, M. and Jewell, N.P.},
+  isbn={9781119186847},
+  lccn={2015037219},
+  url={https://books.google.com.br/books?id=L3G-CgAAQBAJ},
+  year={2016},
+  publisher={Wiley}
+}
+
+
+@book{QIF,
+  title={The Science of Quantitative Information Flow},
+  author={Alvim, M.S. and Chatzikokolakis, K. and McIver, A. and Morgan, C. and Palamidessi, C. and Smith, G.},
+  isbn={9783319961316},
+  series={Information Security and Cryptography},
+  url={https://books.google.com.br/books?id=jJH-DwAAQBAJ},
+  year={2020},
+  publisher={Springer International Publishing}
+}
+
+@book{InfoTheory,
+  title={Information Theory , Inference And Learning Algorithms},
+  author={MacKay, David JC},
+  isbn={9780521670517},
+  url={https://books.google.com.br/books?id=4WhiPgAACAAJ},
+  year={2005},
+  publisher={Cambridge University Press}
+}
+
+@inproceedings{ExplainAll,
+author = {Zhou, Joyce and Joachims, Thorsten},
+title = {How to Explain and Justify Almost Any Decision: Potential Pitfalls for Accountability in AI Decision-Making},
+year = {2023},
+isbn = {9798400701924},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3593013.3593972},
+doi = {10.1145/3593013.3593972},
+abstract = {Discussion of the “right to an explanation” has been increasingly relevant because of its potential utility for auditing automated decision systems, as well as for making objections to such decisions. However, most existing work on explanations focuses on collaborative environments, where designers are motivated to implement good-faith explanations that reveal potential weaknesses of a decision system. This motivation may not hold in an auditing environment. Thus, we ask: how much could explanations be used maliciously to defend a decision system? In this paper, we demonstrate how a black-box explanation system developed to defend a black-box decision system could manipulate decision recipients or auditors into accepting an intentionally discriminatory decision model. In a case-by-case scenario where decision recipients are unable to share their cases and explanations, we find that most individual decision recipients could receive a verifiable justification, even if the decision system is intentionally discriminatory. In a system-wide scenario where every decision is shared, we find that while justifications frequently contradict each other, there is no intuitive threshold to determine if these contradictions are because of malicious justifications or because of simplicity requirements of these justifications conflicting with model behavior. We end with discussion of how system-wide metrics may be more useful than explanation systems for evaluating overall decision fairness, while explanations could be useful outside of fairness auditing.},
+booktitle = {Proceedings of the 2023 ACM Conference on Fairness, Accountability, and Transparency},
+pages = {12–21},
+numpages = {10},
+keywords = {adversarial explanations, explainable AI, right to an explanation},
+location = {, Chicago, IL, USA, },
+series = {FAccT '23}
+}
+
+@article{Compass,
+  title={Machine bias: There’s software used across the country to predict future criminals. and it’s biased against blacks.},
+  author={Angwin, Julia and Larson, Jeff and Mattu, Surya and Kirchner, Lauren},
+  journal={URL https://www. propublica. org/article/machine-bias-risk-assessments-in-criminal-sentencing},
+  year={2019}
+}
+
+@inproceedings{Loans,
+  title={An approach for prediction of loan approval using machine learning algorithm},
+  author={Sheikh, Mohammad Ahmad and Goel, Amit Kumar and Kumar, Tapas},
+  booktitle={2020 international conference on electronics and sustainable communication systems (ICESC)},
+  pages={490--494},
+  year={2020},
+  organization={IEEE}
+}
+
+@inproceedings{Jobs,
+  title={Algorithmic hiring in practice: Recruiter and HR Professional's perspectives on AI use in hiring},
+  author={Li, Lan and Lassiter, Tina and Oh, Joohee and Lee, Min Kyung},
+  booktitle={Proceedings of the 2021 AAAI/ACM Conference on AI, Ethics, and Society},
+  pages={166--176},
+  year={2021}
+}
+
+@article{FairMeasures,
+author = {Makhlouf, Karima and Zhioua, Sami and Palamidessi, Catuscia},
+title = {On the Applicability of Machine Learning Fairness Notions},
+year = {2021},
+issue_date = {June 2021},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {23},
+number = {1},
+issn = {1931-0145},
+url = {https://doi.org/10.1145/3468507.3468511},
+doi = {10.1145/3468507.3468511},
+abstract = {Machine Learning (ML) based predictive systems are increasingly used to support decisions with a critical impact on individuals' lives such as college admission, job hiring, child custody, criminal risk assessment, etc. As a result, fairness emerged as an important requirement to guarantee that ML predictive systems do not discriminate against specific individuals or entire sub-populations, in particular, minorities. Given the inherent subjectivity of viewing the concept of fairness, several notions of fairness have been introduced in the literature. This paper is a survey of fairness notions that, unlike other surveys in the literature, addresses the question of "which notion of fairness is most suited to a given real-world scenario and why?". Our attempt to answer this question consists in (1) identifying the set of fairness-related characteristics of the real-world scenario at hand, (2) analyzing the behavior of each fairness notion, and then (3) fitting these two elements to recommend the most suitable fairness notion in every specific setup. The results are summarized in a decision diagram that can be used by practitioners and policy makers to navigate the relatively large catalogue of ML fairness notions.},
+journal = {SIGKDD Explor. Newsl.},
+month = {may},
+pages = {14–23},
+numpages = {10}
+}
+
+@inproceedings{FairSolve,
+  title={Improving fairness in machine learning systems: What do industry practitioners need?},
+  author={Holstein, Kenneth and Wortman Vaughan, Jennifer and Daum{\'e} III, Hal and Dudik, Miro and Wallach, Hanna},
+  booktitle={Proceedings of the 2019 CHI conference on human factors in computing systems},
+  pages={1--16},
+  year={2019}
+}
+
+
+@inproceedings{DP,
+  title={Differential privacy},
+  author={Dwork, Cynthia},
+  booktitle={International colloquium on automata, languages, and programming},
+  pages={1--12},
+  year={2006},
+  organization={Springer}
+}
+
+@inproceedings{ExplDev,
+  title={Predicting software defects with explainable machine learning},
+  author={Santos, Geanderson and Figueiredo, Eduardo and Veloso, Adriano and Viggiato, Markos and Ziviani, Nivio},
+  booktitle={Proceedings of the XIX Brazilian Symposium on Software Quality},
+  pages={1--10},
+  year={2020}
+}
+
+
+@article{ExplainExperts,
+  title={Explainable machine learning for scientific insights and discoveries},
+  author={Roscher, Ribana and Bohn, Bastian and Duarte, Marco F and Garcke, Jochen},
+  journal={Ieee Access},
+  volume={8},
+  pages={42200--42216},
+  year={2020},
+  publisher={IEEE}
+}
+
+@article{mehrabi2021survey,
+  title={A survey on bias and fairness in machine learning},
+  author={Mehrabi, Ninareh and Morstatter, Fred and Saxena, Nripsuta and Lerman, Kristina and Galstyan, Aram},
+  journal={ACM computing surveys (CSUR)},
+  volume={54},
+  number={6},
+  pages={1--35},
+  year={2021},
+  publisher={ACM New York, NY, USA}
+}
+
+@article{alves2023survey,
+  title={Survey on fairness notions and related tensions},
+  author={Alves, Guilherme and Bernier, Fabien and Couceiro, Miguel and Makhlouf, Karima and Palamidessi, Catuscia and Zhioua, Sami},
+  journal={EURO journal on decision processes},
+  volume={11},
+  pages={100033},
+  year={2023},
+  publisher={Elsevier}
+}
+
+@article{chouldechova2018frontiers,
+  title={The frontiers of fairness in machine learning},
+  author={Chouldechova, Alexandra and Roth, Aaron},
+  journal={arXiv preprint arXiv:1810.08810},
+  year={2018}
+}
+
+@inproceedings{kearns2018preventing,
+  title={Preventing fairness gerrymandering: Auditing and learning for subgroup fairness},
+  author={Kearns, Michael and Neel, Seth and Roth, Aaron and Wu, Zhiwei Steven},
+  booktitle={International conference on machine learning},
+  pages={2564--2572},
+  year={2018},
+  organization={PMLR}
+}
+
+@article{dwork2018fairness,
+  title={Fairness under composition},
+  author={Dwork, Cynthia and Ilvento, Christina},
+  journal={arXiv preprint arXiv:1806.06122},
+  year={2018}
+}
+
+@article{liu2021machine,
+  title={When machine learning meets privacy: A survey and outlook},
+  author={Liu, Bo and Ding, Ming and Shaham, Sina and Rahayu, Wenny and Farokhi, Farhad and Lin, Zihuai},
+  journal={ACM Computing Surveys (CSUR)},
+  volume={54},
+  number={2},
+  pages={1--36},
+  year={2021},
+  publisher={ACM New York, NY, USA}
+}
+
+
+@inproceedings{gilpin2018explaining,
+  title={Explaining explanations: An overview of interpretability of machine learning},
+  author={Gilpin, Leilani H and Bau, David and Yuan, Ben Z and Bajwa, Ayesha and Specter, Michael and Kagal, Lalana},
+  booktitle={2018 IEEE 5th International Conference on data science and advanced analytics (DSAA)},
+  pages={80--89},
+  year={2018},
+  organization={IEEE}
+}
+
+@article{linardatos2020explainable,
+  title={Explainable ai: A review of machine learning interpretability methods},
+  author={Linardatos, Pantelis and Papastefanopoulos, Vasilis and Kotsiantis, Sotiris},
+  journal={Entropy},
+  volume={23},
+  number={1},
+  pages={18},
+  year={2020},
+  publisher={MDPI}
+}
+
+@inproceedings{ribeiro2016should,
+  title={" Why should i trust you?" Explaining the predictions of any classifier},
+  author={Ribeiro, Marco Tulio and Singh, Sameer and Guestrin, Carlos},
+  booktitle={Proceedings of the 22nd ACM SIGKDD international conference on knowledge discovery and data mining},
+  pages={1135--1144},
+  year={2016}
+}
+
+@article{lundberg2017unified,
+  title={A unified approach to interpreting model predictions},
+  author={Lundberg, Scott M and Lee, Su-In},
+  journal={Advances in neural information processing systems},
+  volume={30},
+  year={2017}
+}
+
+
+
+
+
+
+
+
+
+
+An example of a IEEEtran control entry which can change some IEEEtran.bst
+settings. An entry like this must be cited via \bstctlcite{} command
+before the first real \cite{}. The same entry key cannot be called twice
+(just like multiple \cite{} of the same entry key place only one entry
+in the bibliography.)
+The available control fields are:
+
+CTLuse_article_number
+"no" turns off the display of the number for articles.
+"yes" enables
+
+CTLuse_paper
+"no" turns off the display of the paper and type fields in inproceedings.
+"yes" enables
+
+CTLuse_forced_etal 
+"no" turns off the forced use of "et al."
+"yes" enables
+
+CTLmax_names_forced_etal
+The maximum number of names that can be present beyond which an "et al."
+usage is forced. Be sure that CTLnames_show_etal (below)
+is not greater than this value!
+
+CTLnames_show_etal
+The number of names that will be shown with a forced "et al.".
+Must be less than or equal to CTLmax_names_forced_etal
+
+CTLuse_alt_spacing 
+"no" turns off the alternate interword spacing for entries with URLs.
+"yes" enables
+
+CTLalt_stretch_factor
+If alternate interword spacing for entries with URLs is enabled, this is
+the interword spacing stretch factor that will be used. For example, the
+default "4" here means that the interword spacing in entries with URLs can
+stretch to four times normal. Does not have to be an integer.
+
+CTLdash_repeated_names
+"no" turns off the "dashification" of repeated (i.e., identical to those
+of the previous entry) names. IEEE normally does this.
+"yes" enables
+
+CTLname_format_string
+The name format control string as explained in the BibTeX style hacking
+guide.
+IEEE style "{f.~}{vv~}{ll}{, jj}" is the default,
+
+CTLname_latex_cmd
+A LaTeX command that each name will be fed to (e.g., "\textsc").
+Leave empty if no special font is desired for the names.
+The default is empty.
+
+CTLname_url_prefix
+The prefix text used before URLs.
+The default is "[Online]. Available:" A space will be inserted after this
+text. If this space is not wanted, just use \relax at the end of the
+prefix text.
+
+
+Those fields that are not to be changed can be left out.
+@IEEEtranBSTCTL{IEEEexample:BSTcontrol,
+  CTLuse_article_number     = "yes",
+  CTLuse_paper              = "yes",
+  CTLuse_forced_etal        = "no",
+  CTLmax_names_forced_etal  = "10",
+  CTLnames_show_etal        = "1",
+  CTLuse_alt_spacing        = "yes",
+  CTLalt_stretch_factor     = "4",
+  CTLdash_repeated_names    = "yes",
+  CTLname_format_string     = "{f.~}{vv~}{ll}{, jj}",
+  CTLname_latex_cmd         = "",
+  CTLname_url_prefix        = "[Online]. Available:"
+}
+
+
