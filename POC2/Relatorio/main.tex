@@ -14,6 +14,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \newtheorem{definition}{Definition}
 \newcommand{\qm}[1]{``#1"}
+\usepackage{mathtools} % for 'dcases*' env.
 
 
 %\onecolumn
@@ -226,11 +227,11 @@ We call \emph{adversary} the agent that wants to discover the private informatio
 
 The attacks presented in some previous works \cite{ateniese2015hacking} aims to recover statistical information about the training dataset by the use of many models trained on different datasets and a meta-classifier that identifies if a given model was trained in a dataset with some desired statistical property. This is a white-box scenario, and they focused on attacking Support Vector Machines and Hidden Markov Models. Another common type of attack is the Membership Inference Attack, reviewed in previous works \cite{hu2022membership}, in which the adversary aims to infer whether a given data point was used to train a given model or not. One approach is presented in a previous work \cite{carlini2022membership}, in which the adversary can sample from the original data distribution and has black-box access to the target model. It works by training many \qm{shadow models} by using the data distribution, half with the target data point and half without it, then performing some computations based on confidence scores to estimate how likely the real model is to have used the relevant data point.
 
-We will now focus on methods of modeling the protection of training data from privacy attacks. The main methods we will mention are Differential Privacy, Local Differential Privacy, and Homomorphic Encryption. Local Differential Privacy will be the method we focus on in Subsections \ref{subsec:ldpunfair}, \ref{subsec:ldeltap} and \ref{subsec:ldpqif}.
+We will now focus on methods of modeling the protection of training data from privacy attacks. The main methods we will mention are Differential Privacy, Local Differential Privacy, and Homomorphic Encryption. Local Differential Privacy will be the method we focus on in Subsections \ref{subsec:ldpunfair}, \ref{subsec:ldeltap} and \ref{subsec:ldeltap}.
 
 \emph{Differential Privacy} (DP) is one of the most important definitions of quantifying privacy: the idea of DP is to define how hard it should be to distinguish one dataset from another that differs by at most any one individual data point. More generally, we can define how hard it should be to distinguish an element from a neighboring element, such that in the database example, the elements are databases and the neighboring relation is such that two databases are neighbors if and only if they differ by at most one data point. A (possibly randomized) algorithm that aims to obtain a dataset that is protected according to the DP definition is called a \emph{Differential Privacy Mechanism}. The formal definition is presented below. 
 
-\begin{definition}[$\epsilon$-Differential Privacy] A randomized algorithm from $\mathcal{X}$ to $\mathcal{Z}$ satisfies $\epsilon$-Differential Privacy, for $\epsilon > 0$, if for every $x,x' \in \mathcal{X}$ such that $x$ is a neighgboring element of $x'$, and for every $S \subseteq \mathcal{Z}$:
+\begin{definition}[$\epsilon$-Differential Privacy]\label{def:epsilonLDP} A randomized algorithm from $\mathcal{X}$ to $\mathcal{Z}$ satisfies $\epsilon$-Differential Privacy, for $\epsilon > 0$, if for every $x,x' \in \mathcal{X}$ such that $x$ is a neighgboring element of $x'$, and for every $S \subseteq \mathcal{Z}$:
 $$P(\mathcal{K}(x) \in S) \leq e^\epsilon P(\mathcal{K}(x')\in S)$$
 \end{definition}
 
@@ -240,7 +241,7 @@ The parameter $\epsilon$ can be interpreted as how close we require the probabil
 $$P(\mathcal{K}(x) \in S) \leq e^\epsilon P(\mathcal{K}(x')\in S)+\delta$$
 \end{definition}
 
-\emph{Local Differential Privacy} (LDP) is a concept important when the data collector is not assumed to be trusted and consists of the same restrictions as Differential Privacy, but with $\mathcal{X}$ as the set of possible individual values and the neighboring relation being such that all possible values are neighbors. This algorithm should be applied locally by the owner of each data point.
+\emph{Local Differential Privacy} (LDP) is a concept important when the data collector is not assumed to be trusted and consists of the same restrictions as Differential Privacy, but with $\mathcal{X}$ as the set of possible individual values, $\mathcal{Z}=\mathcal{X}$ and the neighboring relation being such that all possible values are neighbors. This algorithm should be applied locally by the owner of each data point.
 
 The idea is that individuals apply noise locally in a way such that the data collector can still obtain the desired results with the noisy data. The classical example is the scenario in which we want to discover how many people do some illegal activity (for instance, use illegal drugs) in a given region. The person answering might be tempted to lie to not let this sensitive information leak. But if we tell them to toss two coins, such that if the first one comes up heads, they answer truthfully, but if not, then the answer should be \qm{yes} if the second coin came up heads and \qm{no} otherwise. We will know that approximately $\frac{1}{2}$ of the answers is not the true answer of the person, such that half of these are \qm{yes} and half \qm{no}. We can then remove $25\%$ of the total number of answers from the number of \qm{yes} and another $25\%$ from the total number of \qm{no} to estimate the real distribution. Previous works \cite{xiong2020comprehensive} delves into many mechanisms, information metrics, and applications relevant to Local Differential Privacy, including machine learning on private data.
 
@@ -347,7 +348,7 @@ As QIF aims to quantify the flow of information, we can naturally consider apply
 \end{enumerate}
 
 \section{Contributions}
-This work has three main contributions, which we cover in the three subsections of this section:
+Besides the literature review, this work has three main theoretical contributions, which we cover in the three subsections of this section:
 
 \begin{enumerate}
 	\item We identify qualitative questions about the premises of recent papers on the impact of Local Differential Privacy obfuscation mechanisms on fairness metrics, and thus questioning the conclusions obtained.
@@ -357,12 +358,54 @@ This work has three main contributions, which we cover in the three subsections 
 
 \subsection{The impact of Local Differential Privacy mechanisms on fairness metrics}\label{subsec:ldpunfair}
 
+{\color{red} Eu acho que tem isso salvo em algum lugar no computador. Lembrar da questao do Ramon de que o modelo treinado no dado com ruido nao tem problema porque ele vai ser usado em dados sem ruido estando pronto de qualquer forma.}
+
 \subsection{How to distribute the Local Differential Privacy budget between variables with varying levels of importance}\label{subsec:ldpbudget}
+
+One simple mechanism to satisfy the Local Differential Privacy constraints of Definition \ref{def:epsilonLDP} is \textbf{Randomized Response}, described in \ref{def:nrr}.
+
+\begin{definition}[n-Randomized Response]\label{def:nrr} Let $|\mathcal{X}| = n$. Then, the Randomized Response Mechanism $\mathcal{K}$ that maps from $\mathcal{X}$ to $\mathcal{X}$ can be defined as:
+	\[
+	\mathcal{K(x)} = 
+	\begin{dcases*}
+		x
+		& with probability $\frac{e^\epsilon}{n-1+e^\epsilon}$\,, \\[1ex]
+		y 
+	   	& with probability $\frac{1}{n-1+e^\epsilon}$\,.
+	\end{dcases*}
+	\]
+For any values $x\neq y$ such that $x,y\in\mathcal{X}$.
+\end{definition}
+
+Notice that this adds up to one. {\color{red} DO IT, e mostrar que satisfaz o epsilon LDP}
+
+Notice that all probabilities are inversely proportional to $n$, but $n$ increases exponentially in respect to the number of variables for each data point. This means that in real applications with many attributes, the probabilities might get prohibitively small. Inevitably this leads to exponentially more data being necessary to reach statistically significant conclusions about it when we increase the number of variables collected per data point. One possible solution to this is obfuscating only the privacy-sensitive variables. For instance, in the scenario described at Figure \ref{fig:sensitiveVars}, most people would be satisfied with obfuscating only {\color{red} X} out of {\color{red} Y} variables.
+
+{\color{red} BOTAR FIGURA}
+
+{\color{red} Problema de estar correlacionado com outros dados, entao daria pra usar eles pra inferir os dados sensiveis.}
+
+{\color{red} Essa correlacao pode ser descoberta de outras bases de dados inclusive, e mesmo que nao revelasse nada sobre o sensivel A, poderia usar um conjunto E de atributos pra inferir o sensivel, e descobrir informacao sobre a relacao entre A e X que nao se sabia ser correlacionado com o A. Ou seja, na filosofia de QIF ainda e ruim porque esta adicionando informacao em relacao ao que se tinha antes de informacao.}
+
+{\color{red} Alem disso temos a necessidade de ter os dados sensíveis pra conseguir medir o quao injusto esta sendo o algoritmo final, possivelmente ate mesmo pra motivos legais.}
+
+{\color{red} Definicao razoavel pro caso em que so importa os atributos sensiveis, formalizacao mesmo}
+
+{\color{red} Como a distribuicao eh desconhecida para a pessoa que esta aplicando o ruido (se nao fosse desconhecida nao tem porque nem ela enviar o dado, melhor enviar a distribuicao toda), entao o mecanismo teria que funcionar em qualquer distribuicao. Citar o exemplo de distribuicao em que nao vai funcionar, e que a principio nao daria pra saber o quao correlacionado eh porque nao temos os dados.}
 
 \subsection{Modeling the $\delta$ parameter of $(\epsilon,\delta)$-LDP within the Quantitative Information Flow framework}\label{subsec:ldeltap}
 
+{\color{red} Esse tem nos papeis}
+
 \section{Conclusions}
 
+We can summarize the results obtained as following:
+
+\begin{enumerate}
+	\item There are some problems
+	\item
+	\item
+\end{enumerate}
 
 \bibliographystyle{IEEEtran}
 \bibliography{IEEEexample}
