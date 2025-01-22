@@ -4,7 +4,7 @@
 %Template version as of 6/27/2024
 
 \usepackage{cite}
-\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
 \usepackage{algorithmic}
 \usepackage{graphicx}
 \usepackage{textcomp}
@@ -13,6 +13,8 @@
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
 \newcommand{\qm}[1]{``#1"}
 \usepackage{mathtools} % for 'dcases*' env.
 
@@ -372,7 +374,7 @@ One simple mechanism to satisfy the Local Differential Privacy constraints of De
 
 \begin{definition}[n-Randomized Response]\label{def:nrr} Let $|\mathcal{X}| = n$. Then, the Randomized Response Mechanism $\mathcal{K}$ that maps from $\mathcal{X}$ to $\mathcal{X}$ can be defined as:
 	\[
-	\mathcal{K(x)} = 
+	\mathcal{K}(x) = 
 	\begin{dcases*}
 		x
 		& with probability $\frac{e^\epsilon}{n-1+e^\epsilon}$\,, \\[1ex]
@@ -383,7 +385,22 @@ One simple mechanism to satisfy the Local Differential Privacy constraints of De
 For any values $x\neq y$ such that $x,y\in\mathcal{X}$.
 \end{definition}
 
-Notice that this adds up to one. {\color{red} DO IT, e mostrar que satisfaz o epsilon LDP}
+Notice that this adds up to one: $\frac{e^\epsilon}{n-1+e^\epsilon}+(n-1)\frac{1}{n-1+e^\epsilon}=1$. Also, this mechanism satisifies the $\epsilon-LDP$ restriction from Definition \ref{def:epsilonLDP}, as we show in Lemma \ref{lem:rrldp}.
+
+\begin{lemma}\label{rrldp} n-Randomized Response (Definition \ref{def:nrr}) satisifes $\epsilon-LDP$ (Definition \ref{def:epsilonLDP}).
+\end{lemma}
+\begin{proof}
+	Let $S$ be any subset of the set of all outputs of $\mathcal{K}$. Notice that, by the definition of $\mathcal{K}$, this is a subset of secrets. Also, let $x \in \mathcal{X}$ and $\epsilon > 0$.
+	If $x\in S$, then $P(\mathcal{K}(x) \in S) = \frac{|S|-1+e^\epsilon}{n-1+e^\epsilon}$, otherwise $P(\mathcal{K}(x) \in S) = \frac{|S|}{n-1+e^\epsilon}$.
+	Now let $x,x' \in \mathcal{X}$ be any pair of secrets. We will divide the proof into five parts:
+	\begin{enumerate}
+		\item If $S = \emptyset$, then $P(\mathcal{K}(x) \in S) = P(\mathcal{K}(x') \in S) = 0$, so trivially $P(\mathcal{K}(x) \in S) \leq e^\epsilon P(\mathcal{K}(x')$.
+		\item If $x\in S$, $x'\in S$, then $P(\mathcal{K}(x) \in S) = \frac{|S|-1+e^\epsilon}{n-1+e^\epsilon} \leq e^\epsilon \frac{|S|-1+e^\epsilon}{n-1+e^\epsilon} = e^\epsilon P(\mathcal{K}(x')\in S)$, as $e^\epsilon > 1$ when $\epsilon > 0$.
+		\item If $x\in S$, $x'\notin S$, then $P(\mathcal{K}(x) \in S) = \frac{|S|-1+e^\epsilon}{n-1+e^\epsilon} = e^\epsilon\frac{\frac{|S|-1}{e^\epsilon}+1}{n-1+e^\epsilon} \leq e^\epsilon\frac{|S|-1+1}{n-1+e^\epsilon} = e^\epsilon \frac{|S|}{n-1+e^\epsilon} = e^\epsilon P(\mathcal{K}(x')\notin S)$, as $e^\epsilon > 1$ when $\epsilon > 0$.
+		\item If $x\notin S$, $x'\in S$, then $P(\mathcal{K}(x) \notin S) = \frac{|S|}{n-1+e^\epsilon} \leq \frac{|S|-1+e^\epsilon}{n-1+e^\epsilon} \leq e^\epsilon \frac{|S|-1+e^\epsilon}{n-1+e^\epsilon} = e^\epsilon P(\mathcal{K}(x')\in S)$.
+		\item If $x\notin S$, $x'\notin S$, then $P(\mathcal{K}(x) \notin S) = \frac{|S|}{n-1+e^\epsilon} \leq e^\epsilon \frac{|S|}{n-1+e^\epsilon} = e^\epsilon P(\mathcal{K}(x')\notin S)$, as $e^\epsilon > 1$ when $\epsilon > 0$.
+	\end{enumerate}
+\end{proof}
 
 Notice that all probabilities are inversely proportional to $n$, but $n$ increases exponentially in respect to the number of variables for each data point. This means that in real applications with many attributes, the probabilities might get prohibitively small. Inevitably this leads to exponentially more data being necessary to reach statistically significant conclusions about it when we increase the number of variables collected per data point. One possible solution to this is obfuscating only the privacy-sensitive variables. For instance, in the scenario described at Figure \ref{fig:sensitiveVars}, most people would be satisfied with obfuscating only {\color{red} X} out of {\color{red} Y} variables.
 
