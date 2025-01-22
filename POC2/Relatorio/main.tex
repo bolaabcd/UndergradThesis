@@ -360,6 +360,12 @@ Besides the literature review, this work has three main theoretical contribution
 
 {\color{red} Eu acho que tem isso salvo em algum lugar no computador. Lembrar da questao do Ramon de que o modelo treinado no dado com ruido nao tem problema porque ele vai ser usado em dados sem ruido estando pronto de qualquer forma.}
 
+{\color{red} \begin{enumerate}
+	\item Aplicar ruido em uma soh variavel dah problemas de privacidade, porque a menos que confiemos totalmente no coletor de dados (e nesse caso nao compensa aplicar ruido nenhum), ele pode reverter o ruido e usar um modelo treinado com a distribuicao sem ruido para inferir o valor da variavel sensivel a partir das outras. A terceira parte dessa secao de contribuicoes fala qual o problema em aplicar soh na variavel sensivel e nas correlacionadas.
+	\item Mesmo no caso de aplicar ruido em todas as variaveis, nao faz sentido confiar que o coletor de dados nao vai reverter o ruido e treinar um modelo injusto.
+	\item Mesmo que confiemos totalmente no coletor para nao reverter o ruido e aplicamos ruido em todas as variaveis para fins de privacidade, ele nao reverter so limita as opcoes que ele tem de trade-off entre fairness e acuracia.
+\end{enumerate}}
+
 \subsection{How to distribute the Local Differential Privacy budget between variables with varying levels of importance}\label{subsec:ldpbudget}
 
 One simple mechanism to satisfy the Local Differential Privacy constraints of Definition \ref{def:epsilonLDP} is \textbf{Randomized Response}, described in \ref{def:nrr}.
@@ -395,7 +401,11 @@ Notice that all probabilities are inversely proportional to $n$, but $n$ increas
 
 \subsection{Modeling the $\delta$ parameter of $(\epsilon,\delta)$-LDP within the Quantitative Information Flow framework}\label{subsec:ldeltap}
 
-{\color{red} Esse tem nos papeis}
+{\color{red} Esse tem nos papeis, e basicamente nao funcionou ate onde tentei.}
+
+{\color{red} A ideia eh que max-QIF pega o pior caso com probabilidade maior que 0, e epsilon-LDP aceita zero chance de falha. max-delta-LDP pega o pior caso com probabilidade maior que delta, e delta-epsilon-LDP aceita delta chance de falha, entao talvez daria pra botar um bound usando delta-max-QIF.}
+
+{\color{red} Tiveram mais tentativas, mas a linha principal foi primeiro ver o que o teorema do paper da Natasha significa em termos logicos (para todo epsilon e canal, etc.), e tentar provar trocando o axioma de max-QIF para max-delta-QIF, e ver se o mesmo bound com $\mathcal{M}Lift(C)$ funciona. No final das contas, eu acredito que mostrei que o bound, da forma como foi dado, eh equivalente a uma igualdade de outros termos, e provei que vai existir um canal constante que faz o bound nao funcionar.}
 
 \section{Conclusions}
 
