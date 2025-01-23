@@ -185,8 +185,8 @@ Also, the bias in society might be such that the data is in disagreement with re
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\columnwidth]{whereUnfair}
-\caption{Figure representing some of the main possible sources of unfairness.}\label{fig:whereUnfair}
+\includegraphics[width=\columnwidth]{whereunfair}
+\caption{Figure representing some of the main possible sources of unfairness.}\label{fig:whereunfair}
 \end{figure}
 
 Besides biased data and deliberate bias in the algorithm, such that the results of the algorithm do not reflect the data, it is also possible to introduce bias because the algorithm might prioritize making correct predictions for the majority of the population, if it can't make correct predictions for both the majority and the minority. Another possibility is that the prediction might depend on past decisions of the algorithm, and we only know the result if the result provided is positive (for instance, we only know if someone will reincide if we release them). In this type of scenario, according to Learning Theory, it's important to take suboptimal decisions to \emph{explore} different options and gather more data \cite{chouldechova2018frontiers} (found in \url{arxiv.org}), which might be considered unethical as it might have a big cost to society (releasing someone that's probably going to commit more crimes) or to the individual (not giving a life-saving drug to some patients as an experiment to see the survival rates for that specific group). 
@@ -402,19 +402,35 @@ Notice that this adds up to one: $\frac{e^\epsilon}{n-1+e^\epsilon}+(n-1)\frac{1
 	\end{enumerate}
 \end{proof}
 
-Notice that all probabilities are inversely proportional to $n$, but $n$ increases exponentially in respect to the number of variables for each data point. This means that in real applications with many attributes, the probabilities might get prohibitively small. Inevitably this leads to exponentially more data being necessary to reach statistically significant conclusions about it when we increase the number of variables collected per data point. One possible solution to this is obfuscating only the privacy-sensitive variables. For instance, in the scenario described at Figure \ref{fig:sensitiveVars}, most people would be satisfied with obfuscating only {\color{red} X} out of {\color{red} Y} variables.
+Notice that all probabilities are inversely proportional to $n$, but $n$ increases exponentially in respect to the number of variables for each data point. This means that in real applications with many attributes, the probabilities might get prohibitively small. Inevitably this leads to exponentially more data being necessary to reach statistically significant conclusions about it when we increase the number of variables collected per data point. One possible improvement in respect to this problem is obfuscating only the privacy-sensitive variables. For instance, in the scenario described at Figure \ref{fig:sensitiveVars}, it might be enough from a privacy perspective to obfuscate only 2 out of 6 the variables presented.
 
-{\color{red} BOTAR FIGURA}
 
-{\color{red} Problema de estar correlacionado com outros dados, entao daria pra usar eles pra inferir os dados sensiveis.}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\columnwidth]{sensitiveVars}
+\caption{Scenario in which some institution collects data on some sensible and non-sensible variables.}\label{fig:sensitiveVars}
+\end{figure}
 
-{\color{red} Essa correlacao pode ser descoberta de outras bases de dados inclusive, e mesmo que nao revelasse nada sobre o sensivel A, poderia usar um conjunto E de atributos pra inferir o sensivel, e descobrir informacao sobre a relacao entre A e X que nao se sabia ser correlacionado com o A. Ou seja, na filosofia de QIF ainda e ruim porque esta adicionando informacao em relacao ao que se tinha antes de informacao.}
+Applying obfuscation mechanisms at only a few variables might weaken the real privacy guarantees obtained. In the example illustrated by figure \ref{fig:sensitiveVars}, for instance, the Age variable might be correlated with the Religious Beliefs variables. In this situation, applying noise just to the Religious Beliefs variable is not equivalent to applying the same noise in the scenario in which only the Religious Beliefs variable is available. In other words, even though an obfuscation mechanism provides guarantees in general, these guarantees are not kept if we apply noise only on one variable. For instance, Randomized Response (Definition \ref{def:nrr}) might guarantee $\epsilon$-LDP if the noise is applied to all variables, as shown in Lemma \ref{rrldp}, but not if it is applied to a subset of variables.
 
-{\color{red} Alem disso temos a necessidade de ter os dados sensíveis pra conseguir medir o quao injusto esta sendo o algoritmo final, possivelmente ate mesmo pra motivos legais.}
+In the most extreme case, we have the toy example in which two variables $A$ and $X$, such that $A$ is considered sensible and $X$ is not, and $A$ is proportional to $X$. Then if we apply noise to $A$ only, the data collector can discover the exact value of $A$ of any individual by looking at the value of $X$ for that individual. More realistic examples might have a sensitive variable $A$ and a tuple of non-sensitive variables $(X_1,X_2,...,X_n)$, such that the value of the tuple is highly correlated with $A$, or can be used to predict $A$ with more than acceptable accuracy.
 
-{\color{red} Definicao razoavel pro caso em que so importa os atributos sensiveis, formalizacao mesmo}
+One important privacy paradigm to consider is that a system can be considered non-private if it leaks more information about the sensitive data than an adversary had \textit{before} observing the system. Thus, one might think that the data collector would be unable to identify the strong corrleations mentioned if enough noise is applied. But we must keep in mind that many Local Differential Privacy mechanisms are designed such that the data collector can reverse the noise with some confidence if enough data is provided. For instance, in the Randomized Response Mechanism from Definition \ref{def:nrr}, we can infer that a fraction of the individuals will provide incorrect information about their data, and by some simple computations we can conclude that to (approximately) reverse the noise we can simply subtract a fraction $\frac{1}{n-1+e^\epsilon}$ of each obtained proportion of individuals with that value. Then, we re-scale the values obtained to add up to one.
 
-{\color{red} Como a distribuicao eh desconhecida para a pessoa que esta aplicando o ruido (se nao fosse desconhecida nao tem porque nem ela enviar o dado, melhor enviar a distribuicao toda), entao o mecanismo teria que funcionar em qualquer distribuicao. Citar o exemplo de distribuicao em que nao vai funcionar, e que a principio nao daria pra saber o quao correlacionado eh porque nao temos os dados.}
+Many LDP mechanisms allow for some method for the data collector to approximately reversing the noise, which allows to estimate the real data distribution, so the data collector can, in general and with enough data, approximate the real correlations between variables. This means that even if we consider the paradigm of comparing the prior and posterior information, applying noise to a few of the variables is still a big problem. A data collector with no prior information can discover that a set of non-sensitive variables is highly correlated with a sensitive variable, and use this to infer the value of the sensitive variable of any individual.
+
+Even though it is not safe to apply noise to the sensitive variables only, we might still wish to find another strategies that protect the sensitive variables but not necessarily the non-sensitive variables. One way to do this is to apply more noise to the sensitive variables, and less noise to correlated variables, such variables with less correlation have less noise applied to them. In order to be able to quantify this idea, we provide Definition \ref{def:veldp}.
+
+
+\begin{definition}[Variable-$\epsilon$-Local-Differential Privacy]\label{def:veldp} A randomized algorithm from $\mathcal{X}$ to $\mathcal{X}$, such that $A\times B = X$ with $A$ as the set of sensible variables and $B$ as the set of non-sensible variables, satisfies Variable-$\epsilon$-Differential Privacy, for $\epsilon > 0$, if for every $a, a', c \in A$ and $b, d \in B$:
+$$P(\mathcal{K}((a,b)) = (c,d)) \leq e^\epsilon P(\mathcal{K}((a',b)) = (c,d))$$
+\end{definition}
+
+Definition \ref{def:veldp} implies that an algorithm satisfies Variable-$\epsilon$-Differential Privacy if, given any output, there is an $e^\epsilon$ degree of uncertainty about the value of the sensible variable before the application ofthe algorithm to the input data point. Also, note that $A,B$ can themselves be defined as tuples of variables, and thus we can model any scenario with sensible and non-sensible variables this way.
+
+The main reason why we might not be able to guarantee that the restriction from definition \ref{def:veldp} is satisfied is that the data distribution is usually not available before the data from many individuals is collected and aggregated. This is the most common scenario, as if the distribution of the variables is already known, then there is no reason at all to collect data for most applications. Then, it might not be possible to apply noise proportionally to how correlated a variable is to a sensitive variable, as the person applying the noise does not know all the correlations a priori. If we want the mechanism to work in any distribution, we need to apply the noise to all variables, as it must work even if other variables are equal to the sensitive variables.
+
+Finally, one common idea is to simply not collect the sensitive data. The problem with this approach is that without this information, it is not posslbe to infer how unfair a system is. Verifying biases and general unfairness is the goal of many important studies, and thus collecting sensitive data, at least in an aggregated way that doesn't allow the identification of the sensitive information of specific individuals, is fundamental. The sensitive data collected by companies can, for instance, be used by regulatory agencies to identify unfair biases that the copany presents towards unpriviledged groups of customers and employees, for instance.
 
 \subsection{Modeling the $\delta$ parameter of $(\epsilon,\delta)$-LDP within the Quantitative Information Flow framework}\label{subsec:ldeltap}
 
