@@ -239,7 +239,7 @@ $$P(\mathcal{K}(x) \in S) \leq e^\epsilon P(\mathcal{K}(x')\in S)$$
 
 The parameter $\epsilon$ can be interpreted as how close we require the probabilities of neighboring datasets to be, such that smaller values of $\epsilon$ lead to stronger requirements. In some practical applications, the Differential Privacy restriction is too strong. Thus, we have a relaxed definition for Differential Privacy, in which the parameter $\delta$ can be interpreted as the probability that the DP guarantee will not be satisfied.:
 
-\begin{definition}[$(\epsilon,\delta)$-Differential Privacy] A randomized algorithm from $\mathcal{X}$ to $\mathcal{Z}$ satisfies $(\epsilon,\delta)$-Differential Privacy, for $\epsilon > 0$ and $\delta \in [0,1]$, if for every $x,x' \in \mathcal{X}$ such that $x$ is a neighgboring element of $x'$.
+\begin{definition}[$(\epsilon,\delta)$-Differential Privacy]\label{def:edLDP} A randomized algorithm from $\mathcal{X}$ to $\mathcal{Z}$ satisfies $(\epsilon,\delta)$-Differential Privacy, for $\epsilon > 0$ and $\delta \in [0,1]$, if for every $x,x' \in \mathcal{X}$ such that $x$ is a neighgboring element of $x'$.
 $$P(\mathcal{K}(x) \in S) \leq e^\epsilon P(\mathcal{K}(x')\in S)+\delta$$
 \end{definition}
 
@@ -394,7 +394,7 @@ Then, if the data collector is considered untrustworthy in general, applying noi
 
 Notice that trust on the data collector is not simply trust that the people and company are not malicious, it also includes trusting that the data they pocess will not leak to malicious parties. This might happen through cibersecurity breaches, for instance, in which the data could be used to make unfair \qm{data-based} decisions.
 
-Finally, even under the assumption of complete trust in the data collector not attempting to reverse the perturbation when training the model and with noise applied to all variables for privacy preservation, the act of not reversing the noise simply constrains the trade-off options available to the collector between fairness and accuracy. By introducing noise, a fundamental tension is created: increasing noise enhances privacy but typically reduces the accuracy of any model trained on the perturbed data\cite{ren2018textsf}. This tension is also present between fairness and accuracy, especially in scenarios in which the unpriviledged group is significantly evaluated worse in the training data\cite{Carlos}. If we use noise as a pre-processing method for improving fairness, then we are not considering other, possibly better options, that lead to better fairness and accuracy\cite{Reductions}\cite{konstantinov2022impossibility}. 
+Finally, even under the assumption of complete trust in the data collector not attempting to reverse the perturbation when training the model and with noise applied to all variables for privacy preservation, the act of not reversing the noise simply constrains the trade-off options available to the collector between fairness and accuracy. By introducing noise, a fundamental tension is created: increasing noise enhances privacy but typically reduces the accuracy of any model trained on the perturbed data\cite{ren2018textsf}. This tension is also present between fairness and accuracy, especially in scenarios in which the unpriviledged group is significantly evaluated worse in the training data\cite{Carlos}. If we use noise as a pre-processing method for improving fairness, then we are not considering other, possibly better options, that lead to better fairness and accuracy\cite{Reductions}\cite{konstantinov2022impossibility}.
 
 \subsection{How to distribute the Local Differential Privacy budget between variables with varying levels of importance}\label{subsec:ldpbudget}
 
@@ -462,11 +462,33 @@ Finally, one common idea is to simply not collect the sensitive data. The proble
 
 \subsection{Modeling the $\delta$ parameter of $(\epsilon,\delta)$-LDP within the Quantitative Information Flow framework}\label{subsec:ldeltap}
 
-{\color{red} Esse tem nos papeis, e basicamente nao funcionou ate onde tentei.}
+Recent research \cite{fernandes2024explaining} shows how to represent and explain the $\epsilon$ parameter of $\epsilon$-LDP \ref{def:epsilonLDP} through the lens of Quantitative Information Flow. They consider the alternative MAX axiom of QIF \cite[Chapter~11]{QIF}, and the main result is to prove that the supremum of the multiplicative leakage of a given channel is limited by $e^\epsilon$ if and only if the fraction of the values of any two entries of the channel in the same column are also limited by $e^\epsilon$. This can be, in turn, shown to be equivalent to the restriction of the definition $\epsilon$-LDP \ref{def:epsilonLDP}.
 
-{\color{red} A ideia eh que max-QIF pega o pior caso com probabilidade maior que 0, e epsilon-LDP aceita zero chance de falha. max-delta-LDP pega o pior caso com probabilidade maior que delta, e delta-epsilon-LDP aceita delta chance de falha, entao talvez daria pra botar um bound usando delta-max-QIF.}
+Intuitively, one possible observation is that we are considering the worst-case scenarios when we use the MAX \ref{def:mQIF} instead of the AVG \ref{def:aQIF} axiom. Previous attempts were made to relate $\epsilon$-LDP directly with QIF, but they relied on the more common AVG axiom for QIF\cite{alvim2015information}, so a bound on LDP in terms of multiplicative leakage were not available, only bounds on leakage in terms of LDP parameters.
 
-{\color{red} Tiveram mais tentativas, mas a linha principal foi primeiro ver o que o teorema do paper da Natasha significa em termos logicos (para todo epsilon e canal, etc.), e tentar provar trocando o axioma de max-QIF para max-delta-QIF, e ver se o mesmo bound com $\mathcal{M}Lift(C)$ funciona. No final das contas, eu acredito que mostrei que o bound, da forma como foi dado, eh equivalente a uma igualdade de outros termos, e provei que vai existir um canal constante que faz o bound nao funcionar.}
+The idea of this subsection then, was to explore the usage of another alternative axiom, \emph{$\delta$-MAX} \ref{def:dmQIF}, instead of MAX or AVG. We do not prove that $\delta$-MAX has the same desired properties as AVG and MAX, we just applied it to the scenario considered and tried to reach significant conclusions. We will describe why one might think this idea could work, and outline the most promising line of trial and error we had, even though we utlimately reached negative results.
+
+{\color{red} Definicao dos axiomas AVG e MAX temq ser botada na introducao}
+
+{\color{red} Botar definicao delta-MAX aqui.}
+
+The key distinction between $\epsilon$-LDP \ref{def:epsilonLDP} and $(\epsilon, \delta)$-LDP \ref{def:edLDP} lies in how these privacy measures address worst-case scenarios. $\epsilon$-LDP tolerates a zero probability of failure, while $(\epsilon, \delta)$-LDP allows for a $\delta$ probability of failure. Similarly, QIF under the MAX axiom \ref{mQIF} captures worst-case leakage with a non-zero probability, and QIF under the MAX-$\delta$ axiom \ref{mdQIF} captures the worst-case leakage with a probability greater than $\delta$.
+
+This parallel suggests a potential relationship between these measures. Specifically, it may be feasible to establish a bound on $(\epsilon, \delta)$-LDP in terms of the parameters of QIF concepts under the $\delta$-MAX axiom, mirroring the existing modeling of $\epsilon$-LDP in terms of the multiplicative leakage of QIF under the MAX axiom. This approach could provide a more generalized connection between the QIF and the Differential Privacy frameworks. This extension is particularly relevant in settings where a small probability of privacy breach is acceptable, which is, in fact, a common setting.
+
+Many attempts were made, but we will focus on the main one. First, we simplified the main theorem of the mentioned paper \cite{fernandes2024explaining}. Then we wrote the version that should be true if our idea of using the MAX-$\delta$ axiom could lead to the desired results by using the same ideas from the demonstrations in the mentioned paper, and proved that it can't be proved the same way.
+
+First, we will present the theorem as it was presented in the analyzed paper \cite{fernandes2024explaining} (Theorem \ref{thm:ePaper}), and a simplified version that is more suited to our needs (Theorem \ref{thm:eMeu}).
+
+{\color{red} Teorema como foi dado no paper ePaper}
+
+{\color{red} Versao alternativa do teorema do paper e prova que eh igual ao meu, chamarei de eMeu}
+
+Changing the MAX axiom \ref{def:mQIF} to the MAX-$\delta$ axiom \ref{def:mdQIF} on Theorem \ref{thm:eMeu} leads to a false logical expression, which we present here as Theorem \ref{thm:edMeu}. The goal was, of course, to prove that the expression was true, but we found that this is not the case.
+
+{\color{red} edMeu como teorema falando que nao eh verdade que 'expressao com delta-MAX'}
+
+{\color{red} Concluimos entao usando o teorema edMeu que para modelar delta-epsilon-LDP com QIF nao podemos usar o mesmo bound do paper \cite{fernandes2024explaining} simplesmente trocando o axioma MAX \ref{def:mQIF} por $\delta$-MAX \ref{mdQIF}.}
 
 \section{Conclusions}
 
