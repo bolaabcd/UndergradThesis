@@ -109,8 +109,8 @@
 }
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Artur Gaspar da Silva}
-\IEEEauthorblockA{\textit{Departamento de Ciencia da Computaçãp (DCC)} \\
-\textit{Universidade Federal de Minas Gerais (UFMG)}\\
+\IEEEauthorblockA{\emph{Departamento de Ciencia da Computaçãp (DCC)} \\
+\emph{Universidade Federal de Minas Gerais (UFMG)}\\
 Belo Horizonte, Brazil \\
 artur.gaspar@dcc.ufmg.br}
 }
@@ -195,13 +195,13 @@ Many different notions of algorithmic fairness have been developed, and some are
 
 We will now define some of the main notions of fairness, which are the ones we will consider in Subsection \ref{subsec:ldpunfair}. We consider that $Y$ is the binary target variable, with $Y=1$ as the positive result and $Y=0$ as the negative one; $A$ is the binary sensitive attribute, with $A=1$ for the privileged group and $A=0$ for the unprivileged group; $\hat Y$ is the model prediction of the target variable value; $X$ is a set of legitimate factors that can be used for classification.
 
-\begin{definition}[Equal Opportunity Difference] We define \emph{Equal Opportunity Difference} as $P(\hat Y = 1| A = 1, Y =1) - P(\hat Y = 1| A = 0, Y = 1)$. Equal Opportunity is \emph{satisfied} if the Equal Opportunity Difference is equal to zero.
+\begin{definition}[Equal Opportunity Difference]\label{def:EOD} We define \emph{Equal Opportunity Difference} as $P(\hat Y = 1| A = 1, Y =1) - P(\hat Y = 1| A = 0, Y = 1)$. Equal Opportunity is \emph{satisfied} if the Equal Opportunity Difference is equal to zero.
 \end{definition}
 
-\begin{definition}[Statistical Disparity] We define \emph{Statistical Disparity}, also known as \emph{Demographic Disparity}, as $P(\hat Y = 1| A = 1) - P(\hat Y = 1| A = 0)$. Statistical (Demographical) \emph{Parity} is \emph{satisfied} if the Statistical Disparity is equal to zero.
+\begin{definition}[Statistical Disparity]\label{def:SD} We define \emph{Statistical Disparity}, also known as \emph{Demographic Disparity}, as $P(\hat Y = 1| A = 1) - P(\hat Y = 1| A = 0)$. Statistical (Demographical) \emph{Parity} is \emph{satisfied} if the Statistical Disparity is equal to zero.
 \end{definition}
 
-\begin{definition}[Conditional Statistical Disparity] We define \emph{Conditional Statistical Disparity}, conditioned on $x$, as $P(\hat Y = 1| A = 1, X = x) - P(\hat Y = 1| A = 0, X = x)$. Conditional Statistical \emph{Parity} is \emph{satisfied} if the Conditional Statistical Disparity is equal to zero.
+\begin{definition}[Conditional Statistical Disparity]\label{def:CSD} We define \emph{Conditional Statistical Disparity}, conditioned on $x$, as $P(\hat Y = 1| A = 1, X = x) - P(\hat Y = 1| A = 0, X = x)$. Conditional Statistical \emph{Parity} is \emph{satisfied} if the Conditional Statistical Disparity is equal to zero.
 \end{definition}
 
 A possible general definition of \emph{individual fairness} notions is that an algorithm is considered fair if it gives similar outcomes to similar individuals, according to similarity notions relevant to the specific scenario considered.
@@ -360,17 +360,45 @@ Besides the literature review, this work has three main theoretical contribution
 
 \subsection{The impact of Local Differential Privacy mechanisms on fairness metrics}\label{subsec:ldpunfair}
 
-{\color{red} Eu acho que tem isso salvo em algum lugar no computador. Lembrar da questao do Ramon de que o modelo treinado no dado com ruido nao tem problema porque ele vai ser usado em dados sem ruido estando pronto de qualquer forma.}
+Recent theoretical and empirical investigations suggest that the application of Local Differential Privacy (LDP) obfuscation mechanisms may intrinsically mitigate the unfairness of machine learning models trained on noisy datasets \cite{makhlouf2024systematicformalstudyimpact}\cite{makhlouf2024impact}\cite{arcolezi2023local}. This subsection proceeds as follows: First, we present a detailed analysis of relevant results from key recent studies. Subsequently, we discuss strong methodological limitations observed in these studies.
 
-{\color{red} \begin{enumerate}
-	\item Aplicar ruido em uma soh variavel dah problemas de privacidade, porque a menos que confiemos totalmente no coletor de dados (e nesse caso nao compensa aplicar ruido nenhum), ele pode reverter o ruido e usar um modelo treinado com a distribuicao sem ruido para inferir o valor da variavel sensivel a partir das outras. A terceira parte dessa secao de contribuicoes fala qual o problema em aplicar soh na variavel sensivel e nas correlacionadas.
-	\item Mesmo no caso de aplicar ruido em todas as variaveis, nao faz sentido confiar que o coletor de dados nao vai reverter o ruido e treinar um modelo injusto.
-	\item Mesmo que confiemos totalmente no coletor para nao reverter o ruido e aplicamos ruido em todas as variaveis para fins de privacidade, ele nao reverter so limita as opcoes que ele tem de trade-off entre fairness e acuracia.
-\end{enumerate}}
+One of the recent studies on this topic \cite{makhlouf2024systematicformalstudyimpact} focuses on theoretical results. The assumptions and simplifications made are:
+
+\begin{enumerate}
+\item There is only one sensitive and one non-sensitive input variables, and one output binary variable that the model tries to predict, all binary.
+\item The LDP obfuscation mechanism is Randomized Response, but it is applied only on the sensitive variable.
+\item The fairness metrics considered are Statistical Disparity (SD) \ref{def:SD}, Conditional Statistical Disparity (CSD) \ref{def:CSD} and Equal Opportunity Difference (EOD) \ref{def:EOD}.
+\item There is enough training and testing data to adequately estimate the real data distribution.
+\item When given an input $(a,x)$, the model outputs the most common value of $Y$ seen in the training data distribution conditioned on $A=a, X=x$.
+\item The model is trained directly on the noisy data distribution, we assume that the data collector will not try to reverse the noise and approximate the real data distribution.
+\item The model is tested in the real data distribution, without noise.
+\end{enumerate}
+
+The theoretical results obtained show that Conditional Statistical Disparity \ref{def:CSD} and Equal Oportunity Difference \ref{def:EOD} values remain equal or are reduced wihout reversing the signal. Also, Statistical Disparity \ref{def:SD} remains equal or is reduced, but the signal might be reversed. This means that Statistical Disparity never gets worse for the unpriviledged group, but might end up even stronger than before, but in favor of the unpriviledged group.
+
+Another recent paper \cite{makhlouf2024impact} analyzes the same scenario, but with more than one sensitive variable and different obfuscation algorithms (multi-dimensional LDP). The paper considers Randomized Response applied individually to each variable, and the version of Randomized Response from Definition \ref{def:nrr}, but considering all variables as one variable in a tuple format. 
+
+The results are empirically, not theoretically, verified, and they reach the same conclusions as the previously mentioned paper \cite{makhlouf2024systematicformalstudyimpact}. One extra analysis is how the distribution of outputs for each group can affect how much each group is affected by the obfuscation, so they are usually not equally impacted by the obfuscation mechanisms verified.
+
+The last study we will consider in this work \cite{arcolezi2023local} also verifies the impact of obfuscation mechanisms on the fairness of models trained in the noisy dataset. The main difference is that they consider an approach that applies different ammounts of noise according to how many possible values each variable has. Also, this study focuses on extensive empirical, instead of theoretical, evaluation.
+
+The results include which methods provided the best utility-fairness trade-off. The paper also discusses how their proposed method of splitting the privacy budget according to how many possible values each variable has.
+
+Now, we will discuss the main limitations with the approaches of these studies.
+
+First of all, applying noise to a single variable poses privacy risks. Unless we have complete trust in the data collector (in which case, applying noise is unnecessary), they could potentially reverse the noise and leverage a model trained on the unperturbed distribution to infer the sensitive variable's value from the remaining data. The second part of this contributions section details the issues arising from applying noise solely to the sensitive variable and distributing noise between its correlated counterparts.
+
+Even when noise is applied equally to all variables, it is still not reasonable to assume that the data collector will not reverse this noise and later train a biased model. This action, differently from applying nosie on a single variable, would not undermine the very purpose of noise application, which is to protect sensitive information, as LDP guarantees would hold. But it would still remove completely the fairness guarantees, as they depend on trusting the data collectors. So, this approach would require trust in them for fairness purposes even if we do not trust them for privacy purposes.
+
+Then, if the data collector is considered untrustworthy in general, applying noise might become useless, as they can simply undo the perturbation (given enough data) and proceed with possible unfair intent. Thus, unless we trust in the data collector being fair even though we do not trust them for respecting user privacy, the results presented in the analyzed studies do not hold, and alternative methods that do not rely on the collector's integrity should be considered.
+
+Notice that trust on the data collector is not simply trust that the people and company are not malicious, it also includes trusting that the data they pocess will not leak to malicious parties. This might happen through cibersecurity breaches, for instance, in which the data could be used to make unfair \qm{data-based} decisions.
+
+Finally, even under the assumption of complete trust in the data collector not attempting to reverse the perturbation when training the model and with noise applied to all variables for privacy preservation, the act of not reversing the noise simply constrains the trade-off options available to the collector between fairness and accuracy. By introducing noise, a fundamental tension is created: increasing noise enhances privacy but typically reduces the accuracy of any model trained on the perturbed data\cite{ren2018textsf}. This tension is also present between fairness and accuracy, especially in scenarios in which the unpriviledged group is significantly evaluated worse in the training data\cite{Carlos}. If we use noise as a pre-processing method for improving fairness, then we are not considering other, possibly better options, that lead to better fairness and accuracy\cite{Reductions}\cite{konstantinov2022impossibility}. 
 
 \subsection{How to distribute the Local Differential Privacy budget between variables with varying levels of importance}\label{subsec:ldpbudget}
 
-One simple mechanism to satisfy the Local Differential Privacy constraints of Definition \ref{def:epsilonLDP} is \textbf{Randomized Response}, described in \ref{def:nrr}.
+One simple mechanism to satisfy the Local Differential Privacy constraints of Definition \ref{def:epsilonLDP} is \emph{Randomized Response}, described in \ref{def:nrr}.
 
 \begin{definition}[n-Randomized Response]\label{def:nrr} Let $|\mathcal{X}| = n$. Then, the Randomized Response Mechanism $\mathcal{K}$ that maps from $\mathcal{X}$ to $\mathcal{X}$ can be defined as:
 	\[
@@ -415,7 +443,7 @@ Applying obfuscation mechanisms at only a few variables might weaken the real pr
 
 In the most extreme case, we have the toy example in which two variables $A$ and $X$, such that $A$ is considered sensible and $X$ is not, and $A$ is proportional to $X$. Then if we apply noise to $A$ only, the data collector can discover the exact value of $A$ of any individual by looking at the value of $X$ for that individual. More realistic examples might have a sensitive variable $A$ and a tuple of non-sensitive variables $(X_1,X_2,...,X_n)$, such that the value of the tuple is highly correlated with $A$, or can be used to predict $A$ with more than acceptable accuracy.
 
-One important privacy paradigm to consider is that a system can be considered non-private if it leaks more information about the sensitive data than an adversary had \textit{before} observing the system. Thus, one might think that the data collector would be unable to identify the strong corrleations mentioned if enough noise is applied. But we must keep in mind that many Local Differential Privacy mechanisms are designed such that the data collector can reverse the noise with some confidence if enough data is provided. For instance, in the Randomized Response Mechanism from Definition \ref{def:nrr}, we can infer that a fraction of the individuals will provide incorrect information about their data, and by some simple computations we can conclude that to (approximately) reverse the noise we can simply subtract a fraction $\frac{1}{n-1+e^\epsilon}$ of each obtained proportion of individuals with that value. Then, we re-scale the values obtained to add up to one.
+One important privacy paradigm to consider is that a system can be considered non-private if it leaks more information about the sensitive data than an adversary had \emph{before} observing the system. Thus, one might think that the data collector would be unable to identify the strong corrleations mentioned if enough noise is applied. But we must keep in mind that many Local Differential Privacy mechanisms are designed such that the data collector can reverse the noise with some confidence if enough data is provided. For instance, in the Randomized Response Mechanism from Definition \ref{def:nrr}, we can infer that a fraction of the individuals will provide incorrect information about their data, and by some simple computations we can conclude that to (approximately) reverse the noise we can simply subtract a fraction $\frac{1}{n-1+e^\epsilon}$ of each obtained proportion of individuals with that value. Then, we re-scale the values obtained to add up to one.
 
 Many LDP mechanisms allow for some method for the data collector to approximately reversing the noise, which allows to estimate the real data distribution, so the data collector can, in general and with enough data, approximate the real correlations between variables. This means that even if we consider the paradigm of comparing the prior and posterior information, applying noise to a few of the variables is still a big problem. A data collector with no prior information can discover that a set of non-sensitive variables is highly correlated with a sensitive variable, and use this to infer the value of the sensitive variable of any individual.
 
@@ -428,7 +456,7 @@ $$P(\mathcal{K}((a,b)) = (c,d)) \leq e^\epsilon P(\mathcal{K}((a',b)) = (c,d))$$
 
 Definition \ref{def:veldp} implies that an algorithm satisfies Variable-$\epsilon$-Differential Privacy if, given any output, there is an $e^\epsilon$ degree of uncertainty about the value of the sensible variable before the application ofthe algorithm to the input data point. Also, note that $A,B$ can themselves be defined as tuples of variables, and thus we can model any scenario with sensible and non-sensible variables this way.
 
-The main reason why we might not be able to guarantee that the restriction from definition \ref{def:veldp} is satisfied is that the data distribution is usually not available before the data from many individuals is collected and aggregated. This is the most common scenario, as if the distribution of the variables is already known, then there is no reason at all to collect data for most applications. Then, it might not be possible to apply noise proportionally to how correlated a variable is to a sensitive variable, as the person applying the noise does not know all the correlations a priori. If we want the mechanism to work in any distribution, we need to apply the noise to all variables, as it must work even if other variables are equal to the sensitive variables.
+The main reason why we might not be able to guarantee that the restriction from Definition \ref{def:veldp} is satisfied is that the data distribution is usually not available before the data from many individuals is collected and aggregated. This is the most common scenario, as if the distribution of the variables is already known, then there is no reason at all to collect data for most applications. Then, it might not be possible to apply noise proportionally to how correlated a variable is to a sensitive variable, as the person applying the noise does not know all the correlations a priori. If we want the mechanism to work in any distribution, we need to apply the noise to all variables, as it must work even if other variables are equal to the sensitive variables.
 
 Finally, one common idea is to simply not collect the sensitive data. The problem with this approach is that without this information, it is not posslbe to infer how unfair a system is. Verifying biases and general unfairness is the goal of many important studies, and thus collecting sensitive data, at least in an aggregated way that doesn't allow the identification of the sensitive information of specific individuals, is fundamental. The sensitive data collected by companies can, for instance, be used by regulatory agencies to identify unfair biases that the copany presents towards unpriviledged groups of customers and employees, for instance.
 
