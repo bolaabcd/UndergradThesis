@@ -490,15 +490,17 @@ Changing the MAX axiom \ref{def:mQIF} to the MAX-$\delta$ axiom \ref{def:mdQIF} 
 
 {\color{red} Concluimos entao usando o teorema edMeu que para modelar delta-epsilon-LDP com QIF nao podemos usar o mesmo bound do paper \cite{fernandes2024explaining} simplesmente trocando o axioma MAX \ref{def:mQIF} por $\delta$-MAX \ref{mdQIF}.}
 
-\section{Conclusions}
+\section{Conclusions and Future Work}
 
 We can summarize the results obtained as following:
 
 \begin{enumerate}
-	\item There are some problems
-	\item
-	\item
+	\item There are methodological shortcomings on some recent studies that show that LDP obfuscation mechanisms can improve fairness of Machine Learning models. In short, the results, in general, depend on trusting the data collector to not try to reverse the noise, and it also limits what trustworthy data collectors can do.
+	\item The distribution of privacy budget among variables needs to assume some prior knowledge of the data distribution. If no prior knowledge is assumed, applying noise to some but not all variables can not guarantee any level of privacy as the other variables might be used to discover the value of obfuscated variables. Empirically, though, there are results indicating a different noise distribution might be useful \cite{arcolezi2023local}.
+	\item In order to provide bounds on $(\epsilon,\delta)$-LDP based with the $\delta$-MAX axiom \ref{def:dmQIF} for QIF, bounds different from the ones presented in \cite{fernandes2024explaining} needs to be explored. Also, even if bounds are found, it would be necessary to prove that the $\delta$-MAX has the useful properties that classical QIF axioms have. We also might be able to model $(\epsilon,\delta)$-LDP with the QIF framework via other approaches, not necessarily creating a new QIF axiom.
 \end{enumerate}
+
+Possibilities for future work include obtaining theoretical results in respect to the tradeoff between fairness and privacy that take into account the possibility of the data collector trying to reverse the noise. Also, we can model different levels of prior knowledge of a distribution and use them to decide the optimal privacy budget distribution given what the people applying the nosie know a priori. Finally, we can explore another routes to modeling $(\epsilon,\delta)$-LDP whith QIF concepts.
 
 \bibliographystyle{IEEEtran}
 \bibliography{IEEEexample}
