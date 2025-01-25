@@ -16,6 +16,10 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
 \newcommand{\qm}[1]{``#1"}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\DX}{\mathbb{D}(\mathcal{X})}
+\newcommand{\DDX}{\mathbb{D}^2(\mathcal{X})}
 \usepackage{mathtools} % for 'dcases*' env.
 
 
@@ -171,9 +175,9 @@ Also, the bias in society might be such that the data is in disagreement with re
     \end{enumerate}
 \item The data can be biased, not reflecting the reality.
     \begin{enumerate}
-    \item We can have structural biases in society, such that people in unprivileged groups do not have the necessary opportunities, but if they were treated similarly to the privileged group by society, they would have similar results. For instance, an unprivileged group that doesn't have good educational opportunities will have worse scores on exams because of historical discrimination, and although just looking at whether someone is in this group could lead to a good accuracy, it might only perpetuate current unfair biases in society.
-    \item The bias can also be introduced in a way that people in the unprivileged group were misclassified before the data was collected. For instance, maybe capable people in an unprivileged group usually don't get a job even though they are actually as capable as the unprivileged group.
-    \item Data collection doesn't reflect the reality: Measurement bias (for instance, COMPASS used friend/family arrests as a proxy for a risk score present in the dataset), Omitted Variable Bias (this violates assumptions of some learning models, for instance linear regression models usually assumes error terms uncorrelated with the parameters considered in the regression), Representation/Sampling Bias (biased sampling lacking the diversity of the population), Simpson's Paradox (if we don't have data on a confounder, correlations might be spurious \cite{Causality}).
+    \item We can have structural biases in society, such that people in unprivileged groups do not have the necessary opportunities, but if they were treated similarly to the privileged group by society, they would have similar results. For instance, an unprivileged group that does not have good educational opportunities will have worse scores on exams because of historical discrimination, and although just looking at whether someone is in this group could lead to a good accuracy, it might only perpetuate current unfair biases in society.
+    \item The bias can also be introduced in a way that people in the unprivileged group were misclassified before the data was collected. For instance, maybe capable people in an unprivileged group usually do not get a job even though they are actually as capable as the unprivileged group.
+    \item Data collection does not reflect the reality: Measurement bias (for instance, COMPASS used friend/family arrests as a proxy for a risk score present in the dataset), Omitted Variable Bias (this violates assumptions of some learning models, for instance linear regression models usually assumes error terms uncorrelated with the parameters considered in the regression), Representation/Sampling Bias (biased sampling lacking the diversity of the population), Simpson's Paradox (if we do not have data on a confounder, correlations might be spurious \cite{Causality}).
     \item If the data is collected on a group fundamentally distinct from the one where it will be used, for instance another population (Population Bias) or the same population but at another time (Temporal Bias), unfair bias might be introduced.
     \item Data that relies on people's opinion is prone to many biases: Social Bias (people do what others are doing), Self-Selection Bias (people think that everyone agrees with them), and many others.
     \end{enumerate}
@@ -186,12 +190,12 @@ Also, the bias in society might be such that the data is in disagreement with re
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\columnwidth]{whereunfair}
-\caption{Figure representing some of the main possible sources of unfairness.}\label{fig:whereunfair}
+\caption{Figure representing some of the main possible sources of unfairness.}\label{fig:whereUnfair}
 \end{figure}
 
 Besides biased data and deliberate bias in the algorithm, such that the results of the algorithm do not reflect the data, it is also possible to introduce bias because the algorithm might prioritize making correct predictions for the majority of the population, if it can't make correct predictions for both the majority and the minority. Another possibility is that the prediction might depend on past decisions of the algorithm, and we only know the result if the result provided is positive (for instance, we only know if someone will reincide if we release them). In this type of scenario, according to Learning Theory, it's important to take suboptimal decisions to \emph{explore} different options and gather more data \cite{chouldechova2018frontiers} (found in \url{arxiv.org}), which might be considered unethical as it might have a big cost to society (releasing someone that's probably going to commit more crimes) or to the individual (not giving a life-saving drug to some patients as an experiment to see the survival rates for that specific group). 
 
-Many different notions of algorithmic fairness have been developed, and some are not compatible \cite{alves2023survey}. Initially, the notions of fairness could be grouped into two main types: statistical and individual definitions of fairness \cite{chouldechova2018frontiers}. Statistical (group) notions of fairness require some statistical metrics to be similar for certain demographic groups, and individual notions enforce constraints on pairs of individuals, for instance requiring similar individuals to be treated similarly. Many problems with statistical notions and why they, in general, don't provide good individual guarantees are presented in previous works \cite{Awareness}\cite{kearns2018preventing}. For instance, one such problem is satisfying the constraints for two protected attributes individually but not for combinations of these attributes. One problem with both individual and group notions is \emph{composition}: it is not always the case that satisfying fairness constraints in individual, isolated, components of a system imply that fairness constraints will be satisfied for the whole system \cite{dwork2018fairness}. Finally, there are also causal approaches to fairness notions. In general, it is not possible to satisfy some of the main notions of fairness at the same time \cite{hellman2020measuring}\cite{bell2023possibility}\cite{zemel2013learning}, and which fairness notion to use depends a lot on the specific goals of each different system.
+Many different notions of algorithmic fairness have been developed, and some are not compatible \cite{alves2023survey}. Initially, the notions of fairness could be grouped into two main types: statistical and individual definitions of fairness \cite{chouldechova2018frontiers}. Statistical (group) notions of fairness require some statistical metrics to be similar for certain demographic groups, and individual notions enforce constraints on pairs of individuals, for instance requiring similar individuals to be treated similarly. Many problems with statistical notions and why they, in general, do not provide good individual guarantees are presented in previous works \cite{Awareness}\cite{kearns2018preventing}. For instance, one such problem is satisfying the constraints for two protected attributes individually but not for combinations of these attributes. One problem with both individual and group notions is \emph{composition}: it is not always the case that satisfying fairness constraints in individual, isolated, components of a system imply that fairness constraints will be satisfied for the whole system \cite{dwork2018fairness}. Finally, there are also causal approaches to fairness notions. In general, it is not possible to satisfy some of the main notions of fairness at the same time \cite{hellman2020measuring}\cite{bell2023possibility}\cite{zemel2013learning}, and which fairness notion to use depends a lot on the specific goals of each different system.
 
 We will now define some of the main notions of fairness, which are the ones we will consider in Subsection \ref{subsec:ldpunfair}. We consider that $Y$ is the binary target variable, with $Y=1$ as the positive result and $Y=0$ as the negative one; $A$ is the binary sensitive attribute, with $A=1$ for the privileged group and $A=0$ for the unprivileged group; $\hat Y$ is the model prediction of the target variable value; $X$ is a set of legitimate factors that can be used for classification.
 
@@ -223,7 +227,7 @@ In the context of Machine Learning, a privacy-preserving algorithm is one that d
 
 We call \emph{adversary} the agent that wants to discover the private information, and \emph{secret} the private information itself. There are some possible goals of the adversary: she might wish to recover the model itself by trying to approximate the function that represents the model, to recover some feature or statistical property of the dataset, to discover whether some individual data point is present in the dataset, or even recover the exact values of individual samples in the dataset. We distinguish between the \emph{White-Box access} and \emph{Black-Box access} scenarios as the situation in which the adversary has or does not have full access to the trained model and their parameters, respectively. 
 
-\emph{Model Extraction Attacks} assume an adversary with black-box access to the model, and no prior knowledge of the model parameters and training data. Some approaches to model extraction are presented in previous works \cite{tramer2016stealing}. Although the most efficient attacks rely on confidence values, attacks that rely only on the output class labels are also presented. Other works focused on estimating hyperparameters \cite{wang2018stealing} for an adversary that knows the training dataset and the Machine Learning algorithm. Notice that recovering the model can help in the development of attacks against the training data, even if the adversary doesn't have prior knowledge of the model.
+\emph{Model Extraction Attacks} assume an adversary with black-box access to the model, and no prior knowledge of the model parameters and training data. Some approaches to model extraction are presented in previous works \cite{tramer2016stealing}. Although the most efficient attacks rely on confidence values, attacks that rely only on the output class labels are also presented. Other works focused on estimating hyperparameters \cite{wang2018stealing} for an adversary that knows the training dataset and the Machine Learning algorithm. Notice that recovering the model can help in the development of attacks against the training data, even if the adversary does not have prior knowledge of the model.
 
 \emph{Feature estimation attacks} focus on recovering statistical properties or features of the training dataset, for an adversary that does not know the training data or the its distribution. Some attacks are presented in previous works \cite{fredrikson2015model} both for black-box and white-box model access. As expected, the white-box attacks lead to better attacks, and they provide examples for recovering individual sensitive information from marital happiness answers in two different datasets and white-box attacks for recovering images in a face recognition model. The results lead to the possibility of (almost) identifying someone with only their name and the face recognition model and to the possibility of identifying the answer to a sensitive topic on a supposedly anonymous questionnaire (whether the person answering ever cheated on their significant other) with very high precision and a recall bigger than 20\%. 
 
@@ -237,7 +241,9 @@ We will now focus on methods of modeling the protection of training data from pr
 $$P(\mathcal{K}(x) \in S) \leq e^\epsilon P(\mathcal{K}(x')\in S)$$
 \end{definition}
 
-The parameter $\epsilon$ can be interpreted as how close we require the probabilities of neighboring datasets to be, such that smaller values of $\epsilon$ lead to stronger requirements. In some practical applications, the Differential Privacy restriction is too strong. Thus, we have a relaxed definition for Differential Privacy, in which the parameter $\delta$ can be interpreted as the probability that the DP guarantee will not be satisfied.:
+In some scenarios, we consider $S = \{y\}$, and the restriction of Definition \ref{def:epsilonLDP} is equivalent to $P(\mathcal{K}(x) = y) \leq e^\epsilon P(\mathcal{K}(x') =  y)$, which is equivalent to $P(Y = y|X=x) \leq e^\epsilon P(Y =  y|X=x')$ if we represent the output of $\mathcal{K}$ as the random variable $Y$. This alternative definition can be used for other definitions of Differential Privacy and even Local Differential Privacy, and in the last subsection of the contributions part of this work we will use this alternative definition. This choice was made because it simplifies the results and proofs, and the attempts of the referred contributions subsection were ultimately unsuccessfull, so there is no reason to expand it to the most general version possible if it already does not work in the simpler version.
+
+The parameter $\epsilon$ can be interpreted as how close we require the probabilities of neighboring datasets to be, such that smaller values of $\epsilon$ lead to stronger requirements. In some practical applications, the Differential Privacy restriction is too strong. Thus, we have a relaxed definition for Differential Privacy, in which the parameter $\delta$ can be interpreted as the probability that the DP guarantee will not be satisfied:
 
 \begin{definition}[$(\epsilon,\delta)$-Differential Privacy]\label{def:edLDP} A randomized algorithm from $\mathcal{X}$ to $\mathcal{Z}$ satisfies $(\epsilon,\delta)$-Differential Privacy, for $\epsilon > 0$ and $\delta \in [0,1]$, if for every $x,x' \in \mathcal{X}$ such that $x$ is a neighgboring element of $x'$.
 $$P(\mathcal{K}(x) \in S) \leq e^\epsilon P(\mathcal{K}(x')\in S)+\delta$$
@@ -315,10 +321,26 @@ There are many valuable theoretical results about channels regarding the relatio
 \item The chapter 7 of the main QIF textbook at the time of this writing \cite[Chapter~7]{QIF} shows results about the \emph{capacity} of a channel, which is the maximum possible (additive or multiplicative) leakage that can happen through a channel if we fix either the prior, the gain function or neither.
 \item Chapter 9 of the same book \cite[Chapter~9]{QIF} shows results about \emph{refinement} of channels: in short, a channel is strictly better (for all priors and gain functions) than another channel in respect to the posterior vulnerability if and only if it can be written as a post-processing of this other channel.
 \item Chapter 10 of the same book \cite[Chapter~10]{QIF} presents the notion of \emph{Dalenious vulnerability}: it might be the case that the adversary is interested in a secret other than the one considered in the system, and can obtain information about this other system via a known joint distribution between this other secret and the secret that the system considers. In this case, a channel is also strictly better than another in respect to Dalenious leakage, for any such joint distribution and gain function, if and only it can be written as a post-processing of this other channel.
-\item Finally, chapter 11 \cite[Chapter~11]{QIF} discusses the axiomatic characterization of the notion of vulnerability, and even how some results can be obtained by different axioms that consider the worst-case scenario instead of the average gains of the adversary.
+\item Finally, chapter 11 \cite[Chapter~11]{QIF} discusses the axiomatic characterization of the notion of vulnerability, and even how some results can be obtained by different axioms that consider the worst-case scenario instead of the average gains of the adversary. These axioms are explained in Definition \ref{def:mQIF} and \ref{def:aQIF}, respectively.
 \end{enumerate}
 
+\begin{definition}[MAX QIF axiom]\label{def:mQIF}Given a Hyper distribution on secrets (a distribution on a distribution of secrets) $\triangle \in \DDX$, the posterior vulnerability can be computed as the supremum of the vulnerability of all inner distributions of the hyper that have more than $0$ probability. If there is a finite number of inner distributions of secrets in the hyper, this can be written as:
+
+$$V(\triangle) = \max\limits_{\pi \in \triangle:\triangle_\pi > 0}V(\pi)$$
+
+Such that $V(\pi)$ is the vulnerability value assigned to $\pi \in \DX$.
+\end{definition}
+
+\begin{definition}[AVG QIF axiom]\label{def:aQIF} Given a Hyper distribution on secrets (a distribution on a distribution of secrets) $\triangle \in \DDX$, the posterior vulnerability can be computed as the expected vulnerability of all inner distributions of the hyper. If there is a finite number of inner distributions of secrets in the hyper, this can be written as:
+
+$$V(\triangle) = \sum\limits_{\pi \in \triangle}\triangle_\pi V(\pi)$$
+
+Such that $V(\pi)$ is the vulnerability value assigned to $\pi \in \DX$.
+\end{definition}
+
 Even though most of the work on Quantitative Information Flow was developed with a stronger focus on measuring how system a system is, the $g$-vulnerability framework can be considered a general notion for quantifying information flow. This means that, in the future, we might be able to use it in the areas explored in this work, as some can be viewed in terms of information flows.
+
+
 
 \subsection{Fairness $\times$ Privacy}
 
@@ -415,7 +437,7 @@ For any values $x\neq y$ such that $x,y\in\mathcal{X}$.
 
 Notice that this adds up to one: $\frac{e^\epsilon}{n-1+e^\epsilon}+(n-1)\frac{1}{n-1+e^\epsilon}=1$. Also, this mechanism satisifies the $\epsilon-LDP$ restriction from Definition \ref{def:epsilonLDP}, as we show in Lemma \ref{lem:rrldp}.
 
-\begin{lemma}\label{rrldp} n-Randomized Response (Definition \ref{def:nrr}) satisifes $\epsilon-LDP$ (Definition \ref{def:epsilonLDP}).
+\begin{lemma}\label{lem:rrldp} n-Randomized Response (Definition \ref{def:nrr}) satisifes $\epsilon-LDP$ (Definition \ref{def:epsilonLDP}).
 \end{lemma}
 \begin{proof}
 	Let $S$ be any subset of the set of all outputs of $\mathcal{K}$. Notice that, by the definition of $\mathcal{K}$, this is a subset of secrets. Also, let $x \in \mathcal{X}$ and $\epsilon > 0$.
@@ -439,7 +461,7 @@ Notice that all probabilities are inversely proportional to $n$, but $n$ increas
 \caption{Scenario in which some institution collects data on some sensible and non-sensible variables.}\label{fig:sensitiveVars}
 \end{figure}
 
-Applying obfuscation mechanisms at only a few variables might weaken the real privacy guarantees obtained. In the example illustrated by figure \ref{fig:sensitiveVars}, for instance, the Age variable might be correlated with the Religious Beliefs variables. In this situation, applying noise just to the Religious Beliefs variable is not equivalent to applying the same noise in the scenario in which only the Religious Beliefs variable is available. In other words, even though an obfuscation mechanism provides guarantees in general, these guarantees are not kept if we apply noise only on one variable. For instance, Randomized Response (Definition \ref{def:nrr}) might guarantee $\epsilon$-LDP if the noise is applied to all variables, as shown in Lemma \ref{rrldp}, but not if it is applied to a subset of variables.
+Applying obfuscation mechanisms at only a few variables might weaken the real privacy guarantees obtained. In the example illustrated by figure \ref{fig:sensitiveVars}, for instance, the Age variable might be correlated with the Religious Beliefs variables. In this situation, applying noise just to the Religious Beliefs variable is not equivalent to applying the same noise in the scenario in which only the Religious Beliefs variable is available. In other words, even though an obfuscation mechanism provides guarantees in general, these guarantees are not kept if we apply noise only on one variable. For instance, Randomized Response (Definition \ref{def:nrr}) might guarantee $\epsilon$-LDP if the noise is applied to all variables, as shown in Lemma \ref{lem:rrldp}, but not if it is applied to a subset of variables.
 
 In the most extreme case, we have the toy example in which two variables $A$ and $X$, such that $A$ is considered sensible and $X$ is not, and $A$ is proportional to $X$. Then if we apply noise to $A$ only, the data collector can discover the exact value of $A$ of any individual by looking at the value of $X$ for that individual. More realistic examples might have a sensitive variable $A$ and a tuple of non-sensitive variables $(X_1,X_2,...,X_n)$, such that the value of the tuple is highly correlated with $A$, or can be used to predict $A$ with more than acceptable accuracy.
 
@@ -458,7 +480,7 @@ Definition \ref{def:veldp} implies that an algorithm satisfies Variable-$\epsilo
 
 The main reason why we might not be able to guarantee that the restriction from Definition \ref{def:veldp} is satisfied is that the data distribution is usually not available before the data from many individuals is collected and aggregated. This is the most common scenario, as if the distribution of the variables is already known, then there is no reason at all to collect data for most applications. Then, it might not be possible to apply noise proportionally to how correlated a variable is to a sensitive variable, as the person applying the noise does not know all the correlations a priori. If we want the mechanism to work in any distribution, we need to apply the noise to all variables, as it must work even if other variables are equal to the sensitive variables.
 
-Finally, one common idea is to simply not collect the sensitive data. The problem with this approach is that without this information, it is not posslbe to infer how unfair a system is. Verifying biases and general unfairness is the goal of many important studies, and thus collecting sensitive data, at least in an aggregated way that doesn't allow the identification of the sensitive information of specific individuals, is fundamental. The sensitive data collected by companies can, for instance, be used by regulatory agencies to identify unfair biases that the copany presents towards unpriviledged groups of customers and employees, for instance.
+Finally, one common idea is to simply not collect the sensitive data. The problem with this approach is that without this information, it is not posslbe to infer how unfair a system is. Verifying biases and general unfairness is the goal of many important studies, and thus collecting sensitive data, at least in an aggregated way that does not allow the identification of the sensitive information of specific individuals, is fundamental. The sensitive data collected by companies can, for instance, be used by regulatory agencies to identify unfair biases that the copany presents towards unpriviledged groups of customers and employees, for instance.
 
 \subsection{Modeling the $\delta$ parameter of $(\epsilon,\delta)$-LDP within the Quantitative Information Flow framework}\label{subsec:ldeltap}
 
@@ -466,13 +488,17 @@ Recent research \cite{fernandes2024explaining} shows how to represent and explai
 
 Intuitively, one possible observation is that we are considering the worst-case scenarios when we use the MAX \ref{def:mQIF} instead of the AVG \ref{def:aQIF} axiom. Previous attempts were made to relate $\epsilon$-LDP directly with QIF, but they relied on the more common AVG axiom for QIF\cite{alvim2015information}, so a bound on LDP in terms of multiplicative leakage were not available, only bounds on leakage in terms of LDP parameters.
 
-The idea of this subsection then, was to explore the usage of another alternative axiom, \emph{$\delta$-MAX} \ref{def:dmQIF}, instead of MAX or AVG. We do not prove that $\delta$-MAX has the same desired properties as AVG and MAX, we just applied it to the scenario considered and tried to reach significant conclusions. We will describe why one might think this idea could work, and outline the most promising line of trial and error we had, even though we utlimately reached negative results.
+The idea of this subsection then, was to explore the usage of another alternative axiom, \emph{$\delta$-MAX} \ref{def:dmQIF}, instead of MAX \ref{def:mQIF} or AVG \ref{def:aQIF}. We do not prove that $\delta$-MAX has the same desired properties as AVG and MAX, we just applied it to the scenario considered and tried to reach significant conclusions. We will describe why one might think this idea could work, and outline the most promising line of trial and error we had, even though we utlimately reached negative results.
 
-{\color{red} Definicao dos axiomas AVG e MAX temq ser botada na introducao}
 
-{\color{red} Botar definicao delta-MAX aqui.}
+\begin{definition}[$\delta$-MAX QIF axiom]\label{def:dmQIF}Given a Hyper distribution on secrets (a distribution on a distribution of secrets) $\triangle \in \DDX$, the posterior vulnerability can be computed as the supremum of the vulnerability of all inner distributions of the hyper that have more than $\delta$ probability. If there is a finite number of inner distributions of secrets in the hyper, this can be written as:
 
-The key distinction between $\epsilon$-LDP \ref{def:epsilonLDP} and $(\epsilon, \delta)$-LDP \ref{def:edLDP} lies in how these privacy measures address worst-case scenarios. $\epsilon$-LDP tolerates a zero probability of failure, while $(\epsilon, \delta)$-LDP allows for a $\delta$ probability of failure. Similarly, QIF under the MAX axiom \ref{mQIF} captures worst-case leakage with a non-zero probability, and QIF under the MAX-$\delta$ axiom \ref{mdQIF} captures the worst-case leakage with a probability greater than $\delta$.
+$$V(\triangle) = \max\limits_{\pi \in \triangle:\triangle_\pi > \delta}V(\pi)$$
+
+Such that $V(\pi)$ is the vulnerability value assigned to $\pi \in \DX$.
+\end{definition}
+
+The key distinction between $\epsilon$-LDP \ref{def:epsilonLDP} and $(\epsilon, \delta)$-LDP \ref{def:edLDP} lies in how these privacy measures address worst-case scenarios. $\epsilon$-LDP tolerates a zero probability of failure, while $(\epsilon, \delta)$-LDP allows for a $\delta$ probability of failure. Similarly, QIF under the MAX axiom \ref{def:mQIF} captures worst-case leakage with a non-zero probability, and QIF under the MAX-$\delta$ axiom \ref{def:dmQIF} captures the worst-case leakage with a probability greater than $\delta$.
 
 This parallel suggests a potential relationship between these measures. Specifically, it may be feasible to establish a bound on $(\epsilon, \delta)$-LDP in terms of the parameters of QIF concepts under the $\delta$-MAX axiom, mirroring the existing modeling of $\epsilon$-LDP in terms of the multiplicative leakage of QIF under the MAX axiom. This approach could provide a more generalized connection between the QIF and the Differential Privacy frameworks. This extension is particularly relevant in settings where a small probability of privacy breach is acceptable, which is, in fact, a common setting.
 
@@ -480,15 +506,53 @@ Many attempts were made, but we will focus on the main one. First, we simplified
 
 First, we will present the theorem as it was presented in the analyzed paper \cite{fernandes2024explaining} (Theorem \ref{thm:ePaper}), and a simplified version that is more suited to our needs (Theorem \ref{thm:eMeu}).
 
-{\color{red} Teorema como foi dado no paper ePaper}
+Notice that a review of these results might be important if this proves relevant in the future, as we consider concrete instead of abstract versions of the channels throughout our arguments. If only abstract channels are considered, maybe our counter-example for this line of reasoning does not hold anymore.
 
-{\color{red} Versao alternativa do teorema do paper e prova que eh igual ao meu, chamarei de eMeu}
+\begin{theorem}[Alternative bound to $\epsilon$-LDP]\label{thm:ePaper} Let $C: \X \rightarrow \D(Y)$ be any channel and $\epsilon \geq 0$. Also, let $\X$ be the set of secrets, $Y$ be the set of channel outputs and $J$ be the distribution of $\X \times Y$. Then:
 
-Changing the MAX axiom \ref{def:mQIF} to the MAX-$\delta$ axiom \ref{def:mdQIF} on Theorem \ref{thm:eMeu} leads to a false logical expression, which we present here as Theorem \ref{thm:edMeu}. The goal was, of course, to prove that the expression was true, but we found that this is not the case.
+$$\mathop{\sup_{\pi\in\DX:}}_{\pi_x>0}\quad\mathop{\max_{x\in\X,y\in Y:}}_{ J_{x,y}>0}\quad\frac{C_{x,y}}{p(y)} \leq e^\epsilon $$
 
-{\color{red} edMeu como teorema falando que nao eh verdade que 'expressao com delta-MAX'}
+If and only if, for any $x,x' \in \X, y \in Y$ such that $J_{x',y} > 0$ and $J_{x,y} > 0$ we have:
 
-{\color{red} Concluimos entao usando o teorema edMeu que para modelar delta-epsilon-LDP com QIF nao podemos usar o mesmo bound do paper \cite{fernandes2024explaining} simplesmente trocando o axioma MAX \ref{def:mQIF} por $\delta$-MAX \ref{mdQIF}.}
+$$\frac{C_{x,y}}{C_{x',y}} \leq e^\epsilon$$
+
+\end{theorem}
+
+The first expression of Theorem \ref{thm:ePaper} is equivalent to QIF notions of multiplicative capacity under the MAX axiom \ref{def:mQIF}, so it effectively establishes a clear connection between the QIF and LDP frameworks. This equivalence and the proof of Theorem \ref{thm:ePaper} are already presented at the paper \cite{fernandes2024explaining}, so we will not discuss it here. Also, we added the requirement of $J_{x',y} > 0$ and $J_{x,y} > 0$ to the theorem so there are no divisions by zero (as we can change $x$ and $x'$ and the theorem should hold, this is the same as requiring $J_{x',y} > 0$ only). Finally, we already expanded the terms defined in the paper \cite{fernandes2024explaining}, so we do not need to re-define everything again.
+
+One important point to notice is that $C_{x,y} = P(Y=y|X=x)$, and thus the expression $\frac{C_{x,y}}{C_{x',y}} \leq e^\epsilon$ is equivalent to the restriction of the definition of $\epsilon$-LDP \ref{def:epsilonLDP} when $|S| = 1$.
+
+\begin{theorem}[Alternative version of $\epsilon$-LDP bounds]\label{thm:eMeu} The following logical affirmation is equivalent to Theorem \ref{thm:ePaper}, when channels are not allowed to have entries with value zero.
+
+For any channel $C: \X \rightarrow \D(Y)$ and real number $\epsilon > 0$, we have:
+\begin{align*}
+\mathop{\sup_{\pi\in\DX:}}_{\pi_x>0}\quad\max_{x\in\X,y\in Y}\quad\frac{C_{x,y}}{p(y)} = \max_{x,x',y}\frac{C_{x,y}}{C_{x',y}}
+\end{align*}
+\end{theorem}
+\begin{proof}
+First notice that $\frac{C_{x,y}}{C_{x',y}} \leq e^\epsilon$ for all $x,x'\in \X$ and $y \in Y$ if and only if the right side of the equation above is also smaller than or equal to $e^\epsilon$: if the right side of the equation is smaller than or equal to $\epsilon$, then all pertinent values of $x,x',y$ would lead to values that can not be bigger for $\frac{C_{x,y}}{C_{x',y}}$, so it would also be smaller than or equal to $e^\epsilon$. Also, if $\frac{C_{x,y}}{C_{x',y}} \leq e^\epsilon$ for all $x,x'\in \X$ and $y \in Y$, then in particular the maximum value of $\frac{C_{x,y}}{C_{x',y}}$ will also be smaller than or equal to $e^\epsilon$.
+
+Now let the right-hand side of the equation of this theorem be equal to $k \geq 1$. If we choose $\epsilon$ such that $e^\epsilon = k$, then the left-hand side of the first equation of Theorem \ref{thm:ePaper} will be smaller than or equal to $e^\epsilon$, which we can conclude by the argument of the last paragraph and the appication of Theorem \ref{thm:ePaper}. But by the same reasons, (assuming that $k > 1$) any value $\epsilon'$ such that $e^{\epsilon'} < k$ will lead to the conclusion that the left-hand side of the first equation of Theorem \ref{thm:ePaper} is bigger than $e^{\epsilon'}$. So, it must be exatly equal to $e^\epsilon = k$. If $k=1$, then all values of $C_{x,y}$ are equal (otherwise we could obtain a fraction bigger than one for entries in the channel), the channel is constant and the result holds. Notice that this argument is only true becaouse of the extra assumption that the channel has no zero entries.
+\end{proof}
+
+We did not remove the extra assumption of non-zero entries because this attempt did not work even with that extra assumption, as we will now discuss.
+
+Changing the MAX axiom \ref{def:mQIF} to the MAX-$\delta$ axiom \ref{def:dmQIF} on Theorem \ref{thm:eMeu} and the $\epsilon$-LDP \ref{def:epsilonLDP} requirement to the $(\delta,\epsilon)$-LDP \ref{def:edLDP} requirement leads to a false logical expression, which we present here as Theorem \ref{thm:edMeu}. The goal was, of course, to prove that the expression was true, but we found that this is not the case.
+
+\begin{theorem}[Modeling $(\epsilon,\delta)$-LDP requires another approach]\label{thm:edMeu}The following affirmation is not true.
+
+For any channel $C: \X \rightarrow \D(Y)$ with only non-zero entries and real number $\epsilon > 0$, we have:
+\begin{align*}
+\mathop{\sup_{\pi\in\DX:}}_{\pi_x>0}\quad\mathop{\max_{x\in\X,y\in Y:}}_{p(y) > \delta}\quad\frac{C_{x,y}}{p(y)} = \max_{x,x',y}\frac{C_{x,y}-\delta}{C_{x',y}}
+\end{align*}
+\end{theorem}
+\begin{proof}
+Consider the constant channel, in which all entries are equal to $c = \frac{1}{n}$, in which $n = |Y|$. Now, $p(y) = \frac{1}{n}$ regardless of the choice of $\pi \in \DX$, so $\frac{C_{x,y}}{p(y)} = \frac{c}{c} = 1$, but $\frac{C_{x,y}-\delta}{C_{x',y}} = 1 - \frac{\delta}{c}$, for any $x,x',y$. As $\delta > 0$, this equality will be false regardless of the value of $c$, so the expression presented can not be true for all channels, as it is not true for this specific channel.
+\end{proof}
+
+Notice that $\frac{C_{x,y}-\delta}{C_{x',y}} \leq \epsilon \iff P(Y=y|X=x)\leq e^\epsilon P(Y=y|X=x')+\delta$, which is equivalent to $(\epsilon,\delta)$-LDP \ref{def:edLDP} when $|S| = 1$. As explained before, we do not attempt to extend the results in this work to more general configurations because the results were already negative in the current, simpler, configuration.
+
+We can conclude that to model $(\delta,\epsilon)-LDP$ in the QIF framework, we can not use the same bound as in the analyzed paper \cite{fernandes2024explaining}. Other approaches might still be successfull, though, changing or not changing the classical AVG \ref{def:aQIF} axiom from QIF.
 
 \section{Conclusions and Future Work}
 
